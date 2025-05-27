@@ -1,0 +1,156 @@
+### Problem Restatement
+The task is to simulate a Blocks World planning case and create a plan to achieve a specific configuration. In Blocks World, we have a set of blocks, a table, and a robot hand. Blocks can be on the table or stacked on other blocks, and the robot hand can perform four operations: Pickup (pick a block from the table), Putdown (place a block on the table), Stack (place a block on another block with a clear top), and Unstack (pick a block from another block). The goal is to build one or more vertical stacks of blocks as specified.
+
+For this simulation, let’s assume we have three blocks (A, B, C) initially on the table, and the goal is to create a single stack with block A on block B, and block B on block C (i.e., C on table, B on C, A on B).
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of stacking A on B, B on C, with C on the table into intermediate subgoals:
+1. Ensure C is on the table with a clear top.
+2. Place B on C.
+3. Place A on B.
+[/PLANNING]
+
+---
+
+### Step 2: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**
+[/PLANNING]
+
+[REVIEW]
+Maintain a goal-management system and list all goals:
+- **Main Goal**: Achieve stack A on B, B on C, C on table.
+  - **Subgoal 1**: Ensure C is on the table with a clear top.
+  - **Subgoal 2**: Place B on C.
+  - **Subgoal 3**: Place A on B.
+**Current Goal**: Ensure C is on the table with a clear top.
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Ensure C is on the table with a clear top.  
+**How to Achieve**: Check the initial state. Since all blocks (A, B, C) are on the table and have clear tops (no blocks on them), C is already on the table with a clear top. No action is needed for this subgoal.
+[/PLANNING]
+
+[IMP]
+Since block C is already on the table with a clear top in the initial state, this subgoal is satisfied without any operations.
+[/IMP]
+
+---
+
+### Step 4: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**
+[/PLANNING]
+
+[REVIEW]
+Update the goal-management system:
+- **Main Goal**: Achieve stack A on B, B on C, C on table.
+  - **Subgoal 1**: Ensure C is on the table with a clear top (Completed).
+  - **Subgoal 2**: Place B on C.
+  - **Subgoal 3**: Place A on B.
+**Current Goal**: Place B on C.
+[/REVIEW]
+
+---
+
+### Step 5: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Place B on C.  
+**How to Achieve**: Pick up block B from the table and stack it on block C, which has a clear top.
+[/PLANNING]
+
+[IMP]
+1. **Pickup B**: Since B is on the table and has a clear top, the robot hand picks up B.
+2. **Stack B on C**: Since C is on the table with a clear top, the robot hand places B on C.
+[/IMP]
+
+---
+
+### Step 6: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Place B on C.  
+**How to Achieve**: Verify that B is on C and C is on the table.
+[/PLANNING]
+
+[IMP]
+After the operations (Pickup B, Stack B on C), block B is on block C, and block C is on the table. The subgoal is valid and achieved.
+[/IMP]
+
+---
+
+### Step 7: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**
+[/PLANNING]
+
+[REVIEW]
+Update the goal-management system:
+- **Main Goal**: Achieve stack A on B, B on C, C on table.
+  - **Subgoal 1**: Ensure C is on the table with a clear top (Completed).
+  - **Subgoal 2**: Place B on C (Completed).
+  - **Subgoal 3**: Place A on B.
+**Current Goal**: Place A on B.
+[/REVIEW]
+
+---
+
+### Step 8: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Place A on B.  
+**How to Achieve**: Pick up block A from the table and stack it on block B, which has a clear top.
+[/PLANNING]
+
+[IMP]
+1. **Pickup A**: Since A is on the table and has a clear top, the robot hand picks up A.
+2. **Stack A on B**: Since B is on C and has a clear top, the robot hand places A on B.
+[/IMP]
+
+---
+
+### Step 9: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Place A on B.  
+**How to Achieve**: Verify that A is on B, B is on C, and C is on the table.
+[/PLANNING]
+
+[IMP]
+After the operations (Pickup A, Stack A on B), block A is on block B, block B is on block C, and block C is on the table. The subgoal and main goal are valid and achieved.
+[/IMP]
+
+---
+
+### Step 10: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**
+[/PLANNING]
+
+[REVIEW]
+Final goal-management system:
+- **Main Goal**: Achieve stack A on B, B on C, C on table (Completed).
+  - **Subgoal 1**: Ensure C is on the table with a clear top (Completed).
+  - **Subgoal 2**: Place B on C (Completed).
+  - **Subgoal 3**: Place A on B (Completed).
+**Current Goal**: None (all goals achieved).
+[/REVIEW]
+
+---
+
+### Final Blocks World Plan
+1. Pickup B from the table.
+2. Stack B on C.
+3. Pickup A from the table.
+4. Stack A on B.
+
+This plan achieves the goal of stacking A on B, B on C, with C on the table, starting from an initial state where all blocks are on the table.
