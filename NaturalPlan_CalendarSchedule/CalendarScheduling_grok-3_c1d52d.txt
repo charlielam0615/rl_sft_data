@@ -1,0 +1,113 @@
+**Problem Statement**: Schedule a 30-minute meeting for Xander, Yvonne, and Zoe on Monday between 9:00 and 17:00, considering their existing schedules and prioritizing the earliest possible time. Xander is free all day. Yvonne is busy from 9:00–10:00, 11:30–12:00, and 14:00–15:00. Zoe is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:30. If no time slot is available, provide a detailed explanation.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00–17:00) and the requirement for a 30-minute slot.  
+2. List all participants’ unavailable time slots.  
+3. Find overlapping 30-minute windows where all participants are free.  
+4. Select the earliest available time slot that satisfies the constraints.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Identify the unavailable time slots for each participant.  
+**How to Achieve**: Compile the busy times from the provided schedules for Xander, Yvonne, and Zoe to determine their availability.  
+[/PLANNING]
+
+[IMP]  
+- **Xander**: Free all day (9:00–17:00).  
+- **Yvonne**: Busy from 9:00–10:00, 11:30–12:00, 14:00–15:00.  
+- **Zoe**: Busy from 10:00–10:30, 12:30–13:00, 15:30–16:30.  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Identify 30-minute time slots where all participants are free.  
+**How to Achieve**: Use the unavailable time slots to determine free periods for Yvonne and Zoe (since Xander is free all day) and find overlapping free periods that are at least 30 minutes long.  
+[/PLANNING]
+
+[IMP]  
+- **Yvonne’s free periods** (between 9:00–17:00):  
+  - 10:00–11:30  
+  - 12:00–14:00  
+  - 15:00–17:00  
+- **Zoe’s free periods** (between 9:00–17:00):  
+  - 9:00–10:00  
+  - 10:30–12:30  
+  - 13:00–15:30  
+  - 16:30–17:00  
+- **Xander’s free periods**: Entire day (9:00–17:00).  
+- **Overlapping free periods** (considering 30-minute slots):  
+  - Compare Yvonne and Zoe’s free periods:  
+    - 9:00–10:00: Yvonne is busy, Zoe is free (no overlap).  
+    - 10:00–10:30: Yvonne is free, Zoe is busy (no overlap).  
+    - 10:30–11:30: Both free (1 hour, sufficient for a 30-minute meeting).  
+    - 12:00–12:30: Yvonne is free, Zoe is free (30 minutes, sufficient).  
+    - 12:30–13:00: Yvonne is free, Zoe is busy (no overlap).  
+    - 13:00–14:00: Yvonne is free, Zoe is free (1 hour, sufficient).  
+    - 15:00–15:30: Yvonne is free, Zoe is free (30 minutes, sufficient).  
+    - 15:30–16:30: Yvonne is free, Zoe is busy (no overlap).  
+    - 16:30–17:00: Both free (30 minutes, sufficient).  
+- **Valid 30-minute slots**: 10:30–11:00, 10:30–11:30, 12:00–12:30, 13:00–13:30, 13:00–14:00, 15:00–15:30, 16:30–17:00.  
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Select the earliest available 30-minute time slot.  
+**How to Achieve**: From the list of valid time slots, choose the earliest one that satisfies the 30-minute duration requirement.  
+[/PLANNING]
+
+[IMP]  
+The valid 30-minute time slots are: 10:30–11:00, 10:30–11:30, 12:00–12:30, 13:00–13:30, 13:00–14:00, 15:00–15:30, 16:30–17:00. The earliest slot is 10:30–11:00.  
+[/IMP]
+
+---
+
+### Step 5: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify that the selected time slot (10:30–11:00) is valid for all participants.  
+**How to Achieve**: Check the schedules of Xander, Yvonne, and Zoe to ensure no conflicts exist during 10:30–11:00.  
+[/PLANNING]
+
+[IMP]  
+- **Xander**: Free all day, so available at 10:30–11:00.  
+- **Yvonne**: Free from 10:00–11:30, so available at 10:30–11:00.  
+- **Zoe**: Free from 10:30–12:30, so available at 10:30–11:00.  
+No conflicts exist; the time slot is valid.  
+[/IMP]
+
+---
+
+### Step 6: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Schedule a 30-minute meeting for Xander, Yvonne, and Zoe on Monday between 9:00–17:00 at the earliest availability.  
+  - Subgoal 1: Identify unavailable time slots for each participant (completed).  
+  - Subgoal 2: Find overlapping 30-minute free periods (completed).  
+  - Subgoal 3: Select the earliest valid time slot (completed).  
+  - Subgoal 4: Validate the selected time slot (completed).  
+**Current Goal**: Finalize the meeting time, as all subgoals are completed.  
+**Proposed Meeting Time**: 10:30–11:00 on Monday.  
+[/REVIEW]
+
+---
+
+**Final Answer**: The meeting can be scheduled for Monday from 10:30 to 11:00, as it is the earliest 30-minute time slot where Xander, Yvonne, and Zoe are all available.

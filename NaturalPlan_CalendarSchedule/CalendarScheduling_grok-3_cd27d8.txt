@@ -1,0 +1,79 @@
+**Problem Restatement**: Schedule a 30-minute meeting for Umar, Vanessa, and William on Monday between 9:00 and 17:00, considering their existing schedules. Umar is busy from 9:00–9:30, 11:00–11:30, and 14:00–14:30. Vanessa is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:00. William is available all day. The meeting should be scheduled at the earliest possible time that works for all.
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00–17:00) and meeting duration (30 minutes).  
+2. List all available time slots by excluding the busy times of Umar and Vanessa.  
+3. Select the earliest 30-minute slot where all participants are free.  
+4. Verify the solution meets all constraints.
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to identify all possible 30-minute time slots between 9:00 and 17:00 where Umar, Vanessa, and William are free. This will be achieved by listing the busy times, determining free intervals, and checking for overlapping availability.
+[/PLANNING]
+
+[IMP]
+To find a suitable time slot, we analyze the schedules:  
+- **Umar’s busy times**: 9:00–9:30, 11:00–11:30, 14:00–14:30.  
+- **Vanessa’s busy times**: 10:00–10:30, 12:30–13:00, 15:30–16:00.  
+- **William’s busy times**: None (available 9:00–17:00).  
+
+Since William is free all day, we focus on finding 30-minute slots where both Umar and Vanessa are available. We list all busy times in chronological order and identify gaps of at least 30 minutes:  
+- 9:00–9:30 (Umar busy)  
+- 10:00–10:30 (Vanessa busy)  
+- 11:00–11:30 (Umar busy)  
+- 12:30–13:00 (Vanessa busy)  
+- 14:00–14:30 (Umar busy)  
+- 15:30–16:00 (Vanessa busy)  
+
+**Available slots** (gaps of at least 30 minutes between 9:00 and 17:00):  
+- 9:30–10:00 (30 minutes, Umar and Vanessa free, William free)  
+- 10:30–11:00 (30 minutes, Umar and Vanessa free, William free)  
+- 11:30–12:30 (60 minutes, Umar and Vanessa free, William free)  
+- 13:00–14:00 (60 minutes, Umar and Vanessa free, William free)  
+- 14:30–15:30 (60 minutes, Umar and Vanessa free, William free)  
+- 16:00–17:00 (60 minutes, Umar and Vanessa free, William free)  
+
+The earliest slot is 9:30–10:00.
+[/IMP]
+
+### Step 3
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate that the 9:30–10:00 slot satisfies all constraints: the meeting is 30 minutes, occurs between 9:00 and 17:00, and all participants (Umar, Vanessa, William) are available.
+[/PLANNING]
+
+[IMP]
+Checking the 9:30–10:00 slot:  
+- **Duration**: The slot is 30 minutes, matching the requirement.  
+- **Time range**: 9:30–10:00 is within 9:00–17:00.  
+- **Availability**:  
+  - Umar is free (busy only at 9:00–9:30, 11:00–11:30, 14:00–14:30).  
+  - Vanessa is free (busy only at 10:00–10:30, 12:30–13:00, 15:30–16:00).  
+  - William is free all day.  
+All constraints are satisfied.
+[/IMP]
+
+### Step 4
+[PLANNING]
+**Action: Track Goals (Review)**  
+Track and list all goals to provide context for the final solution.
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main goal: Schedule a 30-minute meeting for Umar, Vanessa, and William on Monday between 9:00 and 17:00 at the earliest availability.  
+  - Subgoal 1: Identify the time range and meeting duration (completed).  
+  - Subgoal 2: List all available 30-minute time slots (completed: 9:30–10:00, 10:30–11:00, 11:30–12:30, 13:00–14:00, 14:30–15:30, 16:00–17:00).  
+  - Subgoal 3: Select the earliest slot (completed: 9:30–10:00).  
+  - Subgoal 4: Verify the solution (completed: 9:30–10:00 is valid).  
+
+**Current Goal**: Confirm the final meeting time based on the earliest valid slot. The proposed time is 9:30–10:00.
+[/REVIEW]
+
+### Final Answer
+The meeting can be scheduled for **Monday, 9:30–10:00**, as it is the earliest 30-minute slot where Umar, Vanessa, and William are all available within the 9:00–17:00 workday.

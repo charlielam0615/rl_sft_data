@@ -1,0 +1,86 @@
+**Problem Restatement**: Schedule a 30-minute meeting for Frank, Grace, and Henry on Monday between 9:00 and 17:00, considering their existing schedules. Frank is available all day. Grace is busy from 9:00–10:00, 11:30–12:00, and 14:00–15:00. Henry is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:30. The goal is to find the earliest available time slot that works for all participants.
+
+---
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00–17:00) and the requirement for a continuous 30-minute slot.  
+2. List the available time slots for each participant based on their schedules.  
+3. Find overlapping available time slots for all participants.  
+4. Select the earliest available 30-minute slot that satisfies all constraints.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify the available time slots for each participant within the 9:00–17:00 window. This will be achieved by listing the busy periods and determining the free periods for Grace and Henry, noting that Frank is available all day.  
+[/PLANNING]  
+
+[IMP]  
+- **Frank**: Available from 9:00–17:00 (entire day).  
+- **Grace**: Busy from 9:00–10:00, 11:30–12:00, and 14:00–15:00.  
+  - Available slots: 10:00–11:30, 12:00–14:00, 15:00–17:00.  
+- **Henry**: Busy from 10:00–10:30, 12:30–13:00, and 15:30–16:30.  
+  - Available slots: 9:00–10:00, 10:30–12:30, 13:00–15:30, 16:30–17:00.  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to find overlapping 30-minute time slots where Frank, Grace, and Henry are all available. This will be achieved by comparing the available time slots identified in the previous step and checking for common periods.  
+[/PLANNING]  
+
+[IMP]  
+- **Frank’s availability**: 9:00–17:00 (no restrictions).  
+- **Grace’s availability**: 10:00–11:30, 12:00–14:00, 15:00–17:00.  
+- **Henry’s availability**: 9:00–10:00, 10:30–12:30, 13:00–15:30, 16:30–17:00.  
+- **Overlapping slots**:  
+  - Compare Grace and Henry’s availability (since Frank is always free):  
+    - 10:00–11:30 (Grace) and 10:30–12:30 (Henry) overlap at 10:30–11:30 (60 minutes).  
+    - 12:00–14:00 (Grace) and 13:00–15:30 (Henry) overlap at 13:00–14:00 (60 minutes).  
+    - 15:00–17V17:00 (Grace) and 16:30–17:00 (Henry) overlap at 16:30–17:00 (30 minutes).  
+- All overlapping slots are at least 30 minutes long and thus viable for the meeting.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action**: Track Goals (Review)  
+List all goals and subgoals, reflecting updates from previous steps, and highlight the current goal.  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Schedule a 30-minute meeting for Frank, Grace, and Henry on Monday between 9:00–17:00 at the earliest availability.  
+  - Subgoal 1: Identify the time range and requirement for a 30-minute slot (completed).  
+  - Subgoal 2: List available time slots for each participant (completed).  
+  - Subgoal 3: Find overlapping available time slots (completed).  
+  - Subgoal 4: Select the earliest available 30-minute slot (current goal).  
+**Current Goal**: Select the earliest 30-minute slot from the overlapping time slots identified (10:30–11:30, 13:00–14:00, 16:30–17:00).  
+[/REVIEW]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to select the earliest 30-minute slot from the overlapping time slots (10:30–11:30, 13:00–14:00, 16:30–17:00). This will be achieved by comparing the start times of these slots and choosing the earliest one that satisfies the 30-minute duration requirement.  
+[/PLANNING]  
+
+[IMP]  
+- Overlapping slots: 10:30–11:30, 13:00–14:00, 16:30–17:00.  
+- Earliest slot: 10:30–11:30 (starts at 10:30).  
+- A 30-minute meeting can be scheduled from 10:30–11:00, as it fits within the 60-minute window and meets the duration requirement.  
+**Solution**: The earliest available time for the 30-minute meeting is **10:30–11:00** on Monday.  
+[/IMP]
+
+---
+
+**Final Answer**: The meeting can be scheduled for **10:30–11:00** on Monday, as it is the earliest 30-minute slot where Frank, Grace, and Henry are all available.

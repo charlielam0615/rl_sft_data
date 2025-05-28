@@ -1,0 +1,104 @@
+**Problem Statement:**  
+Schedule a 30-minute meeting for Sam, Tina, and Victor on Monday between 9:00 and 17:00, considering their existing schedules. Sam's busy times are 9:00–9:30, 11:00–11:30, and 14:00–14:30. Tina's busy times are 10:00–10:30, 12:30–13:00, and 15:30–16:00. Victor is available all day. The meeting should be scheduled at the earliest possible time that satisfies all constraints.
+
+---
+
+### Step 1: Forward Subgoaling (Planning)
+
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a 30-minute meeting into intermediate subgoals:  
+1. Identify the available time slots within the work hours (9:00–17:00) for each participant.  
+2. Find overlapping 30-minute time slots where all participants are available.  
+3. Select the earliest available 30-minute slot that satisfies all constraints.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Identify the available time slots for each participant within 9:00–17:00.  
+- **How to Achieve:** List the busy times for Sam and Tina, assume Victor is available for all slots, and determine the free 30-minute slots for each participant.  
+[/PLANNING]
+
+[IMP]  
+- **Sam’s Schedule:** Busy from 9:00–9:30, 11:00–11:30, and 14:00–14:30.  
+  Available slots (30-minute increments):  
+  - 9:30–10:00, 10:00–10:30, 10:30–11:00, 11:30–12:00, 12:00–12:30, 12:30–13:00, 13:00–13:30, 13:30–14:00, 14:30–15:00, 15:00–15:30, 15:30–16:00, 16:00–16:30, 16:30–17:00.  
+- **Tina’s Schedule:** Busy from 10:00–10:30, 12:30–13:00, and 15:30–16:00.  
+  Available slots (30-minute increments):  
+  - 9:00–9:30, 9:30–10:00, 10:30–11:00, 11:00–11:30, 11:30–12:00, 12:00–12:30, 13:00–13:30, 13:30–14:00, 14:00–14:30, 14:30–15:00, 15:00–15:30, 16:00–16:30, 16:30–17:00.  
+- **Victor’s Schedule:** Available all day (9:00–17:00).  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Find overlapping 30-minute time slots where Sam, Tina, and Victor are all available.  
+- **How to Achieve:** Compare the available time slots from Sam and Tina, since Victor is available all day, and identify common 30-minute slots.  
+[/PLANNING]
+
+[IMP]  
+- **Sam’s Available Slots:** 9:30–10:00, 10:00–10:30, 10:30–11:00, 11:30–12:00, 12:00–12:30, 12:30–13:00, 13:00–13:30, 13:30–14:00, 14:30–15:00, 15:00–15:30, 15:30–16:00, 16:00–16:30, 16:30–17:00.  
+- **Tina’s Available Slots:** 9:00–9:30, 9:30–10:00, 10:30–11:00, 11:00–11:30, 11:30–12:00, 12:00–12:30, 13:00–13:30, 13:30–14:00, 14:00–14:30, 14:30–15:00, 15:00–15:30, 16:00–16:30, 16:30–17:00.  
+- **Victor’s Available Slots:** All day (9:00–17:00).  
+- **Overlapping Slots:** Compare Sam and Tina’s available slots:  
+  - 9:30–10:00 (both available).  
+  - 10:30–11:00 (both available).  
+  - 11:30–12:00 (both available).  
+  - 12:00–12:30 (both available).  
+  - 13:00–13:30 (both available).  
+  - 13:30–14:00 (both available).  
+  - 14:30–15:00 (both available).  
+  - 15:00–15:30 (both available).  
+  - 16:00–16:30 (both available).  
+  - 16:30–17:00 (both available).  
+Since Victor is available all day, these slots are valid for all three participants.  
+[/IMP]
+
+---
+
+### Step 4: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Select the earliest available 30-minute slot for the meeting.  
+- **How to Achieve:** From the overlapping slots, choose the earliest one that satisfies the 30-minute duration and falls within 9:00–17:00.  
+[/PLANNING]
+
+[IMP]  
+- **Overlapping Slots:** 9:30–10:00, 10:30–11:00, 11:30–12:00, 12:00–12:30, 13:00–13:30, 13:30–14:00, 14:30–15:00, 15:00–15:30, 16:00–16:30, 16:30–17:00.  
+- **Earliest Slot:** 9:30–10:00.  
+The meeting can be scheduled from 9:30 to 10:00 on Monday, as it is the earliest 30-minute slot where Sam, Tina, and Victor are all available.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals (Review)
+
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main Goal: Schedule a 30-minute meeting for Sam, Tina, and Victor on Monday between 9:00 and 17:00 at the earliest availability.  
+  - Subgoal 1: Identify available time slots for each participant. (Completed)  
+  - Subgoal 2: Find overlapping 30-minute time slots. (Completed)  
+  - Subgoal 3: Select the earliest available slot. (Completed)  
+**Current Goal:** Confirm the scheduled meeting time (9:30–10:00).  
+The goal hierarchy is complete, and the meeting is scheduled for 9:30–10:00 on Monday.  
+[/REVIEW]
+
+---
+
+**Final Answer:**  
+The meeting can be scheduled for **9:30–10:00 on Monday**, as it is the earliest 30-minute slot where Sam, Tina, and Victor are all available.

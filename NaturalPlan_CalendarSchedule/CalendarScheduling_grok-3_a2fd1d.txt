@@ -1,0 +1,94 @@
+**Problem Statement**: Schedule a 30-minute meeting for Irene, Jack, and Kelly on Monday between 9:00 and 17:00, considering their existing schedules. Irene is busy from 9:00–9:30, 11:00–11:30, and 14:00–14:30; Jack is busy from 10:00–10:30, 12:30–13:00, and 15:00–16:00; Kelly is available all day. The meeting should be scheduled at the earliest possible time that satisfies all constraints.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00–17:00) and meeting duration (30 minutes).  
+2. List all participants’ unavailable time slots.  
+3. Find overlapping 30-minute time slots where all participants are free.  
+4. Select the earliest available 30-minute slot.  
+5. Verify the solution meets all constraints.  
+[/PLANNING]
+
+---
+
+### Step 2: Recall Info
+[PLANNING]  
+**Action**: Recall Info (Review)  
+**Meta-data**: Retrieve the schedules of Irene, Jack, and Kelly to identify their unavailable time slots within the 9:00–17:00 window.  
+[/PLANNING]  
+
+[REVIEW]  
+- **Irene’s unavailable slots**: 9:00–9:30, 11:00–11:30, 14:00–14:30.  
+- **Jack’s unavailable slots**: 10:00–10:30, 12:30–13:00, 15:00–16:00.  
+- **Kelly’s schedule**: Fully available from 9:00–17:00.  
+- **Meeting requirement**: 30-minute duration within 9:00–17:00 on Monday.  
+- **Preference**: Earliest possible time.  
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Identify a 30-minute time slot within 9:00–17:00 where Irene, Jack, and Kelly are all available, prioritizing the earliest possible time. Achieve this by listing all busy time slots, determining free time slots, and checking for a 30-minute window where all are free.  
+[/PLANNING]  
+
+[IMP]  
+To find a suitable time slot:  
+1. **List busy time slots**:  
+   - Irene: 9:00–9:30, 11:00–11:30, 14:00–14:30.  
+   - Jack: 10:00–10:30, 12:30–13:00, 15:00–16:00.  
+   - Kelly: None.  
+2. **Combine busy slots** (since Kelly is free, only Irene and Jack’s schedules matter):  
+   - 9:00–9:30 (Irene), 10:00–10:30 (Jack), 11:00–11:30 (Irene), 12:30–13:00 (Jack), 14:00–14:30 (Irene), 15:00–16:00 (Jack).  
+3. **Identify free 30-minute slots** within 9:00–17:00:  
+   - Break the day into 30-minute intervals: 9:00–9:30, 9:30–10:00, 10:00–10:30, 10:30–11:00, 11:00–11:30, 11:30–12:00, 12:00–12:30, 12:30–13:00, 13:00–13:30, 13:30–14:00, 14:00–14:30, 14:30–15:00, 15:00–15:30, 15:30–16:00, 16:00–16:30, 16:30–17:00.  
+   - Mark unavailable intervals:  
+     - 9:00–9:30 (Irene busy), 10:00–10:30 (Jack busy), 11:00–11:30 (Irene busy), 12:30–13:00 (Jack busy), 14:00–14:30 (Irene busy), 15:00–15:30 (Jack busy), 15:30–16:00 (Jack busy).  
+   - Free intervals: 9:30–10:00, 10:30–11:00, 11:30–12:00, 12:00–12:30, 13:00–14:00, 14:30–15:00, 16:00–16:30, 16:30–17:00.  
+4. **Select earliest slot**: The earliest 30-minute slot where all are free is 9:30–10:00.  
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: Verify that the proposed time slot (9:30–10:00) is free for Irene, Jack, and Kelly and meets the 30-minute duration requirement within 9:00–17:00.  
+[/PLANNING]  
+
+[IMP]  
+- **Check Irene**: Busy at 9:00–9:30, 11:00–11:30, 14:00–14:30. Free at 9:30–10:00.  
+- **Check Jack**: Busy at 10:00–10:30, 12:30–13:00, 15:00–16:00. Free at 9:30–10:00.  
+- **Check Kelly**: Free all day, so free at 9:30–10:00.  
+- **Duration**: 9:30–10:00 is exactly 30 minutes.  
+- **Time window**: 9:30–10:00 falls within 9:00–17:00.  
+- **Preference**: 9:30–10:00 is the earliest available slot.  
+The slot 9:30–10:00 is valid.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Schedule a 30-minute meeting for Irene, Jack, and Kelly on Monday between 9:00–17:00 at the earliest possible time.  
+  - Subgoal 1: Identify time range and duration (completed: 9:00–17:00, 30 minutes).  
+  - Subgoal 2: List participants’ unavailable slots (completed: Irene and Jack’s schedules retrieved, Kelly free).  
+  - Subgoal 3: Find overlapping free 30-minute slots (completed: identified 9:30–10:00).  
+  - Subgoal 4: Select earliest slot (completed: 9:30–10:00).  
+  - Subgoal 5: Verify solution (completed: 9:30–10:00 is valid).  
+**Current Goal**: Confirm the final meeting time.  
+[/REVIEW]
+
+---
+
+**Final Answer**: The meeting can be scheduled on Monday from **9:30 to 10:00**. This is the earliest 30-minute time slot within 9:00–17:00 where Irene, Jack, and Kelly are all available.

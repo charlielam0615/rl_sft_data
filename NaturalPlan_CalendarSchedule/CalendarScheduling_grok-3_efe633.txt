@@ -1,0 +1,99 @@
+**Problem Statement**: Schedule a 30-minute meeting for Mike, Natalie, and Oliver on Monday between 9:00 and 17:00, considering their existing schedules. Mike is busy from 9:00–9:30, 11:00–11:30, and 14:00–14:30; Natalie is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:00; Oliver is free all day. The goal is to find the earliest possible time slot that accommodates everyone.
+
+---
+
+**Step 1**
+
+[PLANNING]
+**Action**: Forward Subgoaling (Planning)
+Break down the goal of scheduling a 30-minute meeting into intermediate subgoals:
+1. Identify the available time slots within the working hours (9:00–17:00).
+2. List the busy time slots for Mike and Natalie.
+3. Find overlapping free time slots for Mike, Natalie, and Oliver.
+4. Select the earliest 30-minute slot that satisfies all constraints.
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]
+**Action**: Reach Goal (Implementation)
+**Meta-data**: The current goal is to identify the available time slots within 9:00–17:00 and list the busy time slots for Mike and Natalie. This will be achieved by analyzing the given schedules and determining the time periods when each participant is free.
+[/PLANNING]
+
+[IMP]
+- **Working hours**: 9:00–17:00 (8 hours total).
+- **Mike’s busy slots**: 9:00–9:30, 11:00–11:30, 14:00–14:30.
+- **Natalie’s busy slots**: 10:00–10:30, 12:30–13:00, 15:30–16:00.
+- **Oliver’s schedule**: Free all day.
+- **Available time slots** (excluding busy times):
+  - Break the day into 30-minute intervals: 9:00–9:30, 9:30–10:00, 10:00–10:30, 10:30–11:00, 11:00–11:30, 11:30–12:00, 12:00–12:30, 12:30–13:00, 13:00–13:30, 13:30–14:00, 14:00–14:30, 14:30–15:00, 15:00–15:30, 15:30–16:00, 16:00–16:30, 16:30–17:00.
+  - **Mike’s free slots**: 9:30–11:00, 11:30–14:00, 14:30–17:00.
+  - **Natalie’s free slots**: 9:00–10:00, 10:30–12:30, 13:00–15:30, 16:00–17:00.
+  - **Oliver’s free slots**: 9:00–17:00 (entire day).
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]
+**Action**: Reach Goal (Implementation)
+**Meta-data**: The current goal is to find overlapping 30-minute time slots where Mike, Natalie, and Oliver are all free, focusing on the earliest possible slot. This will be achieved by comparing the free time slots identified in the previous step.
+[/PLANNING]
+
+[IMP]
+- **Overlapping free slots**:
+  - Compare Mike’s free slots (9:30–11:00, 11:30–14:00, 14:30–17:00) with Natalie’s free slots (9:00–10:00, 10:30–12:30, 13:00–15:30, 16:00–17:00) and Oliver’s free slots (9:00–17:00).
+  - Intersections:
+    - 9:30–10:00 (Mike and Natalie free, Oliver free).
+    - 10:30–11:00 (Mike and Natalie free, Oliver free).
+    - 11:30–12:30 (Mike and Natalie free, Oliver free).
+    - 13:00–14:00 (Mike and Natalie free, Oliver free).
+    - 14:30–15:30 (Mike and Natalie free, Oliver free).
+    - 16:00–17:00 (Mike and Natalie free, Oliver free).
+- **Earliest slot**: The earliest 30-minute slot is 9:30–10:00.
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]
+**Action**: Validation (Implementation)
+**Meta-data**: The current goal is to validate that the 9:30–10:00 slot satisfies all constraints, including the 30-minute duration, working hours (9:00–17:00), and the schedules of Mike, Natalie, and Oliver.
+[/PLANNING]
+
+[IMP]
+- **Validation checks**:
+  - **Duration**: The slot 9:30–10:00 is exactly 30 minutes.
+  - **Working hours**: 9:30–10:00 falls within 9:00–17:00.
+  - **Mike’s schedule**: Free from 9:30–11:00, so 9:30–10:00 is available.
+  - **Natalie’s schedule**: Free from 9:00–10:00, so 9:30–10:00 is available.
+  - **Oliver’s schedule**: Free all day, so 9:30–10:00 is available.
+- **Conclusion**: The 9:30–10:00 slot is valid for all participants.
+[/IMP]
+
+---
+
+**Step 5**
+
+[PLANNING]
+**Action**: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main goal: Schedule a 30-minute meeting for Mike, Natalie, and Oliver on Monday between 9:00–17:00 at the earliest availability.
+  - Subgoal 1: Identify available time slots within 9:00–17:00 (completed).
+  - Subgoal 2: List busy time slots for Mike and Natalie (completed).
+  - Subgoal 3: Find overlapping free time slots (completed).
+  - Subgoal 4: Select the earliest 30-minute slot (completed: 9:30–10:00).
+  - Subgoal 5: Validate the selected slot (completed).
+**Current Goal**: Confirm the final meeting time based on the validated slot.
+[/REVIEW]
+
+---
+
+**Final Answer**: The earliest available time to schedule a 30-minute meeting for Mike, Natalie, and Oliver on Monday is **9:30–10:00**. This slot satisfies all constraints, as Mike, Natalie, and Oliver are all free during this period.

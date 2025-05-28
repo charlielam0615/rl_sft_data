@@ -1,0 +1,126 @@
+**Problem Statement:**  
+Schedule a 30-minute meeting for Diana, Ethan, and Fiona on Monday between 9:00 and 17:00, considering their existing schedules. Diana is busy from 9:00-9:30, 11:00-11:30, and 14:00-14:30. Ethan is busy from 10:00-10:30, 12:30-13:00, and 15:00-16:00. Fiona is available all day. The meeting should be scheduled at the earliest possible time that satisfies all constraints.
+
+---
+
+**Step 1: Forward Subgoaling**
+
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00-17:00) and meeting duration (30 minutes).  
+2. List the unavailable time slots for each participant.  
+3. Find overlapping available time slots that are at least 30 minutes long.  
+4. Select the earliest available time slot that satisfies all constraints.  
+[/PLANNING]
+
+---
+
+**Step 2: Reach Goal**
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Identify the unavailable time slots for each participant.  
+- **How to Achieve:** Review the provided schedules for Diana, Ethan, and Fiona, and compile a list of their busy time slots within the 9:00-17:00 window.  
+
+[/PLANNING]
+
+[IMP]  
+- **Diana’s busy slots:** 9:00-9:30, 11:00-11:30, 14:00-14:30.  
+- **Ethan’s busy slots:** 10:00-10:30, 12:30-13:00, 15:00-16:00.  
+- **Fiona’s busy slots:** None (available all day).  
+[/IMP]
+
+---
+
+**Step 3: Track Goals**
+
+[PLANNING]  
+**Action: Track Goals (Review)**  
+
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main Goal: Schedule a 30-minute meeting for Diana, Ethan, and Fiona on Monday between 9:00 and 17:00 at the earliest availability.  
+  - Subgoal 1: Identify the time range and meeting duration (completed: 9:00-17:00, 30 minutes).  
+  - Subgoal 2: List unavailable time slots for each participant (completed: Diana’s and Ethan’s busy slots identified, Fiona is free).  
+  - Subgoal 3: Find overlapping available time slots that are at least 30 minutes long (pending).  
+  - Subgoal 4: Select the earliest available time slot (pending).  
+**Current Goal:** Find overlapping available time slots that are at least 30 minutes long.  
+[/REVIEW]
+
+---
+
+**Step 4: Reach Goal**
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Find overlapping available time slots that are at least 30 minutes long.  
+- **How to Achieve:** Analyze the busy slots of Diana and Ethan, determine their available time slots within 9:00-17:00, and identify 30-minute windows where both are free. Since Fiona is available all day, focus on Diana and Ethan’s availability.  
+
+[/PLANNING]
+
+[IMP]  
+- **Time range:** 9:00-17:00 (8 hours = 480 minutes).  
+- **Diana’s available slots:**  
+  - 9:30-11:00 (90 minutes), 11:30-14:00 (150 minutes), 14:30-17:00 (150 minutes).  
+- **Ethan’s available slots:**  
+  - 9:00-10:00 (60 minutes), 10:30-12:30 (120 minutes), 13:00-15:00 (120 minutes), 16:00-17:00 (60 minutes).  
+- **Fiona’s available slots:** 9:00-17:00 (entire day).  
+- **Overlapping available slots (considering 30-minute duration):**  
+  - 9:30-10:00 (30 minutes, Diana and Ethan free, Fiona free).  
+  - 10:30-11:00 (30 minutes, Diana and Ethan free, Fiona free).  
+  - 11:30-12:30 (60 minutes, Diana and Ethan free, Fiona free).  
+  - 13:00-14:00 (60 minutes, Diana and Ethan free, Fiona free).  
+  - 14:30-15:00 (30 minutes, Diana and Ethan free, Fiona free).  
+  - 16:00-17:00 (60 minutes, Diana and Ethan free, Fiona free).  
+[/IMP]
+
+---
+
+**Step 5: Reach Goal**
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Select the earliest available time slot for the 30-minute meeting.  
+- **How to Achieve:** From the list of overlapping available time slots, choose the earliest one that is at least 30 minutes long.  
+
+[/PLANNING]
+
+[IMP]  
+- **Overlapping available slots:** 9:30-10:00, 10:30-11:00, 11:30-12:30, 13:00-14:00, 14:30-15:00, 16:00-17:00.  
+- **Earliest slot:** 9:30-10:00 (30 minutes).  
+- **Conclusion:** The earliest time slot that works for Diana, Ethan, and Fiona is **9:30-10:00 on Monday**.  
+[/IMP]
+
+---
+
+**Step 6: Validation**
+
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Verify that the selected time slot (9:30-10:00) satisfies all constraints.  
+- **How to Achieve:** Check the selected time slot against each participant’s busy schedule and confirm it meets the 30-minute duration and falls within 9:00-17:00.  
+
+[/PLANNING]
+
+[IMP]  
+- **Selected time slot:** 9:30-10:00.  
+- **Constraints check:**  
+  - **Diana:** Busy at 9:00-9:30, 11:00-11:30, 14:00-14:30. Available at 9:30-10:00.  
+  - **Ethan:** Busy at 10:00-10:30, 12:30-13:00, 15:00-16:00. Available at 9:30-10:00.  
+  - **Fiona:** Available all day, including 9:30-10:00.  
+  - **Duration:** 9:30-10:00 is exactly 30 minutes.  
+  - **Time range:** 9:30-10:00 is within 9:00-17:00.  
+- **Conclusion:** The time slot 9:30-10:00 is valid and satisfies all constraints.  
+[/IMP]
+
+---
+
+**Final Answer:**  
+The meeting can be scheduled for **9:30-10:00 on Monday**, as it is the earliest 30-minute time slot where Diana, Ethan, and Fiona are all available.

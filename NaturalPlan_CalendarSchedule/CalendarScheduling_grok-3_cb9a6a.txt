@@ -1,0 +1,124 @@
+### Problem Statement
+Schedule a one-hour meeting for Rose, Simon, and Tara on Monday between 9:00 and 17:00, considering their existing schedules:
+- **Rose**: Busy from 9:30–10:30, 12:00–13:00, 15:00–16:00.
+- **Simon**: Busy from 10:00–11:00, 13:30–14:30.
+- **Tara**: Busy from 9:00–9:30, 11:30–12:30, 14:30–15:30.
+
+---
+
+### Step 1: Forward Subgoaling
+
+[PLANNING]
+**Action**: Forward Subgoaling (Planning)
+
+Break down the goal of scheduling a one-hour meeting into subgoals:
+1. Identify the available time slots within the working hours (9:00–17:00) for each participant.
+2. Find overlapping available time slots that accommodate a one-hour meeting.
+3. Validate the identified time slot against all constraints.
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+
+[PLANNING]
+**Action**: Reach Goal (Implementation)
+
+**Current Goal**: Identify the available time slots for each participant within 9:00–17:00 on Monday.
+
+**How to Achieve**: List the busy periods for each participant, then determine their free time slots by excluding these periods from the 9:00–17:00 window. Each free slot must be at least one hour to accommodate the meeting.
+[/PLANNING]
+
+[IMP]
+Calculate the available time slots for each participant:
+
+- **Rose’s busy periods**: 9:30–10:30, 12:00–13:00, 15:00–16:00.
+  - **Available slots**: 9:00–9:30, 10:30–12:00, 13:00–15:00, 16:00–17:00.
+- **Simon’s busy periods**: 10:00–11:00, 13:30–14:30.
+  - **Available slots**: 9:00–10:00, 11:00–13:30, 14:30–17:00.
+- **Tara’s busy periods**: 9:00–9:30, 11:30–12:30, 14:30–15:30.
+  - **Available slots**: 9:30–11:30, 12:30–14:30, 15:30–17:00.
+
+Ensure each slot is at least one hour:
+- **Rose**: All slots (9:00–9:30, 10:30–12:00, 13:00–15:00, 16:00–17:00) are valid or can contain a one-hour period.
+- **Simon**: 9:00–10:00 (1 hour), 11:00–13:30 (2.5 hours), 14:30–17:00 (2.5 hours).
+- **Tara**: 9:30–11:30 (2 hours), 12:30–14:30 (2 hours), 15:30–17:00 (1.5 hours).
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+
+[PLANNING]
+**Action**: Reach Goal (Implementation)
+
+**Current Goal**: Find overlapping one-hour time slots where all participants are available.
+
+**How to Achieve**: Compare the available time slots of Rose, Simon, and Tara to identify periods where they are all free for at least one hour.
+[/PLANNING]
+
+[IMP]
+List the available slots from Step 2:
+- **Rose**: 9:00–9:30, 10:30–12:00, 13:00–15:00, 16:00–17:00.
+- **Simon**: 9:00–10:00, 11:00–13:30, 14:30–17:00.
+- **Tara**: 9:30–11:30, 12:30–14:30, 15:30–17:00.
+
+Find overlaps:
+- **9:00–9:30**: Rose and Simon are free, but Tara is busy (9:00–9:30). **No overlap**.
+- **10:30–11:00**: Rose (10:30–12:00) and Simon (11:00–13:30) are free, Tara (9:30–11:30) is free. **Overlap**: 10:30–11:00 (30 minutes, not enough for 1 hour).
+- **11:00–11:30**: Rose (10:30–12:00) and Tara (9:30–11:30) are free, Simon (11:00–13:30) is free. **Overlap**: 11:00–11:30 (30 minutes, not enough).
+- **12:30–13:00**: Rose (13:00–15:00) is busy until 13:00, Simon (11:00–13:30) and Tara (12:30–14:30) are free. **No overlap** before 13:00.
+- **13:00–13:30**: Rose (13:00–15:00) and Tara (12:30–14:30) are free, Simon (11:00–13:30) is free. **Overlap**: 13:00–13:30 (30 minutes, not enough).
+- **14:30–15:00**: Rose (13:00–15:00) and Simon (14:30–17:00) are free, Tara (15:30–17:00) is busy until 15:30. **No overlap**.
+- **15:30–16:00**: Rose (15:00–16:00) is busy from 15:00–16:00, Simon (14:30–17:00) and Tara (15:30–17:00) are free. **No overlap**.
+- **16:00–17:00**: Rose (16:00–17:00), Simon (14:30–17:00), and Tara (15:30–17:00) are free. **Overlap**: 16:00–17:00 (1 hour).
+
+The only one-hour overlap is **16:00–17:00**.
+[/IMP]
+
+---
+
+### Step 4: Validation
+
+[PLANNING]
+**Action**: Validation (Implementation)
+
+**Current Goal**: Validate that the 16:00–17:00 time slot satisfies all constraints.
+
+**How to Achieve**: Confirm that Rose, Simon, and Tara are free from 16:00–17:00 and that the slot is within 9:00–17:00 on Monday.
+[/PLANNING]
+
+[IMP]
+Check the 16:00–17:00 slot:
+- **Rose**: Free from 16:00–17:00 (not in 9:30–10:30, 12:00–13:00, 15:00–16:00).
+- **Simon**: Free from 14:30–17:00 (not in 10:00–11:00, 13:30–14:30).
+- **Tara**: Free from 15:30–17:00 (not in 9:00–9:30, 11:30–12:30, 14:30–15:30).
+- **Time constraint**: 16:00–17:00 is within 9:00–17:00.
+
+The slot satisfies all constraints.
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+
+[PLANNING]
+**Action**: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Schedule a one-hour meeting for Rose, Simon, and Tara on Monday between 9:00–17:00.
+  - Subgoal 1: Identify available time slots for each participant.
+  - Subgoal 2: Find overlapping one-hour time slots.
+  - Subgoal 3: Validate the identified time slot.
+
+**Current Goal**: Validate the identified time slot (completed).
+
+**Updated Status**: The time slot 16:00–17:00 has been identified and validated as a solution.
+[/REVIEW]
+
+---
+
+### Final Answer
+The meeting can be scheduled on Monday from **16:00 to 17:00**, as it is the only one-hour time slot where Rose, Simon, and Tara are all available within the 9:00–17:00 work hours.

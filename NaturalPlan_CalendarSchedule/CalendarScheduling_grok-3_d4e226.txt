@@ -1,0 +1,122 @@
+**Problem Restatement:**
+Schedule a 30-minute meeting for Alice, Bob, and Charlie on Monday between 9:00 and 17:00, considering their existing schedules. Alice is busy from 9:00-10:00, 11:30-12:00, and 14:00-14:30. Bob is busy from 10:30-11:00, 12:30-13:00, and 15:00-16:00. Charlie is available all day. The meeting should be scheduled at the earliest possible time that fits everyone’s availability.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00-17:00) and meeting duration (30 minutes).  
+2. List each participant’s unavailable time slots.  
+3. Find common available time slots.  
+4. Select the earliest 30-minute slot that satisfies all constraints.  
+[/PLANNING]
+
+---
+
+### Step 2: Recall Info
+[PLANNING]
+**Action: Recall Info (Review)**  
+**Meta-data:** Retrieve the existing schedules of Alice, Bob, and Charlie to understand their unavailable time slots, which will serve as the foundation for identifying common availability.  
+[/PLANNING]
+
+[REVIEW]
+**Recalled Information:**  
+- **Alice’s unavailable times:** 9:00-10:00, 11:30-12:00, 14:00-14:30.  
+- **Bob’s unavailable times:** 10:30-11:00, 12:30-13:00, 15:00-16:00.  
+- **Charlie’s availability:** Entire day (9:00-17:00).  
+- **Constraints:** Meeting must be 30 minutes and occur between 9:00 and 17:00 on Monday. Preference for the earliest possible time.  
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The goal is to identify a 30-minute time slot between 9:00 and 17:00 where Alice, Bob, and Charlie are all available. This will be achieved by mapping out unavailable times, determining free periods, and selecting the earliest 30-minute slot.  
+[/PLANNING]
+
+[IMP]
+To find a suitable time slot, let’s analyze the schedules:  
+- **Alice’s busy periods:** 9:00-10:00, 11:30-12:00, 14:00-14:30.  
+- **Bob’s busy periods:** 10:30-11:00, 12:30-13:00, 15:00-16:00.  
+- **Charlie:** Available all day.  
+
+**Step-by-step analysis:**  
+1. **List all busy periods in chronological order:**  
+   - 9:00-10:00 (Alice)  
+   - 10:30-11:00 (Bob)  
+   - 11:30-12:00 (Alice)  
+   - 12:30-13:00 (Bob)  
+   - 14:00-14:30 (Alice)  
+   - 15:00-16:00 (Bob)  
+
+2. **Identify free periods between 9:00 and 17:00:**  
+   - **9:00-10:00:** Alice is busy.  
+   - **10:00-10:30:** All available.  
+   - **10:30-11:00:** Bob is busy.  
+   - **11:00-11:30:** All available.  
+   - **11:30-12:00:** Alice is busy.  
+   - **12:00-12:30:** All available.  
+   - **12:30-13:00:** Bob is busy.  
+   - **13:00-14:00:** All available.  
+   - **14:00-14:30:** Alice is busy.  
+   - **14:30-15:00:** All available.  
+   - **15:00-16:00:** Bob is busy.  
+   - **16:00-17:00:** All available.  
+
+3. **Find 30-minute free slots:**  
+   - **10:00-10:30:** 30 minutes, all available.  
+   - **11:00-11:30:** 30 minutes, all available.  
+   - **12:00-12:30:** 30 minutes, all available.  
+   - **13:00-14:00:** 60 minutes, all available (includes multiple 30-minute slots).  
+   - **14:30-15:00:** 30 minutes, all available.  
+   - **16:00-17:00:** 60 minutes, all available (includes multiple 30-minute slots).  
+
+4. **Select earliest slot:** The earliest 30-minute slot is **10:00-10:30**.  
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data:** Verify that the proposed time slot (10:00-10:30) satisfies all constraints: it must be 30 minutes, within 9:00-17:00, and free for Alice, Bob, and Charlie.  
+[/PLANNING]
+
+[IMP]
+**Verification:**  
+- **Time slot:** 10:00-10:30 (30 minutes, within 9:00-17:00).  
+- **Alice:** Free (busy 9:00-10:00, 11:30-12:00, 14:00-14:30).  
+- **Bob:** Free (busy 10:30-11:00, 12:30-13:00, 15:00-16:00).  
+- **Charlie:** Free (available all day).  
+- **Preference:** This is the earliest available slot.  
+
+The time slot **10:00-10:30** is valid and meets all constraints.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy:**  
+- **Main Goal:** Schedule a 30-minute meeting for Alice, Bob, and Charlie on Monday between 9:00 and 17:00 at the earliest possible time.  
+  - **Subgoal 1:** Identify the time range and meeting duration (completed).  
+  - **Subgoal 2:** List unavailable time slots (completed).  
+  - **Subgoal 3:** Find common available time slots (completed).  
+  - **Subgoal 4:** Select the earliest 30-minute slot (completed: 10:00-10:30).  
+  - **Subgoal 5:** Validate the selected slot (completed).  
+
+**Current Goal:** Confirm the final meeting time.  
+The proposed time of **10:00-10:30** on Monday satisfies all constraints and is the earliest available slot.  
+[/REVIEW]
+
+---
+
+**Final Answer:**  
+The meeting can be scheduled for **Monday, 10:00-10:30**, as it is the earliest 30-minute time slot where Alice, Bob, and Charlie are all available.
