@@ -1,0 +1,159 @@
+**Problem Statement**: You are visiting San Francisco for one day, starting at Haight-Ashbury at 9:00 AM. The goal is to meet as many friends as possible (Isabella, James, Emma, Liam, and Ava) while adhering to their availability constraints and minimum meeting durations. The travel times between locations are provided, and the objective is to find the optimal schedule that maximizes the number of friends met within the given constraints.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of meeting as many friends as possible into intermediate subgoals based on their availability and locations. The subgoals are to:  
+1. Meet Ava at Bayview (available 9:15 AM–11:00 AM, minimum 60 minutes).  
+2. Meet James at Fisherman’s Wharf (available 10:00 AM–2:00 PM, minimum 60 minutes).  
+3. Meet Isabella at Union Square (available 1:00 PM–8:00 PM, minimum 75 minutes).  
+4. Meet Liam at Nob Hill (available 2:30 PM–5:30 PM, minimum 45 minutes).  
+5. Meet Emma at Marina District (available 5:45 PM–9:00 PM, minimum 90 minutes).  
+Each subgoal involves traveling to the friend’s location, waiting if necessary, and meeting for the required duration, while ensuring the schedule aligns with all availability windows and travel times.  
+[/PLANNING]
+
+---
+
+### Step 2: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Meet as many friends as possible (Ava, James, Isabella, Liam, Emma).  
+  - Subgoal 1: Meet Ava at Bayview (9:15 AM–11:00 AM, 60 minutes).  
+  - Subgoal 2: Meet James at Fisherman’s Wharf (10:00 AM–2:00 PM, 60 minutes).  
+  - Subgoal 3: Meet Isabella at Union Square (1:00 PM–8:00 PM, 75 minutes).  
+  - Subgoal 4: Meet Liam at Nob Hill (2:30 PM–5:30 PM, 45 minutes).  
+  - Subgoal 5: Meet Emma at Marina District (5:45 PM–9:00 PM, 90 minutes).  
+**Current Goal**: Meet Ava at Bayview, as it is the earliest available meeting based on the start time (9:00 AM at Haight-Ashbury) and Ava’s availability starting at 9:15 AM.  
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Meet Ava at Bayview for 60 minutes between 9:15 AM and 11:00 AM.  
+**How to Achieve**: Travel from Haight-Ashbury to Bayview (19 minutes), arriving at 9:19 AM. Since Ava is available from 9:15 AM, wait until 9:15 AM (effectively no wait) and meet Ava from 9:15 AM to 10:15 AM.  
+[/PLANNING]  
+[IMP]  
+Start at Haight-Ashbury at 9:00 AM. Travel to Bayview (19 minutes), arriving at 9:19 AM. Since Ava is available from 9:15 AM, adjust the meeting start to 9:15 AM. Meet Ava for 60 minutes from 9:15 AM to 10:15 AM.  
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Confirm the validity of meeting Ava at Bayview from 9:15 AM to 10:15 AM.  
+**How to Achieve**: Verify that the meeting satisfies Ava’s availability (9:15 AM–11:00 AM) and the minimum duration (60 minutes), and check if the next subgoal (meeting James) is feasible from Bayview.  
+[/PLANNING]  
+[IMP]  
+The meeting with Ava from 9:15 AM to 10:15 AM is within her availability window (9:15 AM–11:00 AM) and meets the 60-minute requirement. After the meeting, departure at 10:15 AM from Bayview allows travel to Fisherman’s Wharf (24 minutes), arriving at 10:39 AM, which is within James’s availability (10:00 AM–2:00 PM). The path is valid.  
+[/IMP]
+
+---
+
+### Step 5: Adjust Subgoals
+[PLANNING]  
+**Action**: Adjust Subgoals (Planning)  
+Since the meeting with Ava is valid, adjust the next subgoal to focus on meeting James at Fisherman’s Wharf. The schedule should now prioritize traveling to Fisherman’s Wharf by 10:39 AM to meet James for at least 60 minutes within his availability (10:00 AM–2:00 PM). Subsequent subgoals (Isabella, Liam, Emma) will be sequenced based on their availability and travel times.  
+[/PLANNING]
+
+---
+
+### Step 6: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Meet James at Fisherman’s Wharf for 60 minutes between 10:00 AM and 2:00 PM.  
+**How to Achieve**: Travel from Bayview to Fisherman’s Wharf (24 minutes), arriving at 10:39 AM, and meet James for 60 minutes from 10:39 AM to 11:39 AM.  
+[/PLANNING]  
+[IMP]  
+From Bayview, travel to Fisherman’s Wharf (24 minutes), arriving at 10:39 AM. Meet James for 60 minutes from 10:39 AM to 11:39 AM.  
+[/IMP]
+
+---
+
+### Step 7: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Meet as many friends as possible.  
+  - Subgoal 1: Meet Ava at Bayview (9:15 AM–11:00 AM, 60 minutes) – Completed.  
+  - Subgoal 2: Meet James at Fisherman’s Wharf (10:00 AM–2:00 PM, 60 minutes) – Completed.  
+  - Subgoal 3: Meet Isabella at Union Square (1:00 PM–8:00 PM, 75 minutes).  
+  - Subgoal 4: Meet Liam at Nob Hill (2:30 PM–5:30 PM, 45 minutes).  
+  - Subgoal 5: Meet Emma at Marina District (5:45 PM–9:00 PM, 90 minutes).  
+**Current Goal**: Meet Isabella at Union Square, as her availability starts at 1:00 PM, and it is the next feasible meeting after James.  
+[/REVIEW]
+
+---
+
+### Step 8: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Meet Isabella at Union Square for 75 minutes between 1:00 PM and 8:00 PM.  
+**How to Achieve**: Travel from Fisherman’s Wharf to Union Square (11 minutes), arriving at 11:50 AM. Wait until 1:00 PM and meet Isabella for 75 minutes from 1:00 PM to 2:15 PM.  
+[/PLANNING]  
+[IMP]  
+From Fisherman’s Wharf, travel to Union Square (11 minutes), arriving at 11:50 AM. Wait until 1:00 PM. Meet Isabella for 75 minutes from 1:00 PM to 2:15 PM.  
+[/IMP]
+
+---
+
+### Step 9: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Meet Liam at Nob Hill for 45 minutes between 2:30 PM and 5:30 PM.  
+**How to Achieve**: Travel from Union Square to Nob Hill (10 minutes), arriving at 2:25 PM. Wait until 2:30 PM and meet Liam for 45 minutes from 2:30 PM to 3:15 PM.  
+[/PLANNING]  
+[IMP]  
+From Union Square, travel to Nob Hill (10 minutes), arriving at 2:25 PM. Wait until 2:30 PM. Meet Liam for 45 minutes from 2:30 PM to 3:15 PM.  
+[/IMP]
+
+---
+
+### Step 10: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Meet Emma at Marina District for 90 minutes between 5:45 PM and 9:00 PM.  
+**How to Achieve**: Travel from Nob Hill to Marina District (11 minutes), arriving at 3:26 PM. Wait until 5:45 PM and meet Emma for 90 minutes from 5:45 PM to 7:15 PM.  
+[/PLANNING]  
+[IMP]  
+From Nob Hill, travel to Marina District (11 minutes), arriving at 3:26 PM. Wait until 5:45 PM. Meet Emma for 90 minutes from 5:45 PM to 7:15 PM.  
+[/IMP]
+
+---
+
+### Step 11: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Confirm the validity of the entire schedule to ensure all constraints are met and all friends are met.  
+**How to Achieve**: Check that each meeting satisfies the minimum duration and availability constraints, and verify that travel and wait times align correctly.  
+[/PLANNING]  
+[IMP]  
+- **Ava**: Met at Bayview from 9:15 AM to 10:15 AM (60 minutes, within 9:15 AM–11:00 AM). Valid.  
+- **James**: Met at Fisherman’s Wharf from 10:39 AM to 11:39 AM (60 minutes, within 10:00 AM–2:00 PM). Valid.  
+- **Isabella**: Met at Union Square from 1:00 PM to 2:15 PM (75 minutes, within 1:00 PM–8:00 PM). Valid.  
+- **Liam**: Met at Nob Hill from 2:30 PM to 3:15 PM (45 minutes, within 2:30 PM–5:30 PM). Valid.  
+- **Emma**: Met at Marina District from 5:45 PM to 7:15 PM (90 minutes, within 5:45 PM–9:00 PM). Valid.  
+Travel times and waiting periods are consistent with the provided distances and availability windows. The schedule meets all five friends, maximizing the goal. No alternative schedule allows meeting more friends, as only five are specified.  
+[/IMP]
+
+---
+
+### Final Answer
+The optimal schedule to meet all five friends is:  
+- Start at Haight-Ashbury at 9:00 AM.  
+- Travel to Bayview (19 minutes), arrive at 9:19 AM, meet Ava from 9:15 AM to 10:15 AM (60 minutes).  
+- Travel to Fisherman’s Wharf (24 minutes), arrive at 10:39 AM, meet James from 10:39 AM to 11:39 AM (60 minutes).  
+- Travel to Union Square (11 minutes), arrive at 11:50 AM, wait until 1:00 PM, meet Isabella from 1:00 PM to 2:15 PM (75 minutes).  
+- Travel to Nob Hill (10 minutes), arrive at 2:25 PM, wait until 2:30 PM, meet Liam from 2:30 PM to 3:15 PM (45 minutes).  
+- Travel to Marina District (11 minutes), arrive at 3:26 PM, wait until 5:45 PM, meet Emma from 5:45 PM to 7:15 PM (90 minutes).  
+
+This schedule satisfies all constraints and maximizes the number of friends met (five).

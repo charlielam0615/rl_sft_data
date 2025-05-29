@@ -1,0 +1,161 @@
+**Problem Restatement**: The goal is to meet as many friends as possible in San Francisco on a single day, starting at Union Square at 9:00 AM, while satisfying the given constraints on meeting durations and friend availability windows. The friends and their availability are: Ava at Sunset District (9:15 AM–11:45 AM, minimum 90 minutes), Noah at Russian Hill (10:30 AM–2:30 PM, minimum 75 minutes), Emma at Marina District (1:30 PM–4:00 PM, minimum 60 minutes), Liam at Embarcadero (3:00 PM–7:00 PM, minimum 45 minutes), and James at The Castro (6:00 PM–9:30 PM, minimum 120 minutes). Travel times between locations are provided, and the schedule must account for travel and waiting times to meet all friends within their availability windows.
+
+---
+
+### Step 1: Forward Subgoaling (Planning)
+
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of meeting as many friends as possible into intermediate subgoals based on their availability and required meeting durations. The subgoals are to:
+1. Meet Ava at Sunset District for at least 90 minutes between 9:15 AM and 11:45 AM.
+2. Meet Noah at Russian Hill for at least 75 minutes between 10:30 AM and 2:30 PM.
+3. Meet Emma at Marina District for at least 60 minutes between 1:30 PM and 4:00 PM.
+4. Meet Liam at Embarcadero for at least 45 minutes between 3:00 PM and 7:00 PM.
+5. Meet James at The Castro for at least 120 minutes between 6:00 PM and 9:30 PM.  
+Each subgoal involves traveling to the friend’s location, meeting them for the required duration, and ensuring the schedule aligns with their availability while accounting for travel times between locations.  
+[/PLANNING]
+
+---
+
+### Step 2: Track Goals (Review)
+
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+Maintain a goal-management system to organize and review the hierarchy of goals:
+- **Main Goal**: Meet as many friends as possible (Ava, Noah, Emma, Liam, James).
+  - **Subgoal 1**: Meet Ava at Sunset District (90 minutes, 9:15 AM–11:45 AM).
+  - **Subgoal 2**: Meet Noah at Russian Hill (75 minutes, 10:30 AM–2:30 PM).
+  - **Subgoal 3**: Meet Emma at Marina District (60 minutes, 1:30 PM–4:00 PM).
+  - **Subgoal 4**: Meet Liam at Embarcadero (45 minutes, 3:00 PM–7:00 PM).
+  - **Subgoal 5**: Meet James at The Castro (120 minutes, 6:00 PM–9:30 PM).  
+**Current Goal**: Meet Ava at Sunset District for 90 minutes between 9:15 AM and 11:45 AM, as this is the earliest constrained time window.  
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Ava at Sunset District for at least 90 minutes between 9:15 AM and 11:45 AM. To achieve this, travel from Union Square to Sunset District (24 minutes), arriving in time to start the meeting by 9:15 AM, and ensure the meeting lasts 90 minutes within Ava’s availability window.  
+[/PLANNING]
+
+[IMP]  
+Start at Union Square at 9:00 AM. Travel to Sunset District, which takes 24 minutes, arriving at 9:24 AM. Meet Ava for 90 minutes from 9:24 AM to 10:54 AM, which is within her availability window (9:15 AM–11:45 AM).  
+[/IMP]
+
+---
+
+### Step 4: Track Goals (Review)
+
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+Update the goal-management system:
+- **Main Goal**: Meet as many friends as possible.
+  - **Subgoal 1 (Completed)**: Met Ava at Sunset District from 9:24 AM to 10:54 AM.
+  - **Subgoal 2**: Meet Noah at Russian Hill (75 minutes, 10:30 AM–2:30 PM).
+  - **Subgoal 3**: Meet Emma at Marina District (60 minutes, 1:30 PM–4:00 PM).
+  - **Subgoal 4**: Meet Liam at Embarcadero (45 minutes, 3:00 PM–7:00 PM).
+  - **Subgoal 5**: Meet James at The Castro (120 minutes, 6:00 PM–9:30 PM).  
+**Current Goal**: Meet Noah at Russian Hill for 75 minutes between 10:30 AM and 2:30 PM, as this is the next earliest availability window after meeting Ava.  
+[/REVIEW]
+
+---
+
+### Step 5: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Noah at Russian Hill for at least 75 minutes between 10:30 AM and 2:30 PM. To achieve this, travel from Sunset District to Russian Hill (24 minutes) after meeting Ava, arriving in time to meet Noah, and ensure the meeting duration is at least 75 minutes within his availability window.  
+[/PLANNING]
+
+[IMP]  
+After meeting Ava at Sunset District until 10:54 AM, travel to Russian Hill, which takes 24 minutes, arriving at 11:18 AM. Meet Noah for 75 minutes from 11:18 AM to 12:33 PM, which is within his availability window (10:30 AM–2:30 PM).  
+[/IMP]
+
+---
+
+### Step 6: Adjust Subgoals (Planning)
+
+[PLANNING]  
+**Action: Adjust Subgoals (Planning)**  
+Review the remaining subgoals (meet Emma, Liam, and James) and adjust the schedule to optimize meeting all three within their availability windows. The next subgoal is to meet Emma at Marina District for 60 minutes between 1:30 PM and 4:00 PM. After meeting Noah at 12:33 PM, travel to Marina District (7 minutes) to arrive by 1:30 PM. Then, plan to meet Liam at Embarcadero (45 minutes, 3:00 PM–7:00 PM) and James at The Castro (120 minutes, 6:00 PM–9:30 PM), adjusting the sequence to minimize waiting and travel time.  
+[/PLANNING]
+
+---
+
+### Step 7: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Emma at Marina District for at least 60 minutes between 1:30 PM and 4:00 PM. To achieve this, travel from Russian Hill to Marina District (7 minutes) after meeting Noah, arriving by 1:30 PM to start the meeting, and ensure the meeting lasts 60 minutes within Emma’s availability window.  
+[/PLANNING]
+
+[IMP]  
+After meeting Noah at Russian Hill until 12:33 PM, travel to Marina District, which takes 7 minutes, arriving at 12:40 PM. Wait until 1:30 PM to meet Emma. Meet Emma for 60 minutes from 1:30 PM to 2:30 PM, which is within her availability window (1:30 PM–4:00 PM).  
+[/IMP]
+
+---
+
+### Step 8: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Liam at Embarcadero for at least 45 minutes between 3:00 PM and 7:00 PM. To achieve this, travel from Marina District to Embarcadero (14 minutes) after meeting Emma, arriving in time to meet Liam by 3:00 PM, and ensure the meeting lasts 45 minutes within his availability window.  
+[/PLANNING]
+
+[IMP]  
+After meeting Emma at Marina District until 2:30 PM, travel to Embarcadero, which takes 14 minutes, arriving at 2:44 PM. Wait until 3:00 PM to meet Liam. Meet Liam for 45 minutes from 3:00 PM to 3:45 PM, which is within his availability window (3:00 PM–7:00 PM).  
+[/IMP]
+
+---
+
+### Step 9: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet James at The Castro for at least 120 minutes between 6:00 PM and 9:30 PM. To achieve this, travel from Embarcadero to The Castro (23 minutes) after meeting Liam, arriving in time to meet James by 6:00 PM, and ensure the meeting lasts 120 minutes within his availability window.  
+[/PLANNING]
+
+[IMP]  
+After meeting Liam at Embarcadero until 3:45 PM, travel to The Castro, which takes 23 minutes, arriving at 4:08 PM. Wait until 6:00 PM to meet James. Meet James for 120 minutes from 6:00 PM to 8:00 PM, which is within his availability window (6:00 PM–9:30 PM).  
+[/IMP]
+
+---
+
+### Step 10: Validation (Implementation)
+
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the proposed schedule to ensure all constraints are met, including meeting durations, availability windows, and travel times, and confirm that the schedule maximizes the number of friends met (all five: Ava, Noah, Emma, Liam, James).  
+[/PLANNING]
+
+[IMP]  
+Validate the schedule:
+- **Ava**: Met at Sunset District from 9:24 AM to 10:54 AM (90 minutes, within 9:15 AM–11:45 AM). Travel from Union Square to Sunset District (24 minutes) is correct.
+- **Noah**: Met at Russian Hill from 11:18 AM to 12:33 PM (75 minutes, within 10:30 AM–2:30 PM). Travel from Sunset District to Russian Hill (24 minutes) is correct.
+- **Emma**: Met at Marina District from 1:30 PM to 2:30 PM (60 minutes, within 1:30 PM–4:00 PM). Travel from Russian Hill to Marina District (7 minutes) is correct.
+- **Liam**: Met at Embarcadero from 3:00 PM to 3:45 PM (45 minutes, within 3:00 PM–7:00 PM). Travel from Marina District to Embarcadero (14 minutes) is correct.
+- **James**: Met at The Castro from 6:00 PM to 8:00 PM (120 minutes, within 6:00 PM–9:30 PM). Travel from Embarcadero to The Castro (23 minutes) is correct.
+The schedule meets all friends (5/5), satisfies minimum meeting durations, respects availability windows, and accounts for travel times. No overlaps or timing conflicts exist. This schedule is optimal as it meets all friends without violating constraints.  
+[/IMP]
+
+---
+
+### Final Answer
+
+The optimal schedule to meet all five friends is:
+- Start at Union Square at 9:00 AM.
+- Travel to Sunset District (24 minutes), arrive at 9:24 AM, and meet Ava for 90 minutes (9:24 AM–10:54 AM).
+- Travel to Russian Hill (24 minutes), arrive at 11:18 AM, and meet Noah for 75 minutes (11:18 AM–12:33 PM).
+- Travel to Marina District (7 minutes), arrive at 12:40 PM, wait until 1:30 PM, and meet Emma for 60 minutes (1:30 PM–2:30 PM).
+- Travel to Embarcadero (14 minutes), arrive at 2:44 PM, wait until 3:00 PM, and meet Liam for 45 minutes (3:00 PM–3:45 PM).
+- Travel to The Castro (23 minutes), arrive at 4:08 PM, wait until 6:00 PM, and meet James for 120 minutes (6:00 PM–8:00 PM).
+
+This schedule satisfies all constraints and maximizes the number of friends met (all five).
