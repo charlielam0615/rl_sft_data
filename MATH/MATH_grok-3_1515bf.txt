@@ -1,0 +1,65 @@
+### Problem Statement
+Jack wants to buy exactly six rolls from a bakery that sells three kinds of rolls, and he must include at least one roll of each kind. We need to determine the number of different combinations of rolls he can purchase.
+
+---
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+To solve the problem, break it down into forward-looking intermediate subgoals:  
+1. Model the problem as finding the number of ways to distribute six rolls across three kinds, ensuring at least one roll of each kind.  
+2. Use combinatorial methods to calculate the number of valid combinations.  
+3. Validate the solution to ensure it accounts for all constraints.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to model the problem mathematically. Since Jack must buy exactly six rolls of three kinds (let’s call them A, B, and C) with at least one of each, we can use the stars-and-bars theorem after adjusting for the constraint. Assign at least one roll to each kind, then distribute the remaining rolls.  
+[/PLANNING]  
+[IMP]  
+Let’s denote the number of rolls of type A, B, and C as \( x \), \( y \), and \( z \), respectively, where \( x + y + z = 6 \) and \( x, y, z \geq 1 \). To ensure at least one roll of each kind, assign one roll to each: \( x' = x - 1 \), \( y' = y - 1 \), \( z' = z - 1 \), where \( x', y', z' \geq 0 \). Then, the equation becomes:  
+\[ x' + 1 + y' + 1 + z' + 1 = 6 \implies x' + y' + z' = 3. \]  
+We need the number of non-negative integer solutions to \( x' + y' + z' = 3 \). Using the stars-and-bars theorem, the number of solutions is:  
+\[ \binom{3 + 3 - 1}{3} = \binom{5}{3} = \frac{5 \cdot 4}{2 \cdot 1} = 10. \]  
+Thus, there are 10 possible combinations.  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the solution by checking if the calculation correctly accounts for the constraint of at least one roll of each kind and exactly six rolls total. Verify by enumerating a few combinations or using an alternative method.  
+[/PLANNING]  
+[IMP]  
+To validate, let’s list some combinations for \( x + y + z = 6 \), \( x, y, z \geq 1 \):  
+- (4, 1, 1), (1, 4, 1), (1, 1, 4) → 3 combinations.  
+- (3, 2, 1), (3, 1, 2), (2, 3, 1), (2, 1, 3), (1, 3, 2), (1, 2, 3) → 6 combinations.  
+- (2, 2, 2) → 1 combination.  
+Total: \( 3 + 6 + 1 = 10 \).  
+Alternatively, consider the total number of ways to distribute 6 rolls across 3 kinds without restrictions: \( \binom{6 + 3 - 1}{6} = \binom{8}{6} = 28 \). Subtract cases where at least one kind is missing (e.g., using inclusion-exclusion), but our earlier method (adjusting for at least one roll) is simpler and confirms 10 combinations. The solution is consistent.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Determine the number of different combinations of six rolls with at least one of each kind.  
+  - Subgoal 1: Model the problem mathematically (completed).  
+  - Subgoal 2: Calculate the number of valid combinations (completed, result: 10).  
+  - Subgoal 3: Validate the solution (completed, confirmed 10 combinations).  
+**Current Goal**: Finalize the solution as the validation is complete.  
+The solution of 10 combinations is consistent across methods.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The number of different combinations of rolls Jack can purchase is 10.

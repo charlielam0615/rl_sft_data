@@ -1,0 +1,189 @@
+**Problem Restatement:**
+Carlos has 12 distinct CDs: 4 rap, 5 country, and 3 heavy metal. He randomly selects 5 CDs. We need to find the probability that his purchase includes at least one CD from each of the three categories (rap, country, and heavy metal) and express the answer as a common fraction.
+
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+To solve this, break the problem into subgoals:
+1. Calculate the total number of ways to choose 5 CDs from 12.
+2. Determine the number of favorable outcomes where at least one CD from each category (rap, country, heavy metal) is selected.
+3. Compute the probability as the ratio of favorable outcomes to total outcomes.
+4. Express the result as a common fraction.
+Next step: Compute the total number of possible selections.
+[/PLANNING]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the total number of ways to choose 5 CDs from 12.
+How to Achieve: Use the combination formula C(n, k) = n! / (k! * (n - k)!), where n is the total items and k is the number to choose. Here, n = 12 and k = 5.
+[/PLANNING]
+[IMP]
+Compute the total number of ways to choose 5 CDs from 12:
+C(12, 5) = 12! / (5! * (12 - 5)!) = 12! / (5! * 7!)
+= (12 * 11 * 10 * 9 * 8) / (5 * 4 * 3 * 2 * 1)
+= 95,040 / 120
+= 792
+Total possible outcomes = 792.
+[/IMP]
+
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+Refine subgoals for favorable outcomes:
+1. Define favorable cases as selecting at least 1 rap, 1 country, and 1 heavy metal CD within the 5 selections.
+2. Use the principle of inclusion-exclusion (PIE) to find cases with at least one of each:
+   - Compute total ways to choose 5 CDs (done: 792).
+   - Subtract cases missing at least one category (no rap, no country, or no heavy metal).
+3. Calculate each exclusion case and combine using PIE.
+Next step: Compute cases missing at least one category.
+[/PLANNING]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to choose 5 CDs with no rap CDs.
+How to Achieve: If no rap CDs are selected, choose 5 CDs from the remaining 12 - 4 = 8 CDs (5 country + 3 heavy metal). Use the combination formula C(8, 5).
+[/PLANNING]
+[IMP]
+Compute ways to choose 5 CDs from 8 (no rap):
+C(8, 5) = 8! / (5! * (8 - 5)!) = 8! / (5! * 3!)
+= (8 * 7 * 6) / (3 * 2 * 1)
+= 336 / 6
+= 56
+Cases with no rap CDs = 56.
+[/IMP]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to choose 5 CDs with no country CDs.
+How to Achieve: If no country CDs are selected, choose 5 CDs from the remaining 12 - 5 = 7 CDs (4 rap + 3 heavy metal). Use the combination formula C(7, 5).
+[/PLANNING]
+[IMP]
+Compute ways to choose 5 CDs from 7 (no country):
+C(7, 5) = 7! / (5! * (7 - 5)!) = 7! / (5! * 2!)
+= (7 * 6) / (2 * 1)
+= 42 / 2
+= 21
+Cases with no country CDs = 21.
+[/IMP]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to choose 5 CDs with no heavy metal CDs.
+How to Achieve: If no heavy metal CDs are selected, choose 5 CDs from the remaining 12 - 3 = 9 CDs (4 rap + 5 country). Use the combination formula C(9, 5).
+[/PLANNING]
+[IMP]
+Compute ways to choose 5 CDs from 9 (no heavy metal):
+C(9, 5) = 9! / (5! * (9 - 5)!) = 9! / (5! * 4!)
+= (9 * 8 * 7 * 6) / (4 * 3 * 2 * 1)
+= 3,024 / 24
+= 126
+Cases with no heavy metal CDs = 126.
+[/IMP]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to choose 5 CDs with no rap and no country CDs.
+How to Achieve: If no rap and no country CDs are selected, choose 5 CDs from the remaining 3 heavy metal CDs. Use the combination formula C(3, 5), but note this is impossible since 5 > 3.
+[/PLANNING]
+[IMP]
+Compute ways to choose 5 CDs from 3 (no rap, no country):
+C(3, 5) is impossible because we cannot choose 5 CDs from only 3 heavy metal CDs.
+Cases with no rap and no country = 0.
+[/IMP]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to choose 5 CDs with no rap and no heavy metal CDs.
+How to Achieve: If no rap and no heavy metal CDs are selected, choose 5 CDs from the remaining 5 country CDs. Use the combination formula C(5, 5).
+[/PLANNING]
+[IMP]
+Compute ways to choose 5 CDs from 5 (no rap, no heavy metal):
+C(5, 5) = 5! / (5! * (5 - 5)!) = 5! / (5! * 0!)
+= 1
+Cases with no rap and no heavy metal = 1.
+[/IMP]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to choose 5 CDs with no country and no heavy metal CDs.
+How to Achieve: If no country and no heavy metal CDs are selected, choose 5 CDs from the remaining 4 rap CDs. Use the combination formula C(4, 5), but note this is impossible since 5 > 4.
+[/PLANNING]
+[IMP]
+Compute ways to choose 5 CDs from 4 (no country, no heavy metal):
+C(4, 5) is impossible because we cannot choose 5 CDs from only 4 rap CDs.
+Cases with no country and no heavy metal = 0.
+[/IMP]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to choose 5 CDs with no rap, no country, and no heavy metal CDs.
+How to Achieve: If no CDs from any category are selected, we have 0 CDs to choose from, which is impossible for choosing 5. Use the combination formula C(0, 5), but this is invalid.
+[/PLANNING]
+[IMP]
+Compute ways to choose 5 CDs from 0 (no rap, no country, no heavy metal):
+C(0, 5) is impossible because we cannot choose 5 CDs from 0 CDs.
+Cases with no rap, no country, and no heavy metal = 0.
+[/IMP]
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Apply the principle of inclusion-exclusion to find cases with at least one CD from each category.
+How to Achieve: Use PIE: Total ways - (no rap + no country + no heavy metal) + (no rap and no country + no rap and no heavy metal + no country and no heavy metal) - (no rap, no country, and no heavy metal). Then, compute the probability.
+[/PLANNING]
+[IMP]
+Apply PIE to find favorable outcomes (at least one of each category):
+- Total ways to choose 5 CDs = 792
+- Cases missing at least one category:
+  - No rap = 56
+  - No country = 21
+  - No heavy metal = 126
+  - No rap and no country = 0
+  - No rap and no heavy metal = 1
+  - No country and no heavy metal = 0
+  - No rap, no country, and no heavy metal = 0
+- PIE formula: Favorable = Total - (no rap + no country + no heavy metal) + (no rap and no country + no rap and no heavy metal + no country and no heavy metal) - (no rap, no country, and no heavy metal)
+= 792 - (56 + 21 + 126) + (0 + 1 + 0) - 0
+= 792 - 203 + 1
+= 590
+Favorable outcomes = 590.
+Probability = Favorable outcomes / Total outcomes = 590 / 792.
+Simplify the fraction:
+590 ÷ 2 = 295, 792 ÷ 2 = 396
+Thus, probability = 295 / 396.
+[/IMP]
+
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify the calculations and the simplified fraction.
+How to Achieve: Check each combination calculation, the PIE application, and the fraction simplification for accuracy.
+[/PLANNING]
+[IMP]
+Verify calculations:
+- Total ways: C(12, 5) = 792, correct.
+- No rap: C(8, 5) = 56, correct.
+- No country: C(7, 5) = 21, correct.
+- No heavy metal: C(9, 5) = 126, correct.
+- No rap and no country: C(3, 5) = 0, correct (impossible).
+- No rap and no heavy metal: C(5, 5) = 1, correct.
+- No country and no heavy metal: C(4, 5) = 0, correct (impossible).
+- No rap, no country, no heavy metal: C(0, 5) = 0, correct (impossible).
+- PIE: 792 - (56 + 21 + 126) + (0 + 1 + 0) - 0 = 792 - 203 + 1 = 590, correct.
+- Probability: 590 / 792, simplified to 295 / 396.
+- Check simplification: 590 ÷ 2 = 295, 792 ÷ 2 = 396, correct. No further common factors.
+Final answer is 295 / 396.
+[/IMP]
+
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Find the probability that Carlos's purchase includes at least one CD from each of the three categories.
+  - Subgoal 1: Calculate total ways to choose 5 CDs from 12. (Completed: 792)
+  - Subgoal 2: Determine favorable outcomes with at least one of each category.
+    - Compute cases missing at least one category (no rap, no country, no heavy metal). (Completed: 56, 21, 126)
+    - Compute overlap cases (no two categories, no three categories). (Completed: 0, 1, 0, 0)
+    - Apply PIE to find favorable outcomes. (Completed: 590)
+  - Subgoal 3: Compute probability as a ratio. (Completed: 590 / 792)
+  - Subgoal 4: Express as a common fraction. (Completed: 295 / 396)
+Current Goal: Confirm the final answer is correctly expressed.
+Final Answer: The probability is 295 / 396.
+[/REVIEW]

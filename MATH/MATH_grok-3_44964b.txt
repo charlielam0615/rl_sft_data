@@ -1,0 +1,185 @@
+### Problem Restatement
+We need to find the greatest integer \( n < 1000 \) such that \( S_n = \sum_{k=1}^{2^{n-1}} g(2k) \) is a perfect square, where \( g(x) \) is the greatest power of 2 that divides the even positive integer \( x \). For example, \( g(20) = 4 \) and \( g(16) = 16 \).
+
+---
+
+### Step 1: Forward Subgoaling (Planning)
+
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve the problem, we need to break it down into manageable subgoals:  
+1. Understand and derive a formula for \( g(2k) \), the greatest power of 2 that divides \( 2k \).  
+2. Compute \( S_n = \sum_{k=1}^{2^{n-1}} g(2k) \) for a general \( n \).  
+3. Determine when \( S_n \) is a perfect square.  
+4. Find the largest \( n < 1000 \) for which \( S_n \) is a perfect square.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Derive a formula for \( g(2k) \).  
+**How to Achieve**: Analyze \( g(2k) \), where \( g(x) \) is the greatest power of 2 that divides \( x \). Since \( 2k \) is even, factor out powers of 2 from \( 2k \) to find the largest power of 2 that divides it.  
+[/PLANNING]
+
+[IMP]  
+For an even positive integer \( x \), \( g(x) \) is the largest \( 2^m \) such that \( 2^m \) divides \( x \). Let \( x = 2k \), where \( k \) is a positive integer. Write \( k = 2^r \cdot m \), where \( m \) is odd and \( r \geq 0 \). Then:  
+\[ 2k = 2 \cdot k = 2 \cdot 2^r \cdot m = 2^{r+1} \cdot m. \]  
+Since \( m \) is odd, the highest power of 2 dividing \( 2k \) is \( 2^{r+1} \). Thus, \( g(2k) = 2^{r+1} \), where \( r \) is the exponent of 2 in the prime factorization of \( k \). Equivalently, if \( v_2(k) \) denotes the 2-adic valuation of \( k \) (the highest power of 2 dividing \( k \)), then:  
+\[ g(2k) = 2^{v_2(k) + 1}. \]  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Compute \( S_n = \sum_{k=1}^{2^{n-1}} g(2k) \).  
+**How to Achieve**: Use the formula \( g(2k) = 2^{v_2(k) + 1} \) to express the sum and simplify it by counting the number of times each power of 2 appears.  
+[/PLANNING]
+
+[IMP]  
+We need to compute:  
+\[ S_n = \sum_{k=1}^{2^{n-1}} g(2k) = \sum_{k=1}^{2^{n-1}} 2^{v_2(k) + 1}. \]  
+For each \( k \) from 1 to \( 2^{n-1} \), determine \( v_2(k) \), the exponent of 2 in \( k \). The sum becomes:  
+\[ S_n = \sum_{k=1}^{2^{n-1}} 2^{v_2(k) + 1} = 2 \cdot \sum_{k=1}^{2^{n-1}} 2^{v_2(k)}. \]  
+Let’s compute \( \sum_{k=1}^{2^{n-1}} 2^{v_2(k)} \). For each integer \( r \geq 0 \), count how many \( k \) from 1 to \( 2^{n-1} \) have \( v_2(k) = r \):  
+- A number \( k \) has \( v_2(k) = r \) if \( k = 2^r \cdot m \), where \( m \) is odd.  
+- For \( k \leq 2^{n-1} \), we need \( 2^r \cdot m \leq 2^{n-1} \), so \( m \leq 2^{n-1-r} \).  
+- Since \( m \) is odd, count odd integers \( m \) from 1 to \( \lfloor 2^{n-1-r} \rfloor \).  
+- The number of odd integers up to \( 2^{n-1-r} \) is approximately \( \lfloor 2^{n-1-r} / 2 \rfloor = 2^{n-2-r} \) (for \( r \leq n-2 \)).
+
+Thus, for \( r = 0, 1, \ldots, n-2 \):  
+- Number of \( k \) with \( v_2(k) = r \): \( \lfloor 2^{n-1-r} / 2 \rfloor = 2^{n-2-r} \).  
+- For \( r = n-1 \), \( k = 2^{n-1} \), so \( v_2(2^{n-1}) = n-1 \), contributing 1 term.
+
+The sum is:  
+\[ \sum_{k=1}^{2^{n-1}} 2^{v_2(k)} = \sum_{r=0}^{n-2} (2^{n-2-r} \cdot 2^r) + 2^{n-1}. \]  
+Each term in the sum: \( 2^{n-2-r} \cdot 2^r = 2^{n-2} \). There are \( n-1 \) terms for \( r = 0 \) to \( n-2 \), so:  
+\[ \sum_{r=0}^{n-2} 2^{n-2} = (n-1) \cdot 2^{n-2}. \]  
+Add the term for \( k = 2^{n-1} \):  
+\[ \sum_{k=1}^{2^{n-1}} 2^{v_2(k)} = (n-1) \cdot 2^{n-2} + 2^{n-1} = (n-1) \cdot 2^{n-2} + 2 \cdot 2^{n-2} = (n-1 + 2) \cdot 2^{n-2} = (n+1) \cdot 2^{n-2}. \]  
+Thus:  
+\[ S_n = 2 \cdot (n+1) \cdot 2^{n-2} = (n+1) \cdot 2^{n-1}. \]  
+[/IMP]
+
+---
+
+### Step 4: Validation (Implementation)
+
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify the formula \( S_n = (n+1) \cdot 2^{n-1} \).  
+**How to Achieve**: Compute \( S_n \) for small values of \( n \) and compare with the formula.  
+[/PLANNING]
+
+[IMP]  
+Let’s test the formula \( S_n = (n+1) \cdot 2^{n-1} \):  
+- For \( n=1 \): \( 2^{n-1} = 2^0 = 1 \), so \( S_1 = g(2) = 2 \). Formula: \( (1+1) \cdot 2^{1-1} = 2 \cdot 1 = 2 \). Matches.  
+- For \( n=2 \): \( 2^{n-1} = 2^1 = 2 \), so \( S_2 = g(2) + g(4) = 2 + 4 = 6 \). Formula: \( (2+1) \cdot 2^{2-1} = 3 \cdot 2 = 6 \). Matches.  
+- For \( n=3 \): \( 2^{n-1} = 2^2 = 4 \), so \( S_3 = g(2) + g(4) + g(6) + g(8) = 2 + 4 + 2 + 8 = 16 \). Formula: \( (3+1) \cdot 2^{3-1} = 4 \cdot 4 = 16 \). Matches.  
+The formula holds for these cases.  
+[/IMP]
+
+---
+
+### Step 5: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Determine when \( S_n = (n+1) \cdot 2^{n-1} \) is a perfect square.  
+**How to Achieve**: For \( S_n \) to be a perfect square, its square-free part must be a perfect square. Analyze the prime factorization of \( S_n \).  
+[/PLANNING]
+
+[IMP]  
+We have \( S_n = (n+1) \cdot 2^{n-1} \). For \( S_n \) to be a perfect square, write \( S_n = m^2 \). The exponent of 2 in \( S_n \) is \( n-1 \), which must be even for the 2-part to be a perfect square, so \( n-1 = 2k \), or \( n = 2k+1 \) (odd \( n \)). Additionally, \( n+1 \) must contribute to making the square-free part a perfect square.  
+Factor \( n+1 \). For odd \( n = 2k+1 \), \( n+1 = 2k+2 = 2(k+1) \). Thus:  
+\[ S_n = 2 \cdot (k+1) \cdot 2^{n-1} = 2^{n} \cdot (k+1). \]  
+Since \( n \) is odd, \( n-1 \) is even, so \( 2^{n-1} \) is a perfect square. We need \( 2 \cdot (k+1) \) to be a perfect square. Let \( 2 \cdot (k+1) = t^2 \). Since 2 is prime, \( t \) must be even, say \( t = 2u \), so:  
+\[ 2 \cdot (k+1) = (2u)^2 = 4u^2 \implies k+1 = 2u^2 \implies k = 2u^2 - 1. \]  
+Then, \( n = 2k+1 = 2(2u^2 - 1) + 1 = 4u^2 - 2 + 1 = 4u^2 - 1 \). Thus, \( n = 4u^2 - 1 \). Check if \( S_n \) is a perfect square:  
+\[ n+1 = 4u^2 - 1 + 1 = 4u^2, \quad S_n = 4u^2 \cdot 2^{n-1} = (2u^2)^2 \cdot 2^{n-1}. \]  
+Since \( n = 4u^2 - 1 \), \( n-1 = 4u^2 - 2 \), so:  
+\[ S_n = (2u^2)^2 \cdot 2^{4u^2 - 2} = 2^{4u^2} \cdot 2^{4u^2 - 2} = 2^{8u^2 - 2} = (2^{4u^2 - 1})^2. \]  
+Thus, \( S_n \) is a perfect square when \( n = 4u^2 - 1 \).  
+[/IMP]
+
+---
+
+### Step 6: Reach Goal (Implementation)
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Find the largest \( n < 1000 \) such that \( n = 4u^2 - 1 \).  
+**How to Achieve**: Compute \( n = 4u^2 - 1 \) for integer \( u \) until \( n \geq 1000 \), and select the largest \( n < 1000 \).  
+[/PLANNING]
+
+[IMP]  
+Compute \( n = 4u^2 - 1 \):  
+- \( u=1 \): \( n = 4 \cdot 1^2 - 1 = 3 \).  
+- \( u=2 \): \( n = 4 \cdot 4 - 1 = 15 \).  
+- \( u=3 \): \( n = 4 \cdot 9 - 1 = 35 \).  
+- \( u=4 \): \( n = 4 \cdot 16 - 1 = 63 \).  
+- \( u=5 \): \( n = 4 \cdot 25 - 1 = 99 \).  
+- \( u=6 \): \( n = 4 \cdot 36 - 1 = 143 \).  
+- \( u=7 \): \( n = 4 \cdot 49 - 1 = 195 \).  
+- \( u=8 \): \( n = 4 \cdot 64 - 1 = 255 \).  
+- \( u=9 \): \( n = 4 \cdot 81 - 1 = 323 \).  
+- \( u=10 \): \( n = 4 \cdot 100 - 1 = 399 \).  
+- \( u=11 \): \( n = 4 \cdot 121 - 1 = 483 \).  
+- \( u=12 \): \( n = 4 \cdot 144 - 1 = 575 \).  
+- \( u=13 \): \( n = 4 \cdot 169 - 1 = 675 \).  
+- \( u=14 \): \( n = 4 \cdot 196 - 1 = 783 \).  
+- \( u=15 \): \( n = 4 \cdot 225 - 1 = 899 \).  
+- \( u=16 \): \( n = 4 \cdot 256 - 1 = 1023 \).  
+
+Since \( 1023 \geq 1000 \), the largest \( n < 1000 \) is \( n = 899 \).  
+[/IMP]
+
+---
+
+### Step 7: Validation (Implementation)
+
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify that \( S_{899} \) is a perfect square and check if any larger \( n < 1000 \) works.  
+**How to Achieve**: Compute \( S_{899} \) and check if it’s a perfect square. Test a few other \( n \) values close to 1000.  
+[/PLANNING]
+
+[IMP]  
+For \( n = 899 \):  
+\[ S_{899} = (899+1) \cdot 2^{899-1} = 900 \cdot 2^{898}. \]  
+Since \( 900 = 2^2 \cdot 3^2 \cdot 5^2 \), we have:  
+\[ S_{899} = 2^2 \cdot 3^2 \cdot 5^2 \cdot 2^{898} = 2^{900} \cdot 3^2 \cdot 5^2 = (2^{450} \cdot 3 \cdot 5)^2. \]  
+Thus, \( S_{899} \) is a perfect square.  
+Now, check if any larger \( n = 4u^2 - 1 < 1000 \). Since \( n = 1023 \) for \( u=16 \), and \( 899 < 1000 \leq 1023 \), no larger \( n \) exists. Test other odd \( n \), e.g., \( n=999 \):  
+\[ n+1 = 1000 = 2^3 \cdot 5^3, \quad S_{999} = 1000 \cdot 2^{998} = 2^3 \cdot 5^3 \cdot 2^{998} = 2^{1001} \cdot 5^3. \]  
+The exponent of 2 is odd, so \( S_{999} \) is not a perfect square. Thus, \( n=899 \) is likely the largest.  
+[/IMP]
+
+---
+
+### Step 8: Track Goals (Review)
+
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the greatest \( n < 1000 \) such that \( S_n \) is a perfect square.  
+  - Subgoal 1: Derive \( g(2k) \). (Completed: \( g(2k) = 2^{v_2(k) + 1} \))  
+  - Subgoal 2: Compute \( S_n \). (Completed: \( S_n = (n+1) \cdot 2^{n-1} \))  
+  - Subgoal 3: Determine when \( S_n \) is a perfect square. (Completed: \( n = 4u^2 - 1 \))  
+  - Subgoal 4: Find the largest \( n < 1000 \). (Completed: \( n = 899 \))  
+**Current Goal**: Confirm \( n = 899 \) is the solution.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The greatest integer \( n < 1000 \) such that \( S_n \) is a perfect square is \( 899 \).  
+\[ \boxed{899} \]

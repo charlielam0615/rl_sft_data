@@ -1,0 +1,124 @@
+**Problem Statement**: For real numbers \( t \), the point \(\left( x, y \right) = \left( \frac{1 - t^2}{1 + t^2}, \frac{2t}{1 + t^2} \right)\) is plotted. Determine the type of curve formed by all such points, choosing from the options: (A) Line, (B) Circle, (C) Parabola, (D) Ellipse, (E) Hyperbola.
+
+---
+
+**Step 1**
+
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve the problem, break it down into manageable steps:  
+1. Derive the equation of the curve by eliminating the parameter \( t \) from the given parametric equations \( x = \frac{1 - t^2}{1 + t^2} \), \( y = \frac{2t}{1 + t^2} \).  
+2. Identify the type of curve by comparing the resulting equation to standard forms of conic sections or lines.  
+3. Match the curve to one of the given options.  
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to derive the equation of the curve by eliminating the parameter \( t \). This will be achieved by expressing \( t \) in terms of \( x \) and \( y \), then substituting to find a relationship between \( x \) and \( y \).  
+[/PLANNING]
+
+[IMP]  
+Start with the parametric equations:  
+\[ x = \frac{1 - t^2}{1 + t^2}, \quad y = \frac{2t}{1 + t^2} \]
+
+Solve for \( t \) using the expression for \( y \):  
+\[ y = \frac{2t}{1 + t^2} \]  
+Multiply both sides by \( 1 + t^2 \):  
+\[ y (1 + t^2) = 2t \]  
+\[ t = \frac{y (1 + t^2)}{2} \]  
+
+This is complex, so instead, express \( t \) directly:  
+\[ y = \frac{2t}{1 + t^2} \implies t = \frac{y (1 + t^2)}{2} \]  
+This suggests a substitution approach. Instead, try to eliminate \( t \). From \( y \):  
+\[ y = \frac{2t}{1 + t^2} \implies t = \frac{y}{2} (1 + t^2) \] (not ideal).  
+
+Alternatively, square both sides to relate terms:  
+\[ y^2 = \left( \frac{2t}{1 + t^2} \right)^2 = \frac{4t^2}{(1 + t^2)^2} \]
+
+For \( x \):  
+\[ x = \frac{1 - t^2}{1 + t^2} \]  
+Notice that \( 1 - t^2 = (1 - t^2) \). Try to find \( t^2 \):  
+From \( y \), solve for \( t \):  
+\[ y (1 + t^2) = 2t \implies t^2 (y) = 2t - y \] (complex).  
+
+Instead, try to find a relationship by computing \( x^2 + y^2 \):  
+\[ x^2 = \left( \frac{1 - t^2}{1 + t^2} \right)^2 = \frac{(1 - t^2)^2}{(1 + t^2)^2} \]  
+\[ y^2 = \left( \frac{2t}{1 + t^2} \right)^2 = \frac{4t^2}{(1 + t^2)^2} \]  
+Add them:  
+\[ x^2 + y^2 = \frac{(1 - t^2)^2}{(1 + t^2)^2} + \frac{4t^2}{(1 + t^2)^2} = \frac{(1 - t^2)^2 + 4t^2}{(1 + t^2)^2} \]  
+Numerator:  
+\[ (1 - t^2)^2 + 4t^2 = (1 - 2t^2 + t^4) + 4t^2 = t^4 + 2t^2 + 1 = (t^2 + 1)^2 \]  
+So:  
+\[ x^2 + y^2 = \frac{(t^2 + 1)^2}{(1 + t^2)^2} = 1 \]  
+Thus:  
+\[ x^2 + y^2 = 1 \]  
+This is the equation of a circle centered at the origin with radius 1.  
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify that the derived equation \( x^2 + y^2 = 1 \) correctly represents the curve and confirm it matches the parametric equations for all \( t \).  
+[/PLANNING]
+
+[IMP]  
+Substitute \( x = \frac{1 - t^2}{1 + t^2} \), \( y = \frac{2t}{1 + t^2} \) into \( x^2 + y^2 \):  
+\[ x^2 + y^2 = \left( \frac{1 - t^2}{1 + t^2} \right)^2 + \left( \frac{2t}{1 + t^2} \right)^2 \]  
+As computed:  
+\[ = \frac{(1 - t^2)^2 + 4t^2}{(1 + t^2)^2} = \frac{(t^2 + 1)^2}{(1 + t^2)^2} = 1 \]  
+This confirms the equation is satisfied. Check if all points on the circle are covered:  
+- For \( t = 0 \): \( x = \frac{1 - 0}{1 + 0} = 1 \), \( y = \frac{0}{1} = 0 \), point (1, 0).  
+- For \( t = 1 \): \( x = \frac{1 - 1}{1 + 1} = 0 \), \( y = \frac{2}{2} = 1 \), point (0, 1).  
+- For \( t = -1 \): \( x = \frac{1 - 1}{1 + 1} = 0 \), \( y = \frac{-2}{2} = -1 \), point (0, -1).  
+- As \( t \to \infty \): \( x \approx \frac{-t^2}{t^2} = -1 \), \( y \approx \frac{2t}{t^2} = 0 \), point (-1, 0).  
+The points trace a circle. Check if it’s the full circle: the parameterization resembles \( x = \cos \theta \), \( y = \sin \theta \), suggesting all points on \( x^2 + y^2 = 1 \) are covered as \( t \) varies over all real numbers.  
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Determine the type of curve formed by the parametric equations.  
+  - Subgoal 1: Derive the equation by eliminating \( t \). (Completed: \( x^2 + y^2 = 1 \))  
+  - Subgoal 2: Verify the equation matches the parametric form. (Completed)  
+  - Subgoal 3: Identify the curve type and select the correct option. (Current)  
+
+**Current Goal**: Identify the curve type and select the correct option from (A) Line, (B) Circle, (C) Parabola, (D) Ellipse, (E) Hyperbola.  
+The equation \( x^2 + y^2 = 1 \) is a circle with radius 1 centered at the origin.  
+[/REVIEW]
+
+---
+
+**Step 5**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify the curve type from the equation \( x^2 + y^2 = 1 \) and select the corresponding option. This will be achieved by comparing the equation to standard forms of curves.  
+[/PLANNING]
+
+[IMP]  
+The equation \( x^2 + y^2 = 1 \) matches the standard form of a circle: \( x^2 + y^2 = r^2 \), with \( r = 1 \). Compare with options:  
+- (A) Line: \( y = mx + b \) (linear equation, not \( x^2 + y^2 = 1 \)).  
+- (B) Circle: \( x^2 + y^2 = r^2 \) (matches).  
+- (C) Parabola: \( y = ax^2 + bx + c \) or \( x = ay^2 + by + c \) (not a quadratic in one variable).  
+- (D) Ellipse: \( \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \) (requires \( a \neq b \), but here \( a = b = 1 \), a circle).  
+- (E) Hyperbola: \( \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \) or similar (no subtraction).  
+The curve is a circle, corresponding to option (B).  
+[/IMP]
+
+---
+
+**Final Answer**: B

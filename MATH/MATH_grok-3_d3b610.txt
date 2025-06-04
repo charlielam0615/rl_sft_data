@@ -1,0 +1,98 @@
+### Problem Statement
+Alex needs to borrow $10,000 from a bank and is offered two loan options. Option 1 is a 10-year loan with a 10% annual interest rate compounded quarterly, requiring a payment of half the owed amount after 5 years, with the remaining balance paid at the end of 10 years. Option 2 is a 10-year loan with a 12% simple annual interest rate, requiring a single lump-sum payment at the end of 10 years. We need to calculate the total amount paid under each option, find the positive difference between them, and round to the nearest dollar.
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to solve it systematically.  
+- Subgoal 1: Calculate the total amount paid under Option 1, including the amount owed after 5 years, the payment made at 5 years, and the final payment at 10 years.  
+- Subgoal 2: Calculate the total amount paid under Option 2, which is the lump-sum payment after 10 years with simple interest.  
+- Subgoal 3: Find the positive difference between the total amounts paid under both options and round to the nearest dollar.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the total amount paid under Option 1. This involves computing the amount owed after 5 years with quarterly compounding, determining the payment (half of the amount owed), calculating the remaining balance with interest for the next 5 years, and summing the payments made at 5 and 10 years.  
+[/PLANNING]
+
+[IMP]
+To calculate the amount owed after 5 years for Option 1:  
+- Principal: $10,000  
+- Annual interest rate: 10% (0.10), compounded quarterly, so quarterly rate = 0.10 / 4 = 0.025  
+- Number of quarters in 5 years: 5 × 4 = 20  
+- Use the compound interest formula: \( A = P \left(1 + \frac{r}{n}\right)^{nt} \), where \( P = 10,000 \), \( r = 0.10 \), \( n = 4 \), \( t = 5 \).  
+- \( A_5 = 10,000 \left(1 + 0.025\right)^{20} = 10,000 \times 1.025^{20} \)  
+- Compute \( 1.025^{20} \):  
+  \( 1.025^{10} \approx 1.280084 \), so \( 1.025^{20} = (1.025^{10})^2 \approx 1.280084^2 \approx 1.638615 \)  
+- Amount after 5 years: \( A_5 = 10,000 \times 1.638615 \approx 16,386.15 \)  
+- Payment at 5 years: Half of the amount owed = \( 16,386.15 / 2 \approx 8,193.08 \)  
+- Remaining balance: \( 16,386.15 - 8,193.08 = 8,193.07 \)  
+
+Now calculate the amount owed on the remaining balance after another 5 years:  
+- New principal: $8,193.07  
+- Same quarterly rate (0.025) and number of quarters (20)  
+- Amount after 10 years: \( A_{10} = 8,193.07 \times 1.025^{20} \approx 8,193.07 \times 1.638615 \approx 13,425.22 \)  
+- Total paid under Option 1: Payment at 5 years + Payment at 10 years = \( 8,193.08 + 13,425.22 = 21,618.30 \)  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the total amount paid under Option 2. This involves computing the lump-sum payment after 10 years using the simple interest formula.  
+[/PLANNING]
+
+[IMP]
+For Option 2:  
+- Principal: $10,000  
+- Simple annual interest rate: 12% (0.12)  
+- Time: 10 years  
+- Use the simple interest formula: \( A = P(1 + rt) \), where \( P = 10,000 \), \( r = 0.12 \), \( t = 10 \).  
+- Interest: \( 10,000 \times 0.12 \times 10 = 12,000 \)  
+- Total amount: \( A = 10,000 \times (1 + 0.12 \times 10) = 10,000 \times 2.2 = 22,000 \)  
+- Total paid under Option 2: $22,000 (single payment at 10 years)  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Track Goals (Review)**  
+Track the hierarchy of goals and highlight the current goal.  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main Goal: Find the positive difference between the total amounts paid under the two loan options, rounded to the nearest dollar.  
+  - Subgoal 1: Calculate the total amount paid under Option 1 (completed: $21,618.30).  
+  - Subgoal 2: Calculate the total amount paid under Option 2 (completed: $22,000).  
+  - Subgoal 3: Find the positive difference between the total amounts and round to the nearest dollar (current goal).  
+
+**Current Goal**: Compute the positive difference between the total amounts paid under Option 1 and Option 2, and round to the nearest dollar.  
+[/REVIEW]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find the positive difference between the total amounts paid under Option 1 ($21,618.30) and Option 2 ($22,000), and round to the nearest dollar.  
+[/PLANNING]
+
+[IMP]
+- Total paid under Option 1: $21,618.30  
+- Total paid under Option 2: $22,000  
+- Positive difference: \( |22,000 - 21,618.30| = 381.70 \)  
+- Round to the nearest dollar: $381.70 ≈ $382  
+[/IMP]
+
+---
+
+### Final Answer
+The positive difference between the total amounts Alex has to pay back under the two schemes, rounded to the nearest dollar, is $382.

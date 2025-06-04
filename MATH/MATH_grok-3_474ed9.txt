@@ -1,0 +1,154 @@
+### Problem Statement
+Given that \(\theta\) is an acute angle and \(\sin \frac{\theta}{2} = \sqrt{\frac{x - 1}{2x}}\), express \(\tan \theta\) in terms of \(x\).
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**
+
+To express \(\tan \theta\) in terms of \(x\), we need to find \(\tan \theta = \frac{\sin \theta}{\cos \theta}\). Since we are given \(\sin \frac{\theta}{2} = \sqrt{\frac{x - 1}{2x}}\), we can use trigonometric identities to find \(\sin \theta\) and \(\cos \theta\). The double-angle identities for sine and cosine are useful here, as they relate \(\sin \theta\) and \(\cos \theta\) to \(\sin \frac{\theta}{2}\) and \(\cos \frac{\theta}{2}\). The subgoals are:
+
+1. Compute \(\cos \frac{\theta}{2}\) using the given \(\sin \frac{\theta}{2}\).
+2. Use double-angle identities to find \(\sin \theta\) and \(\cos \theta\).
+3. Compute \(\tan \theta = \frac{\sin \theta}{\cos \theta}\) in terms of \(x\).
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**
+
+**Current Goal**: Compute \(\cos \frac{\theta}{2}\) using the given \(\sin \frac{\theta}{2}\).
+
+**How to Achieve**: Use the Pythagorean identity \(\sin^2 \phi + \cos^2 \phi = 1\) for \(\phi = \frac{\theta}{2}\). Since \(\theta\) is acute, \(\frac{\theta}{2}\) is also acute, so \(\cos \frac{\theta}{2} > 0\). Given \(\sin \frac{\theta}{2} = \sqrt{\frac{x - 1}{2x}}\), compute \(\cos \frac{\theta}{2} = \sqrt{1 - \sin^2 \frac{\theta}{2}}\).
+[/PLANNING]
+
+[IMP]
+Given:
+\[
+\sin \frac{\theta}{2} = \sqrt{\frac{x - 1}{2x}}
+\]
+Square both sides:
+\[
+\sin^2 \frac{\theta}{2} = \frac{x - 1}{2x}
+\]
+Using the Pythagorean identity:
+\[
+\cos^2 \frac{\theta}{2} = 1 - \sin^2 \frac{\theta}{2} = 1 - \frac{x - 1}{2x}
+\]
+Simplify:
+\[
+1 - \frac{x - 1}{2x} = \frac{2x - (x - 1)}{2x} = \frac{2x - x + 1}{2x} = \frac{x + 1}{2x}
+\]
+Since \(\cos \frac{\theta}{2} > 0\):
+\[
+\cos \frac{\theta}{2} = \sqrt{\frac{x + 1}{2x}}
+\]
+[/IMP]
+
+---
+
+### Step 3: Validation
+[PLANNING]
+**Action: Validation (Implementation)**
+
+**Current Goal**: Verify the expression for \(\cos \frac{\theta}{2}\).
+
+**How to Achieve**: Check that \(\sin^2 \frac{\theta}{2} + \cos^2 \frac{\theta}{2} = 1\) and ensure the expressions are valid for the domain of \(x\).
+[/PLANNING]
+
+[IMP]
+Compute:
+\[
+\sin^2 \frac{\theta}{2} + \cos^2 \frac{\theta}{2} = \frac{x - 1}{2x} + \frac{x + 1}{2x} = \frac{(x - 1) + (x + 1)}{2x} = \frac{2x}{2x} = 1
+\]
+The identity holds. For domain, since \(\sin \frac{\theta}{2} = \sqrt{\frac{x - 1}{2x}}\) and \(\cos \frac{\theta}{2} = \sqrt{\frac{x + 1}{2x}}\) involve square roots, we need:
+- \(\frac{x - 1}{2x} \geq 0\): \(x - 1 \geq 0\) and \(2x > 0\), so \(x \geq 1\).
+- \(\frac{x + 1}{2x} \geq 0\): Since \(x + 1 > 0\) for \(x \geq 1\) and \(2x > 0\), this is satisfied.
+- The denominator \(2x \neq 0\), so \(x \neq 0\), which is satisfied since \(x \geq 1\).
+
+The expressions are valid for \(x \geq 1\).
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**
+
+**Current Goal**: Use double-angle identities to find \(\sin \theta\) and \(\cos \theta\).
+
+**How to Achieve**: Apply the double-angle identities:
+- \(\sin \theta = 2 \sin \frac{\theta}{2} \cos \frac{\theta}{2}\)
+- \(\cos \theta = \cos^2 \frac{\theta}{2} - \sin^2 \frac{\theta}{2}\)
+[/PLANNING]
+
+[IMP]
+Using:
+\[
+\sin \frac{\theta}{2} = \sqrt{\frac{x - 1}{2x}}, \quad \cos \frac{\theta}{2} = \sqrt{\frac{x + 1}{2x}}
+\]
+Compute \(\sin \theta\):
+\[
+\sin \theta = 2 \sin \frac{\theta}{2} \cos \frac{\theta}{2} = 2 \cdot \sqrt{\frac{x - 1}{2x}} \cdot \sqrt{\frac{x + 1}{2x}} = 2 \cdot \sqrt{\frac{(x - 1)(x + 1)}{(2x)^2}} = 2 \cdot \sqrt{\frac{x^2 - 1}{4x^2}} = 2 \cdot \frac{\sqrt{x^2 - 1}}{2x} = \frac{\sqrt{x^2 - 1}}{x}
+\]
+Compute \(\cos \theta\):
+\[
+\cos \theta = \cos^2 \frac{\theta}{2} - \sin^2 \frac{\theta}{2} = \frac{x + 1}{2x} - \frac{x - 1}{2x} = \frac{(x + 1) - (x - 1)}{2x} = \frac{x + 1 - x + 1}{2x} = \frac{2}{2x} = \frac{1}{x}
+\]
+[/IMP]
+
+---
+
+### Step 5: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**
+
+**Current Goal**: Compute \(\tan \theta = \frac{\sin \theta}{\cos \theta}\) in terms of \(x\).
+
+**How to Achieve**: Use the expressions for \(\sin \theta\) and \(\cos \theta\) to form the ratio.
+[/PLANNING]
+
+[IMP]
+\[
+\sin \theta = \frac{\sqrt{x^2 - 1}}{x}, \quad \cos \theta = \frac{1}{x}
+\]
+\[
+\tan \theta = \frac{\sin \theta}{\cos \theta} = \frac{\frac{\sqrt{x^2 - 1}}{x}}{\frac{1}{x}} = \sqrt{x^2 - 1}
+\]
+Alternatively, verify using \(\tan \theta = \frac{2 \tan \frac{\theta}{2}}{1 - \tan^2 \frac{\theta}{2}}\):
+\[
+\tan \frac{\theta}{2} = \frac{\sin \frac{\theta}{2}}{\cos \frac{\theta}{2}} = \frac{\sqrt{\frac{x - 1}{2x}}}{\sqrt{\frac{x + 1}{2x}}} = \sqrt{\frac{x - 1}{x + 1}}
+\]
+\[
+\tan \theta = \frac{2 \cdot \sqrt{\frac{x - 1}{x + 1}}}{1 - \left(\sqrt{\frac{x - 1}{x + 1}}\right)^2} = \frac{2 \sqrt{\frac{x - 1}{x + 1}}}{1 - \frac{x - 1}{x + 1}} = \frac{2 \sqrt{\frac{x - 1}{x + 1}}}{\frac{x + 1 - (x - 1)}{x + 1}} = \frac{2 \sqrt{\frac{x - 1}{x + 1}}}{\frac{2}{x + 1}} = \sqrt{\frac{x - 1}{x + 1}} \cdot (x + 1) = \sqrt{(x - 1)(x + 1)} = \sqrt{x^2 - 1}
+\]
+Both methods agree.
+[/IMP]
+
+---
+
+### Step 6: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Express \(\tan \theta\) in terms of \(x\).
+  - Subgoal 1: Compute \(\cos \frac{\theta}{2}\) using \(\sin \frac{\theta}{2}\). [Completed in Step 2]
+  - Subgoal 2: Use double-angle identities to find \(\sin \theta\) and \(\cos \theta\). [Completed in Step 4]
+  - Subgoal 3: Compute \(\tan \theta = \frac{\sin \theta}{\cos \theta}\). [Completed in Step 5]
+
+**Current Goal**: Completed main goal: \(\tan \theta = \sqrt{x^2 - 1}\).
+[/REVIEW]
+
+---
+
+### Final Answer
+\[
+\tan \theta = \sqrt{x^2 - 1}
+\]
+Domain: \(x \geq 1\).
