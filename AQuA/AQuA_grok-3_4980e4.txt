@@ -1,0 +1,99 @@
+**Problem Restatement:**  
+We need to determine the number of distinct ways to arrange the letters of the word "MATHEMATICS" such that all vowels appear together.
+
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+To solve this, break the problem into subgoals:  
+1. Identify the vowels and consonants in "MATHEMATICS."  
+2. Treat the vowels as a single "block" since they must stay together.  
+3. Calculate the number of ways to arrange this block and the consonants.  
+4. Compute the arrangements within the vowel block.  
+5. Multiply the results to get the total number of distinct arrangements.  
+[/PLANNING]
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Identify the vowels and consonants in "MATHEMATICS."  
+How to Achieve: List all letters, then categorize them into vowels (A, E, I, O, U) and consonants (all others).  
+[/PLANNING]  
+[IMP]  
+The word "MATHEMATICS" has 11 letters: M, A, T, H, E, M, A, T, I, C, S.  
+- Vowels: A, A, E, I (4 vowels)  
+- Consonants: M, M, T, T, H, C, S (7 consonants)  
+[/IMP]
+
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+Refine the subgoals:  
+1. Treat the 4 vowels (A, A, E, I) as a single "block."  
+2. Count the total units to arrange: the vowel block + 7 consonants = 8 units.  
+3. Calculate arrangements of these 8 units, accounting for repeated consonants (M, M, T, T).  
+4. Calculate arrangements of the 4 vowels within the block, accounting for repeated vowels (A, A).  
+5. Multiply the results for the final answer.  
+[/PLANNING]
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Calculate the number of ways to arrange 8 units (vowel block + 7 consonants), accounting for repetitions.  
+How to Achieve: Use the formula for permutations of a multiset: n! / (n1! * n2! * ...), where n is the total items and n1, n2, etc., are the frequencies of repeated items. Here, total units = 8, with repetitions M (2), T (2).  
+[/PLANNING]  
+[IMP]  
+Total units to arrange = 8 (1 vowel block, M, M, T, T, H, C, S).  
+Repetitions: M appears 2 times, T appears 2 times, others (H, C, S, vowel block) appear 1 time each.  
+Number of ways to arrange the 8 units = 8! / (2! * 2!)  
+= 40,320 / (2 * 2)  
+= 40,320 / 4  
+= 10,080  
+[/IMP]
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Calculate the number of ways to arrange the 4 vowels (A, A, E, I) within the block, accounting for repetitions.  
+How to Achieve: Use the multiset permutation formula again. Here, total items = 4, with repetition A (2).  
+[/PLANNING]  
+[IMP]  
+Vowels to arrange: A, A, E, I (4 letters).  
+Repetitions: A appears 2 times, E and I appear 1 time each.  
+Number of ways to arrange the vowels = 4! / (2!)  
+= 24 / 2  
+= 12  
+[/IMP]
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Compute the total number of distinct arrangements by combining the results.  
+How to Achieve: Multiply the number of ways to arrange the 8 units by the number of ways to arrange the vowels within the block.  
+[/PLANNING]  
+[IMP]  
+Total distinct arrangements = (Ways to arrange 8 units) * (Ways to arrange vowels within the block)  
+= 10,080 * 12  
+= 120,960  
+[/IMP]
+
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find the number of distinct ways to arrange the letters of "MATHEMATICS" with vowels together.  
+  - Subgoal 1: Identify vowels and consonants. (Completed)  
+  - Subgoal 2: Treat vowels as a single block, making 8 units to arrange. (Completed)  
+  - Subgoal 3: Calculate arrangements of 8 units, accounting for repetitions. (Completed: 10,080 ways)  
+  - Subgoal 4: Calculate arrangements of 4 vowels within the block. (Completed: 12 ways)  
+  - Subgoal 5: Multiply results for the final answer. (Completed: 120,960)  
+Current Goal: Confirm the final answer aligns with all steps.  
+[/REVIEW]
+
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify the correctness of the solution.  
+How to Achieve: Check each step: vowel/consonant identification, permutation calculations for the 8 units, permutation calculations for the vowel block, and the final multiplication.  
+[/PLANNING]  
+[IMP]  
+- Step 1: Vowels (A, A, E, I) and consonants (M, M, T, T, H, C, S) correctly identified.  
+- Step 2: 8 units (vowel block, M, M, T, T, H, C, S) arranged: 8! / (2! * 2!) = 10,080. Correct.  
+- Step 3: Vowels within block (A, A, E, I) arranged: 4! / (2!) = 12. Correct.  
+- Step 4: Total = 10,080 * 12 = 120,960. Multiplication is correct.  
+The solution is valid.  
+**Final Answer:** The number of different ways to arrange the letters of "MATHEMATICS" so that the vowels always come together is 120,960.  
+[/IMP]

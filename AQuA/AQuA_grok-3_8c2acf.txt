@@ -1,0 +1,126 @@
+### Problem Restatement
+A snail is climbing a 20-foot high wall. It climbs 8 feet on odd-numbered days and slides down 4 feet on even-numbered days. We need to determine how many days it will take for the snail to reach or exceed the top of the wall (20 feet).
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to track the snail’s progress toward reaching 20 feet, considering the pattern of climbing 8 feet on odd days and sliding 4 feet on even days.
+
+- **Subgoal 1**: Model the snail’s net progress over a two-day cycle (one climb and one slide).
+- **Subgoal 2**: Calculate how many complete two-day cycles are needed for the snail to get close to or exceed 20 feet.
+- **Subgoal 3**: Determine if the final climb on an odd day is necessary to reach or exceed 20 feet.
+- **Subgoal 4**: Compute the total number of days based on the cycles and any additional day required.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to model the snail’s net progress over a two-day cycle. This will be achieved by calculating the height gained in one cycle (climb 8 feet on day 1, slide 4 feet on day 2).
+
+[IMP]
+In a two-day cycle:
+- Day 1 (odd): The snail climbs 8 feet.
+- Day 2 (even): The snail slides down 4 feet.
+- Net progress per cycle: \( 8 - 4 = 4 \) feet.
+
+Thus, each complete two-day cycle results in a net gain of 4 feet.
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate how many complete two-day cycles are needed for the snail to get close to or exceed 20 feet. This will be achieved by dividing the total height (20 feet) by the net gain per cycle (4 feet) and adjusting for the fact that the snail must reach or exceed 20 feet.
+
+[IMP]
+- The wall is 20 feet high, and each cycle contributes a net gain of 4 feet.
+- Calculate the number of cycles needed to get close to 20 feet: \( \frac{20}{4} = 5 \) cycles.
+- After 5 cycles (10 days), the snail’s height is: \( 5 \times 4 = 20 \) feet.
+- However, we need to verify the height at the end of the last even day (before the final climb) to ensure the snail hasn’t already reached the goal.
+
+Let’s compute the height after 4 cycles (8 days):
+- After 4 cycles: \( 4 \times 4 = 16 \) feet.
+- Day 9 (odd): Climb 8 feet, so height = \( 16 + 8 = 24 \) feet.
+
+Since 24 feet exceeds 20 feet, the snail reaches the top on day 9, during the climb on an odd day.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate whether the snail reaches 20 feet on day 9 and confirm no earlier day suffices. This will be achieved by tracking the snail’s height day by day up to day 9 and checking if 20 feet is reached or exceeded.
+
+[IMP]
+Let’s track the snail’s height:
+- Day 1: Climb 8 feet → 8 feet.
+- Day 2: Slide 4 feet → \( 8 - 4 = 4 \) feet.
+- Day 3: Climb 8 feet → \( 4 + 8 = 12 \) feet.
+- Day 4: Slide 4 feet → \( 12 - 4 = 8 \) feet.
+- Day 5: Climb 8 feet → \( 8 + 8 = 16 \) feet.
+- Day 6: Slide 4 feet → \( 16 - 4 = 12 \) feet.
+- Day 7: Climb 8 feet → \( 12 + 8 = 20 \) feet.
+- Day 8: Slide 4 feet → \( 20 - 4 = 16 \) feet.
+- Day 9: Climb 8 feet → \( 16 + 8 = 24 \) feet.
+
+The snail reaches 20 feet exactly at the end of day 7 (after climbing). However, on day 8, it slides back to 16 feet. On day 9, it climbs to 24 feet, exceeding 20 feet. Since the problem asks when the snail reaches the top (20 feet or higher), we check if day 7 or day 9 is the first instance:
+- At the end of day 7, the snail is at 20 feet, which is the top of the wall.
+- We interpret “reach the top” as being at or above 20 feet at the end of a day. Thus, day 7 is the first time the snail achieves this.
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Track Goals (Review)**  
+Track the hierarchy of goals and highlight the current goal.
+
+[REVIEW]
+**Goal Hierarchy**:
+- **Main Goal**: Determine the number of days for the snail to reach 20 feet.
+  - Subgoal 1: Model the snail’s net progress over a two-day cycle (completed: 4 feet per cycle).
+  - Subgoal 2: Calculate how many cycles are needed to approach or exceed 20 feet (completed: 4 cycles get to 16 feet, 5th climb reaches 24 feet).
+  - Subgoal 3: Determine if the final climb is necessary (completed: climb on day 7 reaches 20 feet, day 9 reaches 24 feet).
+  - **Current Subgoal**: Confirm the total number of days based on when the snail first reaches or exceeds 20 feet.
+
+**Current Goal**: Finalize the number of days, confirming day 7 as the answer since the snail reaches exactly 20 feet at the end of day 7.
+[/REVIEW]
+
+---
+
+### Step 6
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate if day 7 is the correct answer by ensuring no earlier day reaches 20 feet and that the problem’s interpretation of “reaching the top” aligns with being at or above 20 feet at the end of a day.
+
+[IMP]
+Recompute the height up to day 7:
+- Day 1: 8 feet.
+- Day 2: \( 8 - 4 = 4 \) feet.
+- Day 3: \( 4 + 8 = 12 \) feet.
+- Day 4: \( 12 - 4 = 8 \) feet.
+- Day 5: \( 8 + 8 = 16 \) feet.
+- Day 6: \( 16 - 4 = 12 \) feet.
+- Day 7: \( 12 + 8 = 20 \) feet.
+
+At the end of day 7, the snail is at 20 feet, which meets the condition of reaching the top. On day 8, it slides to 16 feet, so it’s no longer at the top. Since the problem doesn’t specify that the snail must stay at the top, day 7 is the first day the snail reaches 20 feet.
+
+To ensure no earlier day works:
+- Day 5: 16 feet (below 20).
+- Day 6: 12 feet (below 20).
+
+Thus, day 7 is the earliest day the snail reaches 20 feet.
+[/IMP]
+
+---
+
+### Final Answer
+The snail takes **7 days** to reach the top of the 20-foot wall.
+
+This is because the snail first reaches exactly 20 feet at the end of day 7, after climbing 8 feet from a height of 12 feet. The problem asks for the number of days to “reach the top,” which we interpret as being at or above 20 feet at the end of a day, and day 7 is the earliest such instance.
