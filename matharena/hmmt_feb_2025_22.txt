@@ -1,0 +1,748 @@
+### Problem Statement
+In a two-dimensional cave with a parallel floor and ceiling, two stalactites of lengths $16$ and $36$ hang perpendicularly from the ceiling, while two stalagmites of heights $25$ and $49$ grow perpendicularly from the ground. If the tips of these four structures form the vertices of a square in some order, compute the height of the cave.
+
+### Step 1
+[PLANNING]
+Forward Subgoaling (Planning)
+The overall goal is to compute the height of the cave.
+Subgoal 1: Represent the tips of the stalactites and stalagmites using coordinates.
+Subgoal 2: Formulate the conditions for these four points to form a square.
+Subgoal 3: Use the conditions to find the height of the cave.
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+Track Goals (Review)
+[/PLANNING]
+[REVIEW]
+Overall Goal: Compute the height of the cave.
+Subgoal 1: Represent the tips of the stalactites and stalagmites using coordinates. (Current)
+Subgoal 2: Formulate the conditions for these four points to form a square.
+Subgoal 3: Use the conditions to find the height of the cave.
+[/REVIEW]
+
+### Step 3
+[PLANNING]
+Reach Goal (Implementation)
+Current Goal: Represent the tips of the stalactites and stalagmites using coordinates.
+How to achieve it: Assume the floor is the x-axis and the left wall is the y-axis. Let the height of the cave be H. The ceiling is the line y=H. The tips of the stalactites are at some x-coordinates, and their y-coordinates are H minus their lengths. The tips of the stalagmites are at some x-coordinates, and their y-coordinates are their heights.
+[/PLANNING]
+[IMP]
+Let the height of the cave be $H$.
+The two stalactites have lengths $16$ and $36$. Their tips are at coordinates $(x_1, H-16)$ and $(x_2, H-36)$ for some $x_1$ and $x_2$.
+The two stalagmites have heights $25$ and $49$. Their tips are at coordinates $(x_3, 25)$ and $(x_4, 49)$ for some $x_3$ and $x_4$.
+Let the four points be $A=(x_1, H-16)$, $B=(x_2, H-36)$, $C=(x_3, 25)$, and $D=(x_4, 49)$. These four points form the vertices of a square in some order.
+[/IMP]
+
+### Step 4
+[PLANNING]
+Track Goals (Review)
+[/PLANNING]
+[REVIEW]
+Overall Goal: Compute the height of the cave.
+Subgoal 1: Represent the tips of the stalactites and stalagmites using coordinates. (Completed)
+Subgoal 2: Formulate the conditions for these four points to form a square. (Current)
+Subgoal 3: Use the conditions to find the height of the cave.
+[/REVIEW]
+
+### Step 5
+[PLANNING]
+Reach Goal (Implementation)
+Current Goal: Formulate the conditions for these four points to form a square.
+How to achieve it: The conditions for four points to form a square are that all four sides are equal in length and the diagonals are equal in length, or that all four sides are equal in length and two adjacent sides are perpendicular. A simpler condition is that the four points are vertices of a parallelogram, and the diagonals are equal in length, and two adjacent sides are perpendicular. Even simpler is that the four points are vertices of a rhombus, and the diagonals are equal in length. The most straightforward approach is to consider the possible pairings of the points as vertices of the square and use the property that the distance between any two adjacent vertices is the same, and the distance between opposite vertices (diagonals) is the same and $\sqrt{2}$ times the side length.
+[/PLANNING]
+[IMP]
+The four points $A, B, C, D$ are the vertices of a square in some order. Let the side length of the square be $s$.
+The distances between pairs of points must satisfy the conditions for a square. There are $4!/8 = 3$ possible ways to assign the points to the vertices of a square (up to rotation and reflection). Let's consider these cases.
+
+Case 1: The vertices are in the order A, B, C, D.
+Then $AB^2 = BC^2 = CD^2 = DA^2 = s^2$, and $AC^2 = BD^2 = (s\sqrt{2})^2 = 2s^2$.
+
+Case 2: The vertices are in the order A, C, B, D.
+Then $AC^2 = CB^2 = BD^2 = DA^2 = s^2$, and $AB^2 = CD^2 = 2s^2$.
+
+Case 3: The vertices are in the order A, B, D, C.
+Then $AB^2 = BD^2 = DC^2 = CA^2 = s^2$, and $AD^2 = BC^2 = 2s^2$.
+
+We need to calculate the squared distances between all pairs of points:
+$AB^2 = (x_1 - x_2)^2 + (H - 16 - (H - 36))^2 = (x_1 - x_2)^2 + 20^2 = (x_1 - x_2)^2 + 400$
+$AC^2 = (x_1 - x_3)^2 + (H - 16 - 25)^2 = (x_1 - x_3)^2 + (H - 41)^2$
+$AD^2 = (x_1 - x_4)^2 + (H - 16 - 49)^2 = (x_1 - x_4)^2 + (H - 65)^2$
+$BC^2 = (x_2 - x_3)^2 + (H - 36 - 25)^2 = (x_2 - x_3)^2 + (H - 61)^2$
+$BD^2 = (x_2 - x_4)^2 + (H - 36 - 49)^2 = (x_2 - x_4)^2 + (H - 85)^2$
+$CD^2 = (x_3 - x_4)^2 + (25 - 49)^2 = (x_3 - x_4)^2 + (-24)^2 = (x_3 - x_4)^2 + 576$
+
+In a square, the x and y coordinates of the vertices must alternate. That is, the two stalactite tips cannot be adjacent vertices, and the two stalagmite tips cannot be adjacent vertices. This is because if two points have the same y-coordinate difference (or x-coordinate difference) being 0, they cannot be adjacent vertices of a square unless the side length is 0. The y-coordinates of the stalactite tips are $H-16$ and $H-36$, and the y-coordinates of the stalagmite tips are $25$ and $49$.
+
+This means that the vertices must alternate between a stalactite tip and a stalagmite tip. The possible pairings of points for adjacent vertices are (A, C), (A, D), (B, C), (B, D). This eliminates Case 1 and Case 3 from the distance calculations above as possibilities for the side lengths. The side lengths must be between a stalactite tip and a stalagmite tip.
+
+The possible side lengths squared are $AC^2$, $AD^2$, $BC^2$, $BD^2$. The diagonal lengths squared are $AB^2$ and $CD^2$.
+For the points to form a square, the side lengths must be equal, and the diagonals must be equal and $\sqrt{2}$ times the side length.
+This means the set of side lengths squared must be equal, and the set of diagonal lengths squared must be equal and twice the side length squared.
+The side lengths must be between a stalactite and a stalagmite.
+The possible side lengths (squared) are: $(x_1 - x_3)^2 + (H - 41)^2$, $(x_1 - x_4)^2 + (H - 65)^2$, $(x_2 - x_3)^2 + (H - 61)^2$, $(x_2 - x_4)^2 + (H - 85)^2$.
+The possible diagonal lengths (squared) are: $(x_1 - x_2)^2 + 400$ and $(x_3 - x_4)^2 + 576$.
+
+For the points to form a square, the four side lengths squared must be equal, and the two diagonal lengths squared must be equal and twice the side length squared.
+This implies that the four expressions for squared side lengths must be equal to $s^2$, and the two expressions for squared diagonal lengths must be equal to $2s^2$.
+
+From the observation about alternating stalactite and stalagmite tips, the vertices of the square must alternate between a stalactite tip and a stalagmite tip. The possible pairings of opposite vertices are (A, B) and (C, D), or (A, C) and (B, D), or (A, D) and (B, C).
+
+If (A, B) and (C, D) are pairs of opposite vertices, then AB and CD are diagonals.
+$AB^2 = 2s^2$ and $CD^2 = 2s^2$.
+The side lengths squared are $AC^2 = s^2$, $AD^2 = s^2$, $BC^2 = s^2$, $BD^2 = s^2$.
+This means $(x_1 - x_3)^2 + (H - 41)^2 = (x_1 - x_4)^2 + (H - 65)^2 = (x_2 - x_3)^2 + (H - 61)^2 = (x_2 - x_4)^2 + (H - 85)^2 = s^2$.
+And $(x_1 - x_2)^2 + 400 = (x_3 - x_4)^2 + 576 = 2s^2$.
+
+If (A, C) and (B, D) are pairs of opposite vertices, then AC and BD are diagonals.
+$AC^2 = 2s^2$ and $BD^2 = 2s^2$.
+The side lengths squared are $AB^2 = s^2$, $AD^2 = s^2$, $CB^2 = s^2$, $CD^2 = s^2$.
+This implies that a stalactite tip and a stalagmite tip are opposite vertices. This is impossible in a square formed by these four points because the y-coordinates of opposite vertices would have a specific relationship based on the side length and orientation.
+
+If (A, D) and (B, C) are pairs of opposite vertices, then AD and BC are diagonals.
+$AD^2 = 2s^2$ and $BC^2 = 2s^2$.
+The side lengths squared are $AB^2 = s^2$, $AC^2 = s^2$, $DB^2 = s^2$, $DC^2 = s^2$.
+This also implies that a stalactite tip and a stalagmite tip are opposite vertices, which is not possible.
+
+Therefore, the only possibility for the diagonals is that one diagonal connects the two stalactite tips and the other diagonal connects the two stalagmite tips.
+So, the pairs of opposite vertices are (A, B) and (C, D).
+$AB^2 = CD^2 = 2s^2$.
+$(x_1 - x_2)^2 + 400 = (x_3 - x_4)^2 + 576 = 2s^2$.
+The sides of the square connect a stalactite tip to a stalagmite tip.
+The side lengths squared are $AC^2$, $AD^2$, $BC^2$, $BD^2$.
+These must all be equal to $s^2$.
+$(x_1 - x_3)^2 + (H - 41)^2 = s^2$
+$(x_1 - x_4)^2 + (H - 65)^2 = s^2$
+$(x_2 - x_3)^2 + (H - 61)^2 = s^2$
+$(x_2 - x_4)^2 + (H - 85)^2 = s^2$
+
+Also, the diagonals are perpendicular bisectors of each other. The midpoint of AB must be the same as the midpoint of CD.
+Midpoint of AB: $(\frac{x_1 + x_2}{2}, \frac{H - 16 + H - 36}{2}) = (\frac{x_1 + x_2}{2}, \frac{2H - 52}{2}) = (\frac{x_1 + x_2}{2}, H - 26)$
+Midpoint of CD: $(\frac{x_3 + x_4}{2}, \frac{25 + 49}{2}) = (\frac{x_3 + x_4}{2}, \frac{74}{2}) = (\frac{x_3 + x_4}{2}, 37)$
+So, $H - 26 = 37$, which gives $H = 37 + 26 = 63$.
+And $\frac{x_1 + x_2}{2} = \frac{x_3 + x_4}{2}$, which means $x_1 + x_2 = x_3 + x_4$.
+
+Let's check if this value of H allows the formation of a square.
+If $H = 63$, the y-coordinates of the tips are:
+Stalactites: $63 - 16 = 47$, $63 - 36 = 27$. Points A and B have y-coordinates 47 and 27.
+Stalagmites: $25$, $49$. Points C and D have y-coordinates 25 and 49.
+
+The y-coordinates of the four points are $47, 27, 25, 49$.
+Since AB and CD are diagonals, A and B must be opposite vertices, and C and D must be opposite vertices. This is consistent with our finding that the diagonals connect the two stalactite tips and the two stalagmite tips.
+
+The vertices of the square in order must alternate between a stalactite tip and a stalagmite tip. Let the order be A, C, B, D.
+Then AC and BD are diagonals. This contradicts our finding that AB and CD are diagonals.
+
+Let the order of vertices be A, C, D, B.
+AC and DB are diagonals.
+The side lengths are AC, CD, DB, BA.
+$AC^2$, $CD^2$, $DB^2$, $BA^2$.
+Diagonals are $AD^2$ and $CB^2$.
+
+Let's reconsider the possible orderings of the points as vertices of a square. Let the vertices be $V_1, V_2, V_3, V_4$ in counterclockwise order.
+The y-coordinates of the points are $H-16, H-36, 25, 49$.
+
+Possibility 1: The two stalactite tips are opposite vertices, and the two stalagmite tips are opposite vertices. Let A and B be opposite, and C and D be opposite.
+Let the vertices be A, C, B, D. Then AC, CB, BD, DA are sides and AB, CD are diagonals.
+$AC^2 = (x_1 - x_3)^2 + (H - 41)^2$
+$CB^2 = (x_3 - x_2)^2 + (25 - (H - 36))^2 = (x_3 - x_2)^2 + (61 - H)^2$
+$BD^2 = (x_2 - x_4)^2 + (H - 36 - 49)^2 = (x_2 - x_4)^2 + (H - 85)^2$
+$DA^2 = (x_4 - x_1)^2 + (49 - (H - 16))^2 = (x_4 - x_1)^2 + (65 - H)^2$
+$AB^2 = (x_1 - x_2)^2 + 400$
+$CD^2 = (x_3 - x_4)^2 + 576$
+
+For this to be a square, $AC^2 = CB^2 = BD^2 = DA^2 = s^2$ and $AB^2 = CD^2 = 2s^2$.
+From the y-coordinates of the vertices of a square, the difference in y-coordinates between adjacent vertices must be consistent (up to sign).
+Consider the y-coordinates: $y_A = H-16$, $y_B = H-36$, $y_C = 25$, $y_D = 49$.
+If the vertices are A, C, B, D, the y-coordinate differences between adjacent vertices are:
+$y_C - y_A = 25 - (H - 16) = 41 - H$
+$y_B - y_C = H - 36 - 25 = H - 61$
+$y_D - y_B = 49 - (H - 36) = 85 - H$
+$y_A - y_D = H - 16 - 49 = H - 65$
+For these to be the y-differences of a square, the absolute values must be equal, and they must alternate in sign for a consistent orientation. The sum of the y-differences must be 0. $(41 - H) + (H - 61) + (85 - H) + (H - 65) = 41 - 61 + 85 - 65 = -20 + 20 = 0$.
+
+The x-coordinate differences between adjacent vertices must also be consistent (up to sign).
+Let the x-coordinates be $x_A, x_C, x_B, x_D$.
+$x_C - x_A$, $x_B - x_C$, $x_D - x_B$, $x_A - x_D$.
+The sum of the x-differences must be 0. $(x_C - x_A) + (x_B - x_C) + (x_D - x_B) + (x_A - x_D) = 0$.
+
+For a square, the vector from one vertex to the next is rotated by 90 degrees.
+Let $\vec{AC} = (x_C - x_A, y_C - y_A) = (x_C - x_A, 41 - H)$
+$\vec{CB} = (x_B - x_C, y_B - y_C) = (x_B - x_C, H - 61)$
+$\vec{BD} = (x_D - x_B, y_D - y_B) = (x_D - x_B, 85 - H)$
+$\vec{DA} = (x_A - x_D, y_A - y_D) = (x_A - x_D, H - 65)$
+
+For AC to be perpendicular to CB, the dot product is 0:
+$(x_C - x_A)(x_B - x_C) + (41 - H)(H - 61) = 0$.
+Also, the lengths must be equal: $AC^2 = CB^2$.
+$(x_C - x_A)^2 + (41 - H)^2 = (x_B - x_C)^2 + (H - 61)^2$.
+
+If A, C, B, D form a square, then the vector $\vec{AC}$ rotated by 90 degrees is $\vec{CB}$ (or $\vec{DA}$).
+If rotated by 90 degrees counterclockwise, $(a, b)$ becomes $(-b, a)$. If rotated by 90 degrees clockwise, $(a, b)$ becomes $(b, -a)$.
+Case 2a: $\vec{CB}$ is $\vec{AC}$ rotated by 90 degrees.
+$x_B - x_C = -(41 - H) = H - 41$
+$H - 61 = x_C - x_A$
+
+Case 2b: $\vec{CB}$ is $\vec{AC}$ rotated by -90 degrees.
+$x_B - x_C = 41 - H$
+$H - 61 = -(x_C - x_A) = x_A - x_C$
+
+Let's consider the y-coordinates again: $y_A = H-16, y_B = H-36, y_C = 25, y_D = 49$.
+In a square, the y-coordinates of the four vertices, when sorted, will have differences between consecutive values related to the side length and orientation.
+
+Consider the case where the sides of the square are parallel to the x and y axes. This is not possible as the y-coordinates are not constant.
+
+Consider the case where the diagonals are horizontal and vertical.
+This means the y-coordinates of A and B are the same, which is false unless $16=36$.
+This means the y-coordinates of C and D are the same, which is false unless $25=49$.
+
+Let's use the property that the sum of the squares of the distances from any point to the vertices of a square is related to the side length.
+
+Consider the center of the square. The center is equidistant from all four vertices.
+Let the center be $(x_0, y_0)$.
+$(x_1 - x_0)^2 + (H - 16 - y_0)^2 = (x_2 - x_0)^2 + (H - 36 - y_0)^2 = (x_3 - x_0)^2 + (25 - y_0)^2 = (x_4 - x_0)^2 + (49 - y_0)^2 = r^2$, where $r$ is the distance from the center to a vertex.
+
+From the midpoint of the diagonals being the center:
+$x_0 = \frac{x_1 + x_2}{2} = \frac{x_3 + x_4}{2}$
+$y_0 = \frac{H - 16 + H - 36}{2} = H - 26$
+$y_0 = \frac{25 + 49}{2} = 37$
+This gives $H - 26 = 37$, so $H = 63$.
+
+Now we need to check if a square can be formed with $H = 63$.
+The y-coordinates are $47, 27, 25, 49$.
+Let the points be $P_1, P_2, P_3, P_4$ with y-coordinates $25, 27, 47, 49$.
+Let the corresponding x-coordinates be $x_{25}, x_{27}, x_{47}, x_{49}$.
+These four points form a square.
+
+The possible y-differences between pairs of points are:
+$27 - 25 = 2$
+$47 - 25 = 22$
+$49 - 25 = 24$
+$47 - 27 = 20$
+$49 - 27 = 22$
+$49 - 47 = 2$
+
+In a square, the differences in y-coordinates between vertices can take on values related to the side length and the angle of the sides with the x-axis.
+Let the side length of the square be $s$, and let the angle of one side with the x-axis be $\theta$.
+The differences in x and y coordinates between adjacent vertices are $(s \cos \theta, s \sin \theta)$ and $(-s \sin \theta, s \cos \theta)$.
+The differences in x and y coordinates between opposite vertices are $(2s \cos \theta, 2s \sin \theta)$ and $(-2s \sin \theta, 2s \cos \theta)$.
+
+Consider the y-coordinates of the four points $y_1, y_2, y_3, y_4$.
+Let the sorted y-coordinates be $y_{(1)} \le y_{(2)} \le y_{(3)} \le y_{(4)}$.
+For our points with $H=63$, the sorted y-coordinates are $25, 27, 47, 49$.
+The differences between these sorted y-coordinates are $2, 20, 22$.
+
+Let the vertices of the square be $(X_1, Y_1), (X_2, Y_2), (X_3, Y_3), (X_4, Y_4)$ in counterclockwise order.
+$Y_2 - Y_1$, $Y_3 - Y_2$, $Y_4 - Y_3$, $Y_1 - Y_4$.
+These are $s \sin \theta$, $s \cos \theta$, $-s \sin \theta$, $-s \cos \theta$ (or other combinations depending on the starting point and orientation).
+The absolute values of the y-differences between adjacent vertices are $|s \sin \theta|$ and $|s \cos \theta|$.
+
+The y-differences between opposite vertices are $Y_3 - Y_1$ and $Y_4 - Y_2$.
+These are $s \sin \theta + s \cos \theta$ and $s \cos \theta - s \sin \theta$ (up to sign and order).
+The absolute values of the y-differences between opposite vertices are $|s(\sin \theta + \cos \theta)|$ and $|s(\cos \theta - \sin \theta)|$.
+Also, $(Y_3 - Y_1)^2 + (X_3 - X_1)^2 = (2s)^2 = 4s^2$.
+
+Let the y-coordinates of the four points of the square be $y_a, y_b, y_c, y_d$.
+The possible non-zero differences in y-coordinates between pairs of points are $|y_i - y_j|$.
+These differences must correspond to the y-differences between vertices of a square.
+The possible y-differences between vertices of a square are $0, |s \sin \theta|, |s \cos \theta|, |s (\sin \theta + \cos \theta)|, |s (\cos \theta - \sin \theta)|$.
+
+With $H=63$, the y-coordinates are $25, 27, 47, 49$.
+The non-zero differences are $2, 20, 22, 24, 47-25=22, 49-27=22, 49-25=24, 47-27=20$.
+The unique non-zero differences are $2, 20, 22, 24$.
+
+If the vertices are ordered such that the y-coordinates are $y_1, y_2, y_3, y_4$, the differences in y between adjacent vertices can be two values (up to sign).
+For example, $y_2 - y_1 = \Delta y_1$, $y_3 - y_2 = \Delta y_2$, $y_4 - y_3 = \Delta y_3$, $y_1 - y_4 = \Delta y_4$.
+In a square, $|\Delta y_1| = |\Delta y_3|$ and $|\Delta y_2| = |\Delta y_4|$, and $|\Delta y_1| \ne |\Delta y_2|$ unless the sides are parallel to the axes.
+
+Let the four y-coordinates be $y_{(1)} \le y_{(2)} \le y_{(3)} \le y_{(4)}$.
+The differences between adjacent sorted y-coordinates are $y_{(2)} - y_{(1)}$, $y_{(3)} - y_{(2)}$, $y_{(4)} - y_{(3)}$.
+For $25, 27, 47, 49$, these are $2, 20, 2$.
+This suggests that the y-coordinates of adjacent vertices have differences $2$ and $20$ (up to sign).
+So, $|s \sin \theta|$ and $|s \cos \theta|$ are $2$ and $20$.
+$s^2 \sin^2 \theta = 4$ and $s^2 \cos^2 \theta = 400$.
+$s^2 (\sin^2 \theta + \cos^2 \theta) = s^2 = 4 + 400 = 404$.
+The side length squared of the square is 404.
+
+The y-differences between opposite vertices are $|s(\sin \theta + \cos \theta)|$ and $|s(\cos \theta - \sin \theta)|$.
+$s^2 (\sin \theta + \cos \theta)^2 = s^2 (\sin^2 \theta + \cos^2 \theta + 2 \sin \theta \cos \theta) = s^2 (1 + 2 \sin \theta \cos \theta) = 404 + 2 s^2 \sin \theta \cos \theta$.
+$s^2 (\cos \theta - \sin \theta)^2 = s^2 (\cos^2 \theta + \sin^2 \theta - 2 \sin \theta \cos \theta) = s^2 (1 - 2 \sin \theta \cos \theta) = 404 - 2 s^2 \sin \theta \cos \theta$.
+
+The y-coordinates of the four points are $25, 27, 47, 49$.
+The differences between y-coordinates of opposite vertices are $y_{(3)} - y_{(1)} = 47 - 25 = 22$ and $y_{(4)} - y_{(2)} = 49 - 27 = 22$.
+So, the absolute values of the y-differences between opposite vertices are both 22.
+$|s(\sin \theta + \cos \theta)| = 22$ and $|s(\cos \theta - \sin \theta)| = 22$.
+$s^2 (\sin \theta + \cos \theta)^2 = 484$
+$s^2 (\cos \theta - \sin \theta)^2 = 484$
+$s^2 (1 + 2 \sin \theta \cos \theta) = 484$
+$s^2 (1 - 2 \sin \theta \cos \theta) = 484$
+This implies $2 s^2 \sin \theta \cos \theta = 0$, so $\sin \theta \cos \theta = 0$.
+This means $\theta = 0$ or $\theta = \pi/2$.
+If $\theta = 0$, the sides are horizontal and vertical, which is not possible as the y-coordinates are different.
+
+Let's rethink the y-coordinate differences.
+The y-coordinates of the vertices of a square can be arranged in different orders.
+Consider the y-coordinates $y_1, y_2, y_3, y_4$.
+The differences in y-coordinates between pairs of vertices are $y_i - y_j$.
+If these points form a square, the set of absolute differences $|y_i - y_j|$ will contain values related to $s |\sin \theta|$, $s |\cos \theta|$, $s |\sin \theta + \cos \theta|$, $s |\cos \theta - \sin \theta|$, and $0$.
+
+With $H=63$, the y-coordinates are $25, 27, 47, 49$.
+The absolute differences are $2, 20, 22, 24$.
+
+Consider the case where the y-coordinates of adjacent vertices have differences $\pm a$ and $\pm b$.
+Then $|s \sin \theta| = a$ and $|s \cos \theta| = b$ (or vice versa).
+The y-differences between opposite vertices are $\pm (a+b)$ and $\pm (a-b)$.
+The absolute values are $|a+b|$ and $|a-b|$.
+
+From the y-coordinates $25, 27, 47, 49$, the differences between adjacent sorted values are $2, 20, 2$.
+This suggests that the y-differences between adjacent vertices are $\pm 2$ and $\pm 20$.
+So, $a=2$ and $b=20$.
+The absolute y-differences between opposite vertices should be $|2+20| = 22$ and $|2-20| = 18$.
+However, the y-differences between opposite vertices are $47-25 = 22$ and $49-27 = 22$.
+This matches 22, but not 18.
+
+This means that the assumption about the sorted y-coordinates directly corresponding to adjacent vertices is incorrect. The points can be in any order around the square.
+
+The absolute differences in y-coordinates between pairs of points are $2, 20, 22, 24$.
+These values must be among the set $\{|s \sin \theta|, |s \cos \theta|, |s (\sin \theta + \cos \theta)|, |s (\cos \theta - \sin \theta)|\}$.
+
+Consider the case where the y-coordinates of adjacent vertices are $y_1, y_2, y_3, y_4$.
+The differences are $y_2 - y_1, y_3 - y_2, y_4 - y_3, y_1 - y_4$.
+Let these differences be $\delta_1, \delta_2, \delta_3, \delta_4$.
+In a square, $\delta_1 = -\delta_3$ and $\delta_2 = -\delta_4$, and $|\delta_1|$ and $|\delta_2|$ are $|s \sin \theta|$ and $|s \cos \theta|$.
+
+The y-coordinates are $H-16, H-36, 25, 49$.
+Consider the possible pairings of points for adjacent vertices.
+Pair (A, C): y-difference $25 - (H-16) = 41 - H$.
+Pair (A, D): y-difference $49 - (H-16) = 65 - H$.
+Pair (B, C): y-difference $25 - (H-36) = 61 - H$.
+Pair (B, D): y-difference $49 - (H-36) = 85 - H$.
+
+If A and C are adjacent, and C and B are adjacent, B and D are adjacent, D and A are adjacent, the y-differences are $41-H, 61-H, 85-H, 16-H-49 = -33-H$. This does not look right.
+
+Let the y-coordinates of the vertices of the square be $y_{v1}, y_{v2}, y_{v3}, y_{v4}$.
+The set of y-coordinates is $\{H-16, H-36, 25, 49\}$.
+The y-differences between adjacent vertices are $y_{v2} - y_{v1}$ and $y_{v3} - y_{v2}$.
+Let these be $d_y1$ and $d_y2$.
+The y-differences between opposite vertices are $y_{v3} - y_{v1}$ and $y_{v4} - y_{v2}$.
+These are $d_{y1} + d_{y2}$ and $d_{y2} - d_{y4}$ (where $y_{v4} - y_{v3} = d_{y3}$ and $y_{v1} - y_{v4} = d_{y4}$).
+In a square, $d_{y1} = -d_{y3}$ and $d_{y2} = -d_{y4}$.
+So, the y-differences between opposite vertices are $d_{y1} + d_{y2}$ and $d_{y2} - (-d_{y1}) = d_{y1} + d_{y2}$.
+This is incorrect.
+
+Let the vertices be $(x_1, y_1), (x_2, y_2), (x_3, y_3), (x_4, y_4)$.
+$y_2 - y_1 = s \sin \theta$
+$y_3 - y_2 = s \cos \theta$
+$y_4 - y_3 = -s \sin \theta$
+$y_1 - y_4 = -s \cos \theta$
+
+The set of y-coordinates is $\{H-16, H-36, 25, 49\}$.
+The differences between pairs of these y-coordinates must be expressible in terms of $s \sin \theta$ and $s \cos \theta$.
+The non-zero differences are $|(H-16) - (H-36)| = 20$.
+$|H-16 - 25| = |H-41|$.
+$|H-16 - 49| = |H-65|$.
+$|H-36 - 25| = |H-61|$.
+$|H-36 - 49| = |H-85|$.
+$|25 - 49| = 24$.
+
+These absolute differences must be from the set $\{|s \sin \theta|, |s \cos \theta|, |s \sin \theta + s \cos \theta|, |s \sin \theta - s \cos \theta|\}$.
+The values $20$ and $24$ are fixed differences between the y-coordinates of the two stalactite tips and the two stalagmite tips.
+
+Case A: The two stalactite tips are adjacent vertices, and the two stalagmite tips are adjacent vertices. This is not possible in a square.
+
+Case B: The two stalactite tips are opposite vertices, and the two stalagmite tips are opposite vertices.
+The distance between the two stalactite tips is a diagonal of the square.
+The distance between the two stalagmite tips is a diagonal of the square.
+The square of the distance between the stalactite tips is $(x_1 - x_2)^2 + (H - 16 - (H - 36))^2 = (x_1 - x_2)^2 + 20^2$.
+The square of the distance between the stalagmite tips is $(x_3 - x_4)^2 + (25 - 49)^2 = (x_3 - x_4)^2 + (-24)^2$.
+These are the squares of the diagonals, so they must be equal.
+$(x_1 - x_2)^2 + 400 = (x_3 - x_4)^2 + 576$.
+This implies $(x_1 - x_2)^2 - (x_3 - x_4)^2 = 176$.
+
+The side length squared of the square is $s^2$. The diagonal squared is $2s^2$.
+$2s^2 = (x_1 - x_2)^2 + 400$
+$2s^2 = (x_3 - x_4)^2 + 576$
+
+The side lengths of the square connect a stalactite tip to a stalagmite tip.
+The side length squared is $s^2$.
+$s^2 = (x_i - x_j)^2 + (y_i - y_j)^2$, where one point is a stalactite tip and the other is a stalagmite tip.
+The possible squared side lengths are:
+$(x_1 - x_3)^2 + (H - 41)^2$
+$(x_1 - x_4)^2 + (H - 65)^2$
+$(x_2 - x_3)^2 + (H - 61)^2$
+$(x_2 - x_4)^2 + (H - 85)^2$
+These four values must be equal to $s^2$.
+
+Consider the y-coordinates again: $H-16, H-36, 25, 49$.
+If the vertices of the square alternate between stalactite and stalagmite tips, the y-coordinates of adjacent vertices are from different groups.
+The differences in y-coordinates between adjacent vertices can be $H-16 - 25 = H-41$, $H-16 - 49 = H-65$, $H-36 - 25 = H-61$, $H-36 - 49 = H-85$, and their negatives.
+
+The differences in y-coordinates between opposite vertices are the differences between the y-coordinates of the two stalactite tips, and the differences between the y-coordinates of the two stalagmite tips.
+The y-difference between the stalactite tips is $(H-16) - (H-36) = 20$.
+The y-difference between the stalagmite tips is $49 - 25 = 24$.
+
+If the stalactite tips are opposite vertices, the y-difference is 20. If the stalagmite tips are opposite vertices, the y-difference is 24.
+In a square, the y-difference between opposite vertices depends on the orientation.
+Let the vertices be $(x_0, y_0), (x_0 + s \cos \theta, y_0 + s \sin \theta), (x_0 + s (\cos \theta - \sin \theta), y_0 + s (\sin \theta + \cos \theta)), (x_0 - s \sin \theta, y_0 + s \cos \theta)$.
+The y-coordinates are $y_0, y_0 + s \sin \theta, y_0 + s (\sin \theta + \cos \theta), y_0 + s \cos \theta$.
+The y-difference between the first and third vertex is $s (\sin \theta + \cos \theta)$.
+The y-difference between the second and fourth vertex is $s \sin \theta - s \cos \theta$.
+
+So, the absolute values of the y-differences between opposite vertices are $|s (\sin \theta + \cos \theta)|$ and $|s (\sin \theta - \cos \theta)|$.
+These must be equal to the absolute differences between the y-coordinates of the pairs of opposite vertices.
+
+Case 1: Stalactite tips are opposite, stalagmite tips are opposite.
+$|s (\sin \theta + \cos \theta)| = 20$
+$|s (\sin \theta - \cos \theta)| = 24$
+$s^2 (\sin \theta + \cos \theta)^2 = s^2 (1 + 2 \sin \theta \cos \theta) = 400$.
+$s^2 (\sin \theta - \cos \theta)^2 = s^2 (1 - 2 \sin \theta \cos \theta) = 576$.
+Adding the two equations: $2s^2 = 976$, so $s^2 = 488$.
+Subtracting the second from the first: $4s^2 \sin \theta \cos \theta = 400 - 576 = -176$.
+$s^2 \sin \theta \cos \theta = -44$.
+$488 \sin \theta \cos \theta = -44$.
+$\sin \theta \cos \theta = -\frac{44}{488} = -\frac{11}{122}$.
+$2 \sin \theta \cos \theta = -\frac{22}{122} = -\frac{11}{61}$.
+Check if $s^2 (1 + 2 \sin \theta \cos \theta) = 488 (1 - \frac{11}{61}) = 488 (\frac{61 - 11}{61}) = 488 \frac{50}{61} = 8 \times 50 = 400$. This matches.
+Check if $s^2 (1 - 2 \sin \theta \cos \theta) = 488 (1 + \frac{11}{61}) = 488 (\frac{61 + 11}{61}) = 488 \frac{72}{61} = 8 \times 72 = 576$. This matches.
+
+So, it is possible to form a square where the stalactite tips are opposite and the stalagmite tips are opposite.
+In this case, the y-coordinates of the stalactite tips are $H-16$ and $H-36$. The y-difference is 20.
+The y-coordinates of the stalagmite tips are 25 and 49. The y-difference is 24.
+The y-differences between opposite vertices are 20 and 24.
+This corresponds to $|s(\sin \theta + \cos \theta)|$ and $|s(\sin \theta - \cos \theta)|$.
+
+The side length squared is $s^2 = 488$.
+The diagonal length squared is $2s^2 = 976$.
+
+The y-coordinates of the four vertices are $H-16, H-36, 25, 49$.
+Let the vertices be $V_1, V_2, V_3, V_4$.
+If A and B are opposite, and C and D are opposite, the y-coordinates of opposite vertices are $(H-16, H-36)$ and $(25, 49)$.
+The difference in y-coordinates between the first pair is $H-16 - (H-36) = 20$.
+The difference in y-coordinates between the second pair is $49 - 25 = 24$.
+These must be the y-differences between opposite vertices of a square.
+
+Consider a square with vertices $(0, 0), (s, 0), (s, s), (0, s)$. The y-differences between opposite vertices are $s-0=s$ and $s-0=s$.
+Consider a square with vertices $(0, 0), (s \cos \theta, s \sin \theta), (s (\cos \theta - \sin \theta), s (\sin \theta + \cos \theta)), (-s \sin \theta, s \cos \theta)$.
+The y-differences between opposite vertices are $s (\sin \theta + \cos \theta)$ and $s \cos \theta - s \sin \theta$.
+
+The absolute values of the y-differences between opposite vertices are $|s(\sin \theta + \cos \theta)|$ and $|s(\sin \theta - \cos \theta)|$.
+These must be equal to 20 and 24 in some order.
+
+Possibility 1: $|s(\sin \theta + \cos \theta)| = 20$ and $|s(\sin \theta - \cos \theta)| = 24$.
+This led to $s^2 = 488$.
+
+Possibility 2: $|s(\sin \theta + \cos \theta)| = 24$ and $|s(\sin \theta - \cos \theta)| = 20$.
+$s^2 (1 + 2 \sin \theta \cos \theta) = 24^2 = 576$.
+$s^2 (1 - 2 \sin \theta \cos \theta) = 20^2 = 400$.
+Adding: $2s^2 = 976$, $s^2 = 488$.
+Subtracting: $4s^2 \sin \theta \cos \theta = 576 - 400 = 176$.
+$s^2 \sin \theta \cos \theta = 44$.
+$488 \sin \theta \cos \theta = 44$.
+$\sin \theta \cos \theta = \frac{44}{488} = \frac{11}{122}$.
+$2 \sin \theta \cos \theta = \frac{11}{61}$.
+Check if $s^2 (1 + 2 \sin \theta \cos \theta) = 488 (1 + \frac{11}{61}) = 488 (\frac{61 + 11}{61}) = 488 \frac{72}{61} = 8 \times 72 = 576$. This matches.
+Check if $s^2 (1 - 2 \sin \theta \cos \theta) = 488 (1 - \frac{11}{61}) = 488 (\frac{61 - 11}{61}) = 488 \frac{50}{61} = 8 \times 50 = 400$. This matches.
+
+So, the side length squared of the square is 488.
+The diagonal length squared is $2s^2 = 976$.
+
+Now consider the case where a stalactite tip and a stalagmite tip are opposite vertices.
+Let A and C be opposite vertices.
+The y-difference is $|(H-16) - 25| = |H-41|$.
+Let B and D be opposite vertices.
+The y-difference is $|(H-36) - 49| = |H-85|$.
+These must be the absolute y-differences between opposite vertices of a square.
+So, $\{|H-41|, |H-85|\} = \{|s(\sin \theta + \cos \theta)|, |s(\sin \theta - \cos \theta)|\}$.
+
+The square of the distance between A and C is $(x_1 - x_3)^2 + (H - 41)^2$. This is a diagonal, so it equals $2s^2$.
+The square of the distance between B and D is $(x_2 - x_4)^2 + (H - 85)^2$. This is a diagonal, so it equals $2s^2$.
+$(x_1 - x_3)^2 + (H - 41)^2 = (x_2 - x_4)^2 + (H - 85)^2 = 2s^2$.
+
+The side lengths connect a stalactite tip to a stalagmite tip (not the opposite one).
+The side length squared is $s^2$.
+Example side: A to D. $AD^2 = (x_1 - x_4)^2 + (H - 65)^2 = s^2$.
+Example side: C to B. $CB^2 = (x_3 - x_2)^2 + (25 - (H - 36))^2 = (x_3 - x_2)^2 + (61 - H)^2 = s^2$.
+
+If A and C are opposite, and B and D are opposite, the diagonals are AC and BD.
+The midpoints must coincide:
+Midpoint of AC: $(\frac{x_1 + x_3}{2}, \frac{H - 16 + 25}{2}) = (\frac{x_1 + x_3}{2}, \frac{H + 9}{2})$
+Midpoint of BD: $(\frac{x_2 + x_4}{2}, \frac{H - 36 + 49}{2}) = (\frac{x_2 + x_4}{2}, \frac{H + 13}{2})$
+So, $\frac{H + 9}{2} = \frac{H + 13}{2}$, which means $H + 9 = H + 13$, leading to $9 = 13$, a contradiction.
+This means that a stalactite tip and a stalagmite tip cannot be opposite vertices.
+
+Therefore, the only possibility is that the two stalactite tips are opposite vertices, and the two stalagmite tips are opposite vertices.
+The diagonal length squared is 976.
+The side length squared is 488.
+
+The y-coordinates of the four points are $H-16, H-36, 25, 49$.
+The y-differences between opposite vertices are 20 and 24.
+These must satisfy $|s(\sin \theta + \cos \theta)|$ and $|s(\sin \theta - \cos \theta)|$.
+We found $s^2 = 488$.
+$| \sqrt{488} (\sin \theta + \cos \theta) | = \sqrt{488} |\sin \theta + \cos \theta| = 20$ or 24.
+$| \sqrt{488} (\sin \theta - \cos \theta) | = \sqrt{488} |\sin \theta - \cos \theta| = 24$ or 20.
+
+From $s^2 (1 + 2 \sin \theta \cos \theta) = 400$ and $s^2 (1 - 2 \sin \theta \cos \theta) = 576$, we got $s^2 = 488$.
+From $s^2 (1 + 2 \sin \theta \cos \theta) = 576$ and $s^2 (1 - 2 \sin \theta \cos \theta) = 400$, we got $s^2 = 488$.
+
+Now we need to use the y-coordinates of the points.
+The y-coordinates of the vertices of the square are a permutation of $\{H-16, H-36, 25, 49\}$.
+Let the vertices be $V_1, V_2, V_3, V_4$ in counterclockwise order with y-coordinates $y_1, y_2, y_3, y_4$.
+$\{y_1, y_2, y_3, y_4\} = \{H-16, H-36, 25, 49\}$.
+The y-differences between opposite vertices are $y_3 - y_1$ and $y_4 - y_2$.
+Their absolute values are $|s(\sin \theta + \cos \theta)|$ and $|s(\sin \theta - \cos \theta)|$.
+
+If A and B are opposite, and C and D are opposite, the y-coordinates of opposite pairs are $(H-16, H-36)$ and $(25, 49)$.
+The y-differences are $H-16 - (H-36) = 20$ and $49 - 25 = 24$.
+So, $\{|s(\sin \theta + \cos \theta)|, |s(\sin \theta - \cos \theta)|\} = \{20, 24\}$.
+This is consistent with our $s^2 = 488$.
+
+Now consider the y-coordinates of the four points in order around the square.
+Let the y-coordinates be $y_{v1}, y_{v2}, y_{v3}, y_{v4}$.
+The differences between adjacent y-coordinates are $y_{v2} - y_{v1}$, $y_{v3} - y_{v2}$, $y_{v4} - y_{v3}$, $y_{v1} - y_{v4}$.
+These are $s \sin \theta, s \cos \theta, -s \sin \theta, -s \cos \theta$ (in some order and with possible sign changes based on orientation).
+The set of absolute differences between adjacent y-coordinates is $\{|s \sin \theta|, |s \cos \theta|\}$.
+
+The y-coordinates are $H-16, H-36, 25, 49$.
+The possible y-differences between a stalactite tip and a stalagmite tip are:
+$|H-16 - 25| = |H-41|$
+$|H-16 - 49| = |H-65|$
+$|H-36 - 25| = |H-61|$
+$|H-36 - 49| = |H-85|$
+
+These four values must be equal to the side length times $|\sin \theta|$ or $|\cos \theta|$.
+So, the set $\{|H-41|, |H-65|, |H-61|, |H-85|\}$ must contain two values, each appearing twice.
+These two values are $|s \sin \theta|$ and $|s \cos \theta|$.
+
+We know $s^2 = 488$ and $2 s^2 \sin \theta \cos \theta = \pm 176$.
+$s^2 (2 \sin \theta \cos \theta) = \pm 176$.
+$488 (2 \sin \theta \cos \theta) = \pm 176$.
+$2 \sin \theta \cos \theta = \pm \frac{176}{488} = \pm \frac{44}{122} = \pm \frac{22}{61}$.
+$\sin \theta \cos \theta = \pm \frac{11}{61}$.
+
+$(\sin \theta + \cos \theta)^2 = 1 + 2 \sin \theta \cos \theta$.
+$(\sin \theta - \cos \theta)^2 = 1 - 2 \sin \theta \cos \theta$.
+$s^2 (\sin \theta + \cos \theta)^2 = 488 (1 \pm \frac{22}{61})$.
+$s^2 (\sin \theta - \cos \theta)^2 = 488 (1 \mp \frac{22}{61})$.
+$488 (1 + \frac{22}{61}) = 488 (\frac{61+22}{61}) = 488 \frac{83}{61} = 8 \times 83 = 664$.
+$488 (1 - \frac{22}{61}) = 488 (\frac{61-22}{61}) = 488 \frac{39}{61} = 8 \times 39 = 312$.
+
+The squared y-differences between opposite vertices are 400 and 576.
+$s^2 (\sin \theta + \cos \theta)^2$ and $s^2 (\sin \theta - \cos \theta)^2$ are 400 and 576.
+This confirms $2 s^2 \sin \theta \cos \theta = \pm 176$.
+
+The absolute values of the y-differences between adjacent vertices are $|s \sin \theta|$ and $|s \cos \theta|$.
+$(s \sin \theta)^2 + (s \cos \theta)^2 = s^2 = 488$.
+
+The set $\{|H-41|, |H-65|, |H-61|, |H-85|\}$ must be equal to $\{|s \sin \theta|, |s \cos \theta|, |s \sin \theta|, |s \cos \theta|\}$.
+So, the values $|H-41|, |H-65|, |H-61|, |H-85|$ must take on two distinct positive values, say $a$ and $b$, such that $a^2 + b^2 = s^2 = 488$.
+The set of values is $\{|H-41|, |H-61|, |H-65|, |H-85|\}$.
+
+We need to find $H$ such that these four values take on two distinct positive values, $a$ and $b$, with $a^2 + b^2 = 488$.
+
+Consider the possibilities for the pairs of equal values:
+Possibility 1: $|H-41| = |H-65|$ and $|H-61| = |H-85|$.
+$H-41 = \pm (H-65)$.
+If $H-41 = H-65$, then $-41 = -65$, false.
+If $H-41 = -(H-65) = -H + 65$, then $2H = 106$, $H = 53$.
+If $|H-61| = |H-85|$, then $H-61 = \pm (H-85)$.
+If $H-61 = H-85$, then $-61 = -85$, false.
+If $H-61 = -(H-85) = -H + 85$, then $2H = 146$, $H = 73$.
+This possibility requires $H=53$ and $H=73$ simultaneously, which is impossible.
+
+Possibility 2: $|H-41| = |H-61|$ and $|H-65| = |H-85|$.
+$H-41 = \pm (H-61)$.
+If $H-41 = H-61$, then $-41 = -61$, false.
+If $H-41 = -(H-61) = -H + 61$, then $2H = 102$, $H = 51$.
+If $|H-65| = |H-85|$, then $H-65 = \pm (H-85)$.
+If $H-65 = H-85$, then $-65 = -85$, false.
+If $H-65 = -(H-85) = -H + 85$, then $2H = 150$, $H = 75$.
+This possibility requires $H=51$ and $H=75$ simultaneously, impossible.
+
+Possibility 3: $|H-41| = |H-85|$ and $|H-61| = |H-65|$.
+$H-41 = \pm (H-85)$.
+If $H-41 = H-85$, then $-41 = -85$, false.
+If $H-41 = -(H-85) = -H + 85$, then $2H = 126$, $H = 63$.
+If $|H-61| = |H-65|$, then $H-61 = \pm (H-65)$.
+If $H-61 = H-65$, then $-61 = -65$, false.
+If $H-61 = -(H-65) = -H + 65$, then $2H = 126$, $H = 63$.
+This possibility gives $H = 63$.
+
+Let's check if $H=63$ works.
+The y-differences are $|63-41| = 22$, $|63-65| = |-2| = 2$, $|63-61| = 2$, $|63-85| = |-22| = 22$.
+The set of absolute differences is $\{22, 2, 2, 22\}$.
+The two distinct values are 2 and 22.
+Let $a = 2$ and $b = 22$.
+$a^2 + b^2 = 2^2 + 22^2 = 4 + 484 = 488$.
+This is equal to $s^2$.
+
+So, with $H=63$, the absolute y-differences between a stalactite tip and a stalagmite tip are 2 and 22. These are $|s \sin \theta|$ and $|s \cos \theta|$.
+$s^2 \sin^2 \theta = 2^2 = 4$.
+$s^2 \cos^2 \theta = 22^2 = 484$.
+$s^2 (\sin^2 \theta + \cos^2 \theta) = s^2 = 4 + 484 = 488$. This is consistent.
+
+The requirement that the tips form a square in some order is satisfied if the y-coordinates are $H-16, H-36, 25, 49$ and the x-coordinates are such that the points form a square with side length squared 488, where the y-differences between adjacent vertices are $\pm 2$ and $\pm 22$.
+
+The y-coordinates are $47, 27, 25, 49$.
+Consider the arrangement of y-coordinates around the square.
+The differences between adjacent y-coordinates must be $\pm 2$ and $\pm 22$.
+Possible sequences of y-coordinates with adjacent differences $\pm 2$ and $\pm 22$:
+Start with 25. Adjacent can be 27 (diff +2) or 47 (diff +22) or 49 (diff +24).
+If 25 and 27 are adjacent, the next y-coordinate must have a difference of $\pm 22$ from 27.
+$27 + 22 = 49$. $27 - 22 = 5$. 5 is not in the set.
+So, 25, 27, 49. The next must have a difference of $\pm 2$ from 49.
+$49 - 2 = 47$. $49 + 2 = 51$. 47 is in the set.
+So, 25, 27, 49, 47. The difference between 47 and 25 is $47-25 = 22$. This works.
+The y-coordinates in order are 25, 27, 49, 47.
+The y-differences are $27-25=2$, $49-27=22$, $47-49=-2$, $25-47=-22$.
+The absolute differences are 2, 22, 2, 22. This is consistent with $|s \sin \theta|$ and $|s \cos \theta|$ being 2 and 22.
+
+The y-coordinates 25 and 49 belong to the stalagmites. The y-coordinates 27 and 47 belong to the stalactites (with $H=63$).
+The vertices are (stalagmite, stalactite, stalagmite, stalactite) or (stalactite, stalagmite, stalactite, stalagmite).
+The order of y-coordinates 25, 27, 49, 47 means:
+Point with y=25 (stalagmite 1)
+Point with y=27 (stalactite 1)
+Point with y=49 (stalagmite 2)
+Point with y=47 (stalactite 2)
+This is a valid alternation of stalagmite and stalactite tips.
+
+The height of the cave is $H = 63$.
+
+We have formulated the conditions and used them to find a value for H. We should verify that a square can indeed be formed with this H.
+With $H=63$, the y-coordinates are $25, 49$ (stalagmites) and $47, 27$ (stalactites).
+Let the points be $S_1=(x_3, 25)$, $S_2=(x_4, 49)$, $T_1=(x_1, 47)$, $T_2=(x_2, 27)$.
+The y-coordinates in order around the square can be $25, 47, 49, 27$.
+Differences: $47-25=22$, $49-47=2$, $27-49=-22$, $25-27=-2$.
+Absolute differences: 22, 2, 22, 2.
+$a=2, b=22$. $a^2+b^2 = 4+484 = 488 = s^2$.
+
+The x-differences between adjacent vertices must be $\pm 2$ and $\mp 22$.
+Let the vertices be $(x_{v1}, y_{v1}), (x_{v2}, y_{v2}), (x_{v3}, y_{v3}), (x_{v4}, y_{v4})$.
+$y_{v2} - y_{v1} = 22$, $y_{v3} - y_{v2} = 2$, $y_{v4} - y_{v3} = -22$, $y_{v1} - y_{v4} = -2$.
+$x_{v2} - x_{v1} = \pm 2$
+$x_{v3} - x_{v2} = \mp 22$
+$x_{v4} - x_{v3} = \pm 2$
+$x_{v1} - x_{v4} = \mp 22$
+And $(x_{v2} - x_{v1})^2 + (y_{v2} - y_{v1})^2 = s^2 = 488$.
+$(x_{v2} - x_{v1})^2 + 22^2 = 488$.
+$(x_{v2} - x_{v1})^2 + 484 = 488$.
+$(x_{v2} - x_{v1})^2 = 4$.
+$x_{v2} - x_{v1} = \pm 2$.
+
+$(x_{v3} - x_{v2})^2 + (y_{v3} - y_{v2})^2 = s^2 = 488$.
+$(x_{v3} - x_{v2})^2 + 2^2 = 488$.
+$(x_{v3} - x_{v2})^2 + 4 = 488$.
+$(x_{v3} - x_{v2})^2 = 484$.
+$x_{v3} - x_{v2} = \pm 22$.
+
+If $y_{v2} - y_{v1} = 22$, then $x_{v2} - x_{v1} = \pm 2$.
+If $y_{v3} - y_{v2} = 2$, then $x_{v3} - x_{v2} = \mp 22$.
+If the angle is $\theta$, $s \sin \theta = 22$, $s \cos \theta = 2$. Or $s \sin \theta = 2$, $s \cos \theta = 22$.
+If $s \sin \theta = 22$ and $s \cos \theta = 2$, then the y-difference between adjacent vertices is $s \sin \theta$ or $s \cos \theta$.
+The x-difference between adjacent vertices is $s \cos \theta$ or $-s \sin \theta$.
+
+If $y_{v2} - y_{v1} = s \sin \theta$ and $x_{v2} - x_{v1} = s \cos \theta$.
+If $y_{v2} - y_{v1} = 22$, then $s \sin \theta = 22$.
+If $y_{v3} - y_{v2} = 2$, then $s \cos \theta = 2$.
+Then $s^2 \sin^2 \theta = 484$, $s^2 \cos^2 \theta = 4$. $s^2 = 488$.
+The x-differences are $s \cos \theta = 2$ and $-s \sin \theta = -22$.
+
+Let's use the y-coordinates in order: 25, 47, 49, 27.
+$y_1 = 25, y_2 = 47, y_3 = 49, y_4 = 27$.
+$y_2 - y_1 = 22$.
+$y_3 - y_2 = 2$.
+$y_4 - y_3 = -22$.
+$y_1 - y_4 = -2$.
+
+The x-differences must be:
+$x_2 - x_1 = \pm \sqrt{488 - 22^2} = \pm \sqrt{488 - 484} = \pm \sqrt{4} = \pm 2$.
+$x_3 - x_2 = \pm \sqrt{488 - 2^2} = \pm \sqrt{488 - 4} = \pm \sqrt{484} = \pm 22$.
+$x_4 - x_3 = \pm \sqrt{488 - (-22)^2} = \pm 2$.
+$x_1 - x_4 = \pm \sqrt{488 - (-2)^2} = \pm 22$.
+
+Also, for a square, $(x_2 - x_1) = -(y_3 - y_2)$ and $(y_2 - y_1) = (x_3 - x_2)$ (or with sign changes).
+If $y_2 - y_1 = 22$ and $y_3 - y_2 = 2$:
+$x_2 - x_1 = -2$.
+$x_3 - x_2 = 22$.
+$x_4 - x_3 = -(-22) = 22$. This is wrong, should be $-(y_1 - y_4) = -(-2) = 2$.
+$x_1 - x_4 = -(y_2 - y_3) = -2$. This is wrong, should be $-(y_4 - y_3) = -(-22) = 22$.
+
+Let the vector from $V_1$ to $V_2$ be $(a, b)$. The vector from $V_2$ to $V_3$ is $(-b, a)$ or $(b, -a)$.
+If $y_2 - y_1 = b$ and $y_3 - y_2 = a$.
+Case 1: $(x_2-x_1, y_2-y_1) = (a, b)$, $(x_3-x_2, y_3-y_2) = (-b, a)$.
+$y_2 - y_1 = b = 22$. $y_3 - y_2 = a = 2$.
+$x_2 - x_1 = a = 2$.
+$x_3 - x_2 = -b = -22$.
+$x_4 - x_3 = -a = -2$.
+$x_1 - x_4 = b = 22$.
+Check sum of x-differences: $2 - 22 - 2 + 22 = 0$.
+Check sum of y-differences: $22 + 2 - 22 - 2 = 0$.
+Check side lengths squared:
+$(x_2-x_1)^2 + (y_2-y_1)^2 = 2^2 + 22^2 = 4 + 484 = 488$.
+$(x_3-x_2)^2 + (y_3-y_2)^2 = (-22)^2 + 2^2 = 484 + 4 = 488$.
+$(x_4-x_3)^2 + (y_4-y_3)^2 = (-2)^2 + (-22)^2 = 4 + 484 = 488$.
+$(x_1-x_4)^2 + (y_1-y_4)^2 = 22^2 + (-2)^2 = 484 + 4 = 488$.
+Side length squared is 488.
+
+Diagonal length squared: $V_1$ to $V_3$.
+$x_3 - x_1 = (x_3 - x_2) + (x_2 - x_1) = -22 + 2 = -20$.
+$y_3 - y_1 = (y_3 - y_2) + (y_2 - y_1) = 2 + 22 = 24$.
+Diagonal squared: $(-20)^2 + 24^2 = 400 + 576 = 976$.
+$2 \times s^2 = 2 \times 488 = 976$. This matches.
+
+Diagonal length squared: $V_2$ to $V_4$.
+$x_4 - x_2 = (x_4 - x_3) + (x_3 - x_2) = -2 + (-22) = -24$.
+$y_4 - y_2 = (y_4 - y_3) + (y_3 - y_2) = -22 + 2 = -20$.
+Diagonal squared: $(-24)^2 + (-20)^2 = 576 + 400 = 976$. This matches.
+
+The y-coordinates in order are 25, 47, 49, 27.
+Point with y=25 is a stalagmite tip.
+Point with y=47 is a stalactite tip (from H=63, H-16=47).
+Point with y=49 is a stalagmite tip.
+Point with y=27 is a stalactite tip (from H=63, H-36=27).
+This order is (stalagmite, stalactite, stalagmite, stalactite). This is a valid arrangement.
+
+The height of the cave is $H=63$.
+
+We considered the case where the y-differences between adjacent vertices have absolute values 2 and 22.
+What if the absolute values are 22 and 2?
+Case 2: $(x_2-x_1, y_2-y_1) = (a, b)$, $(x_3-x_2, y_3-y_2) = (-b, a)$.
+$y_2 - y_1 = b = 2$. $y_3 - y_2 = a = 22$.
+$x_2 - x_1 = a = 22$.
+$x_3 - x_2 = -b = -2$.
+$x_4 - x_3 = -a = -22$.
+$x_1 - x_4 = b = 2$.
+Check sum of x-differences: $22 - 2 - 22 + 2 = 0$.
+Check side lengths squared: $22^2 + 2^2 = 484 + 4 = 488$.
+
+Diagonal squared: $x_3 - x_1 = 22 - 2 = 20$. $y_3 - y_1 = 2 + 22 = 24$. $20^2 + 24^2 = 400 + 576 = 976$.
+
+The y-coordinates in order would have adjacent differences $\pm 2$ and $\pm 22$.
+Example order: 25, 27, 49, 47 (differences 2, 22, -2, -22).
+Example order: 25, 47, 49, 27 (differences 22, 2, -22, -2).
+
+The height of the cave is 63.
+[/IMP]
+
+### Step 6
+[PLANNING]
+Track Goals (Review)
+[/PLANNING]
+[REVIEW]
+Overall Goal: Compute the height of the cave.
+Subgoal 1: Represent the tips of the stalactites and stalagmites using coordinates. (Completed)
+Subgoal 2: Formulate the conditions for these four points to form a square. (Completed)
+Subgoal 3: Use the conditions to find the height of the cave. (Completed)
+[/REVIEW]
+
+### Step 7
+[PLANNING]
+Reach Goal (Implementation)
+Current Goal: The overall goal is completed.
+How to achieve it: Provide the final answer.
+[/PLANNING]
+[IMP]
+The height of the cave is 63.
+[/IMP]
+
+### Final Answer
+63

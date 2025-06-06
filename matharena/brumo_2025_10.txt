@@ -1,0 +1,102 @@
+**Problem Restatement:**  
+Bruno is throwing a party and invites \( n \) guests. Each pair of party guests are either friends or enemies. Each guest has exactly 12 enemies. All guests believe that the friend of an enemy is an enemy. We need to calculate the sum of all possible values of \( n \), where Bruno is not a guest at his own party.
+
+[PLANNING]  
+**Action:** Forward Subgoaling (Planning)  
+To solve this combinatorics problem, break it down into subgoals:  
+1. Model the relationships between guests using a graph, where vertices represent guests and edges represent friendships or enmities.  
+2. Interpret the condition "each guest has exactly 12 enemies" in the graph context.  
+3. Apply the condition "the friend of an enemy is an enemy" to constrain the graph structure.  
+4. Determine possible values of \( n \) that satisfy both conditions.  
+5. Sum all possible values of \( n \).  
+**Current Subgoal:** Model the relationships as a graph to understand the structure of friendships and enmities.  
+[/PLANNING]
+
+[PLANNING]  
+**Action:** Reach Goal (Implementation)  
+**Current Goal:** Model the relationships between guests as a graph.  
+**How to Achieve:** Represent the \( n \) guests as vertices in a graph. Define edges to represent friendships, and the absence of an edge between two vertices implies enmity. Each guest (vertex) has exactly 12 enemies, meaning each vertex has a degree of enmity equal to 12. In a complete graph with \( n \) vertices, each vertex is connected to \( n-1 \) others, so the number of friends for each guest is \( n-1-12 = n-13 \). Thus, the graph is a regular graph where each vertex has degree \( n-13 \).  
+[/PLANNING]  
+[IMP]  
+Construct a graph \( G \) with \( n \) vertices, where each vertex represents a guest. An edge between two vertices indicates friendship, and the absence of an edge indicates enmity. Given each guest has exactly 12 enemies:  
+- Total connections for each vertex in a complete graph \( K_n \) is \( n-1 \).  
+- Number of enemies = 12, so number of friends = degree of each vertex = \( n-1-12 = n-13 \).  
+Thus, \( G \) is a regular graph where each vertex has degree \( n-13 \). This graph must exist for \( n-13 \geq 0 \), so \( n \geq 13 \). Additionally, for a regular graph of degree \( n-13 \) to exist, the number of edges must be an integer, and graph-theoretic constraints (e.g., Handshaking Lemma) must hold: the number of edges in \( G \) is \( \frac{n \cdot (n-13)}{2} \), which must be an integer, so \( n \cdot (n-13) \) must be even.  
+[/IMP]
+
+[PLANNING]  
+**Action:** Reach Goal (Implementation)  
+**Current Goal:** Apply the condition "the friend of an enemy is an enemy" to the graph.  
+**How to Achieve:** In graph terms, if vertex \( A \) is an enemy of vertex \( B \) (no edge between \( A \) and \( B \)), and \( B \) is friends with vertex \( C \) (edge between \( B \) and \( C \)), then \( A \) and \( C \) must be enemies (no edge between \( A \) and \( C \)). This suggests the graph’s complement (enmity graph) influences the structure. Explore whether this implies the graph is a union of disjoint cliques, where within each clique, all vertices are friends, and between cliques, all vertices are enemies.  
+[/PLANNING]  
+[IMP]  
+Consider the condition: if \( A \) and \( B \) are enemies (no edge in \( G \)), and \( B \) and \( C \) are friends (edge in \( G \)), then \( A \) and \( C \) are enemies (no edge in \( G \)). This resembles the property of a cluster graph, where the graph \( G \) is a union of disjoint complete subgraphs (cliques):  
+- Within each clique, all vertices are friends (edges exist).  
+- Between cliques, all vertices are enemies (no edges).  
+Suppose \( G \) consists of \( k \) disjoint cliques, with sizes \( s_1, s_2, \ldots, s_k \), where \( s_1 + s_2 + \cdots + s_k = n \). For a vertex in a clique of size \( s_i \):  
+- Number of friends = \( s_i - 1 \) (all other vertices in the same clique).  
+- Number of enemies = \( n - s_i \) (all vertices outside the clique).  
+Given each guest has exactly 12 enemies:  
+- \( n - s_i = 12 \)  
+- Thus, \( s_i = n - 12 \).  
+This implies each clique has size \( s_i = n - 12 \). If there are \( k \) cliques, then \( n = k \cdot (n - 12) \). Solve for \( n \):  
+- \( n = k \cdot (n - 12) \)  
+- \( n = k n - 12k \)  
+- \( n - k n = -12k \)  
+- \( n (1 - k) = -12k \)  
+- \( n = \frac{12k}{k - 1} \)  
+For \( n \) to be an integer, \( 12k \) must be divisible by \( k - 1 \). Additionally, each clique must have at least 1 vertex, so \( n - 12 \geq 1 \), hence \( n \geq 13 \).  
+[/IMP]
+
+[PLANNING]  
+**Action:** Reach Goal (Implementation)  
+**Current Goal:** Determine possible values of \( n \).  
+**How to Achieve:** Solve the equation \( n = \frac{12k}{k - 1} \) for integer values of \( k \), ensuring \( n \) is a positive integer. Test values of \( k \) to find all possible \( n \), and verify each solution satisfies the graph’s existence and the given conditions.  
+[/PLANNING]  
+[IMP]  
+Solve \( n = \frac{12k}{k - 1} \) for positive integer \( k \):  
+- \( k = 1 \): \( n = \frac{12 \cdot 1}{1 - 1} = \frac{12}{0} \), undefined.  
+- \( k = 2 \): \( n = \frac{12 \cdot 2}{2 - 1} = \frac{24}{1} = 24 \).  
+- \( k = 3 \): \( n = \frac{12 \cdot 3}{3 - 1} = \frac{36}{2} = 18 \).  
+- \( k = 4 \): \( n = \frac{12 \cdot 4}{4 - 1} = \frac{48}{3} = 16 \).  
+- \( k = 5 \): \( n = \frac{12 \cdot 5}{5 - 1} = \frac{60}{4} = 15 \).  
+- \( k = 6 \): \( n = \frac{12 \cdot 6}{6 - 1} = \frac{72}{5} = 14.4 \), not an integer.  
+- \( k = 7 \): \( n = \frac{12 \cdot 7}{7 - 1} = \frac{84}{6} = 14 \), an integer.  
+- \( k = 13 \): \( n = \frac{12 \cdot 13}{13 - 1} = \frac{156}{12} = 13 \).  
+- For \( k > 13 \), check pattern: \( n = \frac{12k}{k - 1} = 12 \cdot \frac{k}{k - 1} \). As \( k \) increases, \( \frac{k}{k - 1} \) approaches 1, so \( n \) approaches 12, but we need \( n \geq 13 \). Test further:  
+- \( k = 25 \): \( n = \frac{12 \cdot 25}{25 - 1} = \frac{300}{24} = 12.5 \), not an integer.  
+- \( k = 37 \): \( n = \frac{12 \cdot 37}{37 - 1} = \frac{444}{36} = 12.333 \), not an integer.  
+- For negative \( k \), \( n \) becomes negative (e.g., \( k = -1 \): \( n = \frac{12 \cdot (-1)}{-1 - 1} = \frac{-12}{-2} = 6 \)), but \( n \) must be positive.  
+Possible \( n \): 13, 14, 15, 16, 18, 24. Verify:  
+- For \( n = 13 \), \( k = 13 \), clique size = \( n - 12 = 1 \), total guests = \( 13 \cdot 1 = 13 \), enemies = 12, works.  
+- For \( n = 14 \), \( k = 7 \), clique size = \( 14 - 12 = 2 \), total guests = \( 7 \cdot 2 = 14 \), enemies = 12, works.  
+- All values satisfy both conditions.  
+Possible values of \( n \): 13, 14, 15, 16, 18, 24.  
+[/IMP]
+
+[PLANNING]  
+**Action:** Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal-Management System:**  
+- Main Goal: Calculate the sum of all possible values of \( n \).  
+  - Subgoal 1: Model the relationships as a graph. (Completed)  
+  - Subgoal 2: Interpret "each guest has exactly 12 enemies" in the graph. (Completed)  
+  - Subgoal 3: Apply the condition "the friend of an enemy is an enemy." (Completed)  
+  - Subgoal 4: Determine possible values of \( n \). (Completed)  
+  - Subgoal 5: Sum all possible values of \( n \). (Pending)  
+**Current Goal:** Sum all possible values of \( n \).  
+[/REVIEW]
+
+[PLANNING]  
+**Action:** Reach Goal (Implementation)  
+**Current Goal:** Sum all possible values of \( n \).  
+**How to Achieve:** List all possible values of \( n \) identified in the previous step and compute their sum. Ensure no values are missed by rechecking the constraints and solution method.  
+[/PLANNING]  
+[IMP]  
+Possible values of \( n \) from previous step: 13, 14, 15, 16, 18, 24.  
+Compute the sum:  
+- \( 13 + 14 + 15 + 16 + 18 + 24 = 100 \)  
+Recheck: The values satisfy \( n = \frac{12k}{k - 1} \), \( n \geq 13 \), and both conditions (12 enemies per guest, friend of an enemy is an enemy). No other integer solutions exist for \( k > 1 \), as \( n \) approaches 12 for large \( k \), and negative \( k \) yields invalid results.  
+**Final Answer:** The sum of all possible values of \( n \) is 100.  
+[/IMP]

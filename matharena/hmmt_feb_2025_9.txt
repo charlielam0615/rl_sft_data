@@ -1,0 +1,173 @@
+### Problem Statement
+Let $f$ be the unique polynomial of degree at most $2026$ such that for all $n \in\{1,2,3, \ldots, 2027\}$,
+$$
+f(n)= \begin{cases}1 & \text { if } n \text { is a perfect square } \\ 0 & \text { otherwise }\end{cases}
+$$
+
+Suppose that $\frac{a}{b}$ is the coefficient of $x^{2025}$ in $f$, where $a$ and $b$ are integers such that $\operatorname{gcd}(a, b)=1$. Compute the unique integer $r$ between $0$ and $2026$ (inclusive) such that $a-r b$ is divisible by $2027$. (Note that $2027$ is prime.)
+
+### Step 1
+[PLANNING]
+Track Goals (Review)
+[/PLANNING]
+[REVIEW]
+The problem asks us to find the coefficient of $x^{2025}$ in a polynomial $f(x)$ defined by its values at 2027 points. Let this coefficient be $a/b$. Then, we need to find an integer $r$ in the range $[0, 2026]$ such that $a-rb$ is divisible by $2027$. This is equivalent to finding $r \equiv a b^{-1} \pmod{2027}$, or $r \equiv a/b \pmod{2027}$. The ultimate goal is to compute this integer $r$.
+The current goal is to define the overall strategy for solving the problem.
+[/REVIEW]
+
+### Step 2
+[PLANNING]
+Forward Subgoaling (Planning)
+The main strategy to solve this problem is to use Lagrange Interpolation to find the polynomial $f(x)$ or specifically its coefficient of $x^{2025}$. Since we need the result modulo $2027$, we will evaluate the coefficient expression modulo $2027$. This process can be broken down into two high-level subgoals:
+1.  Derive the general formula for the coefficient of $x^{N-2}$ (where $N=2027$) in a polynomial interpolated using $N$ points.
+2.  Evaluate this coefficient modulo $N$ using properties of modular arithmetic for prime $N$.
+[/PLANNING]
+
+### Step 3
+[PLANNING]
+Forward Subgoaling (Planning)
+Building upon the previous step, we further refine the subgoals:
+1.  **Subgoal 1: General Coefficient Formula.**
+    *   Write down the Lagrange interpolation formula for $f(x)$.
+    *   Extract the general expression for the coefficient of $x^{N-2}$ in terms of the given points $x_j$ and values $f(x_j)$.
+2.  **Subgoal 2: Evaluation Modulo $N$.**
+    *   Identify the values $f(n)$ for $n \in \{1, \ldots, N\}$.
+    *   Simplify the denominators in the coefficient formula modulo $N$, utilizing the fact that $N=2027$ is prime.
+    *   Perform the necessary summations and modular arithmetic to obtain the final value of the coefficient modulo $N$.
+    *   Identify $r$ from this modular value.
+[/PLANNING]
+
+### Step 4
+[PLANNING]
+Reach Goal (Implementation)
+Current Goal: State the Lagrange interpolation formula and derive the general expression for the coefficient of $x^{N-2}$.
+[/PLANNING]
+[IMP]
+Let $N=2027$. The polynomial $f(x)$ is of degree at most $N-1$ and passes through the points $(j, f(j))$ for $j=1, \ldots, N$.
+The Lagrange interpolation formula is given by:
+$$f(x) = \sum_{j=1}^{N} f(j) L_j(x)$$
+where $L_j(x) = \prod_{\substack{k=1 \\ k \ne j}}^{N} \frac{x-k}{j-k}$.
+
+Let $P(x) = \prod_{k=1}^{N} (x-k)$. Then $L_j(x) = \frac{P(x)}{(x-j)P'(j)}$.
+So, $f(x) = \sum_{j=1}^{N} \frac{f(j)}{P'(j)} \frac{P(x)}{x-j}$.
+Let $C_m$ denote the coefficient of $x^m$ in $f(x)$. We are looking for $C_{N-2}$.
+
+The term $\frac{P(x)}{x-j} = \prod_{\substack{k=1 \\ k \ne j}}^{N} (x-k)$.
+This is a polynomial of degree $N-1$.
+The coefficient of $x^{N-1}$ in $\prod_{k \ne j} (x-k)$ is $1$.
+The coefficient of $x^{N-2}$ in $\prod_{k \ne j} (x-k)$ is $-\sum_{\substack{k=1 \\ k \ne j}}^{N} k$.
+We know that $\sum_{k=1}^{N} k = \frac{N(N+1)}{2}$.
+So, $\sum_{\substack{k=1 \\ k \ne j}}^{N} k = \frac{N(N+1)}{2} - j$.
+
+Therefore, the coefficient of $x^{N-2}$ in $f(x)$ is:
+$$C_{N-2} = \sum_{j=1}^{N} \frac{f(j)}{P'(j)} \left(-\left(\frac{N(N+1)}{2} - j\right)\right)$$
+[/IMP]
+
+### Step 5
+[PLANNING]
+Reach Goal (Implementation)
+Current Goal: Evaluate $P'(j) \pmod N$ and simplify $C_{N-2} \pmod N$.
+[/PLANNING]
+[IMP]
+We need to evaluate $P'(j) \pmod N$.
+Since $N=2027$ is a prime number, we know that $x^N - x \equiv \prod_{k=0}^{N-1} (x-k) \pmod N$ by Fermat's Little Theorem.
+Also, $\prod_{k=1}^N (x-k) \equiv \prod_{k=0}^{N-1} (x-k) \pmod N$ since $x-N \equiv x-0 \pmod N$.
+So, $P(x) \equiv x^N - x \pmod N$.
+Differentiating both sides with respect to $x$:
+$P'(x) \equiv N x^{N-1} - 1 \pmod N$.
+Since $N \equiv 0 \pmod N$, we have $P'(x) \equiv -1 \pmod N$.
+This implies that for any $j \in \{1, \ldots, N\}$, $P'(j) \equiv -1 \pmod N$.
+
+Now substitute this into the expression for $C_{N-2}$:
+$$C_{N-2} \equiv \sum_{j=1}^{N} \frac{f(j)}{-1} \left(-\left(\frac{N(N+1)}{2} - j\right)\right) \pmod N$$
+$$C_{N-2} \equiv \sum_{j=1}^{N} f(j) \left(\frac{N(N+1)}{2} - j\right) \pmod N$$
+Since $N=2027$ is prime, $\frac{N(N+1)}{2} = N \cdot \frac{N+1}{2}$. As $N$ is odd, $N+1$ is even, so $\frac{N+1}{2}$ is an integer.
+Thus, $\frac{N(N+1)}{2} \equiv 0 \pmod N$.
+
+Substituting this into the expression for $C_{N-2}$:
+$$C_{N-2} \equiv \sum_{j=1}^{N} f(j) (0 - j) \pmod N$$
+$$C_{N-2} \equiv -\sum_{j=1}^{N} j f(j) \pmod N$$
+[/IMP]
+
+### Step 6
+[PLANNING]
+Reach Goal (Implementation)
+Current Goal: Calculate the sum $\sum_{j=1}^{N} j f(j)$.
+[/PLANNING]
+[IMP]
+The function $f(j)$ is defined as:
+$f(j) = 1$ if $j$ is a perfect square, and $f(j) = 0$ otherwise, for $j \in \{1, 2, \ldots, 2027\}$.
+So, the sum $\sum_{j=1}^{N} j f(j)$ simplifies to summing $j$ only for values of $j$ that are perfect squares.
+Let $S = \{k^2 \mid k \in \mathbb{Z}^+, k^2 \le N\}$.
+We need to find the largest integer $k$ such that $k^2 \le 2027$.
+$40^2 = 1600$
+$45^2 = 2025$
+$46^2 = 2116$
+So, the perfect squares in the set $\{1, \ldots, 2027\}$ are $1^2, 2^2, \ldots, 45^2$.
+The sum is $\sum_{k=1}^{45} k^2$.
+
+Using the formula for the sum of the first $m$ squares, $\sum_{k=1}^m k^2 = \frac{m(m+1)(2m+1)}{6}$:
+For $m=45$:
+$\sum_{k=1}^{45} k^2 = \frac{45(45+1)(2 \cdot 45+1)}{6}$
+$= \frac{45 \cdot 46 \cdot 91}{6}$
+$= \frac{15 \cdot 3 \cdot 23 \cdot 2 \cdot 91}{3 \cdot 2}$
+$= 15 \cdot 23 \cdot 91$
+$= 345 \cdot 91$
+$= 31395$.
+
+So, $C_{N-2} \equiv -31395 \pmod{2027}$.
+[/IMP]
+
+### Step 7
+[PLANNING]
+Reach Goal (Implementation)
+Current Goal: Compute $r$ by reducing the coefficient modulo $2027$.
+[/PLANNING]
+[IMP]
+We have $C_{N-2} \equiv -31395 \pmod{2027}$.
+Now we need to reduce $31395$ modulo $2027$.
+Divide $31395$ by $2027$:
+$31395 = q \cdot 2027 + \text{remainder}$.
+$31395 \div 2027 \approx 15.48$.
+Let's calculate $15 \cdot 2027$:
+$15 \cdot 2027 = 15 \cdot (2000 + 27) = 30000 + 15 \cdot 27 = 30000 + 405 = 30405$.
+Now find the remainder:
+$31395 - 30405 = 990$.
+So, $31395 \equiv 990 \pmod{2027}$.
+
+Therefore, $C_{N-2} \equiv -990 \pmod{2027}$.
+To get a positive residue in the range $[0, 2026]$:
+$C_{N-2} \equiv -990 + 2027 \pmod{2027}$
+$C_{N-2} \equiv 1037 \pmod{2027}$.
+
+The problem states that $\frac{a}{b}$ is the coefficient of $x^{2025}$, and we need to find $r \in \{0, \ldots, 2026\}$ such that $a-rb$ is divisible by $2027$.
+This condition $a-rb \equiv 0 \pmod{2027}$ is equivalent to $a \equiv rb \pmod{2027}$.
+Since $\operatorname{gcd}(a,b)=1$, $b$ is invertible modulo $2027$ (because $2027$ is prime and $b \not\equiv 0 \pmod{2027}$ as $a/b$ is a coefficient).
+So, $a b^{-1} \equiv r \pmod{2027}$.
+The coefficient $\frac{a}{b}$ is $C_{N-2}$, so we have $C_{N-2} \equiv r \pmod{2027}$.
+Thus, $r = 1037$.
+[/IMP]
+
+### Step 8
+[PLANNING]
+Validation (Implementation)
+Current Goal: Verify that the computed value of $r$ is within the specified range.
+[/PLANNING]
+[IMP]
+The problem specifies that $r$ must be an integer between $0$ and $2026$ (inclusive).
+Our calculated value for $r$ is $1037$.
+$0 \le 1037 \le 2026$.
+The condition is satisfied.
+[/IMP]
+
+### Step 9
+[PLANNING]
+Track Goals (Review)
+[/PLANNING]
+[REVIEW]
+We have successfully calculated the coefficient $a/b$ modulo $2027$, which yields the value of $r$. The final result is $r=1037$. All subgoals have been addressed and verified.
+The current goal is to present the final answer.
+[/REVIEW]
+
+### Final Answer
+The unique integer $r$ between $0$ and $2026$ (inclusive) such that $a-r b$ is divisible by $2027$ is $1037$.
