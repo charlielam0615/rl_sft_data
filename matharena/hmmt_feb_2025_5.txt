@@ -1,0 +1,105 @@
+
+### Problem Statement
+Let \(\mathcal{S}\) be the set of all nonconstant monic polynomials \(P\) with integer coefficients satisfying \(P(\sqrt{3} + \sqrt{2}) = P(\sqrt{3} - \sqrt{2})\). If \(Q\) is an element of \(\mathcal{S}\) with minimal degree, compute the only possible value of \(Q(10) - Q(0)\).
+
+### Step 1
+[PLANNING]
+Forward Subgoaling (planning): Break down the main problem into smaller steps.  
+1. Understand the condition \(P(\sqrt{3} + \sqrt{2}) = P(\sqrt{3} - \sqrt{2})\).  
+2. Determine the minimal degree of nonconstant monic polynomials in \(\mathcal{S}\) with integer coefficients.  
+3. Find the general form of such minimal-degree polynomials \(Q\).  
+4. Compute \(Q(10) - Q(0)\) for this \(Q\).  
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+Reach Goal (implementation)
+Goal: Identify the minimal polynomial related to \(\sqrt{3} + \sqrt{2}\) and \(\sqrt{3} - \sqrt{2}\) to understand the condition. How: Consider the algebraic elements \(\alpha = \sqrt{3} + \sqrt{2}\) and \(\beta = \sqrt{3} - \sqrt{2}\), and compute their minimal polynomial.
+[/PLANNING]
+[IMP]
+Set \(t = \sqrt{3} + \sqrt{2}\). Then:  
+\[
+t^2 = (\sqrt{3} + \sqrt{2})^2 = 3 + 2\sqrt{6} + 2 = 5 + 2\sqrt{6}  
+\]  
+\[
+t^2 - 5 = 2\sqrt{6} \implies (t^2 - 5)^2 = (2\sqrt{6})^2 = 24 \implies t^4 - 10t^2 + 25 - 24 = 0 \implies t^4 - 10t^2 + 1 = 0.  
+\]
+Similarly, \(\beta = \sqrt{3} - \sqrt{2}\) satisfies \(x^4 - 10x^2 + 1 = 0\). Thus, the minimal polynomial for both \(\alpha\) and \(\beta\) is \(T(x) = x^4 - 10x^2 + 1\), which is monic with integer coefficients and irreducible over \(\mathbb{Q}\).
+[/IMP]
+
+### Step 3
+[PLANNING]
+Reach Goal (implementation)
+Goal: Use the condition \(P(\alpha) = P(\beta)\) to derive constraints on the coefficients of \(P\) for low degrees, starting from degree 1. How: Test degrees 1, 2, and 3 by assuming a general monic polynomial with integer coefficients and imposing \(P(\alpha) = P(\beta)\).
+[/PLANNING]
+[IMP]
+- **Degree 1:** Let \(P(x) = x + c\). Then:
+  \[
+  P(\alpha) = \alpha + c, \quad P(\beta) = \beta + c.
+  \]
+  Set equal: \(\alpha + c = \beta + c \implies \alpha = \beta\), contradiction since \(\alpha \neq \beta\). No solution.  
+- **Degree 2:** Let \(P(x) = x^2 + a x + b\). Then:
+  \[
+  P(\alpha) - P(\beta) = (\alpha^2 - \beta^2) + a(\alpha - \beta) = (\alpha - \beta)(\alpha + \beta) + a(\alpha - \beta) = (\alpha - \beta)(\alpha + \beta + a).
+  \]
+  Since \(\alpha \neq \beta\), require \(\alpha + \beta + a = 0\). But \(\alpha + \beta = 2\sqrt{3}\), so \(a = -2\sqrt{3}\), not integer. No solution.  
+- **Degree 3:** Let \(P(x) = x^3 + p x^2 + q x + r\). Then:
+  \[
+  P(\alpha) - P(\beta) = (\alpha^3 - \beta^3) + p(\alpha^2 - \beta^2) + q(\alpha - \beta).
+  \]
+  Factor:
+  \[
+  \alpha^3 - \beta^3 = (\alpha - \beta)(\alpha^2 + \alpha\beta + \beta^2), \quad \alpha^2 - \beta^2 = (\alpha - \beta)(\alpha + \beta).
+  \]
+  Divide by \(\alpha - \beta \neq 0\):
+  \[
+  \alpha^2 + \alpha\beta + \beta^2 + p(\alpha + \beta) + q = 0.
+  \]
+  Compute:
+  \[
+  \alpha\beta = (\sqrt{3}+\sqrt{2})(\sqrt{3}-\sqrt{2}) = 3 - 2 = 1, \quad \alpha + \beta = 2\sqrt{3}, \quad \alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta = (2\sqrt{3})^2 - 2 \cdot 1 = 12 - 2 = 10.
+  \]
+  So:
+  \[
+  \alpha^2 + \alpha\beta + \beta^2 = 10 + 1 = 11.
+  \]
+  Thus:
+  \[
+  11 + p(2\sqrt{3}) + q = 0 \implies 2p\sqrt{3} + q = -11.
+  \]
+  Since \(p, q\) integers, \(2p\sqrt{3}\) irrational unless \(p=0\), then \(q = -11\). Thus, \(P(x) = x^3 - 11x + r\) for integer \(r\). This satisfies the condition for any \(r\), and is nonconstant, monic, with integer coefficients. Minimal degree is 3.
+[/IMP]
+
+### Step 4
+[PLANNING]
+Reach Goal (implementation)
+Goal: Compute \(Q(10) - Q(0)\) for \(Q(x) = x^3 - 11x + r\) (any integer \(r\)). How: Substitute \(x = 10\) and \(x = 0\) and find the difference.
+[/PLANNING]
+[IMP]
+\[
+Q(10) = 10^3 - 11 \cdot 10 + r = 1000 - 110 + r = 890 + r,
+\]
+\[
+Q(0) = 0^3 - 11 \cdot 0 + r = r.
+\]
+Thus:
+\[
+Q(10) - Q(0) = (890 + r) - r = 890.
+\]
+This is independent of \(r\), so the only possible value is 890.
+[/IMP]
+
+### Step 5
+[PLANNING]
+Recall Info (review)
+Goal: Recall that minimal degree is 3, and all such \(Q\) have \(Q(10) - Q(0) = 890\). How: Summarize key steps and confirm uniqueness.
+[/PLANNING]
+[REVIEW]
+- Minimal degree is 3, as degrees 1 and 2 have no solutions.  
+- All \(Q \in \mathcal{S}\) of minimal degree are of the form \(Q(x) = x^3 - 11x + r\) for integer \(r\).  
+- \(Q(10) - Q(0) = 890\) for all such \(Q\), as the \(r\) cancels.  
+- Thus, the value is unique and fixed.
+[/REVIEW]
+
+### Final Answer
+890

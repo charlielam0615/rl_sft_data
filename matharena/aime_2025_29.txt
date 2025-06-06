@@ -1,0 +1,645 @@
+### Problem Statement
+We are given a right triangle \( \triangle ABC \) with \( \angle A = 90^\circ \) and hypotenuse \( BC = 38 \). Inside the triangle, there exist points \( K \) and \( L \) such that the distances satisfy \( AK = AL = BK = CL = KL = 14 \). The area of quadrilateral \( BKLC \) can be expressed in the form \( n\sqrt{3} \), where \( n \) is a positive integer. Our goal is to find the value of \( n \).
+
+### Step 1
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+To solve this geometry problem, we break it into manageable subgoals:  
+1. Establish a coordinate system for \( \triangle ABC \) to simplify distance calculations, placing \( A \) at the origin, \( B \) on the x-axis, and \( C \) on the y-axis.  
+2. Use the given distances \( AK = AL = BK = CL = KL = 14 \) and \( BC = 38 \) to set up equations and find the coordinates of points \( K \) and \( L \).  
+3. Determine the coordinates of points \( B \), \( C \), \( K \), and \( L \).  
+4. Compute the area of quadrilateral \( BKLC \) using a suitable method (e.g., shoelace formula).  
+5. Express the area in the form \( n\sqrt{3} \) and identify \( n \).  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Set up a coordinate system and define coordinates for points \( A \), \( B \), and \( C \).  
+Description: Place \( A \) at the origin \((0, 0)\), \( B \) at \((b, 0)\), and \( C \) at \((0, c)\), where \( b \) and \( c \) are the lengths of legs \( AB \) and \( AC \). Since \( \angle A = 90^\circ \) and \( BC = 38 \), use the Pythagorean theorem to relate \( b \) and \( c \): \( b^2 + c^2 = 38^2 = 1444 \).  
+[/PLANNING]
+
+[IMP]  
+Assign coordinates:  
+- \( A = (0, 0) \)  
+- \( B = (b, 0) \)  
+- \( C = (0, c) \)  
+Apply the Pythagorean theorem for \( \triangle ABC \):  
+\[
+BC = \sqrt{(b - 0)^2 + (0 - c)^2} = 38
+\]
+\[
+b^2 + c^2 = 1444
+\]
+This equation will help us constrain the coordinates of \( B \) and \( C \). We will solve for \( b \) and \( c \) later, after incorporating the conditions for points \( K \) and \( L \).  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Set up equations for points \( K \) and \( L \) using the given distances.  
+Description: Let \( K = (x_1, y_1) \) and \( L = (x_2, y_2) \). Use the distance conditions \( AK = AL = BK = CL = KL = 14 \) to create equations based on the Euclidean distance formula. These equations will help us find the coordinates of \( K \) and \( L \).  
+[/PLANNING]
+
+[IMP]  
+Define coordinates:  
+- \( K = (x_1, y_1) \)  
+- \( L = (x_2, y_2) \)  
+Set up the distance equations:  
+1. \( AK = 14 \):  
+\[
+\sqrt{x_1^2 + y_1^2} = 14 \quad \Rightarrow \quad x_1^2 + y_1^2 = 196
+\]
+2. \( AL = 14 \):  
+\[
+\sqrt{x_2^2 + y_2^2} = 14 \quad \Rightarrow \quad x_2^2 + y_2^2 = 196
+\]
+3. \( BK = 14 \):  
+\[
+\sqrt{(x_1 - b)^2 + y_1^2} = 14 \quad \Rightarrow \quad (x_1 - b)^2 + y_1^2 = 196
+\]
+4. \( CL = 14 \):  
+\[
+\sqrt{x_2^2 + (y_2 - c)^2} = 14 \quad \Rightarrow \quad x_2^2 + (y_2 - c)^2 = 196
+\]
+5. \( KL = 14 \):  
+\[
+\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2} = 14 \quad \Rightarrow \quad (x_1 - x_2)^2 + (y_1 - y_2)^2 = 196
+\]
+From earlier, we also have:  
+6. \( b^2 + c^2 = 1444 \)  
+We now have a system of equations to solve for \( x_1, y_1, x_2, y_2, b, c \).  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Solve the system of equations to find coordinates of \( K \) and \( L \).  
+Description: Simplify the equations from Step 3 and solve for the variables. Start by manipulating the equations for \( AK \), \( AL \), \( BK \), and \( CL \), then use \( KL \) to relate \( K \) and \( L \). Finally, incorporate \( b^2 + c^2 = 1444 \) to find consistent values.  
+[/PLANNING]
+
+[IMP]  
+Start with the equations:  
+1. \( x_1^2 + y_1^2 = 196 \)  
+2. \( x_2^2 + y_2^2 = 196 \)  
+3. \( (x_1 - b)^2 + y_1^2 = 196 \)  
+4. \( x_2^2 + (y_2 - c)^2 = 196 \)  
+5. \( (x_1 - x_2)^2 + (y_1 - y_2)^2 = 196 \)  
+6. \( b^2 + c^2 = 1444 \)  
+
+- From equation 1: \( x_1^2 + y_1^2 = 196 \)  
+- From equation 3: \( (x_1 - b)^2 + y_1^2 = 196 \)  
+Expand equation 3:  
+\[
+(x_1 - b)^2 + y_1^2 = x_1^2 - 2x_1 b + b^2 + y_1^2 = 196
+\]
+Subtract equation 1 from this:  
+\[
+(x_1^2 - 2x_1 b + b^2 + y_1^2) - (x_1^2 + y_1^2) = 196 - 196
+\]
+\[
+-2x_1 b + b^2 = 0
+\]
+\[
+b^2 = 2x_1 b
+\]
+Assuming \( b \neq 0 \):  
+\[
+b = 2x_1
+\]
+
+- From equation 2: \( x_2^2 + y_2^2 = 196 \)  
+- From equation 4: \( x_2^2 + (y_2 - c)^2 = 196 \)  
+Expand equation 4:  
+\[
+x_2^2 + (y_2 - c)^2 = x_2^2 + y_2^2 - 2y_2 c + c^2 = 196
+\]
+Subtract equation 2 from this:  
+\[
+(x_2^2 + y_2^2 - 2y_2 c + c^2) - (x_2^2 + y_2^2) = 196 - 196
+\]
+\[
+-2y_2 c + c^2 = 0
+\]
+\[
+c^2 = 2y_2 c
+\]
+Assuming \( c \neq 0 \):  
+\[
+c = 2y_2
+\]
+
+- Substitute \( b = 2x_1 \) and \( c = 2y_2 \) into equation 6:  
+\[
+b^2 + c^2 = 1444
+\]
+\[
+(2x_1)^2 + (2y_2)^2 = 1444
+\]
+\[
+4x_1^2 + 4y_2^2 = 1444
+\]
+\[
+x_1^2 + y_2^2 = 361
+\]
+
+- Now use equation 1: \( x_1^2 + y_1^2 = 196 \)  
+- And the new equation: \( x_1^2 + y_2^2 = 361 \)  
+Subtract these:  
+\[
+(x_1^2 + y_2^2) - (x_1^2 + y_1^2) = 361 - 196
+\]
+\[
+y_2^2 - y_1^2 = 165
+\]
+\[
+(y_2 - y_1)(y_2 + y_1) = 165
+\]
+
+- Use equation 5: \( (x_1 - x_2)^2 + (y_1 - y_2)^2 = 196 \)  
+Let \( u = x_1 - x_2 \), \( v = y_1 - y_2 \):  
+\[
+u^2 + v^2 = 196
+\]
+We also have \( y_2 - y_1 = -v \), and \( (y_2 - y_1)(y_2 + y_1) = 165 \):  
+\[
+(-v)(y_2 + y_1) = 165
+\]
+\[
+v (y_2 + y_1) = -165
+\]
+We need values for \( y_1 \), \( y_2 \), and \( v \). Let’s try to solve using the equations:  
+From \( x_1^2 + y_1^2 = 196 \), and we have \( x_1^2 + y_2^2 = 361 \), and \( v = y_1 - y_2 \).  
+This system is complex, so let’s test possible values. From \( v (y_2 + y_1) = -165 \), and knowing \( u^2 + v^2 = 196 \), we need consistent solutions.  
+
+- Substitute \( b = 2x_1 \), \( c = 2y_2 \) back and use trial to solve:  
+From \( x_1^2 + y_1^2 = 196 \), and \( x_1^2 + y_2^2 = 361 \), and \( u^2 + v^2 = 196 \), let’s try to find \( x_1, y_1, x_2, y_2 \).  
+Assume \( x_1^2 = 100 \):  
+- Then \( y_1^2 = 196 - 100 = 96 \), so \( y_1 = \pm \sqrt{96} = \pm 4\sqrt{6} \)  
+- And \( x_1^2 + y_2^2 = 361 \), so \( y_2^2 = 361 - 100 = 261 \), so \( y_2 = \pm \sqrt{261} = \pm 3\sqrt{29} \)  
+- Check \( v = y_1 - y_2 \), and \( v (y_2 + y_1) = -165 \):  
+  Test combinations: If \( y_1 = 4\sqrt{6} \), \( y_2 = 3\sqrt{29} \):  
+  \( v = 4\sqrt{6} - 3\sqrt{29} \), then \( v (y_2 + y_1) = (4\sqrt{6} - 3\sqrt{29})(4\sqrt{6} + 3\sqrt{29}) = (4\sqrt{6})^2 - (3\sqrt{29})^2 = 96 - 261 = -165 \), which works!  
+- Now \( u^2 + v^2 = 196 \):  
+  \( v = 4\sqrt{6} - 3\sqrt{29} \), so \( v^2 = (4\sqrt{6} - 3\sqrt{29})^2 = 96 - 24\sqrt{174} + 261 = 357 - 24\sqrt{174} \)  
+  Then \( u^2 = 196 - v^2 = 196 - (357 - 24\sqrt{174}) = -161 + 24\sqrt{174} \), which must be positive.  
+  Test the other combination: \( y_1 = 4\sqrt{6} \), \( y_2 = -3\sqrt{29} \):  
+  \( v = 4\sqrt{6} - (-3\sqrt{29}) = 4\sqrt{6} + 3\sqrt{29} \), then \( v (y_2 + y_1) = (4\sqrt{6} + 3\sqrt{29})(-3\sqrt{29} + 4\sqrt{6}) = (4\sqrt{6})^2 - (3\sqrt{29})^2 = 96 - 261 = -165 \), which works.  
+  Compute \( v^2 = (4\sqrt{6} + 3\sqrt{29})^2 = 96 + 24\sqrt{174} + 261 = 357 + 24\sqrt{174} \), so \( u^2 = 196 - (357 + 24\sqrt{174}) = -161 - 24\sqrt{174} \), which is negative, so this doesn’t work.  
+  Try \( y_1 = -4\sqrt{6} \), \( y_2 = 3\sqrt{29} \):  
+  \( v = -4\sqrt{6} - 3\sqrt{29} \), then \( v (y_2 + y_1) = (-4\sqrt{6} - 3\sqrt{29})(3\sqrt{29} - 4\sqrt{6}) = -((4\sqrt{6})^2 - (3\sqrt{29})^2) = -(96 - 261) = 165 \), which is incorrect.  
+  Try \( y_1 = -4\sqrt{6} \), \( y_2 = -3\sqrt{29} \):  
+  \( v = -4\sqrt{6} - (-3\sqrt{29}) = -4\sqrt{6} + 3\sqrt{29} \), then \( v (y_2 + y_1) = (-4\sqrt{6} + 3\sqrt{29})(-3\sqrt{29} - 4\sqrt{6}) = (4\sqrt{6})^2 - (3\sqrt{29})^2 = 96 - 261 = -165 \), which works!  
+  Compute \( v^2 = (-4\sqrt{6} + 3\sqrt{29})^2 = 96 - 24\sqrt{174} + 261 = 357 - 24\sqrt{174} \), so \( u^2 = 196 - (357 - 24\sqrt{174}) = -161 + 24\sqrt{174} \), which must be positive.  
+
+This is complex, so let’s test \( x_1^2 = 121 \):  
+- \( y_1^2 = 196 - 121 = 75 \), so \( y_1 = \pm \sqrt{75} = \pm 5\sqrt{3} \)  
+- \( x_1^2 + y_2^2 = 361 \), so \( y_2^2 = 361 - 121 = 240 \), so \( y_2 = \pm \sqrt{240} = \pm 4\sqrt{15} \)  
+- Test \( y_1 = 5\sqrt{3} \), \( y_2 = 4\sqrt{15} \):  
+  \( v = y_1 - y_2 = 5\sqrt{3} - 4\sqrt{15} \), then \( v (y_2 + y_1) = (5\sqrt{3} - 4\sqrt{15})(5\sqrt{3} + 4\sqrt{15}) = (5\sqrt{3})^2 - (4\sqrt{15})^2 = 75 - 240 = -165 \), which works!  
+- Compute \( v^2 = (5\sqrt{3} - 4\sqrt{15})^2 = 75 - 40\sqrt{45} + 240 = 315 - 120\sqrt{5} \), so \( u^2 = 196 - (315 - 120\sqrt{5}) = -119 + 120\sqrt{5} \), which is positive if \( 120\sqrt{5} > 119 \), and \( \sqrt{5} \approx 2.236 \), so \( 120 \cdot 2.236 \approx 268.32 > 119 \), which works!  
+- Thus, \( u^2 = -119 + 120\sqrt{5} \), so \( u = x_1 - x_2 = \pm \sqrt{-119 + 120\sqrt{5}} \)  
+- Coordinates:  
+  \( x_1 = \sqrt{121} = 11 \), \( y_1 = 5\sqrt{3} \)  
+  \( x_2 = x_1 - u = 11 - \sqrt{-119 + 120\sqrt{5}} \)  
+  \( y_2 = 4\sqrt{15} \)  
+- Compute \( b = 2x_1 = 2 \cdot 11 = 22 \), \( c = 2y_2 = 2 \cdot 4\sqrt{15} = 8\sqrt{15} \)  
+- Verify \( b^2 + c^2 = 1444 \):  
+  \( b^2 = 22^2 = 484 \), \( c^2 = (8\sqrt{15})^2 = 64 \cdot 15 = 960 \), so \( 484 + 960 = 1444 \), which works!  
+
+Thus, coordinates are:  
+- \( A = (0, 0) \)  
+- \( B = (22, 0) \)  
+- \( C = (0, 8\sqrt{15}) \)  
+- \( K = (11, 5\sqrt{3}) \)  
+- \( L = (11 - \sqrt{-119 + 120\sqrt{5}}, 4\sqrt{15}) \)  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify that points \( K \) and \( L \) lie inside \( \triangle ABC \).  
+Description: Check if points \( K \) and \( L \) are inside the triangle by ensuring their coordinates satisfy the geometric constraints of \( \triangle ABC \), i.e., they lie within the region bounded by lines \( AB \), \( AC \), and \( BC \).  
+[/PLANNING]
+
+[IMP]  
+Coordinates:  
+- \( A = (0, 0) \)  
+- \( B = (22, 0) \)  
+- \( C = (0, 8\sqrt{15}) \)  
+- \( K = (11, 5\sqrt{3}) \)  
+- \( L = (11 - \sqrt{-119 + 120\sqrt{5}}, 4\sqrt{15}) \)  
+
+To be inside \( \triangle ABC \), points \( K \) and \( L \) must satisfy:  
+1. \( x \geq 0 \), \( y \geq 0 \) (since \( A \) is at origin, \( B \) and \( C \) have positive coordinates).  
+2. Lie below the line \( BC \): Equation of line \( BC \) from \( B(22, 0) \) to \( C(0, 8\sqrt{15}) \):  
+   Slope of \( BC = \frac{8\sqrt{15} - 0}{0 - 22} = -\frac{8\sqrt{15}}{22} = -\frac{4\sqrt{15}}{11} \)  
+   Equation: \( y - 0 = -\frac{4\sqrt{15}}{11} (x - 22) \)  
+   \( y = -\frac{4\sqrt{15}}{11} x + 8\sqrt{15} \)  
+   Points must satisfy \( y \leq -\frac{4\sqrt{15}}{11} x + 8\sqrt{15} \).  
+
+- Check \( K = (11, 5\sqrt{3}) \):  
+  - \( x = 11 \geq 0 \), \( y = 5\sqrt{3} \geq 0 \)  
+  - Line \( BC \): \( y \leq -\frac{4\sqrt{15}}{11} \cdot 11 + 8\sqrt{15} = -4\sqrt{15} + 8\sqrt{15} = 4\sqrt{15} \)  
+  - \( 5\sqrt{3} \approx 5 \cdot 1.732 = 8.66 \), \( 4\sqrt{15} \approx 4 \cdot 3.873 \approx 15.492 \)  
+  - \( 5\sqrt{3} < 4\sqrt{15} \), so \( K \) is below the line \( BC \).  
+
+- Check \( L = (11 - \sqrt{-119 + 120\sqrt{5}}, 4\sqrt{15}) \):  
+  - \( x = 11 - \sqrt{-119 + 120\sqrt{5}} \), approximate \( \sqrt{-119 + 120\sqrt{5}} \):  
+    \( \sqrt{5} \approx 2.236 \), so \( 120\sqrt{5} \approx 120 \cdot 2.236 = 268.32 \), then \( -119 + 120\sqrt{5} \approx -119 + 268.32 = 149.32 \), so \( \sqrt{-119 + 120\sqrt{5}} \approx \sqrt{149.32} \approx 12.22 \)  
+    Thus, \( x \approx 11 - 12.22 = -1.22 < 0 \), which suggests \( L \) may not be inside the triangle.  
+
+This indicates a potential issue. Let’s try the other sign: \( x_2 = 11 + \sqrt{-119 + 120\sqrt{5}} \):  
+- \( x \approx 11 + 12.22 = 23.22 \), which is outside \( x \leq 22 \).  
+Both solutions for \( x_2 \) place \( L \) outside the triangle, suggesting our coordinates or assumptions need adjustment. Let’s reconsider our solution for consistency.  
+[/IMP]
+
+### Step 6
+[PLANNING]  
+Action: Backtrack (Planning)  
+We’ve identified a potential issue: point \( L \) does not lie inside \( \triangle ABC \). We need to revisit our coordinate assignments and equations to ensure all points satisfy the geometric constraints. Re-evaluate the system of equations and test alternative solutions for \( x_1, y_1, x_2, y_2 \), ensuring all points are inside the triangle.  
+[/PLANNING]
+
+### Step 7
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Re-solve the system of equations, testing alternative values to ensure \( K \) and \( L \) are inside \( \triangle ABC \).  
+Description: Revisit the equations from Step 3, test different values for \( x_1^2 \), and ensure all distance conditions hold while verifying points \( K \) and \( L \) lie within the triangle.  
+[/PLANNING]
+
+[IMP]  
+Reconsider the equations:  
+1. \( x_1^2 + y_1^2 = 196 \)  
+2. \( x_2^2 + y_2^2 = 196 \)  
+3. \( (x_1 - b)^2 + y_1^2 = 196 \)  
+4. \( x_2^2 + (y_2 - c)^2 = 196 \)  
+5. \( (x_1 - x_2)^2 + (y_1 - y_2)^2 = 196 \)  
+6. \( b^2 + c^2 = 1444 \)  
+
+From previous steps:  
+- \( b = 2x_1 \)  
+- \( c = 2y_2 \)  
+- \( x_1^2 + y_2^2 = 361 \)  
+- \( (y_2 - y_1)(y_2 + y_1) = 165 \)  
+- \( (x_1 - x_2)^2 + (y_1 - y_2)^2 = 196 \)  
+
+Let’s try another value for \( x_1^2 \). Suppose \( x_1^2 = 144 \):  
+- \( y_1^2 = 196 - 144 = 52 \), so \( y_1 = \pm \sqrt{52} = \pm 2\sqrt{13} \)  
+- \( x_1^2 + y_2^2 = 361 \), so \( y_2^2 = 361 - 144 = 217 \), so \( y_2 = \pm \sqrt{217} \)  
+- \( (y_2 - y_1)(y_2 + y_1) = 165 \):  
+  Test \( y_1 = 2\sqrt{13} \), \( y_2 = \sqrt{217} \):  
+  \( (y_2 - y_1)(y_2 + y_1) = (\sqrt{217} - 2\sqrt{13})(\sqrt{217} + 2\sqrt{13}) = 217 - 4 \cdot 13 = 217 - 52 = 165 \), which works!  
+- \( v = y_1 - y_2 = 2\sqrt{13} - \sqrt{217} \)  
+- \( u^2 + v^2 = 196 \):  
+  \( v^2 = (2\sqrt{13} - \sqrt{217})^2 = 4 \cdot 13 - 4\sqrt{13 \cdot 217} + 217 = 52 - 4\sqrt{2821} + 217 = 269 - 4\sqrt{2821} \)  
+  \( u^2 = 196 - (269 - 4\sqrt{2821}) = -73 + 4\sqrt{2821} \), which must be positive.  
+  Approximate \( \sqrt{2821} \approx 53.12 \), so \( 4\sqrt{2821} \approx 212.48 \), then \( u^2 \approx -73 + 212.48 = 139.48 \), which is positive.  
+- Thus, \( u = x_1 - x_2 = \pm \sqrt{-73 + 4\sqrt{2821}} \approx \pm 11.81 \)  
+- Coordinates:  
+  \( x_1 = \sqrt{144} = 12 \), \( y_1 = 2\sqrt{13} \)  
+  \( x_2 = x_1 - u = 12 - \sqrt{-73 + 4\sqrt{2821}} \approx 12 - 11.81 = 0.19 \)  
+  \( y_2 = \sqrt{217} \)  
+  \( b = 2x_1 = 2 \cdot 12 = 24 \)  
+  \( c = 2y_2 = 2 \cdot \sqrt{217} \approx 2 \cdot 14.73 = 29.46 \)  
+- Verify \( b^2 + c^2 = 1444 \):  
+  \( b^2 = 24^2 = 576 \), \( c^2 = (2\sqrt{217})^2 = 4 \cdot 217 = 868 \), so \( 576 + 868 = 1444 \), which works!  
+
+New coordinates:  
+- \( A = (0, 0) \)  
+- \( B = (24, 0) \)  
+- \( C = (0, 2\sqrt{217}) \)  
+- \( K = (12, 2\sqrt{13}) \)  
+- \( L = (12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \)  
+
+Verify points are inside:  
+- Line \( BC \): Slope = \( \frac{2\sqrt{217} - 0}{0 - 24} = -\frac{2\sqrt{217}}{24} = -\frac{\sqrt{217}}{12} \)  
+  Equation: \( y = -\frac{\sqrt{217}}{12} x + 2\sqrt{217} \)  
+- Check \( K = (12, 2\sqrt{13}) \):  
+  \( x = 12 \geq 0 \), \( y = 2\sqrt{13} \geq 0 \)  
+  \( y \leq -\frac{\sqrt{217}}{12} \cdot 12 + 2\sqrt{217} = -\sqrt{217} + 2\sqrt{217} = \sqrt{217} \)  
+  \( 2\sqrt{13} \approx 2 \cdot 3.606 = 7.212 \), \( \sqrt{217} \approx 14.73 \), so \( 7.212 < 14.73 \), which works.  
+- Check \( L = (12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \):  
+  \( x \approx 12 - 11.81 = 0.19 \geq 0 \), \( y = \sqrt{217} \approx 14.73 \geq 0 \)  
+  \( y \leq -\frac{\sqrt{217}}{12} \cdot 0.19 + 2\sqrt{217} \approx -0.015 \cdot 14.73 + 2 \cdot 14.73 \approx -0.22 + 29.46 = 29.24 \)  
+  \( \sqrt{217} \approx 14.73 < 29.24 \), which works.  
+
+These coordinates seem valid and inside the triangle.  
+[/IMP]
+
+### Step 8
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find \( n \) such that the area of quadrilateral \( BKLC \) is \( n\sqrt{3} \).  
+  - Subgoal 1: Establish a coordinate system for \( \triangle ABC \). (Completed)  
+  - Subgoal 2: Set up equations using distance conditions \( AK = AL = BK = CL = KL = 14 \). (Completed)  
+  - Subgoal 3: Solve for coordinates of \( B, C, K, L \). (Completed)  
+  - Subgoal 4: Verify points \( K \) and \( L \) are inside \( \triangle ABC \). (Completed)  
+  - Subgoal 5: Compute the area of quadrilateral \( BKLC \).  
+  - Subgoal 6: Express the area as \( n\sqrt{3} \) and find \( n \).  
+Current Goal: Compute the area of quadrilateral \( BKLC \).  
+[/REVIEW]
+
+### Step 9
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Compute the area of quadrilateral \( BKLC \).  
+Description: Use the shoelace formula to calculate the area of quadrilateral \( BKLC \) with vertices \( B(24, 0) \), \( K(12, 2\sqrt{13}) \), \( L(12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \), and \( C(0, 2\sqrt{217}) \). Order the vertices appropriately and apply the formula.  
+[/PLANNING]
+
+[IMP]  
+Vertices of quadrilateral \( BKLC \):  
+- \( B = (24, 0) \)  
+- \( K = (12, 2\sqrt{13}) \)  
+- \( L = (12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \)  
+- \( C = (0, 2\sqrt{217}) \)  
+
+Use the shoelace formula for vertices \( (x_i, y_i) \) in order \( B, K, L, C \):  
+\[
+\text{Area} = \frac{1}{2} \left| \sum (x_i y_{i+1} - y_i x_{i+1}) \right|
+\]
+Order: \( B(24, 0) \), \( K(12, 2\sqrt{13}) \), \( L(12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \), \( C(0, 2\sqrt{217}) \), and back to \( B(24, 0) \).  
+
+Compute each term:  
+1. \( x_1 y_2 - y_1 x_2 = 24 \cdot 2\sqrt{13} - 0 \cdot 12 = 48\sqrt{13} \)  
+2. \( x_2 y_3 - y_2 x_3 = 12 \cdot \sqrt{217} - 2\sqrt{13} \cdot (12 - \sqrt{-73 + 4\sqrt{2821}}) = 12\sqrt{217} - 2\sqrt{13} (12 - \sqrt{-73 + 4\sqrt{2821}}) \)  
+3. \( x_3 y_4 - y_3 x_4 = (12 - \sqrt{-73 + 4\sqrt{2821}}) \cdot 2\sqrt{217} - \sqrt{217} \cdot 0 = 2\sqrt{217} (12 - \sqrt{-73 + 4\sqrt{2821}}) \)  
+4. \( x_4 y_1 - y_4 x_1 = 0 \cdot 0 - 2\sqrt{217} \cdot 24 = -48\sqrt{217} \)  
+
+Sum:  
+\[
+48\sqrt{13} + 12\sqrt{217} - 2\sqrt{13} (12 - \sqrt{-73 + 4\sqrt{2821}}) + 2\sqrt{217} (12 - \sqrt{-73 + 4\sqrt{2821}}) - 48\sqrt{217}
+\]
+Simplify:  
+- Combine like terms:  
+  \( 48\sqrt{13} - 2\sqrt{13} \cdot 12 + 2\sqrt{13} \cdot \sqrt{-73 + 4\sqrt{2821}} + 12\sqrt{217} + 2\sqrt{217} \cdot 12 - 2\sqrt{217} \cdot \sqrt{-73 + 4\sqrt{2821}} - 48\sqrt{217} \)  
+- Group \( \sqrt{13} \) terms:  
+  \( 48\sqrt{13} - 24\sqrt{13} + 2\sqrt{13} \cdot \sqrt{-73 + 4\sqrt{2821}} = 24\sqrt{13} + 2\sqrt{13} \cdot \sqrt{-73 + 4\sqrt{2821}} \)  
+- Group \( \sqrt{217} \) terms:  
+  \( 12\sqrt{217} + 24\sqrt{217} - 48\sqrt{217} - 2\sqrt{217} \cdot \sqrt{-73 + 4\sqrt{2821}} = -12\sqrt{217} - 2\sqrt{217} \cdot \sqrt{-73 + 4\sqrt{2821}} \)  
+- Let \( w = \sqrt{-73 + 4\sqrt{2821}} \):  
+  Total = \( 24\sqrt{13} + 2\sqrt{13} w - 12\sqrt{217} - 2\sqrt{217} w \)  
+  Factor: \( = 2\sqrt{13} (12 + w) - 2\sqrt{217} (6 + w) \)  
+
+Area = \( \frac{1}{2} \left| 2\sqrt{13} (12 + w) - 2\sqrt{217} (6 + w) \right| = \left| \sqrt{13} (12 + w) - \sqrt{217} (6 + w) \right| \)  
+Approximate \( w = \sqrt{-73 + 4\sqrt{2821}} \), where \( \sqrt{2821} \approx 53.12 \), so \( 4\sqrt{2821} \approx 212.48 \), \( w \approx \sqrt{-73 + 212.48} = \sqrt{139.48} \approx 11.81 \).  
+Compute:  
+- \( \sqrt{13} \approx 3.606 \), \( \sqrt{217} \approx 14.73 \)  
+- \( \sqrt{13} (12 + w) \approx 3.606 (12 + 11.81) \approx 3.606 \cdot 23.81 \approx 85.86 \)  
+- \( \sqrt{217} (6 + w) \approx 14.73 (6 + 11.81) \approx 14.73 \cdot 17.81 \approx 262.14 \)  
+- Area \( \approx |85.86 - 262.14| = 176.28 \)  
+
+This area should be of the form \( n\sqrt{3} \), but our result is not exact due to approximations. Let’s compute symbolically:  
+Notice the expression: \( \sqrt{13} (12 + w) - \sqrt{217} (6 + w) \).  
+We need the area to be \( n\sqrt{3} \), so let’s recheck our coordinates and formula for precision.  
+[/IMP]
+
+### Step 10
+[PLANNING]  
+Action: Backtrack (Planning)  
+The area calculation is complex and involves approximations that may be off. We need to revisit the coordinate solution and area calculation to ensure precision, possibly rechecking our system of equations or simplifying the area computation method. Consider an alternative approach, such as breaking quadrilateral \( BKLC \) into triangles or re-evaluating our coordinate assignments.  
+[/PLANNING]
+
+### Step 11
+[PLANNING]  
+Action: Adjust Subgoals (Planning)  
+Adjust our approach to simplify the area calculation. New subgoals:  
+1. Reconfirm coordinates of \( B, C, K, L \) with exact values, minimizing approximations.  
+2. Compute the area of quadrilateral \( BKLC \) by splitting it into triangles (e.g., \( \triangle BKL \) and \( \triangle BCL \)) for simpler calculations.  
+3. Express the area as \( n\sqrt{3} \) and find \( n \).  
+[/PLANNING]
+
+### Step 12
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Recompute the area of quadrilateral \( BKLC \) by splitting into triangles.  
+Description: Use the coordinates \( B(24, 0) \), \( K(12, 2\sqrt{13}) \), \( L(12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \), and \( C(0, 2\sqrt{217}) \). Split quadrilateral \( BKLC \) into \( \triangle BKL \) and \( \triangle BCL \), compute each area using the shoelace formula, and sum them to find the total area.  
+[/PLANNING]
+
+[IMP]  
+Coordinates:  
+- \( B = (24, 0) \)  
+- \( K = (12, 2\sqrt{13}) \)  
+- \( L = (12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \)  
+- \( C = (0, 2\sqrt{217}) \)  
+
+Let \( w = \sqrt{-73 + 4\sqrt{2821}} \).  
+
+**Triangle \( BKL \):**  
+Vertices: \( B(24, 0) \), \( K(12, 2\sqrt{13}) \), \( L(12 - w, \sqrt{217}) \).  
+Shoelace formula:  
+\[
+\text{Area} = \frac{1}{2} \left| x_1 (y_2 - y_3) + x_2 (y_3 - y_1) + x_3 (y_1 - y_2) \right|
+\]
+- \( x_1 = 24, y_1 = 0 \)  
+- \( x_2 = 12, y_2 = 2\sqrt{13} \)  
+- \( x_3 = 12 - w, y_3 = \sqrt{217} \)  
+Compute:  
+\[
+\text{Area of } \triangle BKL = \frac{1}{2} \left| 24 (2\sqrt{13} - \sqrt{217}) + 12 (\sqrt{217} - 0) + (12 - w) (0 - 2\sqrt{13}) \right|
+\]
+- \( 24 (2\sqrt{13} - \sqrt{217}) = 48\sqrt{13} - 24\sqrt{217} \)  
+- \( 12 (\sqrt{217} - 0) = 12\sqrt{217} \)  
+- \( (12 - w) (0 - 2\sqrt{13}) = (12 - w) (-2\sqrt{13}) = -24\sqrt{13} + 2w\sqrt{13} \)  
+Sum:  
+\[
+48\sqrt{13} - 24\sqrt{217} + 12\sqrt{217} - 24\sqrt{13} + 2w\sqrt{13}
+\]
+\[
+= (48\sqrt{13} - 24\sqrt{13}) + (-24\sqrt{217} + 12\sqrt{217}) + 2w\sqrt{13}
+\]
+\[
+= 24\sqrt{13} - 12\sqrt{217} + 2w\sqrt{13}
+\]
+\[
+= \sqrt{13} (24 + 2w) - 12\sqrt{217}
+\]
+Area:  
+\[
+\text{Area of } \triangle BKL = \frac{1}{2} \left| \sqrt{13} (24 + 2w) - 12\sqrt{217} \right|
+\]
+
+**Triangle \( BCL \):**  
+Vertices: \( B(24, 0) \), \( C(0, 2\sqrt{217}) \), \( L(12 - w, \sqrt{217}) \).  
+Shoelace formula:  
+- \( x_1 = 24, y_1 = 0 \)  
+- \( x_2 = 0, y_2 = 2\sqrt{217} \)  
+- \( x_3 = 12 - w, y_3 = \sqrt{217} \)  
+Compute:  
+\[
+\text{Area of } \triangle BCL = \frac{1}{2} \left| 24 (2\sqrt{217} - \sqrt{217}) + 0 (\sqrt{217} - 0) + (12 - w) (0 - 2\sqrt{217}) \right|
+\]
+- \( 24 (2\sqrt{217} - \sqrt{217}) = 24 (\sqrt{217}) = 24\sqrt{217} \)  
+- \( 0 (\sqrt{217} - 0) = 0 \)  
+- \( (12 - w) (0 - 2\sqrt{217}) = (12 - w) (-2\sqrt{217}) = -24\sqrt{217} + 2w\sqrt{217} \)  
+Sum:  
+\[
+24\sqrt{217} + 0 - 24\sqrt{217} + 2w\sqrt{217}
+\]
+\[
+= 2w\sqrt{217}
+\]
+Area:  
+\[
+\text{Area of } \triangle BCL = \frac{1}{2} \left| 2w\sqrt{217} \right| = w\sqrt{217}
+\]
+
+**Total Area of Quadrilateral \( BKLC \):**  
+\[
+\text{Area} = \text{Area of } \triangle BKL + \text{Area of } \triangle BCL
+\]
+\[
+= \frac{1}{2} \left| \sqrt{13} (24 + 2w) - 12\sqrt{217} \right| + w\sqrt{217}
+\]
+This expression is still complex. Let’s re-evaluate \( w = \sqrt{-73 + 4\sqrt{2821}} \). Notice \( \sqrt{2821} = \sqrt{53^2 + 6^2} \), so let’s try to simplify exactly:  
+Recall \( w^2 = -73 + 4\sqrt{2821} \), and \( 2821 = 53^2 + 6^2 \), but our area should be of form \( n\sqrt{3} \). The complexity suggests a possible error in coordinates or method. Let’s compute numerically for insight:  
+- \( w \approx 11.81 \), \( \sqrt{13} \approx 3.606 \), \( \sqrt{217} \approx 14.73 \)  
+- Area of \( \triangle BKL \): \( \sqrt{13} (24 + 2w) - 12\sqrt{217} \approx 3.606 (24 + 2 \cdot 11.81) - 12 \cdot 14.73 \approx 3.606 \cdot 47.62 - 176.76 \approx 171.72 - 176.76 = -5.04 \), take absolute value: \( \frac{1}{2} \cdot 5.04 = 2.52 \)  
+- Area of \( \triangle BCL \): \( w\sqrt{217} \approx 11.81 \cdot 14.73 \approx 173.96 \)  
+- Total \( \approx 2.52 + 173.96 = 176.48 \), which is close to \( 102\sqrt{3} \approx 102 \cdot 1.732 = 176.66 \), suggesting the area might be \( 102\sqrt{3} \).  
+
+Given the form \( n\sqrt{3} \), let’s hypothesize the area is \( 102\sqrt{3} \), so \( n = 102 \), and recheck our steps for exactness.  
+[/IMP]
+
+### Step 13
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Validate the area of quadrilateral \( BKLC \) and confirm it matches \( n\sqrt{3} \).  
+Description: Recheck the coordinates and area calculation for exactness, ensuring all distance conditions hold and the area is in the form \( n\sqrt{3} \). If necessary, recompute the area with exact values and confirm \( n \).  
+[/PLANNING]
+
+[IMP]  
+Reconfirm coordinates:  
+- \( A = (0, 0) \)  
+- \( B = (24, 0) \)  
+- \( C = (0, 2\sqrt{217}) \)  
+- \( K = (12, 2\sqrt{13}) \)  
+- \( L = (12 - \sqrt{-73 + 4\sqrt{2821}}, \sqrt{217}) \)  
+
+Recheck distances:  
+- \( AK = \sqrt{12^2 + (2\sqrt{13})^2} = \sqrt{144 + 4 \cdot 13} = \sqrt{144 + 52} = \sqrt{196} = 14 \)  
+- \( AL = \sqrt{(12 - (12 - \sqrt{-73 + 4\sqrt{2821}}))^2 + (\sqrt{217})^2} = \sqrt{(\sqrt{-73 + 4\sqrt{2821}})^2 + 217} = \sqrt{-73 + 4\sqrt{2821} + 217} = \sqrt{144 + 4\sqrt{2821}} \)  
+  We need \( \sqrt{144 + 4\sqrt{2821}} = 14 \), so \( 144 + 4\sqrt{2821} = 196 \), thus \( 4\sqrt{2821} = 52 \), \( \sqrt{2821} = 13 \), but \( 2821 \neq 13^2 \), indicating a possible error.  
+- Let’s recheck our derivation of \( w \):  
+  From earlier, \( w^2 = -73 + 4\sqrt{2821} \), but let’s revisit the system to ensure correctness.  
+
+Reconsider the system:  
+- \( x_1^2 + y_1^2 = 196 \)  
+- \( x_2^2 + y_2^2 = 196 \)  
+- \( b = 2x_1 \), \( c = 2y_2 \)  
+- \( x_1^2 + y_2^2 = 361 \)  
+- \( (y_2 - y_1)(y_2 + y_1) = 165 \)  
+- \( (x_1 - x_2)^2 + (y_1 - y_2)^2 = 196 \)  
+- \( b^2 + c^2 = 1444 \)  
+
+We assumed \( x_1^2 = 144 \), \( y_1^2 = 52 \), \( y_1 = 2\sqrt{13} \), \( x_1^2 + y_2^2 = 361 \), so \( y_2^2 = 217 \), \( y_2 = \sqrt{217} \).  
+Recheck \( AL \):  
+- \( AL = \sqrt{x_2^2 + y_2^2} = 14 \), and we have \( x_2^2 + y_2^2 = 196 \), which holds.  
+- \( BK = \sqrt{(x_1 - b)^2 + y_1^2} = \sqrt{(12 - 24)^2 + (2\sqrt{13})^2} = \sqrt{144 + 52} = \sqrt{196} = 14 \), which works.  
+- \( CL = \sqrt{x_2^2 + (y_2 - c)^2} = \sqrt{x_2^2 + (\sqrt{217} - 2\sqrt{217})^2} = \sqrt{x_2^2 + (-\sqrt{217})^2} = \sqrt{x_2^2 + 217} \), but this should be 14, and \( x_2^2 + y_2^2 = 196 \), so there’s an inconsistency.  
+
+Correct the error:  
+From \( c = 2y_2 \), and \( y_2^2 = 217 \), so \( c = 2\sqrt{217} \).  
+Recheck \( CL \):  
+- \( CL = \sqrt{x_2^2 + (y_2 - c)^2} = 14 \)  
+- \( y_2 - c = \sqrt{217} - 2\sqrt{217} = -\sqrt{217} \)  
+- \( x_2^2 + (y_2 - c)^2 = x_2^2 + (-\sqrt{217})^2 = x_2^2 + 217 = 14^2 = 196 \)  
+- \( x_2^2 = 196 - 217 = -21 \), which is impossible.  
+
+This indicates an error in our derivation. Let’s backtrack and test another value for \( x_1^2 \). Try \( x_1^2 = 169 \):  
+- \( y_1^2 = 196 - 169 = 27 \), so \( y_1 = \pm 3\sqrt{3} \)  
+- \( x_1^2 + y_2^2 = 361 \), so \( y_2^2 = 361 - 169 = 192 \), so \( y_2 = \pm 8\sqrt{3} \)  
+- \( (y_2 - y_1)(y_2 + y_1) = 165 \):  
+  Test \( y_1 = 3\sqrt{3} \), \( y_2 = 8\sqrt{3} \):  
+  \( (8\sqrt{3} - 3\sqrt{3})(8\sqrt{3} + 3\sqrt{3}) = 5\sqrt{3} \cdot 11\sqrt{3} = 55 \cdot 3 = 165 \), which works!  
+- \( v = y_1 - y_2 = 3\sqrt{3} - 8\sqrt{3} = -5\sqrt{3} \)  
+- \( u^2 + v^2 = 196 \):  
+  \( v^2 = (-5\sqrt{3})^2 = 25 \cdot 3 = 75 \), so \( u^2 = 196 - 75 = 121 \), thus \( u = \pm 11 \)  
+- Coordinates:  
+  \( x_1 = \sqrt{169} = 13 \), \( y_1 = 3\sqrt{3} \)  
+  \( x_2 = x_1 - u = 13 - 11 = 2 \) (try positive first)  
+  \( y_2 = 8\sqrt{3} \)  
+  \( b = 2x_1 = 2 \cdot 13 = 26 \)  
+  \( c = 2y_2 = 2 \cdot 8\sqrt{3} = 16\sqrt{3} \)  
+- Verify \( b^2 + c^2 = 1444 \):  
+  \( b^2 = 26^2 = 676 \), \( c^2 = (16\sqrt{3})^2 = 256 \cdot 3 = 768 \), so \( 676 + 768 = 1444 \), which works!  
+- Verify distances:  
+  - \( AK = \sqrt{13^2 + (3\sqrt{3})^2} = \sqrt{169 + 27} = \sqrt{196} = 14 \)  
+  - \( AL = \sqrt{2^2 + (8\sqrt{3})^2} = \sqrt{4 + 64 \cdot 3} = \sqrt{4 + 192} = \sqrt{196} = 14 \)  
+  - \( BK = \sqrt{(13 - 26)^2 + (3\sqrt{3})^2} = \sqrt{169 + 27} = \sqrt{196} = 14 \)  
+  - \( CL = \sqrt{2^2 + (8\sqrt{3} - 16\sqrt{3})^2} = \sqrt{4 + (-8\sqrt{3})^2} = \sqrt{4 + 64 \cdot 3} = \sqrt{4 + 192} = \sqrt{196} = 14 \)  
+  - \( KL = \sqrt{(13 - 2)^2 + (3\sqrt{3} - 8\sqrt{3})^2} = \sqrt{11^2 + (-5\sqrt{3})^2} = \sqrt{121 + 75} = \sqrt{196} = 14 \)  
+
+Coordinates are consistent:  
+- \( A = (0, 0) \)  
+- \( B = (26, 0) \)  
+- \( C = (0, 16\sqrt{3}) \)  
+- \( K = (13, 3\sqrt{3}) \)  
+- \( L = (2, 8\sqrt{3}) \)  
+
+Verify points are inside \( \triangle ABC \):  
+- Line \( BC \): Slope = \( \frac{16\sqrt{3} - 0}{0 - 26} = -\frac{16\sqrt{3}}{26} = -\frac{8\sqrt{3}}{13} \)  
+  Equation: \( y = -\frac{8\sqrt{3}}{13} x + 16\sqrt{3} \)  
+- Check \( K(13, 3\sqrt{3}) \):  
+  \( x = 13 \geq 0 \), \( y = 3\sqrt{3} \geq 0 \)  
+  \( y \leq -\frac{8\sqrt{3}}{13} \cdot 13 + 16\sqrt{3} = -8\sqrt{3} + 16\sqrt{3} = 8\sqrt{3} \)  
+  \( 3\sqrt{3} < 8\sqrt{3} \), which works.  
+- Check \( L(2, 8\sqrt{3}) \):  
+  \( x = 2 \geq 0 \), \( y = 8\sqrt{3} \geq 0 \)  
+  \( y \leq -\frac{8\sqrt{3}}{13} \cdot 2 + 16\sqrt{3} = -\frac{16\sqrt{3}}{13} + 16\sqrt{3} = \sqrt{3} (16 - \frac{16}{13}) = \sqrt{3} \cdot \frac{208 - 16}{13} = \sqrt{3} \cdot \frac{192}{13} \approx 1.732 \cdot 14.77 \approx 25.58 \)  
+  \( 8\sqrt{3} \approx 8 \cdot 1.732 = 13.86 < 25.58 \), which works.  
+
+Now recompute the area:  
+- **Triangle \( BKL \):**  
+  Vertices: \( B(26, 0) \), \( K(13, 3\sqrt{3}) \), \( L(2, 8\sqrt{3}) \).  
+  Shoelace:  
+  \[
+  \text{Area} = \frac{1}{2} \left| 26 (3\sqrt{3} - 8\sqrt{3}) + 13 (8\sqrt{3} - 0) + 2 (0 - 3\sqrt{3}) \right|
+  \]
+  - \( 26 (3\sqrt{3} - 8\sqrt{3}) = 26 (-5\sqrt{3}) = -130\sqrt{3} \)  
+  - \( 13 (8\sqrt{3} - 0) = 13 \cdot 8\sqrt{3} = 104\sqrt{3} \)  
+  - \( 2 (0 - 3\sqrt{3}) = -6\sqrt{3} \)  
+  Sum: \( -130\sqrt{3} + 104\sqrt{3} - 6\sqrt{3} = -32\sqrt{3} \)  
+  Area: \( \frac{1}{2} \cdot |-32\sqrt{3}| = 16\sqrt{3} \)  
+
+- **Triangle \( BCL \):**  
+  Vertices: \( B(26, 0) \), \( C(0, 16\sqrt{3}) \), \( L(2, 8\sqrt{3}) \).  
+  Shoelace:  
+  \[
+  \text{Area} = \frac{1}{2} \left| 26 (16\sqrt{3} - 8\sqrt{3}) + 0 (8\sqrt{3} - 0) + 2 (0 - 16\sqrt{3}) \right|
+  \]
+  - \( 26 (16\sqrt{3} - 8\sqrt{3}) = 26 \cdot 8\sqrt{3} = 208\sqrt{3} \)  
+  - \( 0 (8\sqrt{3} - 0) = 0 \)  
+  - \( 2 (0 - 16\sqrt{3}) = -32\sqrt{3} \)  
+  Sum: \( 208\sqrt{3} + 0 - 32\sqrt{3} = 176\sqrt{3} \)  
+  Area: \( \frac{1}{2} \cdot 176\sqrt{3} = 88\sqrt{3} \)  
+
+- **Total Area of Quadrilateral \( BKLC \):**  
+  \[
+  \text{Area} = 16\sqrt{3} + 88\sqrt{3} = 104\sqrt{3}
+  \]
+This matches the form \( n\sqrt{3} \), so \( n = 104 \).  
+[/IMP]
+
+### Step 14
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find \( n \) such that the area of quadrilateral \( BKLC \) is \( n\sqrt{3} \).  
+  - Subgoal 1: Establish a coordinate system for \( \triangle ABC \). (Completed)  
+  - Subgoal 2: Set up equations using distance conditions \( AK = AL = BK = CL = KL = 14 \). (Completed)  
+  - Subgoal 3: Solve for coordinates of \( B, C, K, L \). (Completed)  
+  - Subgoal 4: Verify points \( K \) and \( L \) are inside \( \triangle ABC \). (Completed)  
+  - Subgoal 5: Compute the area of quadrilateral \( BKLC \). (Completed)  
+  - Subgoal 6: Express the area as \( n\sqrt{3} \) and find \( n \). (Completed)  
+Current Goal: Finalize the solution and confirm \( n = 104 \).  
+[/REVIEW]
+
+### Final Answer
+The area of quadrilateral \( BKLC \) is \( 104\sqrt{3} \), so the value of \( n \) is 104.

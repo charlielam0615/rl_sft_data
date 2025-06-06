@@ -1,0 +1,161 @@
+### Problem Statement
+Find the number of ordered pairs \((x, y)\), where both \(x\) and \(y\) are integers between \(-100\) and \(100\), inclusive, such that \(12x^2 - xy - 6y^2 = 0\).
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to solve it systematically.  
+1. Rewrite the given equation \(12x^2 - xy - 6y^2 = 0\) in a form that facilitates finding integer solutions.  
+2. Factorize or manipulate the equation to express one variable in terms of the other.  
+3. Determine the constraints: \(x\) and \(y\) are integers between \(-100\) and \(100\).  
+4. Solve for integer pairs \((x, y)\) that satisfy the equation within the constraints.  
+5. Count all valid ordered pairs.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to rewrite and factorize the equation \(12x^2 - xy - 6y^2 = 0\) to express one variable in terms of the other. This can be achieved by treating the equation as a quadratic in one variable or factoring it directly to find relationships between \(x\) and \(y\).  
+[/PLANNING]  
+[IMP]  
+Consider the equation \(12x^2 - xy - 6y^2 = 0\). Treat it as a quadratic in \(x\):  
+\[ 12x^2 - xy - 6y^2 = 0 \]  
+This is a quadratic equation in \(x\):  
+\[ 12x^2 - xy - 6y^2 = 0 \]  
+The coefficients are \(a = 12\), \(b = -y\), and \(c = -6y^2\). Use the quadratic formula to solve for \(x\):  
+\[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]  
+Substitute the coefficients:  
+\[ b^2 - 4ac = (-y)^2 - 4 \cdot 12 \cdot (-6y^2) = y^2 + 288y^2 = 289y^2 \]  
+Since \(289 = 17^2\), the discriminant is:  
+\[ \sqrt{b^2 - 4ac} = \sqrt{289y^2} = 17|y| \]  
+Thus:  
+\[ x = \frac{y \pm 17|y|}{24} \]  
+Since \(|y|\) is non-negative, consider the sign of \(y\):  
+- If \(y \geq 0\), then \(|y| = y\), so:  
+  \[ x = \frac{y + 17y}{24} = \frac{18y}{24} = \frac{3y}{4} \quad \text{or} \quad x = \frac{y - 17y}{24} = \frac{-16y}{24} = -\frac{2y}{3} \]  
+- If \(y < 0\), then \(|y| = -y\), so:  
+  \[ x = \frac{y + 17(-y)}{24} = \frac{y - 17y}{24} = -\frac{16y}{24} = -\frac{2y}{3} \quad \text{or} \quad x = \frac{y - 17(-y)}{24} = \frac{y + 17y}{24} = \frac{18y}{24} = \frac{3y}{4} \]  
+For \(x\) to be an integer, \(\frac{3y}{4}\) and \(\frac{2y}{3}\) must be integers, meaning \(y\) must be divisible by 4 and 3, respectively.  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action: Adjust Subgoals (Planning)**  
+Refine the subgoals based on the implementation. The equation has been expressed as \(x = \frac{3y}{4}\) or \(x = -\frac{2y}{3}\), and \(y\) must be chosen such that \(x\) is an integer within \([-100, 100]\). New subgoals:  
+1. Find integer \(y\) such that \(x = \frac{3y}{4}\) is an integer and both \(x, y \in [-100, 100]\).  
+2. Find integer \(y\) such that \(x = -\frac{2y}{3}\) is an integer and both \(x, y \in [-100, 100]\).  
+3. Verify that all solutions satisfy the original equation.  
+4. Count the valid ordered pairs \((x, y)\).  
+[/PLANNING]
+
+### Step 4
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find integer \(y\) such that \(x = \frac{3y}{4}\) is an integer and both \(x, y \in [-100, 100]\). This requires \(y\) to be divisible by 4, and \(x\) must satisfy the integer constraint.  
+[/PLANNING]  
+[IMP]  
+For \(x = \frac{3y}{4}\) to be an integer, \(y\) must be divisible by 4. Let \(y = 4k\), where \(k\) is an integer. Then:  
+\[ x = \frac{3 \cdot 4k}{4} = 3k \]  
+Since \(x, y \in [-100, 100]\):  
+- \(y = 4k\), so \(-100 \leq 4k \leq 100 \implies -25 \leq k \leq 25\).  
+- \(x = 3k\), so \(-100 \leq 3k \leq 100 \implies -33.33 \leq k \leq 33.33\).  
+Since \(k\) is an integer, combine constraints: \(k \in [-25, 25]\).  
+Thus, \(y = 4k\) for \(k = -25, -24, \ldots, 24, 25\), giving:  
+- \(y\) from \(-100\) to \(100\), stepping by 4.  
+- Corresponding \(x = 3k\), from \(-75\) to \(75\).  
+Number of solutions: \(25 - (-25) + 1 = 51\).  
+Pairs: \((x, y) = (3k, 4k)\) for \(k \in [-25, 25]\).  
+Verify with the original equation:  
+\[ 12x^2 - xy - 6y^2 = 12(3k)^2 - (3k)(4k) - 6(4k)^2 = 12 \cdot 9k^2 - 12k^2 - 6 \cdot 16k^2 = 108k^2 - 12k^2 - 96k^2 = 0 \]  
+All pairs satisfy the equation.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find integer \(y\) such that \(x = -\frac{2y}{3}\) is an integer and both \(x, y \in [-100, 100]\). This requires \(y\) to be divisible by 3, and \(x\) must satisfy the integer constraint.  
+[/PLANNING]  
+[IMP]  
+For \(x = -\frac{2y}{3}\) to be an integer, \(y\) must be divisible by 3. Let \(y = 3m\), where \(m\) is an integer. Then:  
+\[ x = -\frac{2 \cdot 3m}{3} = -2m \]  
+Constraints:  
+- \(y = 3m\), so \(-100 \leq 3m \leq 100 \implies -33.33 \leq m \leq 33.33\).  
+- \(x = -2m\), so \(-100 \leq -2m \leq 100 \implies -50 \leq m \leq 50\).  
+Combine: \(m \in [-33, 33]\).  
+Thus, \(y = 3m\) for \(m = -33, -32, \ldots, 32, 33\), giving:  
+- \(y\) from \(-99\) to \(99\), stepping by 3.  
+- \(x = -2m\), from \(-66\) to \(66\).  
+Number of solutions: \(33 - (-33) + 1 = 67\).  
+Pairs: \((x, y) = (-2m, 3m)\) for \(m \in [-33, 33]\).  
+Verify:  
+\[ 12x^2 - xy - 6y^2 = 12(-2m)^2 - (-2m)(3m) - 6(3m)^2 = 12 \cdot 4m^2 + 6m^2 - 6 \cdot 9m^2 = 48m^2 + 6m^2 - 54m^2 = 0 \]  
+All pairs satisfy the equation.  
+[/IMP]
+
+### Step 6
+[PLANNING]  
+**Action: Track Goals (Review)**  
+List and organize all goals, highlighting the current goal.  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the number of ordered pairs \((x, y)\) such that \(12x^2 - xy - 6y^2 = 0\) with \(x, y \in [-100, 100]\).  
+  - Subgoal 1: Rewrite and factorize the equation (completed).  
+  - Subgoal 2: Find integer solutions for \(x = \frac{3y}{4}\) (completed: 51 pairs).  
+  - Subgoal 3: Find integer solutions for \(x = -\frac{2y}{3}\) (completed: 67 pairs).  
+  - Subgoal 4: Check for overlapping solutions between the two sets.  
+  - Subgoal 5: Count all valid ordered pairs.  
+**Current Goal**: Check for overlapping solutions between \((x, y) = (3k, 4k)\) and \((x, y) = (-2m, 3m)\).  
+[/REVIEW]
+
+### Step 7
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to check for overlapping solutions between the two sets of pairs: \((x, y) = (3k, 4k)\) for \(k \in [-25, 25]\) and \((x, y) = (-2m, 3m)\) for \(m \in [-33, 33]\). This involves finding pairs where the \(x\) and \(y\) values match.  
+[/PLANNING]  
+[IMP]  
+Set the pairs equal:  
+\[ (x, y) = (3k, 4k) = (-2m, 3m) \]  
+Equate:  
+- \(x\): \(3k = -2m \implies m = -\frac{3k}{2}\).  
+- \(y\): \(4k = 3m\).  
+From the second equation:  
+\[ 4k = 3m \implies m = \frac{4k}{3} \]  
+Since \(m\) must be an integer, \(k\) must be divisible by 3. Let \(k = 3n\), where \(n\) is an integer. Then:  
+\[ y = 4k = 4 \cdot 3n = 12n \]  
+\[ x = 3k = 3 \cdot 3n = 9n \]  
+\[ m = \frac{4 \cdot 3n}{3} = 4n \]  
+Check the first equation:  
+\[ 3k = -2m \implies 3 \cdot 3n = -2 \cdot 4n \implies 9n = -8n \implies 17n = 0 \implies n = 0 \]  
+Thus, \(k = 3n = 0\), \(m = 4n = 0\), giving:  
+\[ x = 9n = 0, \quad y = 12n = 0 \]  
+The only overlapping pair is \((0, 0)\).  
+[/IMP]
+
+### Step 8
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate that all solutions from both sets satisfy the original equation and are within \([-100, 100]\), and confirm the overlap analysis.  
+[/PLANNING]  
+[IMP]  
+- For \((x, y) = (3k, 4k)\), \(k \in [-25, 25]\): Already verified in Step 4, and all \(x = 3k \in [-75, 75]\), \(y = 4k \in [-100, 100]\).  
+- For \((x, y) = (-2m, 3m)\), \(m \in [-33, 33]\): Already verified in Step 5, and all \(x = -2m \in [-66, 66]\), \(y = 3m \in [-99, 99]\).  
+- Overlap: Only \((0, 0)\) is common, as shown in Step 7.  
+All solutions are valid and within constraints.  
+[/IMP]
+
+### Step 9
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to count all valid ordered pairs, accounting for the overlap.  
+[/PLANNING]  
+[IMP]  
+- First set: 51 pairs from \((3k, 4k)\), \(k \in [-25, 25]\).  
+- Second set: 67 pairs from \((-2m, 3m)\), \(m \in [-33, 33]\).  
+- Overlap: 1 pair \((0, 0)\).  
+Total unique pairs:  
+\[ 51 + 67 - 1 = 117 \]  
+[/IMP]
+
+### Final Answer
+The number of ordered pairs \((x, y)\), where both \(x\) and \(y\) are integers between \(-100\) and \(100\), inclusive, such that \(12x^2 - xy - 6y^2 = 0\), is **117**.
