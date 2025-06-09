@@ -1,0 +1,123 @@
+**Problem Statement:**  
+Schedule a one-hour meeting for Frank, Grace, and Henry on Monday between 9:00 and 17:00, considering their existing schedules:  
+- Frank is busy from 9:30–10:30 and 12:00–13:00.  
+- Grace is busy from 10:00–11:00, 13:30–14:30, and 16:00–17:00.  
+- Henry is busy from 9:00–9:30, 11:30–12:30, and 14:30–15:30.  
+Find a one-hour time slot where all participants are available, or explain why no such slot exists.
+
+---
+
+### Step 1: Forward Subgoaling  
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to find a suitable meeting time:  
+1. Identify the available time slots for each participant within the 9:00–17:00 window.  
+2. Find overlapping one-hour time slots where all participants are free.  
+3. Validate the identified time slot or determine if no solution exists.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal  
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Identify the available time slots for each participant.  
+- **How to Achieve:** List the busy time slots for Frank, Grace, and Henry, and determine their free time slots within 9:00–17:00 on Monday.  
+[/PLANNING]  
+
+[IMP]  
+- **Frank’s Schedule:**  
+  - Busy: 9:30–10:30, 12:00–13:00.  
+  - Free: 9:00–9:30, 10:30–12:00, 13:00–17:00.  
+
+- **Grace’s Schedule:**  
+  - Busy: 10:00–11:00, 13:30–14:30, 16:00–17:00.  
+  - Free: 9:00–10:00, 11:00–13:30, 14:30–16:00.  
+
+- **Henry’s Schedule:**  
+  - Busy: 9:00–9:30, 11:30–12:30, 14:30–15:30.  
+  - Free: 9:30–11:30, 12:30–14:30, 15:30–17:00.  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal  
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Find overlapping one-hour time slots where all participants are free.  
+- **How to Achieve:** Compare the free time slots of Frank, Grace, and Henry to identify any one-hour periods where all are available.  
+[/PLANNING]  
+
+[IMP]  
+To find a common one-hour slot, we compare the free time slots:  
+- **Frank’s Free Slots:** 9:00–9:30, 10:30–12:00, 13:00–17:00.  
+- **Grace’s Free Slots:** 9:00–10:00, 11:00–13:30, 14:30–16:00.  
+- **Henry’s Free Slots:** 9:30–11:30, 12:30–14:30, 15:30–17:00.  
+
+Now, identify one-hour slots where all are free:  
+- **9:00–9:30:** Frank is free, Grace is free, Henry is busy (9:00–9:30). **No overlap.**  
+- **9:30–10:00:** Frank is busy (9:30–10:30), Grace is free, Henry is free. **No overlap.**  
+- **10:30–11:00:** Frank is free, Grace is busy (10:00–11:00), Henry is free. **No overlap.**  
+- **11:00–11:30:** Frank is free, Grace is free, Henry is free. **Possible slot: 11:00–12:00** (check if it extends to a full hour).  
+- **11:30–12:00:** Frank is free, Grace is free, Henry is busy (11:30–12:30). **No overlap for full hour.**  
+- **12:00–12:30:** Frank is busy (12:00–13:00), Grace is free, Henry is busy (11:30–12:30). **No overlap.**  
+- **12:30–13:00:** Frank is busy, Grace is free, Henry is free. **No overlap.**  
+- **13:00–13:30:** Frank is free, Grace is free, Henry is free. **Possible slot: 13:00–14:00** (check further).  
+- **13:30–14:00:** Frank is free, Grace is busy (13:30–14:30), Henry is free. **No overlap.**  
+- **14:00–14:30:** Frank is free, Grace is busy (13:30–14:30), Henry is free. **No overlap.**  
+- **14:30–15:00:** Frank is free, Grace is free, Henry is busy (14:30–15:30). **No overlap.**  
+- **15:00–15:30:** Frank is free, Grace is free, Henry is busy (14:30–15:30). **No overlap.**  
+- **15:30–16:00:** Frank is free, Grace is free, Henry is free. **Possible slot: 15:30–16:30** (check further).  
+- **16:00–16:30:** Frank is free, Grace is busy (16:00–17:00), Henry is free. **No overlap.**  
+- **16:30–17:00:** Frank is free, Grace is busy (16:00–17:00), Henry is free. **No overlap.**  
+
+**Candidate Slots:**  
+- **11:00–12:00:** Henry is busy from 11:30–12:30, so this slot is not fully available.  
+- **13:00–14:00:** All are free (Frank: 13:00–17:00, Grace: 11:00–13:30, Henry: 12:30–14:30).  
+- **15:30–16:30:** Grace is busy from 16:00–17:00, so this slot is not fully available.  
+
+**Conclusion:** The only fully overlapping one-hour slot is **13:00–14:00**.  
+[/IMP]
+
+---
+
+### Step 4: Validation  
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Validate the identified time slot (13:00–14:00) to ensure all participants are free.  
+- **How to Achieve:** Re-check the schedules to confirm that 13:00–14:00 does not conflict with any participant’s busy times.  
+[/PLANNING]  
+
+[IMP]  
+- **Frank:** Free from 13:00–17:00 (busy 9:30–10:30, 12:00–13:00). **13:00–14:00 is free.**  
+- **Grace:** Free from 11:00–13:30 and 14:30–16:00 (busy 10:00–11:00, 13:30–14:30, 16:00–17:00). **13:00–14:00 is free.**  
+- **Henry:** Free from 12:30–14:30 (busy 9:00–9:30, 11:30–12:30, 14:30–15:30). **13:00–14:00 is free.**  
+
+**Validation Result:** The time slot 13:00–14:00 is free for all participants.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals  
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main Goal: Schedule a one-hour meeting for Frank, Grace, and Henry on Monday between 9:00–17:00.  
+  - Subgoal 1: Identify available time slots for each participant (completed).  
+  - Subgoal 2: Find overlapping one-hour time slots (completed).  
+  - Subgoal 3: Validate the identified time slot (completed).  
+
+**Current Goal:** Finalize the meeting time.  
+**Summary:** The validated time slot of 13:00–14:00 satisfies all constraints.  
+[/REVIEW]
+
+---
+
+**Final Answer:**  
+The meeting can be scheduled for **Monday, 13:00–14:00**, as all participants (Frank, Grace, and Henry) are available during this one-hour time slot.

@@ -1,0 +1,82 @@
+**Problem Statement**: Schedule a 30-minute meeting for George, Hannah, and Ian on Monday between 9:00 and 17:00, considering their existing schedules and prioritizing the earliest available time slot. George's calendar is completely open. Hannah has meetings from 10:00–10:30, 12:00–12:30, and 14:00–15:00. Ian is busy from 9:00–10:00, 11:00–11:30, 13:30–14:30, and 16:00–17:00.
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the available time slots for each participant within 9:00–17:00.  
+2. Find overlapping 30-minute time slots where all participants are free.  
+3. Select the earliest available time slot that satisfies all constraints.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify the available time slots for each participant within 9:00–17:00. This will be achieved by listing the free time periods for George, Hannah, and Ian based on their schedules.  
+[/PLANNING]  
+
+[IMP]  
+- **George**: Free from 9:00–17:00 (entire day).  
+- **Hannah**: Busy from 10:00–10:30, 12:00–12:30, and 14:00–15:00. Free periods:  
+  - 9:00–10:00  
+  - 10:30–12:00  
+  - 12:30–14:00  
+  - 15:00–17:00  
+- **Ian**: Busy from 9:00–10:00, 11:00–11:30, 13:30–14:30, and 16:00–17:00. Free periods:  
+  - 10:00–11:00  
+  - 11:30–13:30  
+  - 14:30–16:00  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to find overlapping 30-minute time slots where George, Hannah, and Ian are all free, prioritizing the earliest slot. This will be achieved by comparing the free periods identified in the previous step.  
+[/PLANNING]  
+
+[IMP]  
+Compare the free periods:  
+- **George**: Free 9:00–17:00.  
+- **Hannah**: Free 9:00–10:00, 10:30–12:00, 12:30–14:00, 15:00–17:00.  
+- **Ian**: Free 10:00–11:00, 11:30–13:30, 14:30–16:00.  
+
+Overlapping periods (where all are free):  
+- Between 10:00–11:00 (Hannah: 10:30–12:00, Ian: 10:00–11:00, George: all day) → 10:30–11:00 (30 minutes).  
+- Between 11:30–13:30 (Hannah: 12:30–14:00, Ian: 11:30–13:30, George: all day) → 12:30–13:30 (60 minutes).  
+- Between 14:30–16:00 (Hannah: 15:00–17:00, Ian: 14:30–16:00, George: all day) → 15:00–16:00 (60 minutes).  
+
+All periods are at least 30 minutes long and viable. The earliest slot is 10:30–11:00.  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate that the earliest time slot (10:30–11:00) satisfies all constraints, ensuring no conflicts with any participant's schedule and confirming it meets the 30-minute duration requirement.  
+[/PLANNING]  
+
+[IMP]  
+- **Time slot**: 10:30–11:00 (30 minutes).  
+- **George**: Free all day, so 10:30–11:00 is available.  
+- **Hannah**: Free from 10:30–12:00, so 10:30–11:00 is available.  
+- **Ian**: Free from 10:00–11:00, so 10:30–11:00 is available.  
+- **Constraints**: The slot is within 9:00–17:00, lasts 30 minutes, and is the earliest available. No conflicts exist.  
+The time slot is valid.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Schedule a 30-minute meeting for George, Hannah, and Ian on Monday between 9:00–17:00 at the earliest availability.  
+  - Subgoal 1: Identify available time slots for each participant (completed).  
+  - Subgoal 2: Find overlapping 30-minute time slots (completed).  
+  - Subgoal 3: Select and validate the earliest time slot (completed).  
+
+**Current Goal**: Finalize the meeting time as 10:30–11:00, as it has been validated.  
+[/REVIEW]
+
+### Final Answer
+The meeting can be scheduled for George, Hannah, and Ian on Monday from **10:30 to 11:00**. This is the earliest 30-minute time slot where all participants are available, satisfying all constraints.

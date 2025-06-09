@@ -1,0 +1,88 @@
+**Problem Statement**: Schedule a 30-minute meeting for Zack, Amy, and Brian on Monday between 9:00 and 17:00, considering their existing schedules. Zack is free all day, Amy has meetings from 9:00–10:00, 11:30–12:00, and 14:00–15:00, and Brian is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:30. The goal is to find the earliest available time slot that accommodates everyone’s schedule.
+
+---
+
+**Step 1: Forward Subgoaling**
+
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00–17:00) and the required duration (30 minutes).  
+2. List each participant’s unavailable time slots.  
+3. Find overlapping 30-minute windows where all participants are free.  
+4. Select the earliest available 30-minute slot that satisfies all constraints.  
+[/PLANNING]
+
+---
+
+**Step 2: Reach Goal**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify the available time slots for all participants. This will be achieved by listing each participant’s busy times, determining their free times within 9:00–17:00, and finding common free time slots that are at least 30 minutes long.  
+[/PLANNING]
+
+[IMP]  
+- **Time Range**: The meeting must occur between 9:00 and 17:00 (8 hours total).  
+- **Participants’ Schedules**:  
+  - **Zack**: Free all day (9:00–17:00).  
+  - **Amy**: Busy from 9:00–10:00, 11:30–12:00, 14:00–15:00.  
+    - Free periods: 10:00–11:30, 12:00–14:00, 15:00–17:00.  
+  - **Brian**: Busy from 10:00–10:30, 12:30–13:00, 15:30–16:30.  
+    - Free periods: 9:00–10:00, 10:30–12:30, 13:00–15:30, 16:30–17:00.  
+- **Find Overlapping Free Slots**:  
+  - Combine free periods for all participants:  
+    - Zack is free 9:00–17:00.  
+    - Amy’s free periods: 10:00–11:30, 12:00–14:00, 15:00–17:00.  
+    - Brian’s free periods: 9:00–10:00, 10:30–12:30, 13:00–15:30, 16:30–17:00.  
+  - Intersect the free periods:  
+    - 9:00–10:00: Zack (free), Amy (busy), Brian (free) → Not viable.  
+    - 10:00–10:30: Zack (free), Amy (free), Brian (busy) → Not viable.  
+    - 10:30–11:30: Zack (free), Amy (free), Brian (free) → Viable (60 minutes).  
+    - 11:30–12:00: Zack (free), Amy (busy), Brian (free) → Not viable.  
+    - 12:00–12:30: Zack (free), Amy (free), Brian (free) → Viable (30 minutes).  
+    - 12:30–13:00: Zack (free), Amy (free), Brian (busy) → Not viable.  
+    - 13:00–14:00: Zack (free), Amy (free), Brian (free) → Viable (60 minutes).  
+    - 14:00–15:00: Zack (free), Amy (busy), Brian (free) → Not viable.  
+    - 15:00–15:30: Zack (free), Amy (free), Brian (free) → Viable (30 minutes).  
+    - 15:30–16:30: Zack (free), Amy (free), Brian (busy) → Not viable.  
+    - 16:30–17:00: Zack (free), Amy (free), Brian (free) → Viable (30 minutes).  
+- **Viable 30-minute slots**: 10:30–11:30, 12:00–12:30, 13:00–14:00, 15:00–15:30, 16:30–17:00.  
+[/IMP]
+
+---
+
+**Step 3: Track Goals**
+
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Schedule a 30-minute meeting for Zack, Amy, and Brian on Monday between 9:00 and 17:00 at the earliest availability.  
+  - Subgoal 1: Identify the time range and duration (completed: 9:00–17:00, 30 minutes).  
+  - Subgoal 2: List unavailable time slots for each participant (completed: Zack free all day, Amy’s busy slots, Brian’s busy slots).  
+  - Subgoal 3: Find overlapping 30-minute free slots (completed: 10:30–11:30, 12:00–12:30, 13:00–14:00, 15:00–15:30, 16:30–17:00).  
+  - Subgoal 4: Select the earliest available 30-minute slot (pending).  
+**Current Goal**: Select the earliest available 30-minute slot from the identified viable slots.  
+[/REVIEW]
+
+---
+
+**Step 4: Reach Goal**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to select the earliest 30-minute time slot from the viable slots (10:30–11:30, 12:00–12:30, 13:00–14:00, 15:00–15:30, 16:30–17:00) that satisfies the preference for the earliest availability.  
+[/PLANNING]
+
+[IMP]  
+- **Viable Slots**: 10:30–11:30, 12:00–12:30, 13:00–14:00, 15:00–15:30, 16:30–17:00.  
+- **Earliest Slot**: The earliest slot is 10:30–11:00 (30 minutes).  
+- **Conclusion**: Schedule the meeting from 10:30 to 11:00 on Monday, as it is the earliest 30-minute slot where Zack, Amy, and Brian are all available.  
+[/IMP]
+
+---
+
+**Final Answer**: The meeting can be scheduled for Zack, Amy, and Brian on Monday from **10:30 to 11:00**. This is the earliest 30-minute time slot within the 9:00–17:00 work hours that accommodates everyone’s existing schedules.

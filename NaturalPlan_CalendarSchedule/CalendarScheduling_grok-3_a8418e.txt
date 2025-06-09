@@ -1,0 +1,106 @@
+### Problem Restatement
+Schedule a one-hour meeting for Sam, Tina, and Victor on Monday between 9:00 and 17:00, considering their existing schedules:
+- **Sam**: Busy from 9:30–10:30, 12:00–13:00, 15:00–16:00.
+- **Tina**: Busy from 10:00–11:00, 13:30–14:30.
+- **Victor**: Busy from 9:00–9:30, 11:30–12:30, 14:30–15:30.
+Find a time slot where all three are available for a continuous one-hour period within the work hours.
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a one-hour meeting into intermediate subgoals:  
+1. Identify the available time slots for each participant within 9:00–17:00.  
+2. Find overlapping available time slots for all three participants.  
+3. Select a one-hour time slot that fits within the overlapping availability.  
+4. Verify the solution meets all constraints.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to identify the available time slots for each participant within 9:00–17:00. This will be achieved by listing the busy periods and determining the free periods for each person.  
+[/PLANNING]
+
+[IMP]
+To identify available time slots:  
+- **Sam’s busy periods**: 9:30–10:30, 12:00–13:00, 15:00–16:00.  
+  **Available**: 9:00–9:30, 10:30–12:00, 13:00–15:00, 16:00–17:00.  
+- **Tina’s busy periods**: 10:00–11:00, 13:30–14:30.  
+  **Available**: 9:00–10:00, 11:00–13:30, 14:30–17:00.  
+- **Victor’s busy periods**: 9:00–9:30, 11:30–12:30, 14:30–15:30.  
+  **Available**: 9:30–11:30, 12:30–14:30, 15:30–17:00.  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find overlapping available time slots for Sam, Tina, and Victor that allow for a one-hour meeting. This will be achieved by comparing their available time slots and identifying periods where all are free for at least one hour.  
+[/PLANNING]
+
+[IMP]
+Compare the available time slots:  
+- **Sam**: 9:00–9:30, 10:30–12:00, 13:00–15:00, 16:00–17:00.  
+- **Tina**: 9:00–10:00, 11:00–13:30, 14:30–17:00.  
+- **Victor**: 9:30–11:30, 12:30–14:30, 15:30–17:00.  
+
+**Overlaps**:  
+- **9:00–9:30**: Sam and Tina are free, but Victor is busy (9:00–9:30). *No overlap*.  
+- **10:30–11:00**: Sam and Victor are free (10:30–11:30 for Victor), but Tina is busy (10:00–11:00). *No overlap*.  
+- **11:00–11:30**: Sam and Victor are free, but Tina is free only until 11:00, and the slot is only 30 minutes. *Too short*.  
+- **12:30–13:00**: Sam (13:00–15:00) and Victor (12:30–14:30) are free, but Tina is free only until 13:30. The slot is 30 minutes. *Too short*.  
+- **13:00–13:30**: Sam and Tina are free, but Victor is free only from 12:30–14:30. The slot is 30 minutes. *Too short*.  
+- **14:30–15:00**: Sam is free (13:00–15:00), Tina is free (14:30–17:00), but Victor is busy (14:30–15:30). *No overlap*.  
+- **15:30–16:00**: Tina and Victor are free (15:30–17:00), but Sam is busy (15:00–16:00). *No overlap*.  
+- **16:00–17:00**: Sam, Tina, and Victor are all free. *Valid one-hour slot*.  
+
+The only overlapping slot that is at least one hour long is **16:00–17:00**.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to verify that the 16:00–17:00 time slot satisfies all constraints, including the one-hour duration and the availability of Sam, Tina, and Victor. This will be achieved by checking their schedules for conflicts during this period.  
+[/PLANNING]
+
+[IMP]
+Verify the 16:00–17:00 slot:  
+- **Sam**: Free from 16:00–17:00 (no conflicts).  
+- **Tina**: Free from 14:30–17:00 (no conflicts).  
+- **Victor**: Free from 15:30–17:00 (no conflicts).  
+- **Duration**: The slot is exactly one hour, meeting the requirement.  
+- **Time constraint**: The slot is within 9:00–17:00.  
+
+The 16:00–17:00 slot satisfies all constraints.  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main goal: Schedule a one-hour meeting for Sam, Tina, and Victor on Monday between 9:00 and 17:00.  
+  - Subgoal 1: Identify available time slots for each participant (completed).  
+  - Subgoal 2: Find overlapping available time slots (completed).  
+  - Subgoal 3: Select a one-hour time slot (completed: 16:00–17:00).  
+  - Subgoal 4: Verify the solution (completed).  
+
+**Current Goal**: Confirm the final meeting time.  
+The proposed time slot of 16:00–17:00 has been validated and meets all requirements.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The meeting can be scheduled for **Monday, 16:00–17:00**, as it is the only one-hour time slot within 9:00–17:00 where Sam, Tina, and Victor are all available.

@@ -1,0 +1,240 @@
+**Problem Statement:**
+The goal is to meet as many friends as possible in San Francisco on a single day, starting at North Beach at 9:00 AM, while adhering to the time and location constraints for each friend and accounting for travel times between locations. The friends to meet are:
+- James at Fisherman’s Wharf (7:30 AM–10:30 AM, minimum 45 minutes).
+- Rachel at Marina District (8:00 AM–10:00 AM, minimum 30 minutes).
+- Thomas at Nob Hill (11:00 AM–3:00 PM, minimum 90 minutes).
+- Daniel at Bayview (1:00 PM–6:00 PM, minimum 45 minutes).
+- Olivia at Presidio (2:00 PM–9:00 PM, minimum 60 minutes).
+- Emma at Haight-Ashbury (8:30 PM–10:30 PM, minimum 30 minutes).
+Travel times between locations are provided, and the solution must optimize the schedule to meet all friends while respecting their availability and the minimum meeting durations.
+
+---
+
+### Step 1: Forward Subgoaling
+
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of meeting all six friends into intermediate subgoals based on their availability and locations. The subgoals are to:
+1. Meet James at Fisherman’s Wharf between 7:30 AM and 10:30 AM for at least 45 minutes.
+2. Meet Rachel at Marina District between 8:00 AM and 10:00 AM for at least 30 minutes.
+3. Meet Thomas at Nob Hill between 11:00 AM and 3:00 PM for at least 90 minutes.
+4. Meet Daniel at Bayview between 1:00 PM and 6:00 PM for at least 45 minutes.
+5. Meet Olivia at Presidio between 2:00 PM and 9:00 PM for at least 60 minutes.
+6. Meet Emma at Haight-Ashbury between 8:30 PM and 10:30 PM for at least 30 minutes.
+Each subgoal involves traveling to the friend’s location, ensuring arrival within their availability window, and spending the required meeting time.
+[/PLANNING]
+
+---
+
+### Step 2: Track Goals
+
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+Maintain a goal-management system to organize the hierarchy of subgoals from the previous planning step. The subgoals are:
+- **Goal 1**: Meet James at Fisherman’s Wharf (7:30 AM–10:30 AM, 45 min).
+- **Goal 2**: Meet Rachel at Marina District (8:00 AM–10:00 AM, 30 min).
+- **Goal 3**: Meet Thomas at Nob Hill (11:00 AM–3:00 PM, 90 min).
+- **Goal 4**: Meet Daniel at Bayview (1:00 PM–6:00 PM, 45 min).
+- **Goal 5**: Meet Olivia at Presidio (2:00 PM–9:00 PM, 60 min).
+- **Goal 6**: Meet Emma at Haight-Ashbury (8:30 PM–10:30 PM, 30 min).
+
+**Current Goal**: Meet James at Fisherman’s Wharf, as it is the earliest constrained time window that aligns with the starting point at North Beach at 9:00 AM.
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet James at Fisherman’s Wharf between 7:30 AM and 10:30 AM for at least 45 minutes. To achieve this, travel from North Beach to Fisherman’s Wharf (5 minutes) and schedule the meeting within the available time window.
+[/PLANNING]
+
+[IMP]
+Starting at North Beach at 9:00 AM, travel to Fisherman’s Wharf takes 5 minutes, arriving at 9:05 AM. James is available from 7:30 AM to 10:30 AM, so meet James from 9:05 AM to 9:50 AM (45 minutes), which satisfies the minimum meeting duration and fits within his availability.
+[/IMP]
+
+---
+
+### Step 4: Track Goals
+
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+Update the goal-management system:
+- **Goal 1**: Meet James at Fisherman’s Wharf (7:30 AM–10:30 AM, 45 min) – **Completed** (9:05 AM–9:50 AM).
+- **Goal 2**: Meet Rachel at Marina District (8:00 AM–10:00 AM, 30 min).
+- **Goal 3**: Meet Thomas at Nob Hill (11:00 AM–3:00 PM, 90 min).
+- **Goal 4**: Meet Daniel at Bayview (1:00 PM–6:00 PM, 45 min).
+- **Goal 5**: Meet Olivia at Presidio (2:00 PM–9:00 PM, 60 min).
+- **Goal 6**: Meet Emma at Haight-Ashbury (8:30 PM–10:30 PM, 30 min).
+
+**Current Goal**: Meet Rachel at Marina District, as her availability window (8:00 AM–10:00 AM) is the most immediate constraint after meeting James.
+[/REVIEW]
+
+---
+
+### Step 5: Reach Goal
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Rachel at Marina District between 8:00 AM and 10:00 AM for at least 30 minutes. To achieve this, travel from Fisherman’s Wharf to Marina District (9 minutes) and schedule the meeting before 10:00 AM.
+[/PLANNING]
+
+[IMP]
+After meeting James at Fisherman’s Wharf until 9:50 AM, travel to Marina District takes 9 minutes, arriving at 9:59 AM. Rachel is available from 8:00 AM to 10:00 AM, so meet Rachel from 9:59 AM to 10:29 AM (30 minutes). This barely fits within her availability window, as the meeting must start by 10:00 AM.
+[/IMP]
+
+---
+
+### Step 6: Adjust Subgoals
+
+[PLANNING]
+**Action: Adjust Subgoals (Planning)**  
+The next subgoal (meeting Thomas at Nob Hill from 11:00 AM–3:00 PM) requires arrival by 1:30 PM to allow for the 90-minute meeting. From Marina District, travel to Nob Hill takes 12 minutes, arriving at 10:41 AM, which is before Thomas’s availability starts. Adjust the subgoal to include waiting time at Nob Hill until 11:00 AM to begin the meeting. Subsequent subgoals (Daniel, Olivia, Emma) remain unchanged but will be evaluated for feasibility.
+[/PLANNING]
+
+---
+
+### Step 7: Reach Goal
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Thomas at Nob Hill between 11:00 AM and 3:00 PM for at least 90 minutes. Travel from Marina District to Nob Hill (12 minutes) and wait until 11:00 AM to start the meeting.
+[/PLANNING]
+
+[IMP]
+After meeting Rachel at Marina District until 10:29 AM, travel to Nob Hill takes 12 minutes, arriving at 10:41 AM. Thomas is available from 11:00 AM to 3:00 PM, so wait until 11:00 AM and meet Thomas from 11:00 AM to 12:30 PM (90 minutes), which satisfies the meeting duration.
+[/IMP]
+
+---
+
+### Step 8: Track Goals
+
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+Update the goal-management system:
+- **Goal 1**: Meet James at Fisherman’s Wharf (7:30 AM–10:30 AM, 45 min) – **Completed** (9:05 AM–9:50 AM).
+- **Goal 2**: Meet Rachel at Marina District (8:00 AM–10:00 AM, 30 min) – **Completed** (9:59 AM–10:29 AM).
+- **Goal 3**: Meet Thomas at Nob Hill (11:00 AM–3:00 PM, 90 min) – **Completed** (11:00 AM–12:30 PM).
+- **Goal 4**: Meet Daniel at Bayview (1:00 PM–6:00 PM, 45 min).
+- **Goal 5**: Meet Olivia at Presidio (2:00 PM–9:00 PM, 60 min).
+- **Goal 6**: Meet Emma at Haight-Ashbury (8:30 PM–10:30 PM, 30 min).
+
+**Current Goal**: Meet Daniel at Bayview, as his availability starts at 1:00 PM and is the next logical step.
+[/REVIEW]
+
+---
+
+### Step 9: Reach Goal
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Daniel at Bayview between 1:00 PM and 6:00 PM for at least 45 minutes. Travel from Nob Hill to Bayview (19 minutes) and schedule the meeting within the availability window.
+[/PLANNING]
+
+[IMP]
+After meeting Thomas at Nob Hill until 12:30 PM, travel to Bayview takes 19 minutes, arriving at 12:49 PM. Daniel is available from 1:00 PM to 6:00 PM, so meet Daniel from 1:00 PM to 1:45 PM (45 minutes), which satisfies the meeting duration.
+[/IMP]
+
+---
+
+### Step 10: Reach Goal
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Olivia at Presidio between 2:00 PM and 9:00 PM for at least 60 minutes. Travel from Bayview to Presidio (31 minutes) and schedule the meeting within the availability window.
+[/PLANNING]
+
+[IMP]
+After meeting Daniel at Bayview until 1:45 PM, travel to Presidio takes 31 minutes, arriving at 2:16 PM. Olivia is available from 2:00 PM to 9:00 PM, so meet Olivia from 2:16 PM to 3:16 PM (60 minutes), which satisfies the meeting duration.
+[/IMP]
+
+---
+
+### Step 11: Track Goals
+
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+Update the goal-management system:
+- **Goal 1**: Meet James at Fisherman’s Wharf (7:30 AM–10:30 AM, 45 min) – **Completed** (9:05 AM–9:50 AM).
+- **Goal 2**: Meet Rachel at Marina District (8:00 AM–10:00 AM, 30 min) – **Completed** (9:59 AM–10:29 AM).
+- **Goal 3**: Meet Thomas at Nob Hill (11:00 AM–3:00 PM, 90 min) – **Completed** (11:00 AM–12:30 PM).
+- **Goal 4**: Meet Daniel at Bayview (1:00 PM–6:00 PM, 45 min) – **Completed** (1:00 PM–1:45 PM).
+- **Goal 5**: Meet Olivia at Presidio (2:00 PM–9:00 PM, 60 min) – **Completed** (2:16 PM–3:16 PM).
+- **Goal 6**: Meet Emma at Haight-Ashbury (8:30 PM–10:30 PM, 30 min).
+
+**Current Goal**: Meet Emma at Haight-Ashbury, the final remaining subgoal.
+[/REVIEW]
+
+---
+
+### Step 12: Validation
+
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: Validate the feasibility of meeting Emma at Haight-Ashbury between 8:30 PM and 10:30 PM for at least 30 minutes. Check if travel from Presidio to Haight-Ashbury allows arrival within her availability window.
+[/PLANNING]
+
+[IMP]
+After meeting Olivia at Presidio until 3:16 PM, travel to Haight-Ashbury takes 15 minutes, arriving at 3:31 PM. Emma is available from 8:30 PM to 10:30 PM, requiring a wait from 3:31 PM to 8:30 PM (299 minutes). The schedule is feasible, as the arrival time is well before Emma’s availability, and the 30-minute meeting can occur within her window (e.g., 8:30 PM–9:00 PM).
+[/IMP]
+
+---
+
+### Step 13: Reach Goal
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Emma at Haight-Ashbury between 8:30 PM and 10:30 PM for at least 30 minutes. Travel from Presidio to Haight-Ashbury (15 minutes) has already been validated, so schedule the meeting after waiting until 8:30 PM.
+[/PLANNING]
+
+[IMP]
+After arriving at Haight-Ashbury at 3:31 PM, wait until 8:30 PM. Meet Emma from 8:30 PM to 9:00 PM (30 minutes), which satisfies the meeting duration and fits within her availability window.
+[/IMP]
+
+---
+
+### Step 14: Track Goals
+
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+Final update to the goal-management system:
+- **Goal 1**: Meet James at Fisherman’s Wharf (7:30 AM–10:30 AM, 45 min) – **Completed** (9:05 AM–9:50 AM).
+- **Goal 2**: Meet Rachel at Marina District (8:00 AM–10:00 AM, 30 min) – **Completed** (9:59 AM–10:29 AM).
+- **Goal 3**: Meet Thomas at Nob Hill (11:00 AM–3:00 PM, 90 min) – **Completed** (11:00 AM–12:30 PM).
+- **Goal 4**: Meet Daniel at Bayview (1:00 PM–6:00 PM, 45 min) – **Completed** (1:00 PM–1:45 PM).
+- **Goal 5**: Meet Olivia at Presidio (2:00 PM–9:00 PM, 60 min) – **Completed** (2:16 PM–3:16 PM).
+- **Goal 6**: Meet Emma at Haight-Ashbury (8:30 PM–10:30 PM, 30 min) – **Completed** (8:30 PM–9:00 PM).
+
+**Current Goal**: None, as all subgoals have been completed.
+[/REVIEW]
+
+---
+
+### Final Answer
+
+The optimal schedule to meet all six friends in San Francisco, starting at North Beach at 9:00 AM, is:
+- **9:00 AM**: Start at North Beach.
+- **9:05 AM**: Arrive at Fisherman’s Wharf (5 min travel). Meet James from 9:05 AM to 9:50 AM (45 min).
+- **9:59 AM**: Arrive at Marina District (9 min travel). Meet Rachel from 9:59 AM to 10:29 AM (30 min).
+- **10:41 AM**: Arrive at Nob Hill (12 min travel). Wait until 11:00 AM. Meet Thomas from 11:00 AM to 12:30 PM (90 min).
+- **12:49 PM**: Arrive at Bayview (19 min travel). Wait until 1:00 PM. Meet Daniel from 1:00 PM to 1:45 PM (45 min).
+- **2:16 PM**: Arrive at Presidio (31 min travel). Meet Olivia from 2:16 PM to 3:16 PM (60 min).
+- **3:31 PM**: Arrive at Haight-Ashbury (15 min travel). Wait until 8:30 PM. Meet Emma from 8:30 PM to 9:00 PM (30 min).
+
+This schedule satisfies all constraints, meeting each friend for at least the required duration within their availability windows. The long wait before meeting Emma is unavoidable due to her late availability (8:30 PM–10:30 PM).

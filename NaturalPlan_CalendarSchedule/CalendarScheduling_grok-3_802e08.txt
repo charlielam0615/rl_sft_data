@@ -1,0 +1,117 @@
+**Problem Restatement:**  
+Schedule a 30-minute meeting for Clara, Daniel, and Eve on Monday between 9:00 and 17:00, considering their existing schedules. Clara is free all day, Daniel is busy from 9:00–10:00, 11:30–12:00, and 14:00–15:00, and Eve is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:30. The meeting should be scheduled at their earliest availability.
+
+---
+
+**Step 1: Forward Subgoaling**
+
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the available time slots for each participant within 9:00–17:00.  
+2. Find overlapping 30-minute time slots where all participants are free.  
+3. Select the earliest available 30-minute slot that satisfies all constraints.  
+[/PLANNING]
+
+---
+
+**Step 2: Reach Goal**
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Identify available time slots for Clara, Daniel, and Eve within 9:00–17:00.  
+- **How to Achieve:** List each participant’s unavailable time slots, determine their free periods, and represent the workday as a timeline to identify all possible 30-minute slots.  
+[/PLANNING]
+
+[IMP]  
+- **Clara’s Schedule:** Free from 9:00–17:00 (entire workday).  
+- **Daniel’s Schedule:**  
+  - Busy: 9:00–10:00, 11:30–12:00, 14:00–15:00.  
+  - Free: 10:00–11:30, 12:00–14:00, 15:00–17:00.  
+- **Eve’s Schedule:**  
+  - Busy: 10:00–10:30, 12:30–13:00, 15:30–16:30.  
+  - Free: 9:00–10:00, 10:30–12:30, 13:00–15:30, 16:30–17:00.  
+
+Represent the workday (9:00–17:00) as 30-minute intervals:  
+- 9:00–9:30, 9:30–10:00, 10:00–10:30, 10:30–11:00, 11:00–11:30, 11:30–12:00, 12:00–12:30, 12:30–13:00, 13:00–13:30, 13:30–14:00, 14:00–14:30, 14:30–15:00, 15:00–15:30, 15:30–16:00, 16:00–16:30, 16:30–17:00.  
+
+Check each interval for availability:  
+- **9:00–9:30:** Clara (free), Daniel (busy), Eve (free) → Not available.  
+- **9:30–10:00:** Clara (free), Daniel (busy), Eve (free) → Not available.  
+- **10:00–10:30:** Clara (free), Daniel (free), Eve (busy) → Not available.  
+- **10:30–11:00:** Clara (free), Daniel (free), Eve (free) → Available.  
+- **11:00–11:30:** Clara (free), Daniel (free), Eve (free) → Available.  
+- **11:30–12:00:** Clara (free), Daniel (busy), Eve (free) → Not available.  
+- **12:00–12:30:** Clara (free), Daniel (free), Eve (free) → Available.  
+- **12:30–13:00:** Clara (free), Daniel (free), Eve (busy) → Not available.  
+- **13:00–13:30:** Clara (free), Daniel (free), Eve (free) → Available.  
+- **13:30–14:00:** Clara (free), Daniel (free), Eve (free) → Available.  
+- **14:00–14:30:** Clara (free), Daniel (busy), Eve (free) → Not available.  
+- **14:30–15:00:** Clara (free), Daniel (busy), Eve (free) → Not available.  
+- **15:00–15:30:** Clara (free), Daniel (free), Eve (free) → Available.  
+- **15:30–16:00:** Clara (free), Daniel (free), Eve (busy) → Not available.  
+- **16:00–16:30:** Clara (free), Daniel (free), Eve (busy) → Not available.  
+- **16:30–17:00:** Clara (free), Daniel (free), Eve (free) → Available.  
+
+Available 30-minute slots: 10:30–11:00, 11:00–11:30, 12:00–12:30, 13:00–13:30, 13:30–14:00, 15:00–15:30, 16:30–17:00.  
+[/IMP]
+
+---
+
+**Step 3: Reach Goal**
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Select the earliest available 30-minute slot from the identified overlapping slots.  
+- **How to Achieve:** Review the list of available slots and choose the earliest one that meets the 30-minute duration requirement.  
+[/PLANNING]
+
+[IMP]  
+From the available slots (10:30–11:00, 11:00–11:30, 12:00–12:30, 13:00–13:30, 13:30–14:00, 15:00–15:30, 16:30–17:00), the earliest slot is **10:30–11:00**. This satisfies the requirement to schedule the meeting at the earliest availability.  
+[/IMP]
+
+---
+
+**Step 4: Validation**
+
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Verify that the selected time slot (10:30–11:00) is valid for all participants.  
+- **How to Achieve:** Check the selected slot against each participant’s busy schedule to confirm no conflicts exist.  
+[/PLANNING]
+
+[IMP]  
+- **Selected Slot: 10:30–11:00**  
+- **Clara:** Free all day → No conflict.  
+- **Daniel:** Busy 9:00–10:00, 11:30–12:00, 14:00–15:00 → Free at 10:30–11:00, no conflict.  
+- **Eve:** Busy 10:00–10:30, 12:30–13:00, 15:30–16:30 → Free at 10:30–11:00, no conflict.  
+
+The slot 10:30–11:00 is valid as all participants are available.  
+[/IMP]
+
+---
+
+**Step 5: Track Goals**
+
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main Goal: Schedule a 30-minute meeting for Clara, Daniel, and Eve on Monday between 9:00–17:00 at their earliest availability.  
+  - Subgoal 1: Identify available time slots for each participant. (Completed)  
+  - Subgoal 2: Find overlapping 30-minute slots. (Completed)  
+  - Subgoal 3: Select the earliest available slot. (Completed)  
+  - Subgoal 4: Validate the selected slot. (Completed)  
+
+**Current Goal:** Finalize the meeting time based on the validated slot.  
+[/REVIEW]
+
+---
+
+**Final Answer:**  
+The meeting can be scheduled for Clara, Daniel, and Eve on Monday from **10:30 to 11:00**. This is the earliest 30-minute slot within 9:00–17:00 where all participants are available.

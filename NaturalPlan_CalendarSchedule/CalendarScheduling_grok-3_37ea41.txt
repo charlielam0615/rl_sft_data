@@ -1,0 +1,98 @@
+**Problem Statement**: Schedule a one-hour meeting for Umar, Vanessa, and William on Monday between 9:00 and 17:00, considering their existing schedules: Umar is busy from 9:30–10:30 and 12:00–13:00; Vanessa is busy from 10:00–11:00, 13:30–14:30, and 16:00–17:00; William is busy from 9:00–9:30, 11:30–12:30, and 14:30–15:30. Find a time slot that works for all participants or explain why no such time exists.
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a one-hour meeting into subgoals:  
+1. Identify the available time slots within the work hours (9:00–17:00).  
+2. List the busy time slots for each participant.  
+3. Find overlapping one-hour time slots where all participants are free.  
+4. Verify if any such time slots exist; if not, analyze conflicts.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to list the busy time slots for each participant and determine the work hours (9:00–17:00) to identify potential one-hour slots. This will be achieved by organizing the given schedules and defining the time range.  
+[/PLANNING]  
+[IMP]  
+- **Work hours**: 9:00–17:00 (8 hours total).  
+- **Umar’s busy slots**: 9:30–10:30, 12:00–13:00.  
+- **Vanessa’s busy slots**: 10:00–11:00, 13:30–14:30, 16:00–17:00.  
+- **William’s busy slots**: 9:00–9:30, 11:30–12:30, 14:30–15:30.  
+The time range for the meeting is continuous from 9:00 to 17:00, and the meeting must be a contiguous one-hour block.  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify one-hour time slots where all participants are free by comparing their busy schedules against the work hours (9:00–17:00). This will be achieved by listing all possible one-hour slots and checking for conflicts with busy times.  
+[/PLANNING]  
+[IMP]  
+To find a suitable time, consider all possible one-hour slots starting at each half-hour mark within 9:00–17:00 (since schedules are given in half-hour increments): 9:00–10:00, 9:30–10:30, 10:00–11:00, ..., 16:00–17:00.  
+- **9:00–10:00**: William busy (9:00–9:30) → Conflict.  
+- **9:30–10:30**: Umar busy (9:30–10:30) → Conflict.  
+- **10:00–11:00**: Vanessa busy (10:00–11:00) → Conflict.  
+- **10:30–11:30**: No conflicts (Umar free after 10:30, Vanessa free after 11:00, William free 9:30–11:30).  
+- **11:00–12:00**: William busy (11:30–12:30) → Conflict.  
+- **11:30–12:30**: William busy (11:30–12:30) → Conflict.  
+- **12:00–13:00**: Umar busy (12:00–13:00) → Conflict.  
+- **12:30–13:30**: No conflicts (Umar free after 13:00, Vanessa free 12:30–13:30, William free 12:30–14:30).  
+- **13:00–14:00**: Vanessa busy (13:30–14:30) → Conflict.  
+- **13:30–14:30**: Vanessa busy (13:30–14:30) → Conflict.  
+- **14:00–15:00**: William busy (14:30–15:30) → Conflict.  
+- **14:30–15:30**: William busy (14:30–15:30) → Conflict.  
+- **15:00–16:00**: No conflicts (Umar free, Vanessa free 14:30–16:00, William free after 15:30).  
+- **15:30–16:30**: Vanessa busy (16:00–17:00) → Conflict.  
+- **16:00–17:00**: Vanessa busy (16:00–17:00) → Conflict.  
+**Potential slots**: 10:30–11:30, 12:30–13:30, 15:00–16:00.  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate the identified time slots (10:30–11:30, 12:30–13:30, 15:00–16:00) by rechecking each participant’s availability to ensure no overlaps with busy times.  
+[/PLANNING]  
+[IMP]  
+- **10:30–11:30**:  
+  - Umar: Free (busy 9:30–10:30, 12:00–13:00).  
+  - Vanessa: Free (busy 10:00–11:00, 13:30–14:30, 16:00–17:00).  
+  - William: Free (busy 9:00–9:30, 11:30–12:30, 14:30–15:30).  
+  - **Valid**.  
+- **12:30–13:30**:  
+  - Umar: Free (busy 9:30–10:30, 12:00–13:00).  
+  - Vanessa: Free (busy 10:00–11:00, 13:30–14:30, 16:00–17:00).  
+  - William: Free (busy 9:00–9:30, 11:30–12:30, 14:30–15:30).  
+  - **Valid**.  
+- **15:00–16:00**:  
+  - Umar: Free (busy 9:30–10:30, 12:00–13:00).  
+  - Vanessa: Free (busy 10:00–11:00, 13:30–14:30, 16:00–17:00).  
+  - William: Free (busy 9:00–9:30, 11:30–12:30, 14:30–15:30).  
+  - **Valid**.  
+All three slots are valid.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Schedule a one-hour meeting for Umar, Vanessa, and William on Monday between 9:00–17:00.  
+  - Subgoal 1: Identify available time slots within 9:00–17:00 (completed).  
+  - Subgoal 2: List busy time slots for each participant (completed).  
+  - Subgoal 3: Find overlapping one-hour slots where all are free (completed: 10:30–11:30, 12:30–13:30, 15:00–16:00).  
+  - Subgoal 4: Verify the identified slots (completed: all slots valid).  
+**Current Goal**: Select a suitable time slot from the valid options.  
+[/REVIEW]
+
+### Step 6
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to select a suitable one-hour time slot from the valid options (10:30–11:30, 12:30–13:30, 15:00–16:00) for the meeting, considering no additional preferences were provided. Choose the earliest available slot for simplicity.  
+[/PLANNING]  
+[IMP]  
+The valid time slots are 10:30–11:30, 12:30–13:30, and 15:00–16:00. Since no specific preferences (e.g., morning or afternoon) were provided, select the earliest slot to maximize the remaining workday: **10:30–11:30**.  
+[/IMP]
+
+**Final Answer**: A suitable time for the one-hour meeting for Umar, Vanessa, and William on Monday is **10:30–11:30**.

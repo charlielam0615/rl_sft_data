@@ -1,0 +1,101 @@
+**Problem Statement**: Schedule a 30-minute meeting for Olivia, Peter, and Quinn on Monday between 9:00 and 17:00, considering their existing schedules and prioritizing the earliest possible time. Olivia is free all day, Peter is busy from 9:00–10:00, 11:30–12:00, and 14:00–15:00, and Quinn is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:30.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00–17:00) and meeting duration (30 minutes).  
+2. List all participants’ unavailable time slots.  
+3. Find overlapping 30-minute windows where all participants are free.  
+4. Select the earliest available 30-minute window.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: List all participants’ unavailable time slots and identify available 30-minute windows.  
+**How to Achieve**: Compile the busy time slots for Peter and Quinn (since Olivia is free all day), then identify 30-minute windows within 9:00–17:00 where no participant has a conflict.  
+[/PLANNING]
+
+[IMP]  
+- **Olivia’s Schedule**: Free all day (9:00–17:00).  
+- **Peter’s Busy Slots**: 9:00–10:00, 11:30–12:00, 14:00–15:00.  
+- **Quinn’s Busy Slots**: 10:00–10:30, 12:30–13:00, 15:30–16:30.  
+
+**Available Windows**:  
+Break the day (9:00–17:00) into 30-minute intervals and check for conflicts:  
+- 9:00–9:30: Peter is busy (9:00–10:00).  
+- 9:30–10:00: Peter is busy (9:00–10:00).  
+- 10:00–10:30: Quinn is busy (10:00–10:30).  
+- 10:30–11:00: Free for all.  
+- 11:00–11:30: Free for all.  
+- 11:30–12:00: Peter is busy (11:30–12:00).  
+- 12:00–12:30: Free for all.  
+- 12:30–13:00: Quinn is busy (12:30–13:00).  
+- 13:00–13:30: Free for all.  
+- 13:30–14:00: Free for all.  
+- 14:00–14:30: Peter is busy (14:00–15:00).  
+- 14:30–15:00: Peter is busy (14:00–15:00).  
+- 15:00–15:30: Free for all.  
+- 15:30–16:00: Quinn is busy (15:30–16:30).  
+- 16:00–16:30: Quinn is busy (15:30–16:30).  
+- 16:30–17:00: Free for all.  
+
+**Available 30-minute slots**: 10:30–11:00, 11:00–11:30, 12:00–12:30, 13:00–13:30, 13:30–14:00, 15:00–15:30, 16:30–17:00.  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Select the earliest available 30-minute window for the meeting.  
+**How to Achieve**: From the list of available windows, choose the earliest one that satisfies the 30-minute duration and all participants’ availability.  
+[/PLANNING]
+
+[IMP]  
+From the available windows (10:30–11:00, 11:00–11:30, 12:00–12:30, 13:00–13:30, 13:30–14:00, 15:00–15:30, 16:30–17:00), the earliest is **10:30–11:00**.  
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify that the selected time slot (10:30–11:00) is free for all participants and meets the 30-minute requirement.  
+**How to Achieve**: Cross-check the 10:30–11:00 slot against each participant’s busy schedule.  
+[/PLANNING]
+
+[IMP]  
+- **Olivia**: Free all day, so 10:30–11:00 is available.  
+- **Peter**: Busy 9:00–10:00, 11:30–12:00, 14:00–15:00; 10:30–11:00 is outside these times, so free.  
+- **Quinn**: Busy 10:00–10:30, 12:30–13:00, 15:30–16:30; 10:30–11:00 is outside these times, so free.  
+- **Duration**: 10:30–11:00 is exactly 30 minutes.  
+
+The slot **10:30–11:00** is valid for all participants and meets the duration requirement.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Schedule a 30-minute meeting for Olivia, Peter, and Quinn on Monday between 9:00 and 17:00 at the earliest availability.  
+  - Subgoal 1: Identify the time range and meeting duration (completed).  
+  - Subgoal 2: List unavailable time slots and find available 30-minute windows (completed).  
+  - Subgoal 3: Select the earliest available window (completed: 10:30–11:00).  
+  - Subgoal 4: Validate the selected time slot (completed: 10:30–11:00 is valid).  
+**Current Goal**: Finalize the meeting time as 10:30–11:00, as it satisfies all constraints.  
+[/REVIEW]
+
+---
+
+**Final Answer**: The meeting can be scheduled on Monday from **10:30 to 11:00**, as this is the earliest 30-minute window where Olivia, Peter, and Quinn are all available.

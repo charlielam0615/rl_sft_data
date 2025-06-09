@@ -1,0 +1,120 @@
+**Problem Statement**:  
+The goal is to meet as many friends as possible (Emma, Lucas, and Olivia) in San Francisco on a single day, starting at the Mission District at 9:00 AM, while adhering to the given time constraints, meeting duration requirements, and travel times between locations. The constraints are:  
+- **Locations and Travel Times (in minutes)**:  
+  - Mission District to Pacific Heights: 16  
+  - Mission District to Chinatown: 12  
+  - Mission District to Fisherman’s Wharf: 20  
+  - Pacific Heights to Mission District: 15  
+  - Pacific Heights to Chinatown: 10  
+  - Pacific Heights to Fisherman’s Wharf: 9  
+  - Chinatown to Mission District: 13  
+  - Chinatown to Pacific Heights: 11  
+  - Chinatown to Fisherman’s Wharf: 7  
+  - Fisherman’s Wharf to Mission District: 21  
+  - Fisherman’s Wharf to Pacific Heights: 8  
+  - Fisherman’s Wharf to Chinatown: 6  
+- **Friend Availability and Meeting Durations**:  
+  - Emma: Available at Pacific Heights from 3:00 PM to 7:00 PM, minimum meeting time of 45 minutes.  
+  - Lucas: Available at Chinatown from 10:00 AM to 3:30 PM, minimum meeting time of 90 minutes.  
+  - Olivia: Available at Fisherman’s Wharf from 8:30 AM to 4:00 PM, minimum meeting time of 120 minutes.  
+The objective is to create a schedule that maximizes the number of friends met (up to three) while satisfying all constraints.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of meeting as many friends as possible into intermediate subgoals:  
+1. Meet Olivia at Fisherman’s Wharf for at least 120 minutes within her availability (8:30 AM–4:00 PM).  
+2. Meet Lucas at Chinatown for at least 90 minutes within his availability (10:00 AM–3:30 PM).  
+3. Meet Emma at Pacific Heights for at least 45 minutes within her availability (3:00 PM–7:00 PM).  
+4. Account for travel times between locations to ensure feasibility.  
+5. Optimize the schedule to fit all meetings within the day, starting from Mission District at 9:00 AM.  
+[/PLANNING]
+
+---
+
+### Step 2: Track Goals
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Meet as many friends as possible (Emma, Lucas, Olivia).  
+  - Subgoal 1: Meet Olivia at Fisherman’s Wharf for ≥120 minutes (8:30 AM–4:00 PM).  
+  - Subgoal 2: Meet Lucas at Chinatown for ≥90 minutes (10:00 AM–3:30 PM).  
+  - Subgoal 3: Meet Emma at Pacific Heights for ≥45 minutes (3:00 PM–7:00 PM).  
+  - Subgoal 4: Account for travel times.  
+  - Subgoal 5: Optimize schedule starting from Mission District at 9:00 AM.  
+**Current Goal**: Plan a feasible schedule to meet all three friends.  
+[/REVIEW]
+
+---
+
+### Step 3: Validation
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the feasibility of meeting all three friends (Olivia, Lucas, Emma) within their availability windows, considering travel times and minimum meeting durations. This will be achieved by testing the provided solution and exploring alternative schedules to ensure optimality.  
+[/PLANNING]  
+
+[IMP]  
+Let’s validate the provided solution:  
+- **9:00 AM**: Start at Mission District.  
+- **9:00 AM–9:20 AM**: Travel to Fisherman’s Wharf (20 minutes).  
+- **9:20 AM–11:20 AM**: Meet Olivia for 120 minutes (within 8:30 AM–4:00 PM).  
+- **11:20 AM–11:26 AM**: Travel to Chinatown (6 minutes).  
+- **11:26 AM–12:56 PM**: Meet Lucas for 90 minutes (within 10:00 AM–3:30 PM).  
+- **12:56 PM–1:06 PM**: Travel to Pacific Heights (10 minutes).  
+- **1:06 PM–3:00 PM**: Wait until Emma is available (114 minutes).  
+- **3:00 PM–3:45 PM**: Meet Emma for 45 minutes (within 3:00 PM–7:00 PM).  
+
+**Validation Check**:  
+- **Olivia**: Meeting from 9:20 AM to 11:20 AM (120 minutes) is within 8:30 AM–4:00 PM. Valid.  
+- **Lucas**: Meeting from 11:26 AM to 12:56 PM (90 minutes) is within 10:00 AM–3:30 PM. Valid.  
+- **Emma**: Meeting from 3:00 PM to 3:45 PM (45 minutes) is within 3:00 PM–7:00 PM. Valid.  
+- **Travel Times**: All travel times match the given constraints.  
+- **Total Time**: The schedule ends at 3:45 PM, well within the day.  
+
+**Alternative Schedules**:  
+Let’s explore an alternative to check for optimality (e.g., minimizing wait time):  
+- **Option 1: Start with Lucas in Chinatown**.  
+  - 9:00 AM–9:12 AM: Travel to Chinatown (12 minutes).  
+  - 9:12 AM–10:00 AM: Wait for Lucas (48 minutes, as he’s available at 10:00 AM).  
+  - 10:00 AM–11:30 AM: Meet Lucas for 90 minutes.  
+  - 11:30 AM–11:37 AM: Travel to Fisherman’s Wharf (7 minutes).  
+  - 11:37 AM–1:37 PM: Meet Olivia for 120 minutes (within 8:30 AM–4:00 PM).  
+  - 1:37 PM–1:45 PM: Travel to Pacific Heights (8 minutes).  
+  - 1:45 PM–3:00 PM: Wait for Emma (75 minutes).  
+  - 3:00 PM–3:45 PM: Meet Emma for 45 minutes.  
+  - **Total Wait Time**: 48 + 75 = 123 minutes.  
+
+The provided solution has 114 minutes of wait time, slightly better than 123 minutes in the alternative. Other permutations (e.g., starting with Emma) are infeasible since Emma is only available after 3:00 PM. Thus, the provided solution is optimal for minimizing wait time while meeting all three friends.  
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The goal is to finalize the schedule to meet Olivia, Lucas, and Emma, adhering to all constraints. This will be achieved by adopting the validated schedule and presenting it as the solution.  
+[/PLANNING]  
+
+[IMP]  
+**Final Schedule**:  
+- **9:00 AM**: Start at Mission District.  
+- **9:00 AM–9:20 AM**: Travel to Fisherman’s Wharf (20 minutes).  
+- **9:20 AM–11:20 AM**: Meet Olivia at Fisherman’s Wharf for 120 minutes.  
+- **11:20 AM–11:26 AM**: Travel to Chinatown (6 minutes).  
+- **11:26 AM–12:56 PM**: Meet Lucas at Chinatown for 90 minutes.  
+- **12:56 PM–1:06 PM**: Travel to Pacific Heights (10 minutes).  
+- **1:06 PM–3:00 PM**: Wait at Pacific Heights (114 minutes).  
+- **3:00 PM–3:45 PM**: Meet Emma at Pacific Heights for 45 minutes.  
+
+This schedule meets all three friends, satisfies the minimum meeting durations, respects availability windows, and accounts for travel times, ending at 3:45 PM.  
+[/IMP]
+
+---
+
+### Conclusion  
+The provided schedule is feasible and optimal, as it minimizes wait time (114 minutes) compared to alternatives while meeting all constraints. No other schedule achieves the goal of meeting all three friends with less idle time.

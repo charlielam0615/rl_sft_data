@@ -1,0 +1,97 @@
+**Problem Statement:**  
+Schedule a 30-minute meeting for Wendy, Xavier, and Yvonne on Monday between 9:00 and 17:00, considering their existing schedules. Wendy has meetings from 9:00-9:30, 11:00-11:30, and 14:00-14:30. Xavier is busy from 10:00-10:30, 12:30-13:00, and 15:30-16:00. Yvonne has no scheduled meetings. The meeting should be scheduled at the earliest possible time that accommodates everyone’s availability.
+
+---
+
+**Step 1: Forward Subgoaling**  
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the available time slots within the workday (9:00-17:00).  
+2. List the busy time slots for each participant.  
+3. Find overlapping 30-minute windows where all participants are free.  
+4. Select the earliest available 30-minute slot that satisfies the constraints.  
+[/PLANNING]
+
+---
+
+**Step 2: Reach Goal**  
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Identify the available time slots for all participants and determine the earliest 30-minute slot for the meeting.  
+- **How to Achieve:** Analyze the schedules of Wendy, Xavier, and Yvonne to find 30-minute windows between 9:00 and 17:00 where no one has a conflict, starting from the earliest possible time.  
+[/PLANNING]  
+
+[IMP]  
+- **Workday Constraints:** The meeting must be between 9:00 and 17:00 on Monday and last 30 minutes.  
+- **Participants’ Schedules:**  
+  - Wendy is busy: 9:00-9:30, 11:00-11:30, 14:00-14:30.  
+  - Xavier is busy: 10:00-10:30, 12:30-13:00, 15:30-16:00.  
+  - Yvonne is free all day.  
+- **Available Time Slots:**  
+  - Break the workday (9:00-17:00) into 30-minute intervals:  
+    9:00-9:30, 9:30-10:00, 10:00-10:30, 10:30-11:00, 11:00-11:30, 11:30-12:00, 12:00-12:30, 12:30-13:00, 13:00-13:30, 13:30-14:00, 14:00-14:30, 14:30-15:00, 15:00-15:30, 15:30-16:00, 16:00-16:30, 16:30-17:00.  
+  - Check each interval for conflicts:  
+    - 9:00-9:30: Wendy is busy.  
+    - 9:30-10:00: No conflicts (all free).  
+    - 10:00-10:30: Xavier is busy.  
+    - 10:30-11:00: No conflicts.  
+    - 11:00-11:30: Wendy is busy.  
+    - 11:30-12:00: No conflicts.  
+    - 12:00-12:30: No conflicts.  
+    - 12:30-13:00: Xavier is busy.  
+    - 13:00-13:30: No conflicts.  
+    - 13:30-14:00: No conflicts.  
+    - 14:00-14:30: Wendy is busy.  
+    - 14:30-15:00: No conflicts.  
+    - 15:00-15:30: No conflicts.  
+    - 15:30-16:00: Xavier is busy.  
+    - 16:00-16:30: No conflicts.  
+    - 16:30-17:00: No conflicts.  
+- **Earliest Available Slot:** The earliest 30-minute slot where all participants are free is 9:30-10:00.  
+[/IMP]
+
+---
+
+**Step 3: Validation**  
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Verify that the proposed time slot (9:30-10:00) satisfies all constraints.  
+- **How to Achieve:** Confirm that Wendy, Xavier, and Yvonne are free during 9:30-10:00 and that the slot meets the 30-minute duration and workday constraints.  
+[/PLANNING]  
+
+[IMP]  
+- **Proposed Slot:** 9:30-10:00.  
+- **Verification:**  
+  - Wendy: Free (no meetings; her 9:00-9:30 meeting ends before 9:30).  
+  - Xavier: Free (no meetings; his 10:00-10:30 meeting starts after 10:00).  
+  - Yvonne: Free (entire day is open).  
+  - Duration: 9:30-10:00 is exactly 30 minutes.  
+  - Workday Constraints: The slot is within 9:00-17:00.  
+- **Conclusion:** The 9:30-10:00 slot is valid and satisfies all constraints.  
+[/IMP]
+
+---
+
+**Step 4: Track Goals**  
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main Goal: Schedule a 30-minute meeting for Wendy, Xavier, and Yvonne on Monday between 9:00 and 17:00 at the earliest possible time.  
+  - Subgoal 1: Identify available time slots within 9:00-17:00. (Completed)  
+  - Subgoal 2: List busy time slots for each participant. (Completed)  
+  - Subgoal 3: Find overlapping 30-minute windows where all are free. (Completed)  
+  - Subgoal 4: Select the earliest available 30-minute slot. (Completed)  
+  - Subgoal 5: Verify the proposed time slot. (Completed)  
+**Current Goal:** Finalize the meeting time as 9:30-10:00, as it has been validated.  
+[/REVIEW]
+
+---
+
+**Final Answer:**  
+The meeting for Wendy, Xavier, and Yvonne can be scheduled on Monday from **9:30 to 10:00**. This is the earliest 30-minute time slot within the 9:00-17:00 workday where all participants are available, considering Wendy’s meetings (9:00-9:30, 11:00-11:30, 14:00-14:30), Xavier’s busy times (10:00-10:30, 12:30-13:00, 15:30-16:00), and Yvonne’s open schedule.

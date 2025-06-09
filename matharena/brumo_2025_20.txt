@@ -1,0 +1,211 @@
+**Problem Statement**: Consider a pond with lily pads numbered from 1 to 12 arranged in a circle. Bruno the frog starts on lily pad 1. Each turn, Bruno has an equal probability (1/3) of making one of three moves: jumping 4 lily pads clockwise, jumping 2 lily pads clockwise, or jumping 1 lily pad counterclockwise. We need to determine the expected number of turns for Bruno to return to lily pad 1 for the first time.
+
+I will solve this problem by selecting one meta-cognitive action per step, following the provided framework, and continue until the planning phase is complete (i.e., a clear plan to solve the problem is established). Since the problem is mathematical and involves combinatorics, I will focus on breaking it down systematically.
+
+---
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve for the expected number of turns for Bruno to return to lily pad 1, break down the problem into forward-looking intermediate subgoals:  
+1. Model the problem as a Markov chain, where each lily pad (1 to 12) represents a state, and lily pad 1 is the absorbing state.  
+2. Define transition probabilities between states based on Bruno’s possible moves.  
+3. Set up the expected time to absorption (return to lily pad 1) using the Markov chain framework.  
+4. Solve the resulting system of equations to compute the expected number of turns starting from lily pad 1.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action**: Adjust Subgoals (Planning)  
+Refine the subgoals from Step 1 to ensure clarity and feasibility:  
+1. Represent the lily pads as a circular graph with states numbered 1 to 12, where state 1 is the target (absorbing state).  
+2. Calculate transition probabilities: for each state, determine the probabilities (1/3) of moving to the next state via a jump of +4, +2, or -1 (modulo 12, adjusting for the circular nature).  
+3. Formulate a system of linear equations for the expected number of turns to reach state 1 from each state.  
+4. Solve the system, focusing on the expected number of turns starting from state 1.  
+5. Verify the solution by checking the boundary conditions and ensuring the model accounts for the circular structure.  
+[/PLANNING]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal-Management System**:  
+- **Main Goal**: Compute the expected number of turns for Bruno to return to lily pad 1.  
+  - **Subgoal 1**: Represent the lily pads as a circular graph with states 1 to 12, state 1 being the absorbing state.  
+  - **Subgoal 2**: Calculate transition probabilities for moves (+4, +2, -1) with probability 1/3 each, accounting for the circular structure (modulo 12).  
+  - **Subgoal 3**: Formulate a system of linear equations for the expected number of turns to reach state 1 from each state.  
+  - **Subgoal 4**: Solve the system to find the expected number of turns from state 1.  
+  - **Subgoal 5**: Verify the solution for correctness.  
+**Current Goal**: Represent the lily pads as a circular graph with states 1 to 12, state 1 being the absorbing state.  
+[/REVIEW]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-Data**: The current goal is to represent the lily pads as a circular graph with states 1 to 12, where state 1 is the absorbing state. Achieve this by defining the states as nodes in a Markov chain and specifying that state 1, once reached, has a probability of 1 to stay in state 1 (absorbing state).  
+[/PLANNING]  
+
+[IMP]  
+Model the problem as a Markov chain:  
+- States: 12 lily pads, numbered 1 to 12, arranged in a circle.  
+- State 1 is absorbing, meaning once Bruno reaches lily pad 1, he stays there (transition probability from state 1 to state 1 is 1).  
+- States 2 to 12 are transient, with transitions based on Bruno’s moves (+4, +2, -1) with probability 1/3 each.  
+- The circular structure implies positions are computed modulo 12, with lily pad 12 connecting to lily pad 1.  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-Data**: The current goal is to calculate transition probabilities for each state, accounting for the moves (+4, +2, -1) with probability 1/3 each and the circular structure (modulo 12). Achieve this by determining the next state for each possible move from each lily pad.  
+[/PLANNING]  
+
+[IMP]  
+For each state \( i \) (lily pad \( i \), \( i = 1, 2, ..., 12 \)):  
+- **State 1 (absorbing)**: Transition probability to state 1 is 1 (no other transitions).  
+- **States \( i = 2, 3, ..., 12 \)**:  
+  - Move +4: Go to state \( (i + 4) \mod 12 \), where \( 0 \mod 12 \) maps to 12. Probability = 1/3.  
+  - Move +2: Go to state \( (i + 2) \mod 12 \), where \( 0 \mod 12 \) maps to 12. Probability = 1/3.  
+  - Move -1: Go to state \( (i - 1) \mod 12 \), where \( 0 \mod 12 \) maps to 12. Probability = 1/3.  
+Example:  
+- From state 2:  
+  - +4: \( (2 + 4) \mod 12 = 6 \), probability 1/3.  
+  - +2: \( (2 + 2) \mod 12 = 4 \), probability 1/3.  
+  - -1: \( (2 - 1) \mod 12 = 1 \), probability 1/3.  
+- From state 12:  
+  - +4: \( (12 + 4) \mod 12 = 4 \), probability 1/3.  
+  - +2: \( (12 + 2) \mod 12 = 2 \), probability 1/3.  
+  - -1: \( (12 - 1) \mod 12 = 11 \), probability 1/3.  
+This defines the transition matrix for the Markov chain.  
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]  
+**Action**: Recall Info (Review)  
+**Meta-Data**: The current goal is to formulate a system of linear equations for the expected number of turns to reach state 1. Retrieve information about the Markov chain structure and transition probabilities to support this step.  
+[/PLANNING]  
+
+[REVIEW]  
+**Recalled Information**:  
+- From Step 4: The problem is modeled as a Markov chain with 12 states (lily pads 1 to 12), where state 1 is absorbing (transition probability to itself is 1), and states 2 to 12 are transient.  
+- From Step 5: Transition probabilities for states 2 to 12 are defined as follows: from state \( i \), Bruno moves to \( (i + 4) \mod 12 \), \( (i + 2) \mod 12 \), or \( (i - 1) \mod 12 \) with probability 1/3 each (with \( 0 \mod 12 \) mapping to 12). State 1 has a transition probability of 1 to itself.  
+This information provides the foundation for setting up equations for the expected number of turns to reach state 1.  
+[/REVIEW]
+
+---
+
+### Step 7
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To formulate the system of linear equations (Subgoal 3), break it into smaller steps:  
+1. Define \( E_i \) as the expected number of turns to reach state 1 from state \( i \).  
+2. Write the equation for state 1: \( E_1 = 0 \) (absorbing state).  
+3. For states \( i = 2, 3, ..., 12 \), write equations based on the expected number of turns from the next possible states, weighted by transition probabilities (1/3).  
+4. Account for the circular structure in the equations using modulo arithmetic.  
+[/PLANNING]
+
+---
+
+### Step 8
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal-Management System**:  
+- **Main Goal**: Compute the expected number of turns for Bruno to return to lily pad 1.  
+  - **Subgoal 1**: Represent the lily pads as a circular graph with states 1 to 12, state 1 being the absorbing state (completed).  
+  - **Subgoal 2**: Calculate transition probabilities for moves (+4, +2, -1) with probability 1/3 each, accounting for the circular structure (completed).  
+  - **Subgoal 3**: Formulate a system of linear equations for the expected number of turns to reach state 1 from each state.  
+    - **Sub-subgoal 3.1**: Define \( E_i \) as the expected number of turns to reach state 1 from state \( i \).  
+    - **Sub-subgoal 3.2**: Write the equation for state 1: \( E_1 = 0 \).  
+    - **Sub-subgoal 3.3**: Write equations for states \( i = 2, 3, ..., 12 \) based on transition probabilities.  
+    - **Sub-subgoal 3.4**: Account for the circular structure in the equations.  
+  - **Subgoal 4**: Solve the system to find the expected number of turns from state 1.  
+  - **Subgoal 5**: Verify the solution for correctness.  
+**Current Goal**: Formulate a system of linear equations for the expected number of turns to reach state 1.  
+[/REVIEW]
+
+---
+
+### Step 9
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-Data**: The current goal is to formulate a system of linear equations for the expected number of turns to reach state 1 from each state. Achieve this by defining \( E_i \) as the expected number of turns from state \( i \), setting \( E_1 = 0 \), and writing equations for states 2 to 12 based on the transition probabilities from Step 5.  
+[/PLANNING]  
+
+[IMP]  
+Define \( E_i \) as the expected number of turns to reach state 1 from state \( i \).  
+- For state 1 (absorbing): \( E_1 = 0 \).  
+- For states \( i = 2, 3, ..., 12 \), the equation is:  
+  \[
+  E_i = 1 + \frac{1}{3} E_{(i+4) \mod 12} + \frac{1}{3} E_{(i+2) \mod 12} + \frac{1}{3} E_{(i-1) \mod 12}
+  \]
+  where \( 0 \mod 12 \) maps to 12. The 1 accounts for the current turn, and each term is weighted by the transition probability (1/3).  
+Example equations:  
+- For \( i = 2 \):  
+  \[
+  E_2 = 1 + \frac{1}{3} E_6 + \frac{1}{3} E_4 + \frac{1}{3} E_1
+  \]
+  Since \( E_1 = 0 \), this simplifies to:
+  \[
+  E_2 = 1 + \frac{1}{3} E_6 + \frac{1}{3} E_4
+  \]  
+- For \( i = 12 \):  
+  \[
+  E_{12} = 1 + \frac{1}{3} E_4 + \frac{1}{3} E_2 + \frac{1}{3} E_{11}
+  \]  
+This results in 11 linear equations for \( E_2, E_3, ..., E_{12} \), with \( E_1 = 0 \).  
+[/IMP]
+
+---
+
+### Step 10
+[PLANNING]  
+**Action**: Adjust Subgoals (Planning)  
+The planning phase is nearly complete, but refine the remaining subgoals for clarity:  
+1. Solve the system of 11 linear equations for \( E_2, E_3, ..., E_{12} \), focusing on \( E_1 = 0 \) and computing \( E_1 \) (the expected number of turns from state 1, which is the solution).  
+2. Verify the solution by checking boundary conditions (e.g., \( E_1 = 0 \)) and ensuring the equations respect the circular structure.  
+3. Optionally, explore an alternative approach (e.g., simulation) to cross-check the result if time permits.  
+[/PLANNING]
+
+---
+
+### Step 11
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal-Management System**:  
+- **Main Goal**: Compute the expected number of turns for Bruno to return to lily pad 1.  
+  - **Subgoal 1**: Represent the lily pads as a circular graph with states 1 to 12, state 1 being the absorbing state (completed).  
+  - **Subgoal 2**: Calculate transition probabilities for moves (+4, +2, -1) with probability 1/3 each, accounting for the circular structure (completed).  
+  - **Subgoal 3**: Formulate a system of linear equations for the expected number of turns to reach state 1 from each state (completed).  
+  - **Subgoal 4**: Solve the system of 11 linear equations for \( E_2, E_3, ..., E_{12} \), focusing on computing the expected number of turns from state 1.  
+  - **Subgoal 5**: Verify the solution by checking boundary conditions and the circular structure.  
+  - **Subgoal 6**: Optionally, explore an alternative approach (e.g., simulation) to cross-check the result.  
+**Current Goal**: Solve the system of linear equations to find the expected number of turns from state 1.  
+[/REVIEW]
+
+---
+
+### Planning Completion
+The planning phase is now complete, as the problem has been broken down into clear, actionable subgoals, and the mathematical framework (Markov chain with linear equations) is fully defined. The next steps involve implementation (solving the equations) and verification, which are outside the planning phase. However, since the task is to complete the planning, I stop here. The plan consists of:  
+1. Modeling the problem as a Markov chain with 12 states, state 1 absorbing.  
+2. Defining transition probabilities for each state.  
+3. Formulating a system of linear equations for the expected number of turns.  
+4. Solving the system and verifying the result, with an optional simulation for cross-checking.
+
+If you want me to proceed with solving the equations or further implementation, let me know!

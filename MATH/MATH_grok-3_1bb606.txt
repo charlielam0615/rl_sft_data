@@ -1,0 +1,142 @@
+**Problem Statement:** We have a geometric sequence with the first term \( a_1 = \frac{3}{4} \) and the second term \( a_2 = 15 \). We need to find the smallest positive integer \( n \) such that the \( n \)-th term of the sequence is divisible by \( 1,000,000 \). In a geometric sequence, each term is obtained by multiplying the previous term by a common ratio \( r \). The \( n \)-th term is given by \( a_n = a_1 \cdot r^{n-1} \). Our task is to determine the smallest \( n \) for which \( a_n \) is an integer divisible by \( 1,000,000 \).
+
+---
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to guide the solution process.  
+1. Find the common ratio \( r \) of the geometric sequence using the given first and second terms.  
+2. Express the \( n \)-th term of the sequence in terms of \( a_1 \), \( r \), and \( n \).  
+3. Determine the condition for the \( n \)-th term to be divisible by \( 1,000,000 \).  
+4. Find the smallest positive integer \( n \) that satisfies this condition.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to find the common ratio \( r \) of the geometric sequence. This can be achieved by dividing the second term by the first term, since \( a_2 = a_1 \cdot r \).  
+[/PLANNING]  
+
+[IMP]  
+Given \( a_1 = \frac{3}{4} \) and \( a_2 = 15 \), we compute the common ratio:  
+\[ r = \frac{a_2}{a_1} = \frac{15}{\frac{3}{4}} = 15 \cdot \frac{4}{3} = \frac{60}{3} = 20. \]  
+The common ratio is \( r = 20 \).  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to express the \( n \)-th term of the sequence. Using the formula for the \( n \)-th term of a geometric sequence, \( a_n = a_1 \cdot r^{n-1} \), substitute the known values of \( a_1 \) and \( r \).  
+[/PLANNING]  
+
+[IMP]  
+The first term is \( a_1 = \frac{3}{4} \), and the common ratio is \( r = 20 \). The \( n \)-th term is:  
+\[ a_n = a_1 \cdot r^{n-1} = \frac{3}{4} \cdot 20^{n-1}. \]  
+Thus,  
+\[ a_n = \frac{3 \cdot 20^{n-1}}{4}. \]  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to determine the condition for \( a_n \) to be divisible by \( 1,000,000 \). Since \( a_n \) must be an integer divisible by \( 1,000,000 \), we need \( a_n = \frac{3 \cdot 20^{n-1}}{4} \) to be an integer, and then ensure that this integer is divisible by \( 1,000,000 \).  
+[/PLANNING]  
+
+[IMP]  
+For \( a_n = \frac{3 \cdot 20^{n-1}}{4} \) to be an integer, the denominator 4 must divide \( 3 \cdot 20^{n-1} \). Factorize the terms:  
+- \( 20 = 2^2 \cdot 5 \), so \( 20^{n-1} = (2^2 \cdot 5)^{n-1} = 2^{2(n-1)} \cdot 5^{n-1} \).  
+- The numerator is \( 3 \cdot 20^{n-1} = 3 \cdot 2^{2(n-1)} \cdot 5^{n-1} \).  
+- The denominator is \( 4 = 2^2 \).  
+
+Thus,  
+\[ a_n = \frac{3 \cdot 2^{2(n-1)} \cdot 5^{n-1}}{2^2} = 3 \cdot 2^{2(n-1) - 2} \cdot 5^{n-1} = 3 \cdot 2^{2n - 4} \cdot 5^{n-1}. \]  
+For \( a_n \) to be an integer, the exponent of 2 must be non-negative:  
+\[ 2n - 4 \geq 0 \implies n \geq 2. \]  
+Since \( n \) is a positive integer, \( n \geq 2 \) ensures the term is an integer.  
+
+Next, \( a_n \) must be divisible by \( 1,000,000 = 10^6 = (2 \cdot 5)^6 = 2^6 \cdot 5^6 \). So, we need:  
+\[ a_n = 3 \cdot 2^{2n - 4} \cdot 5^{n-1} \]  
+to have at least 6 factors of 2 and 6 factors of 5 in its prime factorization (in addition to the factor of 3).  
+
+- **Exponent of 2**: \( 2n - 4 \geq 6 \implies 2n \geq 10 \implies n \geq 5 \).  
+- **Exponent of 5**: \( n - 1 \geq 6 \implies n \geq 7 \).  
+
+The more restrictive condition is \( n \geq 7 \). Thus, \( a_n \) is divisible by \( 2^6 \cdot 5^6 \) when \( n \geq 7 \).  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action: Track Goals (Review)**  
+Maintain a goal-management system and list all goals, highlighting the current goal.  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main Goal: Find the smallest \( n \) for which the \( n \)-th term of the geometric sequence is divisible by \( 1,000,000 \).  
+  - Subgoal 1: Find the common ratio \( r \) (completed: \( r = 20 \)).  
+  - Subgoal 2: Express the \( n \)-th term (completed: \( a_n = 3 \cdot 2^{2n - 4} \cdot 5^{n-1} \)).  
+  - Subgoal 3: Determine the condition for divisibility by \( 1,000,000 \) (completed: \( n \geq 7 \)).  
+  - Subgoal 4: Find the smallest \( n \) that satisfies the condition (current goal).  
+
+**Current Goal:** Find the smallest positive integer \( n \) that satisfies \( n \geq 7 \).  
+[/REVIEW]
+
+---
+
+### Step 6
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to find the smallest \( n \) that satisfies the divisibility condition. Based on the previous step, we need \( n \geq 7 \). We will test the smallest integer \( n = 7 \) to confirm it meets all requirements.  
+[/PLANNING]  
+
+[IMP]  
+From the previous step, the condition for \( a_n \) to be divisible by \( 1,000,000 = 2^6 \cdot 5^6 \) is \( n \geq 7 \). The smallest positive integer satisfying this is \( n = 7 \). Let’s verify:  
+\[ a_7 = 3 \cdot 2^{2 \cdot 7 - 4} \cdot 5^{7 - 1} = 3 \cdot 2^{14 - 4} \cdot 5^6 = 3 \cdot 2^{10} \cdot 5^6. \]  
+Check divisibility:  
+- Exponent of 2: \( 10 \geq 6 \).  
+- Exponent of 5: \( 6 \geq 6 \).  
+
+Since \( 2^{10} \cdot 5^6 = 2^6 \cdot 5^6 \cdot 2^4 = 1,000,000 \cdot 16 \), we have:  
+\[ a_7 = 3 \cdot 1,000,000 \cdot 16 = 48,000,000. \]  
+This is divisible by \( 1,000,000 \), as \( 48,000,000 \div 1,000,000 = 48 \).  
+
+To ensure minimality, test \( n = 6 \):  
+\[ a_6 = 3 \cdot 2^{2 \cdot 6 - 4} \cdot 5^{6 - 1} = 3 \cdot 2^8 \cdot 5^5. \]  
+- Exponent of 2: \( 8 \geq 6 \).  
+- Exponent of 5: \( 5 < 6 \).  
+
+Since the exponent of 5 is less than 6, \( a_6 = 3 \cdot 2^8 \cdot 5^5 = 3 \cdot 256 \cdot 3125 = 2,400,000 \) is not divisible by \( 5^6 = 15625 \) (since \( 2,400,000 \div 15625 = 153.6 \), not an integer). Thus, \( n = 6 \) does not work, confirming \( n = 7 \) is the smallest.  
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data:** The current goal is to validate the solution by ensuring \( n = 7 \) is correct and no smaller \( n \) satisfies the condition. This involves rechecking the calculations and minimality.  
+[/PLANNING]  
+
+[IMP]  
+Recompute for \( n = 7 \):  
+\[ a_7 = \frac{3 \cdot 20^{7-1}}{4} = \frac{3 \cdot 20^6}{4} = \frac{3 \cdot (2^2 \cdot 5)^6}{2^2} = \frac{3 \cdot 2^{12} \cdot 5^6}{2^2} = 3 \cdot 2^{10} \cdot 5^6. \]  
+\[ 2^{10} \cdot 5^6 = 1024 \cdot 15625 = 16,000,000, \]  
+\[ a_7 = 3 \cdot 16,000,000 = 48,000,000. \]  
+This is divisible by \( 1,000,000 \), as \( 48,000,000 \div 1,000,000 = 48 \).  
+
+For minimality, recheck \( n = 6 \):  
+\[ a_6 = \frac{3 \cdot 20^5}{4} = \frac{3 \cdot (2^2 \cdot 5)^5}{2^2} = \frac{3 \cdot 2^{10} \cdot 5^5}{2^2} = 3 \cdot 2^8 \cdot 5^5 = 3 \cdot 256 \cdot 3125 = 2,400,000. \]  
+Since \( 5^6 = 15625 \), and \( 2,400,000 \div 15625 = 153.6 \), it’s not divisible. No smaller \( n \) (e.g., \( n = 5, 4, \ldots \)) will satisfy \( n - 1 \geq 6 \). Thus, \( n = 7 \) is validated as the smallest.  
+[/IMP]
+
+---
+
+**Final Answer:** The smallest \( n \) for which the \( n \)-th term of the geometric sequence is divisible by \( 1,000,000 \) is \( \boxed{7} \).

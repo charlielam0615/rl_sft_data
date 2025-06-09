@@ -1,0 +1,165 @@
+### Problem Statement
+I need to plan a day in San Francisco to meet as many friends as possible, given the following constraints:
+- I arrive at the Mission District at 9:00 AM.
+- Rachel is available at Pacific Heights from 2:00 PM to 6:30 PM, and I must meet her for at least 45 minutes.
+- Daniel is available at Chinatown from 10:00 AM to 3:30 PM, and I must meet him for at least 90 minutes.
+- Olivia is available at Sunset District from 9:30 AM to 8:00 PM, and I must meet her for at least 120 minutes.
+- Travel times between locations are provided (e.g., Mission District to Pacific Heights: 15 minutes, etc.).
+The goal is to create a schedule that allows me to meet all three friends (Rachel, Daniel, and Olivia) while satisfying the time constraints and optimizing the schedule to meet as many friends as possible.
+
+I will solve this using the meta-cognitive action set, selecting one action per step and structuring the response with [PLANNING], [IMP], and [REVIEW] blocks as required.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+To meet as many friends as possible, I need to create a schedule that includes visiting Pacific Heights to meet Rachel, Chinatown to meet Daniel, and Sunset District to meet Olivia, while respecting their availability windows and minimum meeting times. I will break this down into subgoals:
+1. Determine a feasible sequence of visits to the three locations.
+2. Allocate sufficient time for each meeting (45 minutes for Rachel, 90 minutes for Daniel, 120 minutes for Olivia).
+3. Account for travel times between locations.
+4. Ensure the schedule fits within the friends’ availability windows and starts at 9:00 AM in the Mission District.
+[/PLANNING]
+
+---
+
+### Step 2: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Track Goals**  
+Goal hierarchy:
+- Main goal: Meet as many friends as possible (Rachel, Daniel, Olivia) while satisfying time constraints.
+  - Subgoal 1: Determine a feasible sequence of visits to Pacific Heights, Chinatown, and Sunset District.
+  - Subgoal 2: Allocate 45 minutes for Rachel, 90 minutes for Daniel, and 120 minutes for Olivia.
+  - Subgoal 3: Account for travel times between locations.
+  - Subgoal 4: Ensure the schedule fits within availability windows (Rachel: 2:00 PM–6:30 PM, Daniel: 10:00 AM–3:30 PM, Olivia: 9:30 AM–8:00 PM) and starts at 9:00 AM in Mission District.
+Current goal: Determine a feasible sequence of visits to Pacific Heights, Chinatown, and Sunset District.
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to determine a feasible sequence of visits to Pacific Heights, Chinatown, and Sunset District. To achieve this, I will evaluate possible sequences of visits, calculate total time (including travel and meeting times), and check if they fit within the availability windows.
+[/PLANNING]
+
+[IMP]
+To meet all three friends, I need to visit Pacific Heights (Rachel), Chinatown (Daniel), and Sunset District (Olivia). There are 3! = 6 possible sequences: 
+1. Mission → Chinatown → Pacific Heights → Sunset
+2. Mission → Chinatown → Sunset → Pacific Heights
+3. Mission → Pacific Heights → Chinatown → Sunset
+4. Mission → Pacific Heights → Sunset → Chinatown
+5. Mission → Sunset → Chinatown → Pacific Heights
+6. Mission → Sunset → Pacific Heights → Chinatown
+
+Minimum meeting times: Rachel (45 min), Daniel (90 min), Olivia (120 min). Total meeting time: 45 + 90 + 120 = 255 minutes. I will test sequences to find one that fits within the availability windows, starting at 9:00 AM from Mission District.
+
+**Sequence 1: Mission → Chinatown → Pacific Heights → Sunset**
+- Start at Mission District at 9:00 AM.
+- Travel to Chinatown (12 min): Arrive at 9:12 AM.
+- Daniel is available from 10:00 AM to 3:30 PM. Wait until 10:00 AM (48 min wait).
+- Meet Daniel from 10:00 AM to 11:30 AM (90 min).
+- Travel to Pacific Heights (10 min): Arrive at 11:40 AM.
+- Rachel is available from 2:00 PM to 6:30 PM. Wait until 2:00 PM (140 min wait).
+- Meet Rachel from 2:00 PM to 2:45 PM (45 min).
+- Travel to Sunset District (22 min): Arrive at 3:07 PM.
+- Olivia is available from 9:30 AM to 8:00 PM. Meet Olivia from 3:07 PM to 5:07 PM (120 min).
+- End time: 5:07 PM, within Olivia’s availability.
+
+Total time: 9:00 AM to 5:07 PM = 487 minutes (including 188 min waiting). This sequence is feasible.
+
+I will test one more sequence to compare:
+**Sequence 2: Mission → Chinatown → Sunset → Pacific Heights**
+- Start at Mission District at 9:00 AM.
+- Travel to Chinatown (12 min): Arrive at 9:12 AM.
+- Wait until 10:00 AM (48 min wait).
+- Meet Daniel from 10:00 AM to 11:30 AM (90 min).
+- Travel to Sunset District (20 min): Arrive at 11:50 AM.
+- Meet Olivia from 11:50 AM to 1:50 PM (120 min).
+- Travel to Pacific Heights (21 min): Arrive at 2:11 PM.
+- Meet Rachel from 2:11 PM to 2:56 PM (45 min).
+- End time: 2:56 PM.
+
+Total time: 9:00 AM to 2:56 PM = 356 minutes (including 48 min waiting). This sequence is also feasible and shorter due to less waiting time.
+
+Sequence 2 seems more efficient. I will proceed with it unless a better option is found.
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the proposed schedule (Mission → Chinatown → Sunset → Pacific Heights) to ensure it meets all constraints (meeting times, availability windows, and travel times).
+[/PLANNING]
+
+[IMP]
+Validating Sequence 2:
+- **Start**: Mission District at 9:00 AM.
+- **Chinatown**: Travel from Mission to Chinatown (12 min), arrive at 9:12 AM. Wait until 10:00 AM (48 min). Meet Daniel from 10:00 AM to 11:30 AM (90 min, satisfies ≥90 min). Daniel’s availability: 10:00 AM–3:30 PM (satisfied).
+- **Sunset District**: Travel from Chinatown to Sunset (20 min), arrive at 11:50 AM. Meet Olivia from 11:50 AM to 1:50 PM (120 min, satisfies ≥120 min). Olivia’s availability: 9:30 AM–8:00 PM (satisfied).
+- **Pacific Heights**: Travel from Sunset to Pacific Heights (21 min), arrive at 2:11 PM. Meet Rachel from 2:11 PM to 2:56 PM (45 min, satisfies ≥45 min). Rachel’s availability: 2:00 PM–6:30 PM (satisfied).
+- **End**: 2:56 PM, well before the latest availability (8:00 PM for Olivia).
+
+All constraints are met, and the sequence allows meeting all three friends with minimal waiting (48 minutes). Total time: 356 minutes.
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Track Goals**  
+Goal hierarchy:
+- Main goal: Meet as many friends as possible (Rachel, Daniel, Olivia) while satisfying time constraints.
+  - Subgoal 1: Determine a feasible sequence of visits to Pacific Heights, Chinatown, and Sunset District (completed: Mission → Chinatown → Sunset → Pacific Heights).
+  - Subgoal 2: Allocate 45 minutes for Rachel, 90 minutes for Daniel, and 120 minutes for Olivia (completed in validated schedule).
+  - Subgoal 3: Account for travel times between locations (completed in validated schedule).
+  - Subgoal 4: Ensure the schedule fits within availability windows and starts at 9:00 AM in Mission District (completed in validated schedule).
+Current goal: Finalize the schedule as the optimal solution.
+[/REVIEW]
+
+---
+
+### Step 6: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to finalize the optimal schedule. I will confirm the selected sequence (Mission → Chinatown → Sunset → Pacific Heights) and provide the detailed schedule.
+[/PLANNING]
+
+[IMP]
+**Final Schedule**:
+- **9:00 AM**: Start at Mission District.
+- **9:00 AM–9:12 AM**: Travel to Chinatown (12 min).
+- **9:12 AM–10:00 AM**: Wait in Chinatown (48 min).
+- **10:00 AM–11:30 AM**: Meet Daniel in Chinatown (90 min).
+- **11:30 AM–11:50 AM**: Travel to Sunset District (20 min).
+- **11:50 AM–1:50 PM**: Meet Olivia in Sunset District (120 min).
+- **1:50 PM–2:11 PM**: Travel to Pacific Heights (21 min).
+- **2:11 PM–2:56 PM**: Meet Rachel in Pacific Heights (45 min).
+- **End**: 2:56 PM.
+
+This schedule meets all three friends (maximizing the goal), satisfies minimum meeting times (45 min for Rachel, 90 min for Daniel, 120 min for Olivia), respects availability windows, and accounts for travel times. Total duration: 9:00 AM to 2:56 PM (356 minutes, including 48 minutes waiting).
+[/IMP]
+
+---
+
+### Final Answer
+The optimal schedule to meet Rachel, Daniel, and Olivia in San Francisco, starting at the Mission District at 9:00 AM, is:
+- **9:00 AM–9:12 AM**: Travel from Mission District to Chinatown (12 min).
+- **9:12 AM–10:00 AM**: Wait in Chinatown (48 min).
+- **10:00 AM–11:30 AM**: Meet Daniel in Chinatown (90 min).
+- **11:30 AM–11:50 AM**: Travel to Sunset District (20 min).
+- **11:50 AM–1:50 PM**: Meet Olivia in Sunset District (120 min).
+- **1:50 PM–2:11 PM**: Travel to Pacific Heights (21 min).
+- **2:11 PM–2:56 PM**: Meet Rachel in Pacific Heights (45 min).
+- **End**: 2:56 PM.
+
+This schedule meets all constraints and allows you to meet all three friends efficiently.

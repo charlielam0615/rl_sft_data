@@ -1,0 +1,92 @@
+**Problem Statement:** Determine the number of diagonals that can be drawn in a hexagon.
+
+A hexagon is a polygon with 6 sides (and thus 6 vertices). A diagonal is a line segment connecting any two non-adjacent vertices of the polygon. To solve this, we need to calculate the total number of diagonals possible in a hexagon.
+
+---
+
+**Step 1**
+
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of finding the number of diagonals in a hexagon into intermediate subgoals:  
+1. Understand the definition of a diagonal in a polygon.  
+2. Identify the formula or method to calculate the number of diagonals for a polygon with n sides.  
+3. Apply the method to a hexagon (n = 6).  
+4. Verify the result.  
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to identify the formula for calculating the number of diagonals in a polygon with n sides. This will be achieved by recalling the standard formula for the number of diagonals in a polygon and understanding its derivation.  
+[/PLANNING]
+
+[IMP]  
+A diagonal connects two non-adjacent vertices in a polygon. For a polygon with n vertices, the total number of line segments (including sides and diagonals) is the number of ways to choose 2 vertices, given by the combination formula \( C(n, 2) = \frac{n(n-1)}{2} \). However, this includes the n sides of the polygon. To find only the diagonals, subtract the number of sides (n) and divide by 2 to avoid double-counting (since each diagonal is counted twice in the combinations). Thus, the formula for the number of diagonals is:  
+\[ \text{Number of diagonals} = \frac{n(n-1)}{2} - n \div 2 = \frac{n(n-1) - 2n}{2} = \frac{n(n-3)}{2} \]  
+Alternatively, the standard formula for the number of diagonals in an n-sided polygon is:  
+\[ \text{Number of diagonals} = \frac{n(n-3)}{2} \]  
+This formula will be used in the next step to compute the number of diagonals for a hexagon.  
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to apply the formula for the number of diagonals to a hexagon (n = 6). This will be achieved by substituting n = 6 into the formula \(\frac{n(n-3)}{2}\) and performing the calculation.  
+[/PLANNING]
+
+[IMP]  
+For a hexagon, \( n = 6 \). Using the formula for the number of diagonals:  
+\[ \text{Number of diagonals} = \frac{n(n-3)}{2} = \frac{6(6-3)}{2} = \frac{6 \cdot 3}{2} = \frac{18}{2} = 9 \]  
+Therefore, a hexagon has 9 diagonals.  
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data:** The current goal is to verify the correctness of the calculation that a hexagon has 9 diagonals. This will be achieved by considering an alternative method, such as manually counting the diagonals from each vertex, and checking consistency with the formula’s result.  
+[/PLANNING]
+
+[IMP]  
+To validate, consider a hexagon with vertices labeled A, B, C, D, E, F. Each vertex can form diagonals to non-adjacent vertices:  
+- From A: Diagonals to C, D, E (3 diagonals).  
+- From B: Diagonals to D, E, F (3 diagonals).  
+- From C: Diagonals to E, F, A (3 diagonals).  
+- From D: Diagonals to F, A, B (3 diagonals).  
+- From E: Diagonals to A, B, C (3 diagonals).  
+- From F: Diagonals to B, C, D (3 diagonals).  
+Since diagonals are undirected (e.g., A-C is the same as C-A), we’ve double-counted each diagonal. Total diagonals counted: \( 3 \cdot 6 = 18 \). Dividing by 2: \( 18 \div 2 = 9 \).  
+This matches the formula’s result of 9 diagonals, confirming the calculation.  
+[/IMP]
+
+---
+
+**Step 5**
+
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main Goal: Determine the number of diagonals in a hexagon.  
+  - Subgoal 1: Understand the definition of a diagonal (completed).  
+  - Subgoal 2: Identify the formula for the number of diagonals (completed: \(\frac{n(n-3)}{2}\)).  
+  - Subgoal 3: Apply the formula to a hexagon (completed: 9 diagonals).  
+  - Subgoal 4: Verify the result (completed: validated by manual counting).  
+**Current Goal:** The main goal has been achieved, and the result has been verified. No further subgoals are needed.  
+**Final Answer:** A hexagon has 9 diagonals.  
+[/REVIEW]
+
+---
+
+**Final Answer:** A hexagon has 9 diagonals.

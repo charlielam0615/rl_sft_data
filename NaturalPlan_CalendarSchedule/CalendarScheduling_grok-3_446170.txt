@@ -1,0 +1,106 @@
+### Problem Statement
+Schedule a one-hour meeting for Xander, Yvonne, and Zoe on Monday between 9:00 and 17:00, considering their existing schedules:
+- Xander is busy from 9:00–10:00, 12:00–13:00, and 15:00–16:00.
+- Yvonne is busy from 10:30–11:30 and 13:30–14:30.
+- Zoe is busy from 9:30–10:30, 12:30–13:30, and 14:30–15:30.
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a one-hour meeting into intermediate subgoals:  
+1. Identify the available time slots for each participant within the 9:00–17:00 window.  
+2. Find overlapping one-hour time slots where all participants are free.  
+3. Validate the identified time slot to ensure it meets the one-hour duration requirement.  
+[/PLANNING]
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to identify the available time slots for each participant. This will be achieved by listing the time periods when each participant is free within the 9:00–17:00 window, based on their busy schedules.  
+[/PLANNING]
+
+[IMP]
+To identify available time slots:  
+- **Xander’s free times**:  
+  - Busy: 9:00–10:00, 12:00–13:00, 15:00–16:00.  
+  - Free: 10:00–12:00, 13:00–15:00, 16:00–17:00.  
+- **Yvonne’s free times**:  
+  - Busy: 10:30–11:30, 13:30–14:30.  
+  - Free: 9:00–10:30, 11:30–13:30, 14:30–17:00.  
+- **Zoe’s free times**:  
+  - Busy: 9:30–10:30, 12:30–13:30, 14:30–15:30.  
+  - Free: 9:00–9:30, 10:30–12:30, 13:30–14:30, 15:30–17:00.  
+[/IMP]
+
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find overlapping one-hour time slots where all participants are free. This will be achieved by comparing the free time slots identified in the previous step to find common periods of at least one hour.  
+[/PLANNING]
+
+[IMP]
+Compare the free time slots:  
+- **Xander**: 10:00–12:00, 13:00–15:00, 16:00–17:00.  
+- **Yvonne**: 9:00–10:30, 11:30–13:30, 14:30–17:00.  
+- **Zoe**: 9:00–9:30, 10:30–12:30, 13:30–14:30, 15:30–17:00.  
+
+Find intersections for one-hour slots:  
+- **10:00–12:00 (Xander)** overlaps with **11:30–13:30 (Yvonne)** and **10:30–12:30 (Zoe)**:  
+  - Common period: 11:30–12:00 (30 minutes, insufficient for a one-hour meeting).  
+- **13:00–15:00 (Xander)** overlaps with **11:30–13:30 (Yvonne)** and **13:30–14:30 (Zoe)**:  
+  - Common period: 13:30–14:30 (one hour, sufficient).  
+- **16:00–17:00 (Xander)** overlaps with **14:30–17:00 (Yvonne)** and **15:30–17:00 (Zoe)**:  
+  - Common period: 16:00–17:00 (one hour, sufficient).  
+
+Potential one-hour slots: 13:30–14:30, 16:00–17:00.  
+[/IMP]
+
+### Step 4: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the identified time slots (13:30–14:30 and 16:00–17:00) to ensure they meet the one-hour duration requirement and are within the 9:00–17:00 window.  
+[/PLANNING]
+
+[IMP]
+Validate the time slots:  
+- **13:30–14:30**:  
+  - Duration: 14:30 – 13:30 = 1 hour.  
+  - Within 9:00–17:00.  
+  - Xander is free (13:00–15:00), Yvonne is free (11:30–13:30, 14:30–17:00), Zoe is free (13:30–14:30).  
+  - Valid.  
+- **16:00–17:00**:  
+  - Duration: 17:00 – 16:00 = 1 hour.  
+  - Within 9:00–17:00.  
+  - Xander is free (16:00–17:00), Yvonne is free (14:30–17:00), Zoe is free (15:30–17:00).  
+  - Valid.  
+
+Both time slots are valid.  
+[/IMP]
+
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main goal: Schedule a one-hour meeting for Xander, Yvonne, and Zoe on Monday between 9:00 and 17:00.  
+  - Subgoal 1: Identify available time slots for each participant (completed).  
+  - Subgoal 2: Find overlapping one-hour time slots (completed).  
+  - Subgoal 3: Validate the identified time slots (completed).  
+**Current Goal**: Finalize the meeting time by selecting one of the valid time slots.  
+[/REVIEW]
+
+### Step 6: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to finalize the meeting time by selecting one of the valid time slots (13:30–14:30 or 16:00–17:00). This will be achieved by choosing the earliest available slot to accommodate potential preferences for earlier times.  
+[/PLANNING]
+
+[IMP]
+Select the earliest valid time slot:  
+- Valid slots: 13:30–14:30, 16:00–17:00.  
+- Earliest slot: 13:30–14:30.  
+
+**Final Answer**: Schedule the meeting for Monday from 13:30 to 14:30.  
+[/IMP]

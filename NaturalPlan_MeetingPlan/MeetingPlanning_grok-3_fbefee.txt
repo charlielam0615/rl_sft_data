@@ -1,0 +1,174 @@
+### Problem Statement
+The goal is to arrange a meeting schedule in San Francisco to meet as many friends as possible (Ethan, Sophia, Daniel, Olivia, and Rachel) on the same day, starting at the Mission District at 9:00 AM. Each friend is available at a specific location during a defined time window, and there are minimum meeting durations for each. Travel times between locations are provided, and the schedule must account for these constraints to maximize the number of friends met.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of meeting all five friends into intermediate subgoals based on their availability and locations:  
+1. Meet Ethan at Presidio (9:30 AM–11:00 AM, 60 minutes minimum).  
+2. Meet Sophia at Embarcadero (11:30 AM–3:00 PM, 75 minutes minimum).  
+3. Meet Daniel at Chinatown (1:00 PM–7:30 PM, 60 minutes minimum).  
+4. Meet Olivia at Russian Hill (2:00 PM–5:00 PM, 45 minutes minimum).  
+5. Meet Rachel at Pacific Heights (6:00 PM–9:00 PM, 90 minutes minimum).  
+The subgoals are ordered roughly by time windows to create a feasible sequence, considering travel times between locations.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Meet Ethan at Presidio for 60 minutes.  
+**How to Achieve**: Travel from Mission District to Presidio (22 minutes), arriving by 9:22 AM, and wait until Ethan is available at 9:30 AM to start the meeting.  
+[/PLANNING]  
+
+[IMP]  
+Starting at Mission District at 9:00 AM, travel to Presidio takes 22 minutes. Arrive at 9:22 AM. Wait until 9:30 AM. Meet Ethan for 60 minutes from 9:30 AM to 10:30 AM.  
+[/IMP]
+
+---
+
+### Step 3: Validation
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Current Goal**: Ensure the meeting with Ethan is valid and allows progression to the next subgoal.  
+**How to Achieve**: Verify that the meeting with Ethan (9:30 AM–10:30 AM) fits within his availability (9:30 AM–11:00 AM) and check if the next subgoal (meeting Sophia at Embarcadero by 11:30 AM) is feasible with travel time.  
+[/PLANNING]  
+
+[IMP]  
+The meeting with Ethan from 9:30 AM to 10:30 AM is within his availability window (9:30 AM–11:00 AM). Travel from Presidio to Embarcadero takes 20 minutes, so departing at 10:30 AM leads to arrival at 10:50 AM, which is before Sophia’s availability at 11:30 AM. The schedule is valid so far.  
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Meet Sophia at Embarcadero for 75 minutes.  
+**How to Achieve**: Travel from Presidio to Embarcadero (20 minutes), arriving at 10:50 AM, wait until 11:30 AM, and meet Sophia.  
+[/PLANNING]  
+
+[IMP]  
+Travel from Presidio to Embarcadero takes 20 minutes, arriving at 10:50 AM. Wait until 11:30 AM. Meet Sophia for 75 minutes from 11:30 AM to 12:45 PM.  
+[/IMP]
+
+---
+
+### Step 5: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Meet Daniel at Chinatown for 60 minutes.  
+**How to Achieve**: Travel from Embarcadero to Chinatown (10 minutes), arriving by 12:55 PM, wait until 1:00 PM, and meet Daniel.  
+[/PLANNING]  
+
+[IMP]  
+Travel from Embarcadero to Chinatown takes 10 minutes, arriving at 12:55 PM. Wait until 1:00 PM. Meet Daniel for 60 minutes from 1:00 PM to 2:00 PM.  
+[/IMP]
+
+---
+
+### Step 6: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Meet Olivia at Russian Hill for 45 minutes.  
+**How to Achieve**: Travel from Chinatown to Russian Hill (9 minutes), arriving by 2:09 PM, and meet Olivia within her availability window.  
+[/PLANNING]  
+
+[IMP]  
+Travel from Chinatown to Russian Hill takes 9 minutes, arriving at 2:09 PM. Meet Olivia for 45 minutes from 2:09 PM to 2:54 PM.  
+[/IMP]
+
+---
+
+### Step 7: Validation
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Current Goal**: Ensure the meeting with Olivia is valid and allows progression to meeting Rachel.  
+**How to Achieve**: Verify that the meeting with Olivia (2:09 PM–2:54 PM) fits within her availability (2:00 PM–5:00 PM) and check if travel to Pacific Heights allows meeting Rachel by 6:00 PM.  
+[/PLANNING]  
+
+[IMP]  
+The meeting with Olivia from 2:09 PM to 2:54 PM is within her availability window (2:00 PM–5:00 PM). Travel from Russian Hill to Pacific Heights takes 7 minutes, so departing at 2:54 PM leads to arrival at 3:01 PM, well before Rachel’s availability at 6:00 PM. The schedule remains valid.  
+[/IMP]
+
+---
+
+### Step 8: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Meet Rachel at Pacific Heights for 90 minutes.  
+**How to Achieve**: Travel from Russian Hill to Pacific Heights (7 minutes), arriving at 3:01 PM, wait until 6:00 PM, and meet Rachel.  
+[/PLANNING]  
+
+[IMP]  
+Travel from Russian Hill to Pacific Heights takes 7 minutes, arriving at 3:01 PM. Wait until 6:00 PM. Meet Rachel for 90 minutes from 6:00 PM to 7:30 PM.  
+[/IMP]
+
+---
+
+### Step 9: Track Goals
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Meet as many friends as possible (Ethan, Sophia, Daniel, Olivia, Rachel).  
+  - Subgoal 1: Meet Ethan at Presidio (9:30 AM–10:30 AM, 60 minutes) — Completed.  
+  - Subgoal 2: Meet Sophia at Embarcadero (11:30 AM–12:45 PM, 75 minutes) — Completed.  
+  - Subgoal 3: Meet Daniel at Chinatown (1:00 PM–2:00 PM, 60 minutes) — Completed.  
+  - Subgoal 4: Meet Olivia at Russian Hill (2:09 PM–2:54 PM, 45 minutes) — Completed.  
+  - Subgoal 5: Meet Rachel at Pacific Heights (6:00 PM–7:30 PM, 90 minutes) — Completed.  
+**Current Goal**: All subgoals have been achieved, meeting all five friends.  
+The schedule successfully meets all friends within their availability windows and satisfies the minimum meeting durations, with travel times accounted for.  
+[/REVIEW]
+
+---
+
+### Step 10: Validation
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Current Goal**: Confirm that the entire schedule is feasible and meets all constraints.  
+**How to Achieve**: Review the timeline, travel times, and meeting durations to ensure all friends are met within their availability windows and no conflicts exist.  
+[/PLANNING]  
+
+[IMP]  
+The schedule is:  
+- 9:00 AM: Start at Mission District.  
+- 9:00 AM–9:22 AM: Travel to Presidio (22 minutes).  
+- 9:22 AM–9:30 AM: Wait.  
+- 9:30 AM–10:30 AM: Meet Ethan (60 minutes, within 9:30 AM–11:00 AM).  
+- 10:30 AM–10:50 AM: Travel to Embarcadero (20 minutes).  
+- 10:50 AM–11:30 AM: Wait.  
+- 11:30 AM–12:45 PM: Meet Sophia (75 minutes, within 11:30 AM–3:00 PM).  
+- 12:45 PM–12:55 PM: Travel to Chinatown (10 minutes).  
+- 12:55 PM–1:00 PM: Wait.  
+- 1:00 PM–2:00 PM: Meet Daniel (60 minutes, within 1:00 PM–7:30 PM).  
+- 2:00 PM–2:09 PM: Travel to Russian Hill (9 minutes).  
+- 2:09 PM–2:54 PM: Meet Olivia (45 minutes, within 2:00 PM–5:00 PM).  
+- 2:54 PM–3:01 PM: Travel to Pacific Heights (7 minutes).  
+- 3:01 PM–6:00 PM: Wait.  
+- 6:00 PM–7:30 PM: Meet Rachel (90 minutes, within 6:00 PM–9:00 PM).  
+
+All meetings satisfy the minimum duration requirements and fall within the availability windows. Travel times are correctly calculated, and waiting periods are accounted for where necessary. The schedule is feasible and optimal, as it meets all five friends.  
+[/IMP]
+
+---
+
+### Final Answer
+The optimal schedule to meet all five friends is:  
+- **9:00 AM**: Start at Mission District.  
+- **9:22 AM**: Arrive at Presidio (22-minute travel).  
+- **9:30 AM–10:30 AM**: Meet Ethan (60 minutes).  
+- **10:50 AM**: Arrive at Embarcadero (20-minute travel).  
+- **11:30 AM–12:45 PM**: Meet Sophia (75 minutes).  
+- **12:55 PM**: Arrive at Chinatown (10-minute travel).  
+- **1:00 PM–2:00 PM**: Meet Daniel (60 minutes).  
+- **2:09 PM**: Arrive at Russian Hill (9-minute travel).  
+- **2:09 PM–2:54 PM**: Meet Olivia (45 minutes).  
+- **3:01 PM**: Arrive at Pacific Heights (7-minute travel).  
+- **6:00 PM–7:30 PM**: Meet Rachel (90 minutes).  
+
+This schedule satisfies all constraints, meeting each friend for at least the minimum required time within their availability windows, with all travel times accounted for.

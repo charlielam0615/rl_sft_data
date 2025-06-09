@@ -1,0 +1,114 @@
+
+### Problem Statement
+Mark writes the expression $\sqrt{\underline{a b c d}}$, where $\underline{a b c d}$ is a four-digit number with $a \neq 0$. Derek changes it to $a \sqrt{\underline{b c d}}$, and these two expressions are equal. Compute the only possible four-digit number $\underline{a b c d}$.
+
+### Step 1
+[PLANNING]
+Action: Forward Subgoaling (Planning)  
+Define the main goal: find the four-digit number $\underline{a b c d}$. Break into subgoals:  
+1. Model the condition mathematically by setting up an equation.  
+2. Rearrange the equation to express the three-digit part ($\underline{b c d}$) in terms of $a$.  
+3. Iterate over possible $a$ (digits 2–9) to find integer solutions for $\underline{b c d}$ in [100, 999].  
+4. Construct $\underline{a b c d}$ from valid $a$ and $\underline{b c d}$.  
+5. Verify the solution by checking the original equality.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+Action: Reach Goal (Implementation)  
+Current Goal: Model the condition mathematically by setting up an equation.  
+How to achieve: Start from the equality $\sqrt{\underline{a b c d}} = a \sqrt{\underline{b c d}}$, square both sides (valid as both sides are nonnegative), and express $\underline{a b c d}$ and $\underline{b c d}$ in digit form.  
+[/PLANNING]  
+[IMP]  
+The equality is:  
+\[
+\sqrt{1000a + 100b + 10c + d} = a \sqrt{100b + 10c + d}  
+\]  
+Squaring both sides:  
+\[
+1000a + 100b + 10c + d = a^2 (100b + 10c + d)  
+\]  
+Let $n = 1000a + 100b + 10c + d$ (four-digit number) and $m = 100b + 10c + d$ (three-digit number, $100 \leq m \leq 999$). The equation simplifies to:  
+\[
+n = a^2 m  
+\]  
+But $n = 1000a + m$, so substitute:  
+\[
+1000a + m = a^2 m  
+\]  
+Rearrange to isolate $m$:  
+\[
+1000a = m(a^2 - 1)  
+\]  
+Thus:  
+\[
+m = \frac{1000a}{a^2 - 1}  
+\]  
+Conditions:  
+- $a$ is an integer digit, $2 \leq a \leq 9$ (since $a=1$ causes division by zero and fails).  
+- $m$ must be an integer satisfying $100 \leq m \leq 999$.  
+[/IMP]
+
+### Step 3
+[PLANNING]
+Action: Reach Goal (Implementation)  
+Current Goal: Iterate over possible $a$ (2–9) to find integer solutions for $m$ in [100, 999].  
+How to achieve: Compute $m = \frac{1000a}{a^2 - 1}$ for each $a$ from 2 to 9 and check if $m$ is integer and within range.  
+[/PLANNING]  
+[IMP]  
+Evaluate for each $a$:  
+- $a=2$: $m = \frac{1000 \cdot 2}{2^2 - 1} = \frac{2000}{3} \approx 666.667$ → not integer.  
+- $a=3$: $m = \frac{1000 \cdot 3}{3^2 - 1} = \frac{3000}{8} = 375$ → integer, $100 \leq 375 \leq 999$.  
+- $a=4$: $m = \frac{1000 \cdot 4}{4^2 - 1} = \frac{4000}{15} \approx 266.667$ → not integer.  
+- $a=5$: $m = \frac{1000 \cdot 5}{5^2 - 1} = \frac{5000}{24} \approx 208.333$ → not integer.  
+- $a=6$: $m = \frac{1000 \cdot 6}{6^2 - 1} = \frac{6000}{35} \approx 171.429$ → not integer.  
+- $a=7$: $m = \frac{1000 \cdot 7}{7^2 - 1} = \frac{7000}{48} \approx 145.833$ → not integer.  
+- $a=8$: $m = \frac{1000 \cdot 8}{8^2 - 1} = \frac{8000}{63} \approx 126.984$ → not integer.  
+- $a=9$: $m = \frac{1000 \cdot 9}{9^2 - 1} = \frac{9000}{80} = 112.5$ → not integer.  
+Only $a=3$ yields valid $m=375$. Thus, $b=3$, $c=7$, $d=5$.  
+[/IMP]
+
+### Step 4
+[PLANNING]
+Action: Reach Goal (Implementation)  
+Current Goal: Construct $\underline{a b c d}$ from valid $a$ and $m$.  
+How to achieve: Combine $a=3$ and $m=375$ to form the four-digit number.  
+[/PLANNING]  
+[IMP]  
+With $a=3$ and $m=375$ (so $b=3$, $c=7$, $d=5$), the four-digit number is:  
+\[
+\underline{a b c d} = 1000a + m = 1000 \cdot 3 + 375 = 3375  
+\]  
+[/IMP]
+
+### Step 5
+[PLANNING]
+Action: Reach Goal (Implementation)  
+Current Goal: Verify the solution by checking the original equality.  
+How to achieve: Compute both expressions for $\underline{a b c d} = 3375$ and confirm equality.  
+[/PLANNING]  
+[IMP]  
+- Original expression: $\sqrt{3375}$.  
+  Factorize: $3375 = 25 \times 135 = 25 \times 9 \times 15 = 225 \times 15$, so $\sqrt{3375} = \sqrt{225 \times 15} = 15\sqrt{15}$.  
+- Changed expression: $a \sqrt{\underline{b c d}} = 3 \sqrt{375}$.  
+  Factorize: $375 = 25 \times 15$, so $\sqrt{375} = 5\sqrt{15}$, and $3 \times 5\sqrt{15} = 15\sqrt{15}$.  
+Both expressions equal $15\sqrt{15}$, confirming equality.  
+[/IMP]
+
+### Step 6
+[PLANNING]
+Action: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+Goal hierarchy:  
+- Main goal: Find $\underline{a b c d}$.  
+  - Subgoal 1: Model equation → done (Step 2).  
+  - Subgoal 2: Rearrange for $m$ → done (Step 2).  
+  - Subgoal 3: Test $a$ values → done (Step 3).  
+  - Subgoal 4: Form $\underline{a b c d}$ → done (Step 4).  
+  - Subgoal 5: Verify → done (Step 5).  
+Current goal: Completed all subgoals. The solution is $\underline{a b c d} = 3375$.  
+[/REVIEW]
+
+### Final Answer  
+The only possible four-digit number is $\boxed{3375}$.

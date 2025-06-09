@@ -1,0 +1,160 @@
+### Problem Restatement
+We need to find the ratio of the total amount earned by Store A to the total amount earned by Store B, given that:
+- The ratio of the number of pairs of pants in Store A to Store B is 10:30.
+- The price ratio of pants in Store B to Store A is 3:4.
+- All pants in both stores are sold until the stock runs out.
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into forward-looking intermediate subgoals to solve for the ratio of total earnings.
+
+To find the ratio of total earnings between Store A and Store B, we need to:
+1. Determine the ratio of the number of pants in both stores.
+2. Determine the price per pair of pants in each store based on the given price ratio.
+3. Calculate the total earnings for each store (number of pants × price per pair).
+4. Compute the ratio of Store A’s total earnings to Store B’s total earnings.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to determine the ratio of the number of pants in Store A to Store B. This can be achieved by interpreting the given statement “10 pairs of pants for every 30 store B has” as a ratio and simplifying it.
+[/PLANNING]
+
+[IMP]
+The problem states that Store A has 10 pairs of pants for every 30 pairs that Store B has. This gives the ratio of pants in Store A to Store B as 10:30. Simplifying this ratio by dividing both terms by their greatest common divisor (10), we get:
+
+\[ \text{Ratio of pants (A:B)} = 10:30 = 1:3 \]
+
+Thus, for every 1 pair of pants in Store A, Store B has 3 pairs.
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to determine the price per pair of pants in each store based on the given price ratio of pants in Store B to Store A (3:4). This can be achieved by assigning variables to the prices and interpreting the ratio.
+[/PLANNING]
+
+[IMP]
+The price ratio of pants in Store B to Store A is given as 3:4. Let the price per pair of pants in Store A be \( 4x \) (since 4 is the second term in the ratio). Then, the price per pair in Store B is \( 3x \) (since 3 is the first term). Thus:
+
+- Price per pair in Store A = \( 4x \)
+- Price per pair in Store B = \( 3x \)
+
+The variable \( x \) represents a common price factor, but since we need the ratio of earnings, the exact value of \( x \) may not be necessary if it cancels out later.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Track Goals (Review)**  
+Track the hierarchy of goals and highlight the current goal based on recent planning and implementation steps.
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Find the ratio of total earnings of Store A to Store B.
+  - Subgoal 1: Determine the ratio of the number of pants in Store A to Store B (Completed: 1:3).
+  - Subgoal 2: Determine the price per pair of pants in each store (Completed: Store A = \( 4x \), Store B = \( 3x \)).
+  - Subgoal 3: Calculate the total earnings for each store (Pending).
+  - Subgoal 4: Compute the ratio of Store A’s earnings to Store B’s earnings (Pending).
+
+**Current Goal**: Calculate the total earnings for each store by multiplying the number of pants by the price per pair.
+[/REVIEW]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the total earnings for each store. This can be achieved by multiplying the number of pants by the price per pair, using the ratio of pants (1:3) and the prices (\( 4x \) for Store A, \( 3x \) for Store B).
+[/PLANNING]
+
+[IMP]
+Let the number of pants in Store A be \( n_A \) and in Store B be \( n_B \). From Step 2, the ratio of pants is \( n_A : n_B = 1:3 \). Assume:
+
+- \( n_A = k \) (Store A has \( k \) pairs of pants).
+- \( n_B = 3k \) (Store B has \( 3k \) pairs of pants).
+
+Using the prices from Step 3:
+- Total earnings for Store A = \( n_A \times \text{price per pair in A} = k \times 4x = 4kx \).
+- Total earnings for Store B = \( n_B \times \text{price per pair in B} = 3k \times 3x = 9kx \).
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute the ratio of Store A’s total earnings to Store B’s total earnings. This can be achieved by dividing Store A’s earnings by Store B’s earnings and simplifying the result.
+[/PLANNING]
+
+[IMP]
+From Step 5:
+- Store A’s earnings = \( 4kx \).
+- Store B’s earnings = \( 9kx \).
+
+The ratio of Store A’s earnings to Store B’s earnings is:
+
+\[ \text{Ratio} = \frac{\text{Earnings of A}}{\text{Earnings of B}} = \frac{4kx}{9kx} \]
+
+The \( k \) and \( x \) terms cancel out, leaving:
+
+\[ \text{Ratio} = \frac{4}{9} \]
+
+Thus, the ratio of total earnings of Store A to Store B is \( 4:9 \).
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the calculated ratio of earnings (4:9). This can be achieved by rechecking the steps and ensuring the ratios and calculations are consistent with the problem statement.
+[/PLANNING]
+
+[IMP]
+To validate:
+- **Pants ratio**: The problem states “10 pairs of pants for every 30 store B has,” which simplifies to \( 10:30 = 1:3 \), as calculated in Step 2.
+- **Price ratio**: The price ratio of Store B to Store A is 3:4, so Store A’s price is \( 4x \) and Store B’s is \( 3x \), as derived in Step 3.
+- **Earnings calculation**: For Store A, earnings = \( k \times 4x = 4kx \). For Store B, earnings = \( 3k \times 3x = 9kx \). The ratio \( \frac{4kx}{9kx} = \frac{4}{9} \) is consistent.
+- **Alternative check**: Consider specific values. If Store A has 10 pairs (so Store B has 30 pairs), and Store A’s price is $40 per pair (so Store B’s price is $30, since \( 3:4 = 30:40 \)):
+  - Store A’s earnings = \( 10 \times 40 = 400 \).
+  - Store B’s earnings = \( 30 \times 30 = 900 \).
+  - Ratio = \( \frac{400}{900} = \frac{4}{9} \).
+
+The calculations are consistent, confirming the ratio \( 4:9 \).
+[/IMP]
+
+---
+
+### Step 8
+[PLANNING]
+**Action: Track Goals (Review)**  
+Track the hierarchy of goals to ensure all subgoals are addressed and confirm the solution.
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Find the ratio of total earnings of Store A to Store B (Completed).
+  - Subgoal 1: Determine the ratio of the number of pants in Store A to Store B (Completed: 1:3).
+  - Subgoal 2: Determine the price per pair of pants in each store (Completed: Store A = \( 4x \), Store B = \( 3x \)).
+  - Subgoal 3: Calculate the total earnings for each store (Completed: Store A = \( 4kx \), Store B = \( 9kx \)).
+  - Subgoal 4: Compute the ratio of Store A’s earnings to Store B’s earnings (Completed: 4:9).
+  - Subgoal 5: Validate the solution (Completed: Ratio confirmed as 4:9).
+
+**Current Goal**: All subgoals are completed, and the solution is validated. The final answer is the ratio of total earnings, which is \( 4:9 \).
+[/REVIEW]
+
+---
+
+### Final Answer
+The ratio of the total amount Store A earned to the total amount Store B earned is \( 4:9 \).

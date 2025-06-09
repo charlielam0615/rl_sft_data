@@ -1,0 +1,113 @@
+**Problem Statement**: Schedule a one-hour meeting for Xander, Yvonne, and Zoe on Monday between 9:00 and 17:00, considering their existing schedules. Xander is busy from 9:30–10:30, 12:00–13:00, and 15:00–16:00. Yvonne is busy from 10:00–11:00 and 13:30–14:30. Zoe is busy from 9:00–9:30, 11:30–12:30, and 14:30–15:30. Identify a one-hour time slot where all participants are available, or explain why no such slot exists.
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of scheduling a one-hour meeting into subgoals:  
+1. Identify the available time slots within the work hours (9:00–17:00) for each participant.  
+2. Find overlapping one-hour time slots where all participants are free.  
+3. Validate the solution or determine if no such slot exists.  
+[/PLANNING]
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Identify available time slots for each participant within 9:00–17:00.  
+**How to Achieve**: List the busy time slots for each participant, then determine their free time slots by excluding the busy periods from the 9:00–17:00 window.  
+[/PLANNING]
+
+[IMP]  
+- **Xander’s Schedule**: Busy from 9:30–10:30, 12:00–13:00, 15:00–16:00.  
+  Free slots: 9:00–9:30, 10:30–12:00, 13:00–15:00, 16:00–17:00.  
+- **Yvonne’s Schedule**: Busy from 10:00–11:00, 13:30–14:30.  
+  Free slots: 9:00–10:00, 11:00–13:30, 14:30–17:00.  
+- **Zoe’s Schedule**: Busy from 9:00–9:30, 11:30–12:30, 14:30–15:30.  
+  Free slots: 9:30–11:30, 12:30–14:30, 15:30–17:00.  
+[/IMP]
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Find overlapping one-hour time slots where all participants are free.  
+**How to Achieve**: Compare the free time slots of Xander, Yvonne, and Zoe to identify any one-hour periods where all are available.  
+[/PLANNING]
+
+[IMP]  
+To find a common one-hour slot, we examine the free slots:  
+- **Xander**: 9:00–9:30, 10:30–12:00, 13:00–15:00, 16:00–17:00.  
+- **Yvonne**: 9:00–10:00, 11:00–13:30, 14:30–17:00.  
+- **Zoe**: 9:30–11:30, 12:30–14:30, 15:30–17:00.  
+
+We check for one-hour overlaps:  
+- **9:00–9:30**: Xander and Yvonne are free, but Zoe is busy.  
+- **9:30–10:00**: Xander and Yvonne are free, but Zoe is free only from 9:30 onward, so a full hour (e.g., 9:30–10:30) is blocked by Xander’s 9:30–10:30 meeting.  
+- **10:00–11:00**: Yvonne is busy (10:00–11:00).  
+- **11:00–11:30**: Xander is free (10:30–12:00), Yvonne is free (11:00–13:30), Zoe is free (9:30–11:30). A one-hour slot from 11:00–12:00 is possible, but we need to check further.  
+- **11:30–12:00**: Zoe is busy (11:30–12:30).  
+- **12:00–12:30**: Xander is busy (12:00–13:00), Zoe is busy (11:30–12:30).  
+- **12:30–13:00**: Xander is busy (12:00–13:00).  
+- **13:00–13:30**: Xander is free (13:00–15:00), Yvonne is free (11:00–13:30), Zoe is free (12:30–14:30). A one-hour slot from 13:00–14:00 is possible.  
+- **13:30–14:00**: Yvonne is busy (13:30–14:30).  
+- **14:00–14:30**: Yvonne is busy (13:30–14:30).  
+- **14:30–15:00**: Xander is free (13:00–15:00), Yvonne is free (14:30–17:00), Zoe is free (12:30–14:30). A one-hour slot from 14:30–15:30 is possible, but Zoe is busy from 14:30–15:30, so only 14:30–15:00 is free, which is not a full hour.  
+- **15:00–15:30**: Xander is busy (15:00–16:00), Zoe is busy (14:30–15:30).  
+- **15:30–16:00**: Xander is busy (15:00–16:00).  
+- **16:00–17:00**: Xander is free (16:00–17:00), Yvonne is free (14:30–17:00), Zoe is free (15:30–17:00). A one-hour slot from 16:00–17:00 is possible.  
+
+Potential one-hour slots: 11:00–12:00, 13:00–14:00, 16:00–17:00.  
+[/IMP]
+
+### Step 4: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Confirm that the identified time slots (11:00–12:00, 13:00–14:00, 16:00–17:00) are valid by rechecking against each participant’s busy schedule.  
+**How to Achieve**: Verify that no participant has a conflicting meeting during these slots.  
+[/PLANNING]
+
+[IMP]  
+- **11:00–12:00**:  
+  - Xander: Free (10:30–12:00).  
+  - Yvonne: Free (11:00–13:30).  
+  - Zoe: Free (9:30–11:30). Zoe’s busy period starts at 11:30, so 11:00–12:00 is not fully free for Zoe. **Invalid**.  
+- **13:00–14:00**:  
+  - Xander: Free (13:00–15:00).  
+  - Yvonne: Free (11:00–13:30).  
+  - Zoe: Free (12:30–14:30).  
+  No conflicts. **Valid**.  
+- **16:00–17:00**:  
+  - Xander: Free (16:00–17:00).  
+  - Yvonne: Free (14:30–17:00).  
+  - Zoe: Free (15:30–17:00).  
+  No conflicts. **Valid**.  
+
+Valid slots: 13:00–14:00, 16:00–17:00.  
+[/IMP]
+
+### Step 5: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Schedule a one-hour meeting for Xander, Yvonne, and Zoe on Monday between 9:00–17:00.  
+  - Subgoal 1: Identify available time slots for each participant (completed).  
+  - Subgoal 2: Find overlapping one-hour time slots (completed).  
+  - Subgoal 3: Validate the identified slots (completed).  
+  - Subgoal 4: Select a final time slot.  
+**Current Goal**: Select a final time slot from the valid options (13:00–14:00, 16:00–17:00).  
+[/REVIEW]
+
+### Step 6: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Select a final one-hour time slot for the meeting.  
+**How to Achieve**: Choose one of the valid slots (13:00–14:00 or 16:00–17:00) based on typical scheduling preferences, such as earlier in the day for better focus.  
+[/PLANNING]
+
+[IMP]  
+Both 13:00–14:00 and 16:00–17:00 are valid. Since 13:00–14:00 is earlier in the day, it may be preferable for maintaining productivity and focus. Therefore, the proposed meeting time is **13:00–14:00** on Monday.  
+[/IMP]
+
+### Final Answer
+A one-hour meeting for Xander, Yvonne, and Zoe can be scheduled on Monday from **13:00 to 14:00**.

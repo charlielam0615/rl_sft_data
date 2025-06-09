@@ -1,0 +1,280 @@
+**Problem Statement:**
+We need to find two distinct unit vectors \(\mathbf{v}_1\) and \(\mathbf{v}_2\) in \(\mathbb{R}^3\) such that the angle between each \(\mathbf{v}_i\) and the vector \(\begin{pmatrix} 2 \\ 2 \\ -1 \end{pmatrix}\) is \(45^\circ\), and the angle between each \(\mathbf{v}_i\) and \(\begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}\) is \(60^\circ\). Then, we compute the Euclidean norm \(\|\mathbf{v}_1 - \mathbf{v}_2\|\).
+
+---
+
+**Step 1**
+
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to guide the solution process.
+
+To solve for \(\|\mathbf{v}_1 - \mathbf{v}_2\|\), we need to:
+1. Use the angle conditions to set up equations involving the dot products of \(\mathbf{v}_i\) with the given vectors.
+2. Solve the resulting system to find the components of \(\mathbf{v}_1\) and \(\mathbf{v}_2\), ensuring they are unit vectors.
+3. Compute the difference \(\mathbf{v}_1 - \mathbf{v}_2\) and its norm.
+4. Verify that the solutions are distinct and satisfy all conditions.
+
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to set up equations using the angle conditions. Since \(\mathbf{v}_i\) are unit vectors, and the angles are given, we use the dot product formula \(\mathbf{a} \cdot \mathbf{b} = \|\mathbf{a}\| \|\mathbf{b}\| \cos \theta\). We will compute the dot products of \(\mathbf{v}_i\) with \(\begin{pmatrix} 2 \\ 2 \\ -1 \end{pmatrix}\) (angle \(45^\circ\)) and \(\begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}\) (angle \(60^\circ\)).
+
+[/PLANNING]
+
+[IMP]
+Let \(\mathbf{a} = \begin{pmatrix} 2 \\ 2 \\ -1 \end{pmatrix}\) and \(\mathbf{b} = \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}\). Let \(\mathbf{v}_i = \begin{pmatrix} x_i \\ y_i \\ z_i \end{pmatrix}\) be a unit vector, so \(\|\mathbf{v}_i\|^2 = x_i^2 + y_i^2 + z_i^2 = 1\).
+
+- **Angle with \(\mathbf{a}\):** The angle is \(45^\circ\), so \(\cos 45^\circ = \frac{\sqrt{2}}{2}\).  
+  \[
+  \mathbf{v}_i \cdot \mathbf{a} = x_i (2) + y_i (2) + z_i (-1) = 2x_i + 2y_i - z_i = \|\mathbf{v}_i\| \|\mathbf{a}\| \cos 45^\circ
+  \]
+  Compute \(\|\mathbf{a}\|\):
+  \[
+  \|\mathbf{a}\| = \sqrt{2^2 + 2^2 + (-1)^2} = \sqrt{4 + 4 + 1} = \sqrt{9} = 3
+  \]
+  Since \(\|\mathbf{v}_i\| = 1\),
+  \[
+  2x_i + 2y_i - z_i = 1 \cdot 3 \cdot \frac{\sqrt{2}}{2} = \frac{3\sqrt{2}}{2}
+  \]
+
+- **Angle with \(\mathbf{b}\):** The angle is \(60^\circ\), so \(\cos 60^\circ = \frac{1}{2}\).  
+  \[
+  \mathbf{v}_i \cdot \mathbf{b} = x_i (0) + y_i (1) + z_i (-1) = y_i - z_i = \|\mathbf{v}_i\| \|\mathbf{b}\| \cos 60^\circ
+  \]
+  Compute \(\|\mathbf{b}\|\):
+  \[
+  \|\mathbf{b}\| = \sqrt{0^2 + 1^2 + (-1)^2} = \sqrt{0 + 1 + 1} = \sqrt{2}
+  \]
+  \[
+  y_i - z_i = 1 \cdot \sqrt{2} \cdot \frac{1}{2} = \frac{\sqrt{2}}{2}
+  \]
+
+- **Unit vector condition:**
+  \[
+  x_i^2 + y_i^2 + z_i^2 = 1
+  \]
+
+Thus, we have the system for each \(\mathbf{v}_i\):
+1. \(2x_i + 2y_i - z_i = \frac{3\sqrt{2}}{2}\)
+2. \(y_i - z_i = \frac{\sqrt{2}}{2}\)
+3. \(x_i^2 + y_i^2 + z_i^2 = 1\)
+
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to solve the system of equations to find the components of \(\mathbf{v}_i\). We will solve the system using substitution and solve for \(x_i\), \(y_i\), and \(z_i\).
+
+[/PLANNING]
+
+[IMP]
+From equation 2:
+\[
+y_i - z_i = \frac{\sqrt{2}}{2} \implies z_i = y_i - \frac{\sqrt{2}}{2}
+\]
+
+Substitute \(z_i\) into equation 1:
+\[
+2x_i + 2y_i - \left(y_i - \frac{\sqrt{2}}{2}\right) = \frac{3\sqrt{2}}{2}
+\]
+\[
+2x_i + 2y_i - y_i + \frac{\sqrt{2}}{2} = \frac{3\sqrt{2}}{2}
+\]
+\[
+2x_i + y_i = \frac{3\sqrt{2}}{2} - \frac{\sqrt{2}}{2} = \frac{2\sqrt{2}}{2} = \sqrt{2}
+\]
+\[
+2x_i + y_i = \sqrt{2}
+\]
+
+Solve for \(y_i\):
+\[
+y_i = \sqrt{2} - 2x_i
+\]
+
+Substitute \(y_i\) and \(z_i = y_i - \frac{\sqrt{2}}{2}\) into the unit vector condition:
+\[
+z_i = (\sqrt{2} - 2x_i) - \frac{\sqrt{2}}{2} = \sqrt{2} - 2x_i - \frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{2} - 2x_i
+\]
+
+Now, \(x_i^2 + y_i^2 + z_i^2 = 1\):
+\[
+x_i^2 + (\sqrt{2} - 2x_i)^2 + \left(\frac{\sqrt{2}}{2} - 2x_i\right)^2 = 1
+\]
+
+Compute each term:
+- \(y_i^2 = (\sqrt{2} - 2x_i)^2 = 2 - 4\sqrt{2} x_i + 4x_i^2\)
+- \(z_i^2 = \left(\frac{\sqrt{2}}{2} - 2x_i\right)^2 = \frac{2}{4} - 2 \cdot \frac{\sqrt{2}}{2} \cdot 2x_i + 4x_i^2 = \frac{1}{2} - 2\sqrt{2} x_i + 4x_i^2\)
+
+Sum:
+\[
+x_i^2 + (2 - 4\sqrt{2} x_i + 4x_i^2) + \left(\frac{1}{2} - 2\sqrt{2} x_i + 4x_i^2\right) = 1
+\]
+\[
+x_i^2 + 4x_i^2 + 4x_i^2 + 2 - 4\sqrt{2} x_i + \frac{1}{2} - 2\sqrt{2} x_i = 1
+\]
+\[
+9x_i^2 - 6\sqrt{2} x_i + \frac{5}{2} = 1
+\]
+\[
+9x_i^2 - 6\sqrt{2} x_i + \frac{5}{2} - 1 = 0
+\]
+\[
+9x_i^2 - 6\sqrt{2} x_i + \frac{3}{2} = 0
+\]
+Multiply by 2:
+\[
+18x_i^2 - 12\sqrt{2} x_i + 3 = 0
+\]
+Divide by 3:
+\[
+6x_i^2 - 4\sqrt{2} x_i + 1 = 0
+\]
+
+Solve the quadratic equation:
+\[
+x_i = \frac{4\sqrt{2} \pm \sqrt{(4\sqrt{2})^2 - 4 \cdot 6 \cdot 1}}{2 \cdot 6} = \frac{4\sqrt{2} \pm \sqrt{32 - 24}}{12} = \frac{4\sqrt{2} \pm \sqrt{8}}{12} = \frac{4\sqrt{2} \pm 2\sqrt{2}}{12} = \frac{(4 \pm 2)\sqrt{2}}{12} = \frac{(2 \pm 1)\sqrt{2}}{6}
+\]
+\[
+x_i = \frac{3\sqrt{2}}{6} = \frac{\sqrt{2}}{2}, \quad x_i = \frac{\sqrt{2}}{6}
+\]
+
+For each \(x_i\), compute \(y_i\) and \(z_i\):
+- Case 1: \(x_i = \frac{\sqrt{2}}{2}\)
+  \[
+  y_i = \sqrt{2} - 2 \cdot \frac{\sqrt{2}}{2} = \sqrt{2} - \sqrt{2} = 0
+  \]
+  \[
+  z_i = 0 - \frac{\sqrt{2}}{2} = -\frac{\sqrt{2}}{2}
+  \]
+  So, \(\mathbf{v}_1 = \begin{pmatrix} \frac{\sqrt{2}}{2} \\ 0 \\ -\frac{\sqrt{2}}{2} \end{pmatrix}\).
+
+- Case 2: \(x_i = \frac{\sqrt{2}}{6}\)
+  \[
+  y_i = \sqrt{2} - 2 \cdot \frac{\sqrt{2}}{6} = \sqrt{2} - \frac{2\sqrt{2}}{6} = \sqrt{2} - \frac{\sqrt{2}}{3} = \frac{3\sqrt{2} - \sqrt{2}}{3} = \frac{2\sqrt{2}}{3}
+  \]
+  \[
+  z_i = \frac{2\sqrt{2}}{3} - \frac{\sqrt{2}}{2} = \frac{4\sqrt{2} - 3\sqrt{2}}{6} = \frac{\sqrt{2}}{6}
+  \]
+  So, \(\mathbf{v}_2 = \begin{pmatrix} \frac{\sqrt{2}}{6} \\ \frac{2\sqrt{2}}{3} \\ \frac{\sqrt{2}}{6} \end{pmatrix}\).
+
+Verify unit vectors:
+- \(\mathbf{v}_1\): \(\left(\frac{\sqrt{2}}{2}\right)^2 + 0^2 + \left(-\frac{\sqrt{2}}{2}\right)^2 = \frac{2}{4} + 0 + \frac{2}{4} = 1\)
+- \(\mathbf{v}_2\): \(\left(\frac{\sqrt{2}}{6}\right)^2 + \left(\frac{2\sqrt{2}}{3}\right)^2 + \left(\frac{\sqrt{2}}{6}\right)^2 = \frac{2}{36} + \frac{8}{9} + \frac{2}{36} = \frac{2 + 32 + 2}{36} = \frac{36}{36} = 1\)
+
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data:** The current goal is to verify that \(\mathbf{v}_1\) and \(\mathbf{v}_2\) satisfy the angle conditions with \(\mathbf{a}\) and \(\mathbf{b}\).
+
+[/PLANNING]
+
+[IMP]
+- **For \(\mathbf{v}_1 = \begin{pmatrix} \frac{\sqrt{2}}{2} \\ 0 \\ -\frac{\sqrt{2}}{2} \end{pmatrix}\):**
+  - With \(\mathbf{a}\):
+    \[
+    \mathbf{v}_1 \cdot \mathbf{a} = \frac{\sqrt{2}}{2} \cdot 2 + 0 \cdot 2 + \left(-\frac{\sqrt{2}}{2}\right) \cdot (-1) = \sqrt{2} + 0 + \frac{\sqrt{2}}{2} = \frac{3\sqrt{2}}{2}
+    \]
+    \[
+    \cos \theta = \frac{\mathbf{v}_1 \cdot \mathbf{a}}{\|\mathbf{v}_1\| \|\mathbf{a}\|} = \frac{\frac{3\sqrt{2}}{2}}{1 \cdot 3} = \frac{\sqrt{2}}{2} \implies \theta = 45^\circ
+    \]
+  - With \(\mathbf{b}\):
+    \[
+    \mathbf{v}_1 \cdot \mathbf{b} = \frac{\sqrt{2}}{2} \cdot 0 + 0 \cdot 1 + \left(-\frac{\sqrt{2}}{2}\right) \cdot (-1) = \frac{\sqrt{2}}{2}
+    \]
+    \[
+    \cos \theta = \frac{\frac{\sqrt{2}}{2}}{1 \cdot \sqrt{2}} = \frac{1}{2} \implies \theta = 60^\circ
+    \]
+
+- **For \(\mathbf{v}_2 = \begin{pmatrix} \frac{\sqrt{2}}{6} \\ \frac{2\sqrt{2}}{3} \\ \frac{\sqrt{2}}{6} \end{pmatrix}\):**
+  - With \(\mathbf{a}\):
+    \[
+    \mathbf{v}_2 \cdot \mathbf{a} = \frac{\sqrt{2}}{6} \cdot 2 + \frac{2\sqrt{2}}{3} \cdot 2 + \frac{\sqrt{2}}{6} \cdot (-1) = \frac{2\sqrt{2}}{6} + \frac{4\sqrt{2}}{3} - \frac{\sqrt{2}}{6} = \frac{2\sqrt{2} + 8\sqrt{2} - \sqrt{2}}{6} = \frac{9\sqrt{2}}{6} = \frac{3\sqrt{2}}{2}
+    \]
+    \[
+    \cos \theta = \frac{\frac{3\sqrt{2}}{2}}{1 \cdot 3} = \frac{\sqrt{2}}{2} \implies \theta = 45^\circ
+    \]
+  - With \(\mathbf{b}\):
+    \[
+    \mathbf{v}_2 \cdot \mathbf{b} = \frac{\sqrt{2}}{6} \cdot 0 + \frac{2\sqrt{2}}{3} \cdot 1 + \frac{\sqrt{2}}{6} \cdot (-1) = \frac{2\sqrt{2}}{3} - \frac{\sqrt{2}}{6} = \frac{4\sqrt{2} - \sqrt{2}}{6} = \frac{3\sqrt{2}}{6} = \frac{\sqrt{2}}{2}
+    \]
+    \[
+    \cos \theta = \frac{\frac{\sqrt{2}}{2}}{1 \cdot \sqrt{2}} = \frac{1}{2} \implies \theta = 60^\circ
+    \]
+
+Both vectors satisfy the angle conditions and are unit vectors. They are distinct since \(\mathbf{v}_1 \neq \mathbf{v}_2\).
+
+[/IMP]
+
+---
+
+**Step 5**
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to compute \(\|\mathbf{v}_1 - \mathbf{v}_2\|\). We will calculate the difference \(\mathbf{v}_1 - \mathbf{v}_2\) and find its Euclidean norm.
+
+[/PLANNING]
+
+[IMP]
+\[
+\mathbf{v}_1 - \mathbf{v}_2 = \begin{pmatrix} \frac{\sqrt{2}}{2} \\ 0 \\ -\frac{\sqrt{2}}{2} \end{pmatrix} - \begin{pmatrix} \frac{\sqrt{2}}{6} \\ \frac{2\sqrt{2}}{3} \\ \frac{\sqrt{2}}{6} \end{pmatrix} = \begin{pmatrix} \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{6} \\ 0 - \frac{2\sqrt{2}}{3} \\ -\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{6} \end{pmatrix}
+\]
+\[
+= \begin{pmatrix} \frac{3\sqrt{2} - \sqrt{2}}{6} \\ -\frac{2\sqrt{2}}{3} \\ -\frac{3\sqrt{2} + \sqrt{2}}{6} \end{pmatrix} = \begin{pmatrix} \frac{2\sqrt{2}}{6} \\ -\frac{2\sqrt{2}}{3} \\ -\frac{4\sqrt{2}}{6} \end{pmatrix} = \begin{pmatrix} \frac{\sqrt{2}}{3} \\ -\frac{2\sqrt{2}}{3} \\ -\frac{2\sqrt{2}}{3} \end{pmatrix}
+\]
+
+Compute the norm:
+\[
+\|\mathbf{v}_1 - \mathbf{v}_2\|^2 = \left(\frac{\sqrt{2}}{3}\right)^2 + \left(-\frac{2\sqrt{2}}{3}\right)^2 + \left(-\frac{2\sqrt{2}}{3}\right)^2 = \frac{2}{9} + \frac{8}{9} + \frac{8}{9} = \frac{2 + 8 + 8}{9} = \frac{18}{9} = 2
+\]
+\[
+\|\mathbf{v}_1 - \mathbf{v}_2\| = \sqrt{2}
+\]
+
+[/IMP]
+
+---
+
+**Step 6**
+
+[PLANNING]
+**Action: Track Goals (Review)**  
+Track the hierarchy of goals and confirm the current goal has been achieved.
+
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy:**
+- Main goal: Find \(\|\mathbf{v}_1 - \mathbf{v}_2\|\).
+  - Subgoal 1: Set up equations using angle conditions (completed in Step 2).
+  - Subgoal 2: Solve for \(\mathbf{v}_1\) and \(\mathbf{v}_2\) (completed in Step 3).
+  - Subgoal 3: Verify solutions (completed in Step 4).
+  - Subgoal 4: Compute \(\|\mathbf{v}_1 - \mathbf{v}_2\|\) (completed in Step 5).
+
+**Current Goal:** Compute \(\|\mathbf{v}_1 - \mathbf{v}_2\|\). This has been achieved, with the result \(\sqrt{2}\).
+
+[/REVIEW]
+
+---
+
+**Final Answer**
+
+\[
+\|\mathbf{v}_1 - \mathbf{v}_2\| = \sqrt{2}
+\]

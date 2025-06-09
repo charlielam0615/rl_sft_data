@@ -1,0 +1,180 @@
+### Problem Statement
+I need to arrange a meeting schedule in San Francisco to meet as many friends as possible, starting at the Mission District at 9:00 AM. The friends are Emma (at The Castro from 10:00 AM to 3:30 PM, minimum 90 minutes), Olivia (at Union Square from 8:30 AM to 1:45 PM, minimum 120 minutes), and James (at Marina District from 2:45 PM to 7:15 PM, minimum 60 minutes). Travel times between locations are provided, and I must optimize the schedule to meet all friends while satisfying the time constraints. If no schedule satisfies all constraints, I will explain why.
+
+I will solve this using the meta-cognitive action set (M), selecting one action per step from Planning (P), Implementation (I), or Review (R), and structure responses with [PLANNING], [IMP], and [REVIEW] blocks as required.
+
+---
+
+### Step 1: Forward Subgoaling (Planning)
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of meeting all three friends (Emma, Olivia, James) into intermediate subgoals. The main goal is to create a feasible schedule that maximizes the number of friends met while respecting their availability and minimum meeting times. Subgoals:
+1. Meet Olivia at Union Square for at least 120 minutes between 8:30 AM and 1:45 PM.
+2. Meet Emma at The Castro for at least 90 minutes between 10:00 AM and 3:30 PM.
+3. Meet James at Marina District for at least 60 minutes between 2:45 PM and 7:15 PM.
+4. Account for travel times between locations to ensure the schedule is feasible.
+5. Evaluate multiple schedules to identify the optimal one that meets all constraints.
+[/PLANNING]
+
+---
+
+### Step 2: Track Goals (Review)
+[PLANNING]
+**Action: Track Goals (Review)**  
+Organize and review the hierarchy of goals to provide context for subsequent steps.
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy:**
+- **Main Goal**: Meet as many friends as possible (Emma, Olivia, James) in San Francisco on the given day.
+  - **Subgoal 1**: Meet Olivia at Union Square for ≥120 minutes between 8:30 AM and 1:45 PM.
+  - **Subgoal 2**: Meet Emma at The Castro for ≥90 minutes between 10:00 AM and 3:30 PM.
+  - **Subgoal 3**: Meet James at Marina District for ≥60 minutes between 2:45 PM and 7:15 PM.
+  - **Subgoal 4**: Incorporate travel times to ensure feasibility.
+  - **Subgoal 5**: Optimize the schedule by evaluating different sequences.
+
+**Current Goal**: Meet Olivia at Union Square for at least 120 minutes, as her availability ends earliest (1:45 PM), making it a priority to schedule her meeting first.
+[/REVIEW]
+
+---
+
+### Step 3: Reach Goal (Implementation)
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Olivia at Union Square for at least 120 minutes between 8:30 AM and 1:45 PM. To achieve this, calculate the earliest possible meeting time by traveling from the starting point (Mission District) to Union Square, considering the 15-minute travel time, and ensure the meeting fits within Olivia’s availability window.
+[/PLANNING]
+
+[IMP]
+Starting at Mission District at 9:00 AM, travel to Union Square takes 15 minutes, so arrival is at 9:15 AM. Olivia is available from 8:30 AM to 1:45 PM, so a meeting from 9:15 AM to 11:15 AM (120 minutes) is feasible. This satisfies the minimum meeting time for Olivia and ends within her availability window.
+- **Schedule so far**:
+  - 9:00 AM: Start at Mission District.
+  - 9:00 AM–9:15 AM: Travel to Union Square (15 minutes).
+  - 9:15 AM–11:15 AM: Meet Olivia at Union Square (120 minutes).
+[/IMP]
+
+---
+
+### Step 4: Adjust Subgoals (Planning)
+[PLANNING]
+**Action: Adjust Subgoals (Planning)**  
+With Olivia’s meeting scheduled from 9:15 AM to 11:15 AM at Union Square, adjust the remaining subgoals to focus on meeting Emma and James. Updated subgoals:
+1. Meet Emma at The Castro for at least 90 minutes between 10:00 AM and 3:30 PM, starting after 11:15 AM from Union Square.
+2. Meet James at Marina District for at least 60 minutes between 2:45 PM and 7:15 PM, after meeting Emma.
+3. Account for travel times and check for conflicts or waiting periods.
+4. Evaluate if this sequence (Olivia → Emma → James) is optimal or if other sequences are better.
+[/PLANNING]
+
+---
+
+### Step 5: Reach Goal (Implementation)
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to meet Emma at The Castro for at least 90 minutes between 10:00 AM and 3:30 PM, starting after 11:15 AM from Union Square. Travel from Union Square to The Castro takes 17 minutes. Plan the meeting to fit within Emma’s availability and allow enough time to reach James afterward.
+[/PLANNING]
+
+[IMP]
+After meeting Olivia at Union Square until 11:15 AM, travel to The Castro takes 17 minutes, so arrival is at 11:32 AM. Emma is available from 10:00 AM to 3:30 PM, so a meeting from 11:32 AM to 1:02 PM (90 minutes) is feasible. This ends within Emma’s availability window.
+- **Updated schedule**:
+  - 9:00 AM–9:15 AM: Travel from Mission District to Union Square (15 minutes).
+  - 9:15 AM–11:15 AM: Meet Olivia at Union Square (120 minutes).
+  - 11:15 AM–11:32 AM: Travel from Union Square to The Castro (17 minutes).
+  - 11:32 AM–1:02 PM: Meet Emma at The Castro (90 minutes).
+[/IMP]
+
+---
+
+### Step 6: Validation (Implementation)
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the feasibility of the schedule so far (Olivia at Union Square from 9:15 AM to 11:15 AM, Emma at The Castro from 11:32 AM to 1:02 PM) and ensure it allows meeting James at Marina District for at least 60 minutes between 2:45 PM and 7:15 PM. Check travel times and potential waiting periods.
+[/PLANNING]
+
+[IMP]
+After meeting Emma at The Castro until 1:02 PM, travel to Marina District takes 21 minutes, so arrival is at 1:23 PM. James is available from 2:45 PM to 7:15 PM, so there is a waiting period from 1:23 PM to 2:45 PM (82 minutes). A meeting with James from 2:45 PM to 3:45 PM (60 minutes) is feasible within his availability. The schedule satisfies all constraints:
+- Olivia: 120 minutes (9:15 AM–11:15 AM) within 8:30 AM–1:45 PM.
+- Emma: 90 minutes (11:32 AM–1:02 PM) within 10:00 AM–3:30 PM.
+- James: 60 minutes (2:45 PM–3:45 PM) within 2:45 PM–7:15 PM.
+- **Updated schedule**:
+  - 9:00 AM–9:15 AM: Travel from Mission District to Union Square (15 minutes).
+  - 9:15 AM–11:15 AM: Meet Olivia at Union Square (120 minutes).
+  - 11:15 AM–11:32 AM: Travel from Union Square to The Castro (17 minutes).
+  - 11:32 AM–1:02 PM: Meet Emma at The Castro (90 minutes).
+  - 1:02 PM–1:23 PM: Travel from The Castro to Marina District (21 minutes).
+  - 1:23 PM–2:45 PM: Wait at Marina District (82 minutes).
+  - 2:45 PM–3:45 PM: Meet James at Marina District (60 minutes).
+[/IMP]
+
+---
+
+### Step 7: Backward Subgoaling (Planning)
+[PLANNING]
+**Action: Backward Subgoaling (Planning)**  
+Work backward from the goal of meeting all three friends to explore alternative schedules and confirm the current schedule is optimal. Start with James (latest availability window: 2:45 PM–7:15 PM), then Emma, then Olivia, and check if other sequences (e.g., Emma → Olivia → James) are feasible or better (e.g., reduce waiting time).
+[/PLANNING]
+
+---
+
+### Step 8: Validation (Implementation)
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate alternative schedules (e.g., starting with Emma or James) to determine if they are feasible and compare them to the current schedule (Olivia → Emma → James) to minimize waiting time or conflicts.
+[/PLANNING]
+
+[IMP]
+**Alternative Schedule 1: Emma → Olivia → James**
+- Start at Mission District at 9:00 AM. Travel to The Castro (7 minutes), arrive at 9:07 AM. Emma is available from 10:00 AM, so wait until 10:00 AM (53 minutes).
+- Meet Emma from 10:00 AM to 11:30 AM (90 minutes).
+- Travel to Union Square (17 minutes), arrive at 11:47 AM. Olivia is available until 1:45 PM, so only 118 minutes remain (1:45 PM - 11:47 AM = 118 minutes), which is less than the required 120 minutes.
+- **Conclusion**: This schedule fails because the meeting time with Olivia is insufficient.
+
+**Alternative Schedule 2: James → Emma → Olivia**
+- James is available from 2:45 PM, so starting with him is not feasible as it’s too late to meet Olivia (ends at 1:45 PM) or Emma (ends at 3:30 PM) beforehand without conflicts.
+- **Conclusion**: This schedule is infeasible due to time constraints.
+
+**Alternative Schedule 3: Olivia → James → Emma**
+- Meet Olivia from 9:15 AM to 11:15 AM at Union Square (120 minutes, as before).
+- Travel to Marina District (18 minutes), arrive at 11:33 AM. James is available from 2:45 PM, so wait 132 minutes (11:33 AM–2:45 PM).
+- Meet James from 2:45 PM to 3:45 PM (60 minutes).
+- Travel to The Castro (22 minutes), arrive at 4:07 PM. Emma’s availability ends at 3:30 PM, so this is not possible.
+- **Conclusion**: This schedule fails because Emma cannot be met.
+
+**Comparison**:
+- Current schedule (Olivia → Emma → James) has a waiting time of 82 minutes at Marina District and meets all constraints.
+- Alternative schedules either violate minimum meeting times or miss availability windows.
+- The current schedule is optimal as it meets all friends with the least waiting time among feasible options.
+[/IMP]
+
+---
+
+### Step 9: Track Goals (Review)
+[PLANNING]
+**Action: Track Goals (Review)**  
+Review the final goal hierarchy and confirm the current goal is achieved.
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy:**
+- **Main Goal**: Meet as many friends as possible (Emma, Olivia, James).
+  - **Subgoal 1**: Meet Olivia at Union Square for ≥120 minutes between 8:30 AM and 1:45 PM (achieved: 9:15 AM–11:15 AM).
+  - **Subgoal 2**: Meet Emma at The Castro for ≥90 minutes between 10:00 AM and 3:30 PM (achieved: 11:32 AM–1:02 PM).
+  - **Subgoal 3**: Meet James at Marina District for ≥60 minutes between 2:45 PM and 7:15 PM (achieved: 2:45 PM–3:45 PM).
+  - **Subgoal 4**: Account for travel times (achieved: all travel times incorporated).
+  - **Subgoal 5**: Optimize the schedule (achieved: validated as the best feasible schedule).
+
+**Current Goal**: Finalize the schedule, which has been validated as optimal.
+[/REVIEW]
+
+---
+
+### Final Answer
+The optimal schedule to meet all three friends is:
+- **9:00 AM**: Start at Mission District.
+- **9:00 AM–9:15 AM**: Travel to Union Square (15 minutes).
+- **9:15 AM–11:15 AM**: Meet Olivia at Union Square (120 minutes).
+- **11:15 AM–11:32 AM**: Travel to The Castro (17 minutes).
+- **11:32 AM–1:02 PM**: Meet Emma at The Castro (90 minutes).
+- **1:02 PM–1:23 PM**: Travel to Marina District (21 minutes).
+- **1:23 PM–2:45 PM**: Wait at Marina District (82 minutes).
+- **2:45 PM–3:45 PM**: Meet James at Marina District (60 minutes).
+
+This schedule satisfies all constraints, and alternative schedules were either infeasible or had longer waiting times.

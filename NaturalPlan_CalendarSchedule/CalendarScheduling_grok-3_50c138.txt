@@ -1,0 +1,107 @@
+### Problem Statement
+Schedule a 30-minute meeting for Xander, Yvonne, and Zoe on Monday between 9:00 and 17:00, considering their existing schedules. Xander is busy from 9:00–9:30, 11:00–11:30, and 14:00–14:30; Yvonne is busy from 10:00–10:30, 12:30–13:00, and 15:30–16:00; Zoe is free all day. The meeting should be scheduled at their earliest availability.
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of scheduling a 30-minute meeting into subgoals:  
+1. Identify the time range (9:00–17:00) and meeting duration (30 minutes).  
+2. List all available time slots by excluding the busy times of Xander and Yvonne.  
+3. Select the earliest 30-minute slot where all participants are free.  
+4. Validate the selected time slot against constraints.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Identify all available 30-minute time slots within 9:00–17:00 where Xander, Yvonne, and Zoe are free.  
+- **How to Achieve:** Combine the busy times of Xander and Yvonne, determine free intervals, and ensure a 30-minute slot exists within 9:00–17:00. Since Zoe is free all day, only Xander’s and Yvonne’s schedules constrain the solution.  
+[/PLANNING]
+
+[IMP]
+To find available time slots, list the busy times and identify free intervals:  
+- **Xander’s busy times:** 9:00–9:30, 11:00–11:30, 14:00–14:30  
+- **Yvonne’s busy times:** 10:00–10:30, 12:30–13:00, 15:30–16:00  
+- **Zoe’s availability:** Free all day (9:00–17:00)  
+
+Combine all busy times in chronological order:  
+- 9:00–9:30 (Xander)  
+- 10:00–10:30 (Yvonne)  
+- 11:00–11:30 (Xander)  
+- 12:30–13:00 (Yvonne)  
+- 14:00–14:30 (Xander)  
+- 15:30–16:00 (Yvonne)  
+
+Now, identify free 30-minute slots between 9:00 and 17:00:  
+- **9:30–10:00**: Free (30 minutes)  
+- **10:30–11:00**: Free (30 minutes)  
+- **11:30–12:30**: Free (60 minutes)  
+- **13:00–14:00**: Free (60 minutes)  
+- **14:30–15:30**: Free (60 minutes)  
+- **16:00–17:00**: Free (60 minutes)  
+
+All listed intervals are at least 30 minutes and free for Xander, Yvonne, and Zoe.  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Select the earliest 30-minute time slot from the available intervals.  
+- **How to Achieve:** From the list of free intervals (9:30–10:00, 10:30–11:00, 11:30–12:30, 13:00–14:00, 14:30–15:30, 16:00–17:00), choose the earliest slot that satisfies the 30-minute duration requirement.  
+[/PLANNING]
+
+[IMP]
+The earliest available 30-minute slot is **9:30–10:00**. This slot is free for Xander (after his 9:00–9:30 meeting), Yvonne (before her 10:00–10:30 meeting), and Zoe (free all day).  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Validate that the 9:30–10:00 slot meets all constraints.  
+- **How to Achieve:** Check that 9:30–10:00 is within 9:00–17:00, lasts 30 minutes, and does not conflict with any participant’s busy times.  
+[/PLANNING]
+
+[IMP]
+- **Time range check:** 9:30–10:00 is within 9:00–17:00.  
+- **Duration check:** 10:00 – 9:30 = 30 minutes, which matches the requirement.  
+- **Conflict check:**  
+  - Xander: Free from 9:30 (after 9:00–9:30) until 11:00.  
+  - Yvonne: Free from 9:00 until 10:00.  
+  - Zoe: Free all day.  
+No conflicts exist. The slot satisfies all constraints.  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy:**  
+- Main Goal: Schedule a 30-minute meeting for Xander, Yvonne, and Zoe on Monday between 9:00–17:00 at the earliest availability.  
+  - Subgoal 1: Identify the time range and meeting duration (completed).  
+  - Subgoal 2: List available time slots by excluding busy times (completed: 9:30–10:00, 10:30–11:00, etc.).  
+  - Subgoal 3: Select the earliest 30-minute slot (completed: 9:30–10:00).  
+  - Subgoal 4: Validate the selected slot (completed: 9:30–10:00 is valid).  
+
+**Current Goal:** Confirm the final meeting time.  
+The earliest valid time slot, 9:30–10:00, has been identified and validated.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The meeting can be scheduled for **Monday, 9:30–10:00**. This is the earliest 30-minute slot where Xander, Yvonne, and Zoe are all available, satisfying the constraints of the work hours (9:00–17:00) and their existing schedules.

@@ -1,0 +1,166 @@
+### Problem Statement
+Simplify the expression \(\frac{1}{1 - \tan^2 x} + \frac{1}{1 - \cot^2 x}\).
+
+I will solve this problem by selecting one meta-cognitive action per step from the provided action set (Planning, Implementation, Review), following the specified format with [PLANNING], [IMP], and [REVIEW] blocks as required.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of simplifying the expression into intermediate subgoals:  
+1. Express \(\tan^2 x\) and \(\cot^2 x\) using trigonometric identities to relate them to \(\sin x\) and \(\cos x\).  
+2. Simplify each fraction separately by manipulating the denominators.  
+3. Combine the fractions using a common denominator or trigonometric identities.  
+4. Use trigonometric identities to simplify the resulting expression to its simplest form.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Express \(\tan^2 x\) and \(\cot^2 x\) in terms of \(\sin x\) and \(\cos x\).  
+**How to Achieve**: Use the identities \(\tan x = \frac{\sin x}{\cos x}\), so \(\tan^2 x = \frac{\sin^2 x}{\cos^2 x}\), and \(\cot x = \frac{\cos x}{\sin x}\), so \(\cot^2 x = \frac{\cos^2 x}{\sin^2 x}\). Substitute these into the denominators of the given expression.  
+[/PLANNING]
+
+[IMP]  
+Rewrite the expression:  
+\[
+\frac{1}{1 - \tan^2 x} + \frac{1}{1 - \cot^2 x}
+\]
+- For the first term:  
+\[
+\tan^2 x = \frac{\sin^2 x}{\cos^2 x}, \quad 1 - \tan^2 x = 1 - \frac{\sin^2 x}{\cos^2 x} = \frac{\cos^2 x - \sin^2 x}{\cos^2 x}.
+\]
+Thus,  
+\[
+\frac{1}{1 - \tan^2 x} = \frac{1}{\frac{\cos^2 x - \sin^2 x}{\cos^2 x}} = \frac{\cos^2 x}{\cos^2 x - \sin^2 x}.
+\]
+- For the second term:  
+\[
+\cot^2 x = \frac{\cos^2 x}{\sin^2 x}, \quad 1 - \cot^2 x = 1 - \frac{\cos^2 x}{\sin^2 x} = \frac{\sin^2 x - \cos^2 x}{\sin^2 x}.
+\]
+Thus,  
+\[
+\frac{1}{1 - \cot^2 x} = \frac{1}{\frac{\sin^2 x - \cos^2 x}{\sin^2 x}} = \frac{\sin^2 x}{\sin^2 x - \cos^2 x}.
+\]
+The expression becomes:  
+\[
+\frac{\cos^2 x}{\cos^2 x - \sin^2 x} + \frac{\sin^2 x}{\sin^2 x - \cos^2 x}.
+\]  
+[/IMP]
+
+---
+
+### Step 3: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify that the rewritten expression is equivalent to the original and check for potential simplifications.  
+**How to Achieve**: Ensure the substitutions for \(\tan^2 x\) and \(\cot^2 x\) are correct and explore whether the denominators can be unified or simplified using trigonometric identities.  
+[/PLANNING]
+
+[IMP]  
+- Check substitutions:  
+  - \(\tan^2 x = \frac{\sin^2 x}{\cos^2 x}\), so \(1 - \tan^2 x = \frac{\cos^2 x - \sin^2 x}{\cos^2 x}\), and the reciprocal is correct.  
+  - \(\cot^2 x = \frac{\cos^2 x}{\sin^2 x}\), so \(1 - \cot^2 x = \frac{\sin^2 x - \cos^2 x}{\sin^2 x}\), and the reciprocal is correct.  
+- Notice the denominators: \(\cos^2 x - \sin^2 x\) and \(\sin^2 x - \cos^2 x\). Since \(\sin^2 x - \cos^2 x = -(\cos^2 x - \sin^2 x)\), the second term can be rewritten:  
+\[
+\frac{\sin^2 x}{\sin^2 x - \cos^2 x} = \frac{\sin^2 x}{-(\cos^2 x - \sin^2 x)} = -\frac{\sin^2 x}{\cos^2 x - \sin^2 x}.
+\]
+The expression is now:  
+\[
+\frac{\cos^2 x}{\cos^2 x - \sin^2 x} - \frac{\sin^2 x}{\cos^2 x - \sin^2 x}.
+\]  
+This has a common denominator, suggesting the next step is to combine the fractions.  
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Combine the fractions and simplify the resulting expression.  
+**How to Achieve**: Combine the fractions over the common denominator \(\cos^2 x - \sin^2 x\) and simplify the numerator. Then, apply trigonometric identities to simplify further.  
+[/PLANNING]
+
+[IMP]  
+Combine the fractions:  
+\[
+\frac{\cos^2 x - \sin^2 x}{\cos^2 x - \sin^2 x}.
+\]
+The numerator and denominator are identical, so:  
+\[
+\frac{\cos^2 x - \sin^2 x}{\cos^2 x - \sin^2 x} = 1,
+\]
+provided \(\cos^2 x - \sin^2 x \neq 0\), i.e., \(\cos^2 x \neq \sin^2 x\), or \(\tan^2 x \neq 1\).  
+Use the double-angle identity: \(\cos^2 x - \sin^2 x = \cos 2x\). Thus, the expression is:  
+\[
+\frac{\cos 2x}{\cos 2x} = 1,
+\]
+again, provided \(\cos 2x \neq 0\).  
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Simplify \(\frac{1}{1 - \tan^2 x} + \frac{1}{1 - \cot^2 x}\).  
+  - Subgoal 1: Express \(\tan^2 x\) and \(\cot^2 x\) in terms of \(\sin x\) and \(\cos x\) (completed in Step 2).  
+  - Subgoal 2: Simplify each fraction separately (completed in Step 2).  
+  - Subgoal 3: Combine the fractions using a common denominator or trigonometric identities (completed in Step 4).  
+  - Subgoal 4: Simplify the resulting expression to its simplest form (completed in Step 4).  
+**Current Goal**: Verify the simplified result and consider domain restrictions.  
+[/REVIEW]
+
+---
+
+### Step 6: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Confirm the simplified result is correct and identify domain restrictions.  
+**How to Achieve**: Test the simplification with specific values and determine where the expression is undefined due to division by zero.  
+[/PLANNING]
+
+[IMP]  
+- **Test the result**: For \(x = \frac{\pi}{6}\):  
+  - Original: \(\tan \frac{\pi}{6} = \frac{\sqrt{3}}{3}\), so \(\tan^2 \frac{\pi}{6} = \frac{1}{3}\), and \(1 - \tan^2 \frac{\pi}{6} = 1 - \frac{1}{3} = \frac{2}{3}\). Thus, \(\frac{1}{1 - \tan^2 \frac{\pi}{6}} = \frac{3}{2}\).  
+  - \(\cot \frac{\pi}{6} = \sqrt{3}\), so \(\cot^2 \frac{\pi}{6} = 3\), and \(1 - \cot^2 \frac{\pi}{6} = 1 - 3 = -2\). Thus, \(\frac{1}{1 - \cot^2 \frac{\pi}{6}} = -\frac{1}{2}\).  
+  - Sum: \(\frac{3}{2} - \frac{1}{2} = 1\).  
+  - Simplified: \(\cos 2 \cdot \frac{\pi}{6} = \cos \frac{\pi}{3} = \frac{1}{2}\), so \(\frac{\cos 2x}{\cos 2x} = 1\). Matches.  
+- **Domain restrictions**: The expression is undefined when:  
+  - \(1 - \tan^2 x = 0\), i.e., \(\tan^2 x = 1\), so \(x = \frac{\pi}{4} + \frac{k\pi}{2}\), \(k \in \mathbb{Z}\).  
+  - \(1 - \cot^2 x = 0\), i.e., \(\cot^2 x = 1\), which gives the same condition.  
+  - Alternatively, \(\cos^2 x - \sin^2 x = \cos 2x = 0\), so \(2x = \frac{\pi}{2} + k\pi\), or \(x = \frac{\pi}{4} + \frac{k\pi}{2}\).  
+Thus, the expression simplifies to 1 for all \(x \neq \frac{\pi}{4} + \frac{k\pi}{2}\).  
+[/IMP]
+
+---
+
+### Step 7: Recall Info
+[PLANNING]
+**Action: Recall Info (Review)**  
+**Meta-data**: Retrieve information related to the simplification process and domain restrictions to ensure all steps align with trigonometric identities used.  
+[/PLANNING]
+
+[REVIEW]  
+- From Step 2: Expressed \(\tan^2 x = \frac{\sin^2 x}{\cos^2 x}\) and \(\cot^2 x = \frac{\cos^2 x}{\sin^2 x}\), leading to denominators \(\cos^2 x - \sin^2 x\) and \(\sin^2 x - \cos^2 x\).  
+- From Step 3: Recognized \(\sin^2 x - \cos^2 x = -(\cos^2 x - \sin^2 x)\), allowing a common denominator.  
+- From Step 4: Used \(\cos^2 x - \sin^2 x = \cos 2x\) to simplify the fraction to 1.  
+- From Step 6: Identified domain restrictions where \(\cos 2x = 0\), i.e., \(x = \frac{\pi}{4} + \frac{k\pi}{2}\).  
+All steps consistently used trigonometric identities to transform and simplify the expression.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The simplified expression is:
+\[
+\boxed{1}
+\]
+with the domain restriction \(x \neq \frac{\pi}{4} + \frac{k\pi}{2}\), \(k \in \mathbb{Z}\).

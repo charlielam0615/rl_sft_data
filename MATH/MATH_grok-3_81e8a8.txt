@@ -1,0 +1,128 @@
+**Problem Restatement:**
+We need to determine how many books are left over after Melvin unpacks 1335 boxes, each containing 39 books, and repacks all the books into boxes containing 40 books each. We are to find the number of books that cannot be packed into boxes of 40.
+
+---
+
+### Step 1
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+To solve the problem, we need to break it down into intermediate subgoals:
+1. Calculate the total number of books in the warehouse.
+2. Determine how many boxes of 40 books can be formed from the total number of books.
+3. Calculate the number of books left over after packing as many boxes of 40 books as possible.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the total number of books in the warehouse.
+How to Achieve: Multiply the number of boxes (1335) by the number of books per box (39).
+[/PLANNING]
+
+[IMP]
+To find the total number of books, we compute:
+\[ 1335 \times 39 \]
+First, estimate the product:
+\[ 1300 \times 39 = 1300 \times (40 - 1) = 1300 \times 40 - 1300 = 52,000 - 1300 = 50,700 \]
+\[ 35 \times 39 = 35 \times (40 - 1) = 35 \times 40 - 35 = 1400 - 35 = 1365 \]
+\[ 50,700 + 1365 = 52,065 \]
+So, the total number of books is 52,065.
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify the calculation of the total number of books.
+How to Achieve: Recalculate \( 1335 \times 39 \) using an alternative method to confirm the result.
+[/PLANNING]
+
+[IMP]
+Let’s verify the multiplication using the standard algorithm:
+\[ 39 \times 1335 \]
+Break it down:
+\[ 39 \times 1300 = 39 \times 13 \times 100 = (40 \times 13 - 1 \times 13) \times 100 = (520 - 13) \times 100 = 507 \times 100 = 50,700 \]
+\[ 39 \times 35 = 39 \times (40 - 5) = 39 \times 40 - 39 \times 5 = 1560 - 195 = 1365 \]
+\[ 50,700 + 1365 = 52,065 \]
+The result matches our previous calculation, confirming that the total number of books is 52,065.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Determine how many boxes of 40 books can be formed from the total number of books.
+How to Achieve: Divide the total number of books (52,065) by the number of books per box (40) to find the number of full boxes.
+[/PLANNING]
+
+[IMP]
+To find the number of full boxes, compute:
+\[ 52,065 \div 40 \]
+Using long division:
+- \( 40 \times 1300 = 52,000 \), so try 1300 boxes.
+- \( 52,065 - 52,000 = 65 \).
+- \( 65 \div 40 = 1 \) remainder 25 (since \( 40 \times 1 = 40 \), and \( 65 - 40 = 25 \)).
+Thus:
+\[ 52,065 \div 40 = 1301 \text{ remainder } 25 \]
+So, Melvin can pack 1301 boxes of 40 books each.
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of books left over after packing as many boxes of 40 books as possible.
+How to Achieve: Use the remainder from the division of the total number of books by 40, as this represents the books that cannot be packed into full boxes of 40.
+[/PLANNING]
+
+[IMP]
+From the previous step, we found:
+\[ 52,065 \div 40 = 1301 \text{ remainder } 25 \]
+The remainder indicates that 25 books cannot be packed into boxes of 40. Thus, the number of books left over is 25.
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify the number of books left over.
+How to Achieve: Calculate the total number of books packed into 1301 boxes of 40 and subtract from the total number of books to confirm the remainder.
+[/PLANNING]
+
+[IMP]
+Calculate the number of books in 1301 boxes:
+\[ 1301 \times 40 \]
+\[ 1300 \times 40 = 52,000 \]
+\[ 1 \times 40 = 40 \]
+\[ 52,000 + 40 = 52,040 \]
+Now, subtract from the total number of books:
+\[ 52,065 - 52,040 = 25 \]
+This confirms that 25 books are left over, matching our previous result.
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Find the number of books left over after repacking 1335 boxes of 39 books into boxes of 40 books.
+  - Subgoal 1: Calculate the total number of books (completed: 52,065 books).
+  - Subgoal 2: Determine how many boxes of 40 books can be formed (completed: 1301 boxes).
+  - Subgoal 3: Calculate the number of books left over (completed: 25 books).
+Current Goal: The current goal was to calculate the number of books left over, which has been achieved. The final answer is 25 books left over.
+[/REVIEW]
+
+---
+
+### Final Answer
+After repacking the books, Melvin has **25 books** left over.
