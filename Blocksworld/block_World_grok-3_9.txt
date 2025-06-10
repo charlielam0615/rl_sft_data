@@ -1,0 +1,148 @@
+**Problem Restatement**:  
+The goal is to achieve the state where "object c craves object a" given the initial conditions: object b craves object a, harmony, planet object a, planet object c, planet object d, province object b, province object c, and province object d. The available actions are Attack, Feast, Succumb, and Overcome, each with specific preconditions and effects as defined.
+
+---
+
+### Step 1: Forward Subgoaling  
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To achieve the goal of "object c craves object a," identify intermediate subgoals by analyzing the actions that can produce the desired fact. The Overcome action can result in "Object Craves other object" (e.g., object c craves object a). Its preconditions are: Province other object (e.g., province object a) and Pain object. Thus, subgoals include achieving Pain object and Province object a.  
+[/PLANNING]
+
+---
+
+### Step 2: Backward Subgoaling  
+[PLANNING]  
+**Action**: Backward Subgoaling (Planning)  
+Working backward from the subgoal of Pain object (needed for Overcome), the Attack action can produce Pain object, with preconditions: Province object, Planet object, and Harmony. The initial conditions provide Harmony, Province object b, Province object c, Province object d, Planet object a, Planet object c, and Planet object d. To apply Attack, we can use an object that satisfies both Province and Planet, such as object c or object d. Let’s target object c for Attack to produce Pain object.  
+[/PLANNING]
+
+---
+
+### Step 3: Reach Goal  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Achieve Pain object by performing Attack on object c.  
+**How to Achieve**: Use the Attack action on object c, as it satisfies the preconditions (Province object c, Planet object c, Harmony). This will make Pain object true and set Province object c, Planet object c, and Harmony to false.  
+[/PLANNING]  
+[IMP]  
+Perform Attack on object c.  
+**Resulting State**:  
+- True: Pain object, object b craves object a, Planet object a, Planet object d, Province object b, Province object d.  
+- False: Province object c, Planet object c, Harmony.  
+[/IMP]
+
+---
+
+### Step 4: Track Goals  
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Object c craves object a  
+  - Subgoal: Pain object (achieved)  
+  - Subgoal: Province object a (not achieved)  
+**Current Goal**: Province object a (needed for Overcome action to achieve object c craves object a).  
+[/REVIEW]
+
+---
+
+### Step 5: Backward Subgoaling  
+[PLANNING]  
+**Action**: Backward Subgoaling (Planning)  
+To achieve Province object a (precondition for Overcome), examine actions that produce Province object. The Succumb action can produce Province object (e.g., Province object a) when Pain object is true, and Pain object is currently true from the Attack action. Performing Succumb will also restore Harmony, which may be useful later.  
+[/PLANNING]
+
+---
+
+### Step 6: Reach Goal  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Achieve Province object a and Harmony by performing Succumb.  
+**How to Achieve**: Apply the Succumb action, as Pain object is true. This will make Province object a, Planet object a, and Harmony true, and Pain object false.  
+[/PLANNING]  
+[IMP]  
+Perform Succumb action.  
+**Resulting State**:  
+- True: object b craves object a, Planet object a, Planet object d, Province object b, Province object d, Province object a, Harmony.  
+- False: Pain object, Province object c, Planet object c.  
+[/IMP]
+
+---
+
+### Step 7: Track Goals  
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Object c craves object a  
+  - Subgoal: Pain object (not achieved)  
+  - Subgoal: Province object a (achieved)  
+**Current Goal**: Pain object (needed for Overcome action to achieve object c craves object a).  
+[/REVIEW]
+
+---
+
+### Step 8: Backward Subgoaling  
+[PLANNING]  
+**Action**: Backward Subgoaling (Planning)  
+To achieve Pain object again (since it was set to false by Succumb), use the Attack action. Since Province object c and Planet object c are false, check other objects. Object d has Province object d and Planet object d true, and Harmony is true, satisfying Attack’s preconditions. Perform Attack on object d to produce Pain object.  
+[/PLANNING]
+
+---
+
+### Step 9: Reach Goal  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Achieve Pain object by performing Attack on object d.  
+**How to Achieve**: Apply Attack on object d, as it satisfies Province object d, Planet object d, and Harmony. This will make Pain object true and set Province object d, Planet object d, and Harmony to false.  
+[/PLANNING]  
+[IMP]  
+Perform Attack on object d.  
+**Resulting State**:  
+- True: object b craves object a, Planet object a, Province object b, Province object a, Pain object.  
+- False: Province object c, Planet object c, Province object d, Planet object d, Harmony.  
+[/IMP]
+
+---
+
+### Step 10: Reach Goal  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Achieve object c craves object a by performing Overcome object c from object a.  
+**How to Achieve**: The Overcome action requires Province object a and Pain object, both of which are true. Apply Overcome object c from object a to produce object c craves object a.  
+[/PLANNING]  
+[IMP]  
+Perform Overcome object c from object a.  
+**Resulting State**:  
+- True: object b craves object a, Planet object a, Province object b, Harmony, Province object c, object c craves object a.  
+- False: Province object c (initially false), Planet object c, Province object d, Planet object d, Province object a, Pain object.  
+[/IMP]
+
+---
+
+### Step 11: Validation  
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify that object c craves object a is achieved.  
+**How to Achieve**: Check the current state to confirm that object c craves object a is true, and no further actions are needed if the goal is satisfied.  
+[/PLANNING]  
+[IMP]  
+The current state includes object c craves object a, which matches the goal. The goal is achieved.  
+**Final State**:  
+- True: object b craves object a, Planet object a, Province object b, Harmony, Province object c, object c craves object a.  
+- False: Province object a, Pain object, Province object d, Planet object d, Planet object c.  
+[/IMP]
+
+---
+
+**Solution Summary**:  
+To achieve the goal of "object c craves object a," perform the following actions:  
+1. Attack object c (produces Pain object).  
+2. Succumb (produces Province object a and Harmony).  
+3. Attack object d (produces Pain object again).  
+4. Overcome object c from object a (produces object c craves object a).  
+
+The goal is achieved in the final state.

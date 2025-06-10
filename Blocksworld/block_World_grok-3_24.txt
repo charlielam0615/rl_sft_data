@@ -1,0 +1,235 @@
+**Problem Restatement**:  
+I am working with a set of objects (a, b, c, d) and can perform four actions: Attack, Feast, Succumb, and Overcome, each with specific preconditions and effects on facts (e.g., Province, Planet, Harmony, Pain, Craves). The initial conditions are: object a craves object b, object d craves object c, Harmony is true, object b is a Planet, object c is a Planet, object a is a Province, and object d is a Province. The goal is to achieve the state where object c craves object a.
+
+---
+
+**Step 1**  
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To achieve the goal of "object c craves object a," identify possible actions that can make "Craves(c, a)" true. The only action that establishes "Object Craves other object" is Overcome, which requires "Province other object" (Province a) and "Pain object" (Pain c). Thus, subgoals include achieving Province a (already true) and Pain c. Pain c can be achieved via Attack (requires Province c, Planet c, Harmony) or Feast (requires Object Craves c, Province c, Harmony). Since Province c is not true initially, we need to establish it, possibly via Succumb (which sets Province object).  
+[/PLANNING]
+
+---
+
+**Step 2**  
+[PLANNING]  
+**Action**: Backward Subgoaling (Planning)  
+Work backward from the goal "Craves(c, a)." The Overcome action can achieve this, requiring Province a (true) and Pain c (false). To achieve Pain c, consider Feast, which requires Object Craves c (false), Province c (false), and Harmony (true). Alternatively, Attack requires Province c, Planet c (true), and Harmony (true). Since Province c is false, Succumb can establish it by requiring Pain c, creating a dependency loop. Instead, explore establishing Province c via Succumb after generating Pain c through another action, or adjust subgoals to prioritize Province c.  
+[/PLANNING]
+
+---
+
+**Step 3**  
+[PLANNING]  
+**Action**: Adjust Subgoals (Planning)  
+Adjust subgoals to focus on achieving Province c to enable Attack or Feast for Pain c. Succumb can set Province c if Pain c is true, but Pain c depends on Attack or Feast, which need Province c. To break this loop, consider generating Pain for another object (e.g., Pain a via Attack on a) to enable Succumb, which could then set Province c. Subgoals: achieve Pain a, then Province c, then Pain c, then Craves(c, a).  
+[/PLANNING]
+
+---
+
+**Step 4**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Pain a to enable Succumb for Province c. Attack can achieve Pain a, requiring Province a (true), Planet a (false), and Harmony (true). Since Planet a is not true, adjust the plan to target another object or check if another action can generate Pain a. Alternatively, test Attack on object b (Province b false, Planet b true, Harmony true) to generate Pain b, enabling Succumb for Province c.  
+[/PLANNING]  
+[IMP]  
+Since Planet a is false, Attack cannot be applied to object a. Instead, check Attack on object b:  
+- **Preconditions**: Province b (false), Planet b (true), Harmony (true).  
+- Province b is not true, so Attack on b is not possible.  
+Try Attack on object c:  
+- **Preconditions**: Province c (false), Planet c (true), Harmony (true).  
+- Province c is false, so Attack on c is not possible.  
+No objects satisfy Attack preconditions (Province object must be true, but only a and d are Province). Reconsider subgoals.  
+[/IMP]
+
+---
+
+**Step 5**  
+[PLANNING]  
+**Action**: Backtrack (Planning)  
+Since Attack is not feasible due to missing Province preconditions for b and c, backtrack to Step 3. Reconsider generating Province c directly via Succumb, which requires Pain c. Since Pain c is not achievable directly, explore Feast to generate Pain c, requiring Object Craves c (false), Province c (false), Harmony (true). Adjust plan to achieve Province c and Object Craves c.  
+[/PLANNING]
+
+---
+
+**Step 6**  
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Craves(c, a)  
+  - Subgoal: Apply Overcome(c, a) [requires Province a (true), Pain c (false)]  
+    - Subgoal: Achieve Pain c  
+      - Option 1: Attack c [requires Province c (false), Planet c (true), Harmony (true)]  
+      - Option 2: Feast c from another object [requires Craves(c, other), Province c, Harmony]  
+        - Subgoal: Achieve Province c [via Succumb, requires Pain c]  
+        - Subgoal: Achieve Craves(c, other)  
+**Current Goal**: Achieve Province c to enable Attack or Feast for Pain c.  
+[/REVIEW]
+
+---
+
+**Step 7**  
+[PLANNING]  
+**Action**: Recall Info (Review)  
+**Meta-data**: Retrieve information related to achieving Province c, focusing on actions that establish Province object.  
+[/PLANNING]  
+[REVIEW]  
+Succumb sets Province object (e.g., Province c) if Pain c is true. Overcome sets Province object but requires Province other object and Pain object. Feast and Attack remove Province object. No prior steps have established Pain c or Province c. Initial conditions include Province a and Province d, suggesting Attack on a or d to generate Pain, enabling Succumb.  
+[/REVIEW]
+
+---
+
+**Step 8**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Pain a via Attack on a to enable Succumb for Province c. Attack requires Province a (true), Planet a (false), Harmony (true).  
+[/PLANNING]  
+[IMP]  
+Check Attack on a:  
+- **Preconditions**: Province a (true), Planet a (false), Harmony (true).  
+- Planet a is not true, so Attack on a is not possible.  
+Try Attack on d:  
+- **Preconditions**: Province d (true), Planet d (false), Harmony (true).  
+- Planet d is not true, so Attack on d is not possible.  
+Since Attack is not feasible, reconsider generating Pain via Feast, which requires Craves and Province.  
+[/IMP]
+
+---
+
+**Step 9**  
+[PLANNING]  
+**Action**: Adjust Subgoals (Planning)  
+Since Attack is not viable due to missing Planet facts, focus on Feast to generate Pain c. Feast requires Object Craves c (e.g., Craves(c, x)), Province c, and Harmony. Initial Craves facts are Craves(a, b) and Craves(d, c). Since Craves(d, c) involves c, explore Feast c from d to generate Pain c, requiring Province c. First, achieve Province c via Succumb, which needs Pain c, indicating a loop. Adjust to generate Pain d via Feast d from c, then Succumb d to set Province c.  
+[/PLANNING]
+
+---
+
+**Step 10**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Pain d via Feast d from c, requiring Craves(d, c) (true), Province d (true), Harmony (true).  
+[/PLANNING]  
+[IMP]  
+Apply Feast d from c:  
+- **Preconditions**: Craves(d, c) (true), Province d (true), Harmony (true).  
+- All preconditions met.  
+- **Effects**: Pain d (true), Province c (true), Craves(d, c) (false), Province d (false), Harmony (false).  
+Current state: Province a, Province c, Planet b, Planet c, Pain d, Craves(a, b).  
+[/IMP]
+
+---
+
+**Step 11**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Province c (achieved) and Pain c via Attack c, requiring Province c (true), Planet c (true), Harmony (false).  
+[/PLANNING]  
+[IMP]  
+Apply Attack c:  
+- **Preconditions**: Province c (true), Planet c (true), Harmony (false).  
+- Harmony is false, so Attack c is not possible.  
+Instead, use Succumb c to restore Harmony:  
+- **Preconditions**: Pain c (false).  
+- Pain c is not true, so Succumb c is not possible.  
+Try Feast c from a to generate Pain c:  
+- **Preconditions**: Craves(c, a) (false), Province c (true), Harmony (false).  
+- Craves(c, a) and Harmony are false, so Feast c from a is not possible.  
+[/IMP]
+
+---
+
+**Step 12**  
+[PLANNING]  
+**Action**: Backtrack (Planning)  
+Backtrack to Step 9. Instead of Feast d from c, explore other ways to achieve Province c without removing Harmony, possibly via Succumb on another object after generating Pain elsewhere.  
+[/PLANNING]
+
+---
+
+**Step 13**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Pain a via Feast a from b, requiring Craves(a, b) (true), Province a (true), Harmony (true).  
+[/PLANNING]  
+[IMP]  
+Apply Feast a from b:  
+- **Preconditions**: Craves(a, b) (true), Province a (true), Harmony (true).  
+- All preconditions met.  
+- **Effects**: Pain a (true), Province b (true), Craves(a, b) (false), Province a (false), Harmony (false).  
+Current state: Province b, Province d, Planet b, Planet c, Pain a, Craves(d, c).  
+[/IMP]
+
+---
+
+**Step 14**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Province c via Succumb a, requiring Pain a (true).  
+[/PLANNING]  
+[IMP]  
+Apply Succumb a:  
+- **Preconditions**: Pain a (true).  
+- Precondition met.  
+- **Effects**: Province a (true), Planet a (true), Harmony (true), Pain a (false).  
+Current state: Province a, Province b, Province d, Planet a, Planet b, Planet c, Harmony, Craves(d, c).  
+[/IMP]
+
+---
+
+**Step 15**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Pain c via Feast d from c, requiring Craves(d, c) (true), Province d (true), Harmony (true).  
+[/PLANNING]  
+[IMP]  
+Apply Feast d from c:  
+- **Preconditions**: Craves(d, c) (true), Province d (true), Harmony (true).  
+- All preconditions met.  
+- **Effects**: Pain d (true), Province c (true), Craves(d, c) (false), Province d (false), Harmony (false).  
+Current state: Province a, Province b, Province c, Planet a, Planet b, Planet c, Pain d.  
+[/IMP]
+
+---
+
+**Step 16**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Pain c via Attack c, requiring Province c (true), Planet c (true), Harmony (false).  
+[/PLANNING]  
+[IMP]  
+Apply Attack c:  
+- **Preconditions**: Province c (true), Planet c (true), Harmony (false).  
+- All preconditions met.  
+- **Effects**: Pain c (true), Province c (false), Planet c (false), Harmony (false).  
+Current state: Province a, Province b, Planet a, Planet b, Pain c, Pain d.  
+[/IMP]
+
+---
+
+**Step 17**  
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: Current goal is to achieve Craves(c, a) via Overcome c from a, requiring Province a (true), Pain c (true).  
+[/PLANNING]  
+[IMP]  
+Apply Overcome c from a:  
+- **Preconditions**: Province a (true), Pain c (true).  
+- All preconditions met.  
+- **Effects**: Harmony (true), Province c (true), Craves(c, a) (true), Province a (false), Pain c (false).  
+Current state: Province b, Province c, Planet a, Planet b, Harmony, Craves(c, a), Pain d.  
+Goal achieved: Craves(c, a) is true.  
+[/IMP]
+
+---
+
+**Solution**:  
+To achieve the goal of object c craves object a, perform the following sequence of actions:  
+1. Feast a from b: Sets Pain a, Province b, removes Craves(a, b), Province a, Harmony.  
+2. Succumb a: Sets Province a, Planet a, Harmony, removes Pain a.  
+3. Feast d from c: Sets Pain d, Province c, removes Craves(d, c), Province d, Harmony.  
+4. Attack c: Sets Pain c, removes Province c, Planet c, Harmony.  
+5. Overcome c from a: Sets Craves(c, a), Province c, Harmony, removes Province a, Pain c.  
+
+This sequence satisfies all preconditions and achieves the goal Craves(c, a).

@@ -1,0 +1,111 @@
+**Problem Statement**: I need to arrange a set of blocks into stacks to achieve the goal of having the orange block on top of the blue block, starting from an initial state where the red, blue, and yellow blocks are clear, the hand is empty, the blue block is on top of the orange block, and the red, orange, and yellow blocks are on the table. I can perform the following actions, each taking 1 minute: pick up a block, unstack a block, put down a block, or stack a block, subject to specific restrictions (e.g., I can only pick up or unstack a clear block with an empty hand, stack a held block on a clear block, etc.). The objective is to minimize the time taken to achieve the goal.
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To achieve the goal of having the orange block on top of the blue block, I need to break this down into intermediate subgoals. The initial state indicates that the blue block is on top of the orange block, which is the opposite of the desired configuration. Therefore, I must:
+1. Clear the blue block from the orange block to make the orange block clear.
+2. Ensure the blue block is clear and on the table so it can receive the orange block.
+3. Stack the orange block on top of the blue block.  
+These subgoals will guide the sequence of actions to minimize time.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to clear the blue block from the orange block to make the orange block clear. This can be achieved by unstacking the blue block from the orange block, as the blue block is clear and the hand is empty.  
+[/PLANNING]  
+[IMP]  
+To unstack the blue block from the orange block, I perform the action: **Unstack blue from orange**.  
+- The blue block is clear (no blocks on top, not picked up).
+- The hand is empty.
+- The blue block is on top of the orange block, satisfying the conditions for unstacking.
+After unstacking, I am holding the blue block, and the orange block becomes clear. This takes 1 minute.  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:
+- Main goal: Orange block on top of blue block.
+  - Subgoal 1: Clear the blue block from the orange block (achieved).
+  - Subgoal 2: Ensure the blue block is clear and on the table.
+  - Subgoal 3: Stack the orange block on top of the blue block.  
+**Current Goal**: Ensure the blue block is clear and on the table.  
+The blue block is currently being held (from unstacking in Step 2), so it needs to be placed on the table to make it clear and available for stacking the orange block.  
+[/REVIEW]
+
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to ensure the blue block is clear and on the table. Since I am holding the blue block, I can achieve this by putting it down on the table.  
+[/PLANNING]  
+[IMP]  
+To place the blue block on the table, I perform the action: **Put down blue**.  
+- I am holding the blue block.
+- Putting it down on the table makes the blue block clear and leaves my hand empty.
+This takes 1 minute.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:
+- Main goal: Orange block on top of blue block.
+  - Subgoal 1: Clear the blue block from the orange block (achieved).
+  - Subgoal 2: Ensure the blue block is clear and on the table (achieved).
+  - Subgoal 3: Stack the orange block on top of the blue block.  
+**Current Goal**: Stack the orange block on top of the blue block.  
+The orange block is now clear (from Step 2) and on the table, the blue block is clear and on the table (from Step 4), and my hand is empty, so I can proceed to pick up and stack the orange block.  
+[/REVIEW]
+
+### Step 6
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to stack the orange block on top of the blue block. This requires picking up the orange block and then stacking it on the blue block, which is clear and on the table.  
+[/PLANNING]  
+[IMP]  
+To pick up the orange block, I perform the action: **Pick up orange**.  
+- The orange block is clear (no blocks on top, not picked up).
+- The orange block is on the table.
+- My hand is empty.
+After picking up the orange block, I am holding it. This takes 1 minute.  
+[/IMP]
+
+### Step 7
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to stack the orange block on top of the blue block. Since I am holding the orange block and the blue block is clear, I can stack the orange block on the blue block.  
+[/PLANNING]  
+[IMP]  
+To stack the orange block on the blue block, I perform the action: **Stack orange on blue**.  
+- I am holding the orange block.
+- The blue block is clear (on the table, no blocks on top).
+After stacking, the orange block is on top of the blue block, my hand is empty, and the blue block is no longer clear. This takes 1 minute.  
+[/IMP]
+
+### Step 8
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify that the orange block is on top of the blue block, achieving the main goal. I will check the current state against the goal state.  
+[/PLANNING]  
+[IMP]  
+The current state after Step 7:
+- The orange block is on top of the blue block.
+- The blue block is not clear (has orange on top).
+- The red and yellow blocks remain clear and on the table (unchanged).
+- The hand is empty.
+The goal state requires the orange block to be on top of the blue block, which is satisfied. No additional actions are needed, as the goal is achieved. Total time: 4 minutes (1 minute each for unstack blue, put down blue, pick up orange, stack orange on blue).  
+[/IMP]
+
+**Final Answer**: To achieve the goal of having the orange block on top of the blue block, perform the following actions:
+1. Unstack the blue block from the orange block (1 minute).
+2. Put down the blue block on the table (1 minute).
+3. Pick up the orange block (1 minute).
+4. Stack the orange block on the blue block (1 minute).  
+Total time: **4 minutes**.  
+This sequence is minimal, as it directly addresses the constraints and achieves the goal without redundant actions.

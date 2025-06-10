@@ -1,0 +1,120 @@
+### Problem Statement
+The goal is to transport package_0 from location_1_0 in city_1 to location_0_0 in city_0, where location_0_0 and location_1_0 are airports. Each city has one truck, and locations within a city are directly connected by trucks. Cities are connected via airplanes, with each city having one airport. The initial conditions are:
+- location_0_0 is an airport in city_0.
+- location_1_0 is an airport in city_1.
+- airplane_0 and airplane_1 are at location_1_0.
+- package_0 is at location_1_0.
+- truck_0 is at location_0_0.
+- truck_1 is at location_1_0.
+The task is to achieve the goal (package_0 at location_0_0) by performing valid actions (load/unload package into/from truck or airplane, drive truck within a city, fly airplane between cities) while respecting the restrictions (e.g., a package can only be loaded if it and the vehicle are at the same location).
+
+---
+
+### Step 1
+[PLANNING]
+Action: Backward Subgoaling (Planning)
+To achieve the goal of having package_0 at location_0_0 (an airport in city_0), work backward to identify necessary intermediate subgoals. Since location_0_0 is an airport, package_0 must be transported to city_0, likely via an airplane, as airplanes connect cities. For package_0 to be at location_0_0, it must be unloaded from an airplane at location_0_0. This implies the airplane carrying package_0 must be at location_0_0, and package_0 must be loaded into the airplane when it is at location_1_0 (since package_0 starts there). Thus, the subgoals are:
+1. Load package_0 into an airplane at location_1_0.
+2. Fly the airplane with package_0 from location_1_0 to location_0_0.
+3. Unload package_0 from the airplane at location_0_0.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Maintain a goal-management system to list all goals and highlight the current one:
+- Main goal: Package_0 is at location_0_0.
+  - Subgoal 1: Load package_0 into an airplane at location_1_0 (current goal).
+  - Subgoal 2: Fly the airplane with package_0 from location_1_0 to location_0_0.
+  - Subgoal 3: Unload package_0 from the airplane at location_0_0.
+The current goal is to load package_0 into an airplane at location_1_0.
+[/REVIEW]
+
+---
+
+### Step 3
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current goal: Load package_0 into an airplane at location_1_0.
+How to achieve: Since package_0 is at location_1_0 and both airplane_0 and airplane_1 are at location_1_0, load package_0 into airplane_0 at location_1_0, as this satisfies the restriction that the package and airplane must be at the same location.
+[/PLANNING]
+
+[IMP]
+Perform the action: Load package_0 into airplane_0 at location_1_0.
+Result: Package_0 is now in airplane_0 and no longer at location_1_0.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Update the goal-management system:
+- Main goal: Package_0 is at location_0_0.
+  - Subgoal 1: Load package_0 into an airplane at location_1_0 (completed).
+  - Subgoal 2: Fly the airplane with package_0 from location_1_0 to location_0_0 (current goal).
+  - Subgoal 3: Unload package_0 from the airplane at location_0_0.
+The current goal is to fly airplane_0 with package_0 from location_1_0 to location_0_0.
+[/REVIEW]
+
+---
+
+### Step 5
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current goal: Fly airplane_0 with package_0 from location_1_0 to location_0_0.
+How to achieve: Airplane_0, which contains package_0, is at location_1_0 (airport in city_1). Fly airplane_0 to location_0_0 (airport in city_0), as airplanes can move between airports and the restriction (airplane at from-location) is satisfied.
+[/PLANNING]
+
+[IMP]
+Perform the action: Fly airplane_0 from location_1_0 to location_0_0.
+Result: Airplane_0 (with package_0) is now at location_0_0 and no longer at location_1_0.
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Update the goal-management system:
+- Main goal: Package_0 is at location_0_0.
+  - Subgoal 1: Load package_0 into an airplane at location_1_0 (completed).
+  - Subgoal 2: Fly the airplane with package_0 from location_1_0 to location_0_0 (completed).
+  - Subgoal 3: Unload package_0 from the airplane at location_0_0 (current goal).
+The current goal is to unload package_0 from airplane_0 at location_0_0.
+[/REVIEW]
+
+---
+
+### Step 7
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current goal: Unload package_0 from airplane_0 at location_0_0.
+How to achieve: Airplane_0, containing package_0, is at location_0_0. Unload package_0 from airplane_0 at location_0_0, as the restriction (package in airplane) is satisfied.
+[/PLANNING]
+
+[IMP]
+Perform the action: Unload package_0 from airplane_0 at location_0_0.
+Result: Package_0 is now at location_0_0 and no longer in airplane_0. The main goal is achieved.
+[/IMP]
+
+---
+
+### Final Answer
+The sequence of actions to achieve the goal (package_0 at location_0_0) is:
+1. Load package_0 into airplane_0 at location_1_0.
+2. Fly airplane_0 from location_1_0 to location_0_0.
+3. Unload package_0 from airplane_0 at location_0_0.
+
+This sequence ensures package_0 is transported from location_1_0 to location_0_0, satisfying all restrictions and achieving the goal.
