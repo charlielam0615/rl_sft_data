@@ -1,0 +1,17 @@
+**Problem Restatement**  
+This is a two-player battle game with four pet fish per team. Each fish has initial health, attack power, an active ability, and a passive ability, with identities initially hidden. In each round, I must guess the type of one living enemy fish (from spray, flame, eel, or sunfish). A correct guess reveals the fish’s identity and deals 50 damage to all enemy fish. The goal is to have more fish alive than the opponent at the game’s end. Both teams have the same fish types with identical abilities: spray and eel have AOE active abilities and counter or deflect passives, while flame and sunfish have infight active abilities and counter or deflect passives. I must return a move each round in the format `{'guess_type': "fish_type", 'target_position': position}` where position is between 0 and 3, or I lose by default.
+
+Since this is the first round and no initial health or attack values are provided, I’ll assume standard starting values (e.g., 100 health and 100 attack points for all fish) to proceed, as is common in such games. The enemy’s fish identities are hidden, so I’ll base my guess on strategic reasoning.
+
+---
+
+**Step 1: Planning - Forward Subgoaling (Planning)**  
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+To win, I need to maximize damage to enemy fish while keeping more of my fish alive. My immediate subgoal is to make an informed guess about an enemy fish’s identity to deal 50 damage to all enemy fish if correct. Since all enemy fish are hidden, I’ll prioritize guessing a fish type that maximizes potential impact. Spray and eel have AOE abilities, which could deal significant damage to my team if not addressed early, so guessing one of these types may reveal a high-threat fish. I’ll start by guessing “spray” at position 0, as it’s a reasonable starting point with no prior information.  
+[/PLANNING]
+
+**Move for Round 1**  
+```json
+{'guess_type': 'spray', 'target_position': 0}
+```

@@ -1,0 +1,67 @@
+### Problem Restatement
+This is a two-player battle game with four pet fish on each team. Each fish has 400 initial health, 200 attack power, an active ability, and a passive ability. In each round, I choose one live fish to either use its active skill or perform a normal attack (dealing half of its attack power as damage) on an enemy fish. Passive abilities trigger automatically when conditions are met. The enemy can guess one of my fish’s identities each round; if correct, that fish is revealed, and all my fish take 50 damage. The goal is to have more fish alive than the enemy at the end of the game. Both teams have the same four fish types: spray, flame, eel, and sunfish, with identical active and passive abilities. I must return a move each round in the JSON format: `{'pick_fish': <fish_name>, 'action': <normal/active>, 'target_position': <0-3>}`.
+
+Since this is the first round and no enemy moves or guesses have been provided, I will assume the game starts with both teams’ fish at full health and no identities revealed. I will select a strategic initial move to maximize damage or set up an advantage while considering potential enemy actions.
+
+---
+
+### Step 1: Forward Subgoaling (Planning)
+
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**
+
+To win, I need to have more fish alive than the enemy at the end. This suggests the following subgoals:
+1. **Maximize damage to enemy fish** to reduce their numbers quickly.
+2. **Minimize damage to my fish** by leveraging passive abilities and anticipating enemy guesses.
+3. **Optimize active ability usage** to gain an advantage, especially with AOE attacks or attack boosts.
+4. **Track enemy fish health and identities** to target weakened fish and avoid triggering their passives unnecessarily.
+
+For the first round, I will focus on maximizing early damage with an AOE active ability to hit all enemy fish, as this spreads damage and pressures their team from the start.
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal (Implementation)
+
+[PLANNING]
+**Action: Reach Goal (Implementation)**
+
+**Meta-data**: The current goal is to maximize early damage to the enemy team. I will achieve this by selecting a fish with an AOE active ability (spray or eel) to deal 35% of its attack power (200 * 0.35 = 70 damage) to all enemy fish. I choose the spray fish for its straightforward AOE without the eel’s damage distribution passive, which might complicate my team’s health management. I will target position 0 as a default, as the AOE affects all enemies regardless of the target.
+[/PLANNING]
+
+[IMP]
+I select the spray fish to use its active AOE ability, dealing 70 damage to all four enemy fish. This reduces each enemy fish’s health from 400 to 330. Since no enemy moves or guesses have been provided, I assume no immediate counter-damage or identity reveals for this round. The move is:
+
+```json
+{
+  "pick_fish": "spray",
+  "action": "active",
+  "target_position": 0
+}
+```
+[/IMP]
+
+---
+
+### Step 3: Track Goals (Review)
+
+[PLANNING]
+**Action: Track Goals (Review)**
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- **Main Goal**: Have more fish alive than the enemy at the end of the game.
+  - **Subgoal 1**: Maximize damage to enemy fish.
+    - **Current Focus**: Used spray’s AOE active ability to deal 70 damage to all enemy fish.
+  - **Subgoal 2**: Minimize damage to my fish.
+  - **Subgoal 3**: Optimize active ability usage.
+  - **Subgoal 4**: Track enemy fish health and identities.
+
+**Current Goal**: Continue maximizing damage to enemy fish while monitoring their health and potential counterattacks. All enemy fish are at 330 health after my move. My fish remain at 400 health, pending any enemy guesses or attacks.
+[/REVIEW]
+
+---
+
+### Next Steps
+Please provide the enemy’s move (their fish selection, action, and target position) and their guess for one of my fish’s identities. I will then calculate the effects of their move, update the game state, and respond with my next move following the same meta-cognitive process.
