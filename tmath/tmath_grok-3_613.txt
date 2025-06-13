@@ -1,0 +1,122 @@
+**Problem Restatement**: We need to calculate the probability that Mary and James, choosing seats at random in a row of 7 chairs, do not sit next to each other.
+
+---
+
+**Step 1**
+
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve the problem, break it down into subgoals:  
+1. Determine the total number of possible seating arrangements for Mary and James in 7 chairs.  
+2. Calculate the number of seating arrangements where Mary and James sit next to each other.  
+3. Subtract the number of adjacent arrangements from the total to find the number of non-adjacent arrangements.  
+4. Compute the probability by dividing the number of non-adjacent arrangements by the total arrangements.  
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to determine the total number of possible seating arrangements for Mary and James in 7 chairs. This can be achieved by calculating the number of ways to assign 2 distinct people to 7 distinct chairs, which is a permutation problem.  
+[/PLANNING]
+
+[IMP]  
+The total number of ways to seat Mary and James in 7 chairs is the number of permutations of 2 people in 7 positions, as the chairs are distinct and each person occupies one chair. This is calculated as:  
+\[ P(7, 2) = 7 \times 6 = 42 \]  
+So, there are 42 possible seating arrangements for Mary and James.  
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to calculate the number of seating arrangements where Mary and James sit next to each other. This can be achieved by treating the pair as a single unit to account for adjacency, selecting positions for this unit, and arranging the two people within it.  
+[/PLANNING]
+
+[IMP]  
+To find the number of arrangements where Mary and James sit next to each other:  
+- Treat Mary and James as a single "block" or unit (since they must be adjacent).  
+- There are 7 chairs, so if they are a block, they occupy 2 adjacent chairs, leaving 6 possible starting positions for the block (chairs 1-2, 2-3, 3-4, 4-5, 5-6, 6-7).  
+- Within the block, Mary and James can be arranged in 2 ways (Mary-James or James-Mary).  
+- Thus, the number of adjacent arrangements is:  
+\[ 6 \times 2 = 12 \]  
+So, there are 12 arrangements where Mary and James sit next to each other.  
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Calculate the probability that Mary and James do not sit next to each other.  
+  - Subgoal 1: Determine the total number of possible seating arrangements (completed: 42 arrangements).  
+  - Subgoal 2: Calculate the number of arrangements where Mary and James sit next to each other (completed: 12 arrangements).  
+  - Subgoal 3: Find the number of non-adjacent arrangements.  
+  - Subgoal 4: Compute the probability of non-adjacent arrangements.  
+**Current Goal**: Find the number of non-adjacent arrangements.  
+[/REVIEW]
+
+---
+
+**Step 5**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to find the number of seating arrangements where Mary and James do not sit next to each other. This can be achieved by subtracting the number of adjacent arrangements from the total number of arrangements.  
+[/PLANNING]
+
+[IMP]  
+The number of arrangements where Mary and James do not sit next to each other is:  
+\[ \text{Total arrangements} - \text{Adjacent arrangements} = 42 - 12 = 30 \]  
+So, there are 30 non-adjacent arrangements.  
+[/IMP]
+
+---
+
+**Step 6**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute the probability that Mary and James do not sit next to each other. This can be achieved by dividing the number of non-adjacent arrangements by the total number of arrangements.  
+[/PLANNING]
+
+[IMP]  
+The probability that Mary and James do not sit next to each other is:  
+\[ \frac{\text{Non-adjacent arrangements}}{\text{Total arrangements}} = \frac{30}{42} = \frac{5}{7} \]  
+So, the probability is \(\frac{5}{7}\).  
+[/IMP]
+
+---
+
+**Step 7**
+
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate the calculations by checking the logic and ensuring the results are consistent. This can be achieved by reviewing the steps and using an alternative method to confirm the probability.  
+[/PLANNING]
+
+[IMP]  
+To validate:  
+- **Total arrangements**: \( 7 \times 6 = 42 \) is correct, as it accounts for choosing 2 seats out of 7 and arranging 2 people.  
+- **Adjacent arrangements**: There are 6 pairs of adjacent seats, and 2 ways to arrange Mary and James within each pair, so \( 6 \times 2 = 12 \) is correct.  
+- **Non-adjacent arrangements**: \( 42 - 12 = 30 \).  
+- **Probability**: \( \frac{30}{42} = \frac{5}{7} \approx 0.714 \).  
+As an alternative method, consider the probability they sit next to each other:  
+\[ \frac{12}{42} = \frac{2}{7} \]  
+Then, the probability they do not sit next to each other is:  
+\[ 1 - \frac{2}{7} = \frac{5}{7} \]  
+Both methods agree, confirming the solution.  
+[/IMP]
+
+---
+
+**Final Answer**: The probability that Mary and James do not sit next to each other is \(\frac{5}{7}\).

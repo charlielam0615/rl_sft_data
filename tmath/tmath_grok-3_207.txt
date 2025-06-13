@@ -1,0 +1,161 @@
+### Problem Restatement
+We need to find the positive integer \( k \) such that the value of the expression \((3^{1001} + 4^{1002})^2 - (3^{1001} - 4^{1002})^2\) equals \( k \cdot 12^{1001} \).
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+
+To solve the problem, break it into manageable subgoals:
+1. Simplify the given expression using algebraic identities.
+2. Express the simplified result in a form that reveals the factor \( 12^{1001} \).
+3. Identify the coefficient \( k \) by comparing the result to \( k \cdot 12^{1001} \).
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+Action: Reach Goal (Implementation)
+
+Current Goal: Simplify the expression \((3^{1001} + 4^{1002})^2 - (3^{1001} - 4^{1002})^2\).
+
+How to Achieve: Recognize that the expression is a difference of squares, \((a + b)^2 - (a - b)^2\), where \( a = 3^{1001} \) and \( b = 4^{1002} \). Apply the identity \((a + b)^2 - (a - b)^2 = 4ab\) to simplify it.
+[/PLANNING]
+
+[IMP]
+Let \( a = 3^{1001} \) and \( b = 4^{1002} \). The expression is:
+
+\[
+(a + b)^2 - (a - b)^2
+\]
+
+Using the identity \((a + b)^2 - (a - b)^2 = 4ab\):
+
+\[
+(a + b)^2 - (a - b)^2 = 4 \cdot a \cdot b = 4 \cdot 3^{1001} \cdot 4^{1002}
+\]
+
+Now compute \( 4 \cdot 3^{1001} \cdot 4^{1002} \):
+
+- Note that \( 4 = 2^2 \), so \( 4^{1002} = (2^2)^{1002} = 2^{2 \cdot 1002} = 2^{2004} \).
+- Thus:
+
+\[
+4 \cdot 3^{1001} \cdot 4^{1002} = 4 \cdot 3^{1001} \cdot 2^{2004}
+\]
+
+- Since \( 4 = 2^2 \):
+
+\[
+4 \cdot 2^{2004} = 2^2 \cdot 2^{2004} = 2^{2006}
+\]
+
+- So the expression becomes:
+
+\[
+2^{2006} \cdot 3^{1001}
+\]
+
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+Action: Reach Goal (Implementation)
+
+Current Goal: Express \( 2^{2006} \cdot 3^{1001} \) in the form \( k \cdot 12^{1001} \).
+
+How to Achieve: Rewrite the expression by factoring it to include \( 12^{1001} \), where \( 12 = 2^2 \cdot 3 \). Adjust the exponents and identify the remaining factor as \( k \).
+[/PLANNING]
+
+[IMP]
+We need:
+
+\[
+2^{2006} \cdot 3^{1001} = k \cdot 12^{1001}
+\]
+
+Since \( 12 = 2^2 \cdot 3 \), we have:
+
+\[
+12^{1001} = (2^2 \cdot 3)^{1001} = (2^2)^{1001} \cdot 3^{1001} = 2^{2 \cdot 1001} \cdot 3^{1001} = 2^{2002} \cdot 3^{1001}
+\]
+
+Now express \( 2^{2006} \cdot 3^{1001} \):
+
+\[
+2^{2006} \cdot 3^{1001} = 2^{2002 + 4} \cdot 3^{1001} = (2^{2002} \cdot 3^{1001}) \cdot 2^4 = 12^{1001} \cdot 2^4
+\]
+
+Since \( 2^4 = 16 \):
+
+\[
+2^{2006} \cdot 3^{1001} = 12^{1001} \cdot 16
+\]
+
+Comparing with \( k \cdot 12^{1001} \):
+
+\[
+k = 16
+\]
+
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]
+Action: Validation (Implementation)
+
+Current Goal: Verify that \( k = 16 \) is correct by checking the simplification and ensuring the expression matches \( 16 \cdot 12^{1001} \).
+
+How to Achieve: Recompute the key steps or test with smaller exponents to confirm the pattern.
+[/PLANNING]
+
+[IMP]
+Let’s verify by testing with smaller exponents, say \( n = 1 \):
+
+Expression: \((3^1 + 4^2)^2 - (3^1 - 4^2)^2\)
+
+- Compute: \( 3^1 = 3 \), \( 4^2 = 16 \).
+- So: \( 3 + 16 = 19 \), \( 3 - 16 = -13 \).
+- Then: \( 19^2 - (-13)^2 = 361 - 169 = 192 \).
+
+Check: \( k \cdot 12^1 = k \cdot 12 \). Using \( k = 16 \):
+
+\[
+16 \cdot 12 = 192
+\]
+
+This matches, confirming the pattern. The algebraic simplification \( 4 \cdot 3^{1001} \cdot 4^{1002} = 2^{2006} \cdot 3^{1001} = 16 \cdot 12^{1001} \) is consistent.
+
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Find \( k \) such that \((3^{1001} + 4^{1002})^2 - (3^{1001} - 4^{1002})^2 = k \cdot 12^{1001}\).
+  - Subgoal 1: Simplify the expression.
+    - Completed: Used difference of squares to get \( 4 \cdot 3^{1001} \cdot 4^{1002} = 2^{2006} \cdot 3^{1001} \).
+  - Subgoal 2: Express the result as \( k \cdot 12^{1001} \).
+    - Completed: Found \( 2^{2006} \cdot 3^{1001} = 16 \cdot 12^{1001} \), so \( k = 16 \).
+  - Subgoal 3: Verify the solution.
+    - Completed: Tested with \( n = 1 \) and confirmed algebraically.
+
+Current Goal: Conclude the solution, as all subgoals are complete.
+
+[/REVIEW]
+
+---
+
+### Final Answer
+The value of \( k \) is \( \boxed{16} \).

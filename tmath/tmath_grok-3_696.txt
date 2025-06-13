@@ -1,0 +1,142 @@
+### Problem Statement
+We need to find the probability that two cards drawn at random from a standard 52-card deck are both number cards (2 through 10) and their values sum to 12.
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to compute the probability:  
+1. Define what constitutes a number card and identify all number cards in the deck.  
+2. Identify all pairs of number cards whose values sum to 12.  
+3. Calculate the number of favorable outcomes (valid pairs).  
+4. Calculate the total number of possible outcomes (all pairs of two cards).  
+5. Compute the probability as the ratio of favorable outcomes to total outcomes.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Define number cards and identify all number cards in the deck.  
+- **How to Achieve:** A number card is defined as cards 2 through 10 in any suit. Since a standard deck has 4 suits, we will count the total number of number cards by multiplying the number of ranks (2 through 10) by the number of suits.
+[/PLANNING]
+
+[IMP]
+A standard 52-card deck has 4 suits: hearts, diamonds, clubs, and spades. Number cards are those with ranks 2 through 10 (inclusive), which gives 9 ranks (2, 3, 4, 5, 6, 7, 8, 9, 10). For each rank, there are 4 cards (one per suit).  
+Total number of number cards = 9 ranks × 4 suits = 36 cards.
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Identify all pairs of number cards whose values sum to 12.  
+- **How to Achieve:** List all possible pairs of number card ranks (2 through 10) where the sum of their values equals 12. For each valid pair, determine the number of ways to choose the cards considering suits.
+[/PLANNING]
+
+[IMP]
+The number cards have values 2 through 10. We need pairs (a, b) where a + b = 12, and both a and b are integers from 2 to 10. Possible pairs (considering a ≤ b for clarity, then adjusting for order):  
+- 2 + 10 = 12  
+- 3 + 9 = 12  
+- 4 + 8 = 12  
+- 5 + 7 = 12  
+- 6 + 6 = 12  
+
+List the pairs and calculate the number of ways to choose cards:  
+1. **Pair (2, 10):**  
+   - Cards for 2: 4 choices (one for each suit).  
+   - Cards for 10: 4 choices.  
+   - Total ways = 4 × 4 = 16.  
+2. **Pair (3, 9):**  
+   - Cards for 3: 4 choices.  
+   - Cards for 9: 4 choices.  
+   - Total ways = 4 × 4 = 16.  
+3. **Pair (4, 8):**  
+   - Cards for 4: 4 choices.  
+   - Cards for 8: 4 choices.  
+   - Total ways = 4 × 4 = 16.  
+4. **Pair (5, 7):**  
+   - Cards for 5: 4 choices.  
+   - Cards for 7: 4 choices.  
+   - Total ways = 4 × 4 = 16.  
+5. **Pair (6, 6):**  
+   - Cards for 6: 4 choices.  
+   - Since both cards are 6s, we choose 2 cards from the 4 sixes: C(4, 2) = (4 × 3)/(2 × 1) = 6 ways.  
+
+Total favorable outcomes = 16 + 16 + 16 + 16 + 6 = 64.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Calculate the total number of possible outcomes (all pairs of two cards).  
+- **How to Achieve:** Since the order of drawing cards does not matter, compute the number of ways to choose 2 cards from 52 using the combination formula C(n, k) = n!/(k!(n-k)!).
+[/PLANNING]
+
+[IMP]
+Total cards in the deck = 52.  
+Number of ways to choose 2 cards (order doesn’t matter):  
+C(52, 2) = (52 × 51)/(2 × 1) = 1326.
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Track Goals (Review)**  
+**Action: Track Goals (Review)**  
+List all goals and highlight the current one:  
+- Goal 1: Define number cards and identify all number cards in the deck (completed).  
+- Goal 2: Identify all pairs of number cards whose values sum to 12 (completed).  
+- Goal 3: Calculate the number of favorable outcomes (completed).  
+- Goal 4: Calculate the total number of possible outcomes (completed).  
+- **Current Goal: Compute the probability as the ratio of favorable outcomes to total outcomes.**
+[/PLANNING]
+
+[REVIEW]
+Goal hierarchy:  
+- Main goal: Find the probability that both cards are number cards totaling 12.  
+  - Subgoal 1: Define number cards (36 number cards).  
+  - Subgoal 2: Identify pairs summing to 12 (pairs: (2,10), (3,9), (4,8), (5,7), (6,6)).  
+  - Subgoal 3: Calculate favorable outcomes (64 ways).  
+  - Subgoal 4: Calculate total outcomes (1326 ways).  
+Current goal: Compute the probability using the results from previous steps.
+[/REVIEW]
+
+---
+
+### Step 6
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current Goal:** Compute the probability.  
+- **How to Achieve:** Divide the number of favorable outcomes (64) by the total number of possible outcomes (1326) to find the probability, and simplify the fraction if possible.
+[/PLANNING]
+
+[IMP]
+Probability = (Number of favorable outcomes)/(Total outcomes) = 64/1326.  
+Simplify:  
+- Greatest common divisor (GCD) of 64 and 1326:  
+  - 64 = 2^6, 1326 = 2 × 3 × 13 × 17.  
+  - GCD = 2.  
+- 64 ÷ 2 = 32, 1326 ÷ 2 = 663.  
+- Simplified fraction: 32/663.  
+Check if further simplification is possible:  
+- 32 = 2^5, 663 = 3 × 13 × 17 (no common factors).  
+Thus, the probability is 32/663.  
+Decimal approximation (optional, for clarity): 32 ÷ 663 ≈ 0.0483.
+Final answer: **32/663**.
+[/IMP]
+
+---
+
+### Final Answer
+The probability that both cards are number cards (2 through 10) and their values sum to 12 is **32/663**.

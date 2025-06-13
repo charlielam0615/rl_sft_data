@@ -1,0 +1,114 @@
+**Problem Statement**: Find the largest three-digit integer where all digits are distinct and form a geometric sequence.
+
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+Break down the goal into intermediate subgoals:  
+1. Define the properties of a three-digit integer with distinct digits forming a geometric sequence.  
+2. Identify possible digit sequences that satisfy the geometric sequence condition.  
+3. Determine the largest possible three-digit number from these sequences.  
+4. Validate the solution to ensure it meets all criteria.  
+[/PLANNING]
+
+---
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Define the properties of a three-digit integer with distinct digits forming a geometric sequence.  
+How to Achieve: A three-digit number has the form ABC, where A, B, and C are digits (A from 1 to 9, B and C from 0 to 9), and all are distinct. For digits A, B, C to form a geometric sequence, the ratio B/A = C/B must hold, implying B² = AC. We need to find A, B, C such that B² = AC, all digits are distinct, and ABC is maximized.  
+[/PLANNING]  
+[IMP]  
+A three-digit number ABC can be expressed as 100A + 10B + C. The digits A, B, C must be distinct, and since A is the hundreds digit, A ≠ 0. In a geometric sequence, if A, B, C are the terms, then B/A = C/B, which simplifies to B² = AC. Since A, B, C are digits, we need to find integer solutions where A (1 to 9), B (0 to 9), and C (0 to 9) satisfy B² = AC, and A, B, C are distinct. To maximize ABC, we prioritize larger values of A, as the hundreds digit has the greatest impact on the number’s value.  
+[/IMP]
+
+---
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Identify possible digit sequences that satisfy the geometric sequence condition (B² = AC, digits distinct).  
+How to Achieve: Since B² = AC, compute AC for possible A and C values, check if the result is a perfect square (B²), and ensure A, B, C are distinct digits. Iterate over possible values of A (1 to 9) and C (0 to 9), calculate AC, and check if √(AC) is an integer B (0 to 9) where B ≠ A and B ≠ C.  
+[/PLANNING]  
+[IMP]  
+Let’s find valid A, B, C where B² = AC and digits are distinct. Since B is a digit (0 to 9), B² ranges from 0 to 81. We test each A (1 to 9) and C (0 to 9), compute AC, and check if it’s a perfect square (B²) with B distinct from A and C.  
+
+- **A = 1**: AC = C (0 to 9). B² = C. Possible B: 0 (0² = 0), 1 (1² = 1), 2 (2² = 4), 3 (3² = 9).  
+  - C = 0, B = 0: 0 = 1·0, but B = 0 = C, not distinct.  
+  - C = 1, B = 1: 1 = 1·1, but B = 1 = C, not distinct.  
+  - C = 4, B = 2: 4 = 1·4, digits 1, 2, 4 distinct. Number: 124.  
+  - C = 9, B = 3: 9 = 1·9, digits 1, 3, 9 distinct. Number: 139.  
+
+- **A = 2**: AC = 2C. B² = 2C. Test C = 0 to 9:  
+  - C = 2, B² = 4, B = 2: 4 = 2·2, but B = 2 = C, not distinct.  
+  - C = 8, B² = 16, B = 4: 16 = 2·8, digits 2, 4, 8 distinct. Number: 248.  
+  - Others (e.g., C = 4, B² = 8; C = 18, B² = 36) yield non-digit B or non-integer √(2C).  
+
+- **A = 3**: AC = 3C. B² = 3C. Test C:  
+  - C = 3, B² = 9, B = 3: 9 = 3·3, but B = 3 = C, not distinct.  
+  - C = 27 not possible (C ≤ 9). No valid B.  
+
+- **A = 4**: AC = 4C. B² = 4C.  
+  - C = 4, B² = 16, B = 4: 16 = 4·4, but B = 4 = C, not distinct.  
+  - C = 9, B² = 36, B = 6: 36 = 4·9, digits 4, 6, 9 distinct. Number: 469.  
+  - Others yield non-digit B (e.g., C = 1, B² = 4C = 4, B = 2, but need distinctness).  
+
+- **A = 5**: AC = 5C. B² = 5C. No integer B² for C = 0 to 9 (e.g., C = 5, B² = 25, B = 5 = C).  
+
+- **A = 6**: AC = 6C. B² = 6C.  
+  - C = 6, B² = 36, B = 6: 36 = 6·6, but B = 6 = C, not distinct.  
+  - No other C yields integer B (e.g., C = 1, B² = 6).  
+
+- **A = 7**: AC = 7C. B² = 7C. No integer B (e.g., C = 7, B² = 49, B = 7 = C).  
+
+- **A = 8**: AC = 8C. B² = 8C.  
+  - C = 2, B² = 16, B = 4: 16 = 8·2, digits 8, 4, 2 distinct. Number: 842.  
+  - C = 8, B² = 64, B = 8: 64 = 8·8, but B = 8 = C, not distinct.  
+
+- **A = 9**: AC = 9C. B² = 9C.  
+  - C = 1, B² = 9, B = 3: 9 = 9·1, digits 9, 3, 1 distinct. Number: 931.  
+  - C = 9, B² = 81, B = 9: 81 = 9·9, but B = 9 = C, not distinct.  
+
+Valid numbers: 124 (A=1, B=2, C=4), 139 (A=1, B=3, C=9), 248 (A=2, B=4, C=8), 469 (A=4, B=6, C=9), 842 (A=8, B=4, C=2), 931 (A=9, B=3, C=1).  
+[/IMP]
+
+---
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Determine the largest three-digit number from the valid sequences.  
+How to Achieve: Compare the valid numbers (124, 139, 248, 469, 842, 931) numerically to identify the largest.  
+[/PLANNING]  
+[IMP]  
+The valid numbers are: 124, 139, 248, 469, 842, 931. Comparing them:  
+- 124 < 139 < 248 < 469 < 842 < 931.  
+The largest number is 931.  
+[/IMP]
+
+---
+
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Validate that 931 meets all criteria (distinct digits, geometric sequence, largest possible).  
+How to Achieve: Check if digits 9, 3, 1 are distinct and form a geometric sequence (B² = AC). Confirm no larger number exists by reviewing the list and considering if any larger A (e.g., 9) could yield a larger valid number.  
+[/PLANNING]  
+[IMP]  
+For 931: A = 9, B = 3, C = 1.  
+- Digits distinct: 9 ≠ 3 ≠ 1.  
+- Geometric sequence: Check B² = AC. Here, 3² = 9, and 9·1 = 9. Since 3² = 9·1, the digits form a geometric sequence (ratio 3/9 = 1/3).  
+- Largest possible: From the list (124, 139, 248, 469, 842, 931), 931 is the largest. Since A = 9 is the highest possible hundreds digit, and we tested all A from 1 to 9, no larger valid number exists.  
+[/IMP]
+
+---
+
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find the largest three-digit integer with distinct digits forming a geometric sequence.  
+  - Subgoal 1: Define properties (completed: three-digit number ABC, digits distinct, B² = AC).  
+  - Subgoal 2: Identify valid digit sequences (completed: 124, 139, 248, 469, 842, 931).  
+  - Subgoal 3: Determine largest number (completed: 931).  
+  - Subgoal 4: Validate solution (completed: 931 satisfies all criteria).  
+Current Goal: Completed (validation confirmed 931 as the solution).  
+[/REVIEW]
+
+**Final Answer**: The largest three-digit integer whose digits are distinct and form a geometric sequence is **931**.

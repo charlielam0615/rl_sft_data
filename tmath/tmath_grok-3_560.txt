@@ -1,0 +1,111 @@
+**Problem Statement**: Find the coefficient of \( x^2 \) in the polynomial obtained by multiplying \( -5x^3 - 5x^2 - 7x + 1 \) by \( -x^2 - 6x + 1 \), with like terms combined.
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals:  
+1. Multiply the two polynomials to obtain the resulting polynomial.  
+2. Identify and combine like terms in the resulting polynomial.  
+3. Extract the coefficient of the \( x^2 \) term.  
+[/PLANNING]
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to multiply the polynomials \( -5x^3 - 5x^2 - 7x + 1 \) and \( -x^2 - 6x + 1 \). This will be achieved by distributing each term of the first polynomial across each term of the second polynomial, resulting in a new polynomial.  
+[/PLANNING]
+
+[IMP]  
+To multiply the polynomials, distribute each term of \( -5x^3 - 5x^2 - 7x + 1 \) across each term of \( -x^2 - 6x + 1 \):
+
+- First polynomial terms: \( -5x^3, -5x^2, -7x, 1 \)
+- Second polynomial terms: \( -x^2, -6x, 1 \)
+
+Compute each combination:
+
+1. **\( -5x^3 \cdot (-x^2 - 6x + 1) \)**:  
+   - \( -5x^3 \cdot (-x^2) = 5x^5 \)  
+   - \( -5x^3 \cdot (-6x) = 30x^4 \)  
+   - \( -5x^3 \cdot 1 = -5x^3 \)
+
+2. **\( -5x^2 \cdot (-x^2 - 6x + 1) \)**:  
+   - \( -5x^2 \cdot (-x^2) = 5x^4 \)  
+   - \( -5x^2 \cdot (-6x) = 30x^3 \)  
+   - \( -5x^2 \cdot 1 = -5x^2 \)
+
+3. **\( -7x \cdot (-x^2 - 6x + 1) \)**:  
+   - \( -7x \cdot (-x^2) = 7x^3 \)  
+   - \( -7x \cdot (-6x) = 42x^2 \)  
+   - \( -7x \cdot 1 = -7x \)
+
+4. **\( 1 \cdot (-x^2 - 6x + 1) \)**:  
+   - \( 1 \cdot (-x^2) = -x^2 \)  
+   - \( 1 \cdot (-6x) = -6x \)  
+   - \( 1 \cdot 1 = 1 \)
+
+Combine all terms:  
+\( 5x^5 + 30x^4 - 5x^3 + 5x^4 + 30x^3 - 5x^2 + 7x^3 + 42x^2 - 7x - x^2 - 6x + 1 \)
+[/IMP]
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to combine like terms in the polynomial \( 5x^5 + 30x^4 - 5x^3 + 5x^4 + 30x^3 - 5x^2 + 7x^3 + 42x^2 - 7x - x^2 - 6x + 1 \). This will be achieved by grouping terms with the same degree and summing their coefficients.  
+[/PLANNING]
+
+[IMP]  
+Group terms by degree:
+
+- \( x^5 \): \( 5x^5 \)
+- \( x^4 \): \( 30x^4 + 5x^4 = 35x^4 \)
+- \( x^3 \): \( -5x^3 + 30x^3 + 7x^3 = 32x^3 \)
+- \( x^2 \): \( -5x^2 + 42x^2 - x^2 = 36x^2 \)
+- \( x \): \( -7x - 6x = -13x \)
+- Constant: \( 1 \)
+
+Resulting polynomial:  
+\( 5x^5 + 35x^4 + 32x^3 + 36x^2 - 13x + 1 \)
+[/IMP]
+
+### Step 4: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to extract the coefficient of the \( x^2 \) term from the polynomial \( 5x^5 + 35x^4 + 32x^3 + 36x^2 - 13x + 1 \). This will be achieved by identifying the term with \( x^2 \) and noting its coefficient.  
+[/PLANNING]
+
+[IMP]  
+The polynomial is \( 5x^5 + 35x^4 + 32x^3 + 36x^2 - 13x + 1 \).  
+The term with \( x^2 \) is \( 36x^2 \), so the coefficient is 36.  
+[/IMP]
+
+### Step 5: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify the coefficient of the \( x^2 \) term by checking the multiplication and combination of terms, focusing on contributions to \( x^2 \). This will be achieved by recomputing the \( x^2 \) terms from the original multiplication.  
+[/PLANNING]
+
+[IMP]  
+Recompute contributions to \( x^2 \):  
+- \( -5x^2 \cdot 1 = -5x^2 \)  
+- \( -7x \cdot (-6x) = 42x^2 \)  
+- \( 1 \cdot (-x^2) = -x^2 \)  
+Sum: \( -5x^2 + 42x^2 - x^2 = 36x^2 \).  
+The coefficient is 36, matching the previous result.  
+[/IMP]
+
+### Step 6: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Find the coefficient of \( x^2 \) in the product of the polynomials.  
+  - Subgoal 1: Multiply the polynomials.  
+  - Subgoal 2: Combine like terms.  
+  - Subgoal 3: Extract the \( x^2 \) coefficient.  
+  - Subgoal 4: Validate the result.  
+**Current Goal**: The current goal is to confirm the solution by reviewing the goal hierarchy and ensuring all steps align. The coefficient of \( x^2 \) is 36, as determined in Subgoal 3 and validated in Subgoal 4.  
+[/REVIEW]
+
+**Final Answer**: The coefficient of \( x^2 \) is 36.

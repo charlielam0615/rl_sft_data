@@ -1,0 +1,173 @@
+### Problem Statement
+We need to find the value of \((5 + x)(20 - x)\) given the equation \(\sqrt{5 + x} + \sqrt{20 - x} = 7\). 
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of finding \((5 + x)(20 - x)\) into intermediate subgoals:  
+1. Solve the given equation \(\sqrt{5 + x} + \sqrt{20 - x} = 7\) for \(x\).  
+2. Use the value of \(x\) to compute \((5 + x)(20 - x)\).  
+3. Verify the solution to ensure correctness.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Solve \(\sqrt{5 + x} + \sqrt{20 - x} = 7\) for \(x\).  
+**How to Achieve**: Isolate one square root, square both sides to eliminate radicals, simplify, and solve the resulting equation for \(x\).  
+[/PLANNING]
+
+[IMP]
+Let’s solve \(\sqrt{5 + x} + \sqrt{20 - x} = 7\).  
+Isolate one square root:  
+\[
+\sqrt{5 + x} = 7 - \sqrt{20 - x}
+\]
+Square both sides to eliminate the square roots:  
+\[
+(\sqrt{5 + x})^2 = (7 - \sqrt{20 - x})^2
+\]
+\[
+5 + x = 49 - 14\sqrt{20 - x} + (20 - x)
+\]
+Simplify:  
+\[
+5 + x = 49 + 20 - x - 14\sqrt{20 - x}
+\]
+\[
+5 + x = 69 - x - 14\sqrt{20 - x}
+\]
+Move terms involving \(x\) and constants to one side:  
+\[
+x + x = 69 - 5 - 14\sqrt{20 - x}
+\]
+\[
+2x = 64 - 14\sqrt{20 - x}
+\]
+Divide through by 2:  
+\[
+x = 32 - 7\sqrt{20 - x}
+\]
+Let \(u = \sqrt{20 - x}\), so \(u^2 = 20 - x\) and \(x = 20 - u^2\). Substitute into the equation:  
+\[
+20 - u^2 = 32 - 7u
+\]
+Rearrange:  
+\[
+u^2 - 7u + 12 = 0
+\]
+Solve the quadratic equation:  
+\[
+u = \frac{7 \pm \sqrt{49 - 48}}{2} = \frac{7 \pm 1}{2}
+\]
+\[
+u = 4 \quad \text{or} \quad u = 3
+\]
+Since \(u = \sqrt{20 - x}\), compute \(x\):  
+- If \(u = 4\), then \(u^2 = 16\), so \(20 - x = 16 \implies x = 4\).  
+- If \(u = 3\), then \(u^2 = 9\), so \(20 - x = 9 \implies x = 11\).  
+
+Check both solutions in the original equation:  
+- For \(x = 4\):  
+  \[
+  \sqrt{5 + 4} + \sqrt{20 - 4} = \sqrt{9} + \sqrt{16} = 3 + 4 = 7
+  \]
+  This satisfies the equation.  
+- For \(x = 11\):  
+  \[
+  \sqrt{5 + 11} + \sqrt{20 - 11} = \sqrt{16} + \sqrt{9} = 4 + 3 = 7
+  \]
+  This also satisfies the equation.  
+
+Both \(x = 4\) and \(x = 11\) are valid solutions.  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Compute \((5 + x)(20 - x)\) using the values of \(x\).  
+**How to Achieve**: Substitute \(x = 4\) and \(x = 11\) into \((5 + x)(20 - x)\) and calculate the result.  
+[/PLANNING]
+
+[IMP]
+For \(x = 4\):  
+\[
+(5 + x)(20 - x) = (5 + 4)(20 - 4) = 9 \cdot 16 = 144
+\]
+For \(x = 11\):  
+\[
+(5 + x)(20 - x) = (5 + 11)(20 - 11) = 16 \cdot 9 = 144
+\]
+In both cases, \((5 + x)(20 - x) = 144\).  
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify the solution to ensure correctness.  
+**How to Achieve**: Check if \((5 + x)(20 - x) = 144\) holds consistently and confirm the domain of \(x\).  
+[/PLANNING]
+
+[IMP]
+The domain of \(x\) requires \(5 + x \geq 0\) and \(20 - x \geq 0\), so \(-5 \leq x \leq 20\). Both \(x = 4\) and \(x = 11\) are within this domain.  
+The expression \((5 + x)(20 - x)\) simplifies to:  
+\[
+(5 + x)(20 - x) = 100 + 15x - x^2
+\]
+However, we notice both solutions yield 144, suggesting the expression’s value may be independent of the specific \(x\). Let’s express \((5 + x)(20 - x)\):  
+\[
+(5 + x)(20 - x) = 100 + 20x - 5x - x^2 = 100 + 15x - x^2
+\]
+To confirm, use the original equation. Let \(a = \sqrt{5 + x}\), \(b = \sqrt{20 - x}\), so \(a + b = 7\). Then:  
+\[
+5 + x = a^2, \quad 20 - x = b^2
+\]
+\[
+(5 + x)(20 - x) = a^2 \cdot b^2 = (ab)^2
+\]
+Since \(a + b = 7\), we need \(ab\). From Step 2:  
+\[
+x = 32 - 7\sqrt{20 - x} \implies 2x = 64 - 14b \implies 2(20 - b^2) = 64 - 14b
+\]
+\[
+40 - 2b^2 = 64 - 14b \implies 2b^2 - 14b + 24 = 0 \implies b^2 - 7b + 12 = 0
+\]
+\[
+(b - 4)(b - 3) = 0 \implies b = 4 \text{ or } 3
+\]
+If \(b = 4\), then \(a = 7 - 4 = 3\), so \(ab = 4 \cdot 3 = 12\).  
+If \(b = 3\), then \(a = 7 - 3 = 4\), so \(ab = 3 \cdot 4 = 12\).  
+Thus, \((ab)^2 = 12^2 = 144\). This confirms \((5 + x)(20 - x) = 144\) for both solutions.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main Goal: Find the value of \((5 + x)(20 - x)\) given \(\sqrt{5 + x} + \sqrt{20 - x} = 7\).  
+  - Subgoal 1: Solve \(\sqrt{5 + x} + \sqrt{20 - x} = 7\) for \(x\).  
+    - Status: Completed (\(x = 4, 11\)).  
+  - Subgoal 2: Compute \((5 + x)(20 - x)\).  
+    - Status: Completed (result = 144 for both \(x\)).  
+  - Subgoal 3: Verify the solution.  
+    - Status: Completed (confirmed 144 is consistent).  
+**Current Goal**: Conclude the solution as all subgoals are complete.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The value of \((5 + x)(20 - x)\) is \(144\).

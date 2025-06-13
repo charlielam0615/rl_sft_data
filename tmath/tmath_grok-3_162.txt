@@ -1,0 +1,119 @@
+**Problem Statement**: Find the maximum possible area of a rectangle with a perimeter of 30 units, where the dimensions (length and width) are whole numbers.
+
+---
+
+### Step 1
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+To solve for the maximum area of a rectangle with a perimeter of 30 units and whole-number dimensions, break the problem into subgoals:  
+1. Express the perimeter to relate length and width.  
+2. Derive possible whole-number dimensions.  
+3. Calculate the area for each pair of dimensions.  
+4. Identify the pair that maximizes the area.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Express the perimeter to relate length and width.  
+Description: Use the perimeter formula for a rectangle, \( P = 2(l + w) \), where \( l \) is the length and \( w \) is the width, and solve for one variable given \( P = 30 \).  
+[/PLANNING]  
+[IMP]  
+For a rectangle, the perimeter is given by \( P = 2(l + w) \). Given \( P = 30 \):  
+\( 2(l + w) = 30 \)  
+\( l + w = 15 \)  
+Thus, \( w = 15 - l \). Since \( l \) and \( w \) are whole numbers, \( l \) must be an integer such that \( 1 \leq l \leq 14 \) (to ensure \( w \geq 1 \)).  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Derive possible whole-number dimensions.  
+Description: Using \( l + w = 15 \), list all pairs of whole numbers \( (l, w) \) where \( l \) and \( w \) are positive integers and \( w = 15 - l \).  
+[/PLANNING]  
+[IMP]  
+Since \( l + w = 15 \), the possible pairs \( (l, w) \) where both are whole numbers are:  
+- \( l = 1 \), \( w = 15 - 1 = 14 \) → \( (1, 14) \)  
+- \( l = 2 \), \( w = 15 - 2 = 13 \) → \( (2, 13) \)  
+- \( l = 3 \), \( w = 15 - 3 = 12 \) → \( (3, 12) \)  
+- \( l = 4 \), \( w = 15 - 4 = 11 \) → \( (4, 11) \)  
+- \( l = 5 \), \( w = 15 - 5 = 10 \) → \( (5, 10) \)  
+- \( l = 6 \), \( w = 15 - 6 = 9 \) → \( (6, 9) \)  
+- \( l = 7 \), \( w = 15 - 7 = 8 \) → \( (7, 8) \)  
+For \( l = 8 \), \( w = 15 - 8 = 7 \), which gives \( (8, 7) \), a repeat of \( (7, 8) \). Similarly, higher \( l \) values repeat pairs (e.g., \( l = 9 \), \( w = 6 \) is \( (9, 6) \), same as \( (6, 9) \)). Thus, the unique pairs (considering area is the same for \( (l, w) \) and \( (w, l) \)) are:  
+\( (1, 14), (2, 13), (3, 12), (4, 11), (5, 10), (6, 9), (7, 8) \).  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Calculate the area for each pair of dimensions.  
+Description: For each pair \( (l, w) \), compute the area using \( A = l \times w \) and list the results.  
+[/PLANNING]  
+[IMP]  
+Calculate the area \( A = l \times w \) for each pair:  
+- \( (1, 14) \): \( 1 \times 14 = 14 \)  
+- \( (2, 13) \): \( 2 \times 13 = 26 \)  
+- \( (3, 12) \): \( 3 \times 12 = 36 \)  
+- \( (4, 11) \): \( 4 \times 11 = 44 \)  
+- \( (5, 10) \): \( 5 \times 10 = 50 \)  
+- \( (6, 9) \): \( 6 \times 9 = 54 \)  
+- \( (7, 8) \): \( 7 \times 8 = 56 \)  
+Areas: 14, 26, 36, 44, 50, 54, 56 square units.  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+Action: Track Goals (Review)  
+Track Goals: Organize and review the hierarchy of goals.  
+[/PLANNING]  
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find the maximum possible area of a rectangle with a perimeter of 30 units and whole-number dimensions.  
+  - Subgoal 1: Express the perimeter to relate length and width (completed: \( l + w = 15 \)).  
+  - Subgoal 2: Derive possible whole-number dimensions (completed: listed pairs \( (1, 14), (2, 13), ..., (7, 8) \)).  
+  - Subgoal 3: Calculate the area for each pair of dimensions (completed: areas 14, 26, ..., 56).  
+  - Subgoal 4: Identify the pair that maximizes the area (pending).  
+Current Goal: Identify the pair that maximizes the area.  
+[/REVIEW]
+
+---
+
+### Step 6
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Identify the pair that maximizes the area.  
+Description: Compare the computed areas and select the pair \( (l, w) \) with the highest area value.  
+[/PLANNING]  
+[IMP]  
+From the areas calculated: 14, 26, 36, 44, 50, 54, 56, the maximum is 56 square units, corresponding to the pair \( (7, 8) \).  
+To confirm, note that for a fixed perimeter, the area of a rectangle is maximized when the dimensions are as equal as possible. Since \( l + w = 15 \), the closest whole numbers are 7 and 8, which give \( 7 \times 8 = 56 \).  
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Check the validity of the solution.  
+Description: Verify that the dimensions \( (7, 8) \) satisfy the perimeter constraint and that no other whole-number pair yields a larger area.  
+[/PLANNING]  
+[IMP]  
+Check perimeter for \( (7, 8) \):  
+\( P = 2(l + w) = 2(7 + 8) = 2 \times 15 = 30 \), which satisfies the given perimeter.  
+Check area: \( A = 7 \times 8 = 56 \).  
+Reconfirm other pairs’ areas (from Step 4): All are less than 56 (e.g., \( 6 \times 9 = 54 \), \( 5 \times 10 = 50 \)).  
+Since \( l \) and \( w \) must be whole numbers and \( l + w = 15 \), all possible pairs were considered. Thus, \( (7, 8) \) gives the maximum area.  
+[/IMP]
+
+---
+
+**Final Answer**: The maximum possible area of the rectangle is **56 square units**.

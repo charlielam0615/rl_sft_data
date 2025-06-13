@@ -1,0 +1,256 @@
+### Problem Restatement
+We need to find the probability that a point \((x, y)\) randomly chosen from a rectangular region with vertices at \((0,0)\), \((2008,0)\), \((2008,2009)\), and \((0,2009)\) satisfies the condition \(x > 2y\). The answer should be expressed as a common fraction.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+
+To solve the problem, break it down into intermediate subgoals:
+1. Define the total area of the rectangular region.
+2. Determine the region within the rectangle where \(x > 2y\) holds.
+3. Calculate the area of the region where \(x > 2y\).
+4. Compute the probability as the ratio of the favorable area to the total area.
+5. Simplify the resulting fraction to its lowest terms.
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+Action: Reach Goal (Implementation)
+
+**Meta-data**:  
+- **Current Goal**: Define the total area of the rectangular region.  
+- **How to Achieve**: Identify the dimensions of the rectangle using the given vertices and calculate its area as length × width.
+[/PLANNING]
+
+[IMP]
+The vertices of the rectangle are \((0,0)\), \((2008,0)\), \((2008,2009)\), and \((0,2009)\). The rectangle spans from \(x = 0\) to \(x = 2008\) and \(y = 0\) to \(y = 2009\). Thus, the dimensions are:
+- Width (along \(x\)-axis): \(2008 - 0 = 2008\)
+- Height (along \(y\)-axis): \(2009 - 0 = 2009\)
+
+The total area of the rectangle is:
+\[
+\text{Area} = 2008 \times 2009
+\]
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+Action: Reach Goal (Implementation)
+
+**Meta-data**:  
+- **Current Goal**: Determine the region within the rectangle where \(x > 2y\).  
+- **How to Achieve**: Express the condition \(x > 2y\) as a boundary line \(x = 2y\) and identify the region in the rectangle where this inequality holds.
+[/PLANNING]
+
+[IMP]
+The condition \(x > 2y\) can be rewritten as \(y < \frac{x}{2}\). The boundary line is \(y = \frac{x}{2}\). Since the point \((x, y)\) lies within the rectangle (\(0 \leq x \leq 2008\), \(0 \leq y \leq 2009\)), we need to find the region below the line \(y = \frac{x}{2}\) but within the rectangle’s boundaries.
+
+To understand the region, evaluate the line \(y = \frac{x}{2}\) at the rectangle’s edges:
+- At \(x = 0\): \(y = \frac{0}{2} = 0\), so the line passes through \((0,0)\).
+- At \(x = 2008\): \(y = \frac{2008}{2} = 1004\), so the line passes through \((2008,1004)\).
+- Check where the line intersects the top boundary \(y = 2009\):
+  \[
+  y = \frac{x}{2} = 2009 \implies x = 2 \times 2009 = 4018
+  \]
+  Since \(x = 4018 > 2008\), the line \(y = \frac{x}{2}\) does not intersect \(y = 2009\) within the rectangle (i.e., for \(x \leq 2008\)).
+
+Thus, the region where \(y < \frac{x}{2}\) (or \(x > 2y\)) is below the line from \((0,0)\) to \((2008,1004)\), bounded by the rectangle’s edges.
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]
+Action: Reach Goal (Implementation)
+
+**Meta-data**:  
+- **Current Goal**: Calculate the area of the region where \(x > 2y\).  
+- **How to Achieve**: Compute the area under the line \(y = \frac{x}{2}\) from \(x = 0\) to \(x = 2008\), ensuring it lies within \(y = 0\) to \(y = 2009\).
+[/PLANNING]
+
+[IMP]
+The region where \(x > 2y\) (or \(y < \frac{x}{2}\)) forms a right triangle with vertices at:
+- \((0,0)\)
+- \((2008,0)\) (along the x-axis)
+- \((2008,1004)\) (where \(y = \frac{2008}{2} = 1004\))
+
+This triangle has:
+- Base along the x-axis from \(x = 0\) to \(x = 2008\), so base length = \(2008\).
+- Height along the y-axis at \(x = 2008\), where \(y = 1004\), so height = \(1004\).
+
+The area of the triangle is:
+\[
+\text{Area} = \frac{1}{2} \times \text{base} \times \text{height} = \frac{1}{2} \times 2008 \times 1004
+\]
+
+Simplify the calculation:
+\[
+2008 \times 1004 = 2008 \times (1000 + 4) = (2008 \times 1000) + (2008 \times 4) = 2,008,000 + 8,032 = 2,016,032
+\]
+\[
+\text{Triangle area} = \frac{1}{2} \times 2,016,032 = 1,008,016
+\]
+
+Alternatively, compute the area using integration to confirm:
+\[
+\text{Area} = \int_{0}^{2008} \frac{x}{2} \, dx = \frac{1}{2} \int_{0}^{2008} x \, dx = \frac{1}{2} \cdot \frac{x^2}{2} \Big|_{0}^{2008} = \frac{1}{4} \cdot (2008^2 - 0)
+\]
+\[
+2008^2 = (2000 + 8)^2 = 2000^2 + 2 \cdot 2000 \cdot 8 + 8^2 = 4,000,000 + 32,000 + 64 = 4,032,064
+\]
+\[
+\text{Area} = \frac{1}{4} \cdot 4,032,064 = 1,008,016
+\]
+Both methods agree, so the area of the favorable region is \(1,008,016\).
+[/IMP]
+
+---
+
+### Step 5: Validation
+[PLANNING]
+Action: Validation (Implementation)
+
+**Meta-data**:  
+- **Current Goal**: Verify the correctness of the favorable region’s area calculation.  
+- **How to Achieve**: Check the triangle’s boundaries and area computation for consistency with the rectangle’s constraints.
+[/PLANNING]
+
+[IMP]
+Re-evaluate the triangle’s vertices:
+- \((0,0)\), \((2008,0)\), \((2008,1004)\).
+- The line \(y = \frac{x}{2}\) from \((0,0)\) to \((2008,1004)\) lies within \(y \leq 2009\), since \(1004 < 2009\).
+- The base (\(2008\)) and height (\(1004\)) yield:
+  \[
+  \text{Area} = \frac{1}{2} \times 2008 \times 1004
+  \]
+  Since \(2008 \div 2 = 1004\), rewrite:
+  \[
+  \text{Area} = \frac{1}{2} \times 2008 \times \frac{2008}{2} = \frac{2008^2}{4} = \frac{4,032,064}{4} = 1,008,016
+  \]
+
+The calculation is consistent. Additionally, since \(1004 \leq 2009\), the triangle is fully within the rectangle, confirming the region is correct.
+[/IMP]
+
+---
+
+### Step 6: Reach Goal
+[PLANNING]
+Action: Reach Goal (Implementation)
+
+**Meta-data**:  
+- **Current Goal**: Compute the probability as the ratio of the favorable area to the total area.  
+- **How to Achieve**: Divide the area of the triangle by the area of the rectangle and express as a fraction.
+[/PLANNING]
+
+[IMP]
+The total area of the rectangle (from Step 2) is:
+\[
+2008 \times 2009
+\]
+The favorable area (from Step 4) is:
+\[
+1,008,016
+\]
+The probability is:
+\[
+\text{Probability} = \frac{\text{Favorable area}}{\text{Total area}} = \frac{1,008,016}{2008 \times 2009}
+\]
+
+To simplify, compute the denominator:
+\[
+2008 \times 2009 = 2008 \times (2000 + 9) = (2008 \times 2000) + (2008 \times 9) = 4,016,000 + 18,072 = 4,034,072
+\]
+
+Thus, the probability is:
+\[
+\frac{1,008,016}{4,034,072}
+\]
+
+Factorize to simplify:
+- Numerator: \(1,008,016 = 16 \times 63,001\). Check if \(63,001\) is prime or factorizable:
+  \[
+  63,001 \div 251 \approx 251, \quad 251 \times 251 = 63,001
+  \]
+  So, \(63,001 = 251^2\), and:
+  \[
+  1,008,016 = 16 \times 251^2 = 2^4 \times 251^2
+  \]
+- Denominator: \(4,034,072 = 2008 \times 2009\). Factorize:
+  - \(2008 = 2^3 \times 251\) (since \(2008 \div 8 = 251\)).
+  - \(2009\) is prime (not divisible by primes up to \(\sqrt{2009} \approx 44.8\), e.g., 2, 3, 5, 7, 11, …, 43).
+  - Thus, \(4,034,072 = 2^3 \times 251 \times 2009\).
+
+The fraction is:
+\[
+\frac{2^4 \times 251^2}{2^3 \times 251 \times 2009} = \frac{2^4}{2^3} \times \frac{251^2}{251} \times \frac{1}{2009} = 2 \times 251 \times \frac{1}{2009} = \frac{2 \times 251}{2009} = \frac{502}{2009}
+\]
+
+Check if \(502\) and \(2009\) share common factors:
+- \(502 = 2 \times 251\).
+- \(2009\) is prime and not divisible by 2 or 251 (since \(2009 \div 251 \approx 8\), not integer).
+
+Thus, \(\frac{502}{2009}\) is in lowest terms.
+[/IMP]
+
+---
+
+### Step 7: Validation
+[PLANNING]
+Action: Validation (Implementation)
+
+**Meta-data**:  
+- **Current Goal**: Verify the probability calculation and fraction simplification.  
+- **How to Achieve**: Recompute the probability using an alternative approach (e.g., geometric interpretation) and confirm the fraction is simplified.
+[/PLANNING]
+
+[IMP]
+Alternative approach: Consider the fraction of the rectangle’s area. The triangle’s area is:
+\[
+\frac{2008 \times 1004}{2} = \frac{2008 \times \frac{2008}{2}}{2} = \frac{2008^2}{4}
+\]
+The rectangle’s area is \(2008 \times 2009\). The probability is:
+\[
+\frac{\frac{2008^2}{4}}{2008 \times 2009} = \frac{2008^2}{4 \times 2008 \times 2009} = \frac{2008}{4 \times 2009} = \frac{2008}{2 \times 2 \times 2009} = \frac{2008}{2 \times 4018}
+\]
+Since \(2008 = 2 \times 1004\), and \(4018 = 2 \times 2009\):
+\[
+\frac{2 \times 1004}{2 \times 2 \times 2009} = \frac{1004}{2 \times 2009} = \frac{2 \times 502}{2 \times 2009} = \frac{502}{2009}
+\]
+
+The fraction \(\frac{502}{2009}\) matches. Since \(502 = 2 \times 251\) and \(2009\) is prime, they share no common factors, confirming the fraction is simplified.
+[/IMP]
+
+---
+
+### Step 8: Track Goals
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Find the probability that \(x > 2y\) for a point \((x, y)\) in the rectangle, expressed as a common fraction.
+  - Subgoal 1: Define the total area of the rectangle (completed: \(2008 \times 2009\)).
+  - Subgoal 2: Determine the region where \(x > 2y\) (completed: triangle below \(y = \frac{x}{2}\)).
+  - Subgoal 3: Calculate the area of the favorable region (completed: \(1,008,016\)).
+  - Subgoal 4: Compute the probability (completed: \(\frac{502}{2009}\)).
+  - Subgoal 5: Simplify the fraction (completed: \(\frac{502}{2009}\) is in lowest terms).
+
+**Current Goal**: None, as all subgoals are completed, and the final answer has been validated.
+
+The goal hierarchy reflects the steps taken, with the probability calculated and simplified as required.
+[/REVIEW]
+
+---
+
+### Final Answer
+The probability that \(x > 2y\) is:
+\[
+\boxed{\dfrac{502}{2009}}
+\]

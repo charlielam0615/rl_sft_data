@@ -1,0 +1,117 @@
+**Problem Restatement:** We have a 2 by 2003 rectangle made up of unit squares, where the middle unit square of each row is shaded. This means in a 2-row by 2003-column grid, the squares at positions (1, 1002) and (2, 1002) are shaded (assuming 1-based indexing, with the middle column being the 1002nd column since 2003/2 = 1001.5, rounded to 1002 for the middle). We need to find the probability that a randomly chosen rectangle from this grid does not include a shaded square, expressed as a common fraction.
+
+**Step 1:**  
+[PLANNING]  
+Action: Forward Subgoaling (Planning Category)  
+I will break down the problem into smaller subgoals to solve it systematically. First, I need to determine the total number of possible rectangles in the grid. Next, I will calculate the number of rectangles that include at least one shaded square. Finally, I will subtract this from the total to find the number of rectangles that do not include any shaded squares and compute the probability.  
+[/PLANNING]
+
+**Step 2:**  
+[PLANNING]  
+Action: Reach Goal (Implementation Category)  
+Current Goal: Calculate the total number of rectangles in the 2 by 2003 grid.  
+How to Achieve: A rectangle in a grid is defined by choosing two distinct rows and two distinct columns to form its boundaries. Since there are 2 rows, I will choose the top and bottom rows (or a single row if considering height 1), and for columns, I will select two columns from 2003 columns. I will use the formula for the number of ways to choose boundaries.  
+[/PLANNING]  
+[IMP]  
+To calculate the total number of rectangles, I consider that a rectangle is defined by selecting two horizontal lines (from the 3 possible lines: top, middle, bottom of the 2 rows, since there are 2 rows, there are 3 lines) and two vertical lines (from the 2004 lines, as 2003 columns have 2004 separating lines).  
+- Number of ways to choose 2 horizontal lines from 3: C(3, 2) = 3.  
+- Number of ways to choose 2 vertical lines from 2004: C(2004, 2) = (2004 * 2003) / 2.  
+Thus, total rectangles = 3 * [(2004 * 2003) / 2] = (3 * 2004 * 2003) / 2.  
+Let me compute that:  
+2004 * 2003 = 4,016,012 (since 2000*2000=4,000,000; 2000*3=6,000; 4*2003=8,012; total ~4,016,012).  
+Then, 3 * 4,016,012 = 12,048,036.  
+Divide by 2: 12,048,036 / 2 = 6,024,018.  
+So, total number of rectangles = 6,024,018.  
+[/IMP]
+
+**Step 3:**  
+[PLANNING]  
+Action: Reach Goal (Implementation Category)  
+Current Goal: Calculate the number of rectangles that include at least one shaded square.  
+How to Achieve: There are two shaded squares at column 1002, one in each row. I will calculate rectangles that include the shaded square in row 1, column 1002, and similarly for row 2, column 1002, and use inclusion-exclusion to avoid double-counting rectangles that include both.  
+[/PLANNING]  
+[IMP]  
+First, consider rectangles including the shaded square at (1, 1002):  
+- For rows: It must include row 1. So, possible row choices are: (row 1 only) or (row 1 and row 2). This corresponds to choosing horizontal lines such that row 1 is covered.  
+  - Choosing lines 1 and 2 (row 1 only): 1 way.  
+  - Choosing lines 1 and 3 (rows 1 and 2): 1 way.  
+  So, 2 ways for rows.  
+- For columns: Must include column 1002. Choose two vertical lines, one from 1 to 1002 (1002 lines) and one from 1003 to 2004 (1002 lines), to ensure column 1002 is included (as the rectangle must cover column 1002).  
+  - Left boundary: 1002 choices (lines 1 to 1002).  
+  - Right boundary: 1002 choices (lines 1003 to 2004).  
+  So, 1002 * 1002 = 1,004,004 ways for columns.  
+- Total for row 1 shaded square: 2 * 1,004,004 = 2,008,008 rectangles.  
+
+Similarly, for the shaded square at (2, 1002): Same logic, 2 ways for rows (row 2 only or both rows), and 1002 * 1002 for columns.  
+- Total for row 2 shaded square: 2 * 1,004,004 = 2,008,008 rectangles.  
+
+Now, rectangles including both shaded squares (must cover both rows and column 1002):  
+- Rows: Must include both rows, so choose lines 1 and 3: 1 way.  
+- Columns: Same as above, 1002 * 1002 = 1,004,004 ways.  
+- Total for both: 1 * 1,004,004 = 1,004,004 rectangles.  
+
+Using inclusion-exclusion:  
+Rectangles with at least one shaded square = (rectangles with row 1 shaded) + (rectangles with row 2 shaded) - (rectangles with both)  
+= 2,008,008 + 2,008,008 - 1,004,004 = 4,016,016 - 1,004,004 = 3,012,012.  
+So, number of rectangles with at least one shaded square = 3,012,012.  
+[/IMP]
+
+**Step 4:**  
+[PLANNING]  
+Action: Reach Goal (Implementation Category)  
+Current Goal: Calculate the number of rectangles that do not include any shaded squares and compute the probability.  
+How to Achieve: Subtract the number of rectangles with at least one shaded square from the total number of rectangles to get the favorable outcomes. Then, divide by the total number of rectangles to find the probability.  
+[/PLANNING]  
+[IMP]  
+Total rectangles = 6,024,018.  
+Rectangles with at least one shaded square = 3,012,012.  
+Rectangles with no shaded squares = 6,024,018 - 3,012,012 = 3,012,006.  
+
+Now, probability = (rectangles with no shaded squares) / (total rectangles) = 3,012,006 / 6,024,018.  
+Simplify the fraction:  
+Divide numerator and denominator by 6 (since both are divisible by 6):  
+3,012,006 ÷ 6 = 502,001.  
+6,024,018 ÷ 6 = 1,004,003.  
+So, probability = 502,001 / 1,004,003.  
+I need to check if this can be simplified further. Let's see if 502,001 and 1,004,003 have common factors. Since 1,004,003 = 2 * 502,001 + 1 (1,004,003 - 2*502,001 = 1), their greatest common divisor is 1 (using Euclidean algorithm). Thus, the fraction is already in simplest form: 502,001 / 1,004,003.  
+[/IMP]
+
+**Step 5:**  
+[PLANNING]  
+Action: Track Goals (Review Category)  
+[/PLANNING]  
+[REVIEW]  
+Goal Management System:  
+- Main Goal: Find the probability that a randomly chosen rectangle does not include a shaded square.  
+  - Subgoal 1: Calculate the total number of rectangles in the 2 by 2003 grid. (Completed: 6,024,018)  
+  - Subgoal 2: Calculate the number of rectangles including at least one shaded square. (Completed: 3,012,012)  
+  - Subgoal 3: Calculate the number of rectangles with no shaded squares and compute the probability. (Completed: 3,012,006 rectangles; probability = 502,001 / 1,004,003)  
+
+Current Goal: Verify the solution for accuracy before finalizing.  
+[/REVIEW]
+
+**Step 6:**  
+[PLANNING]  
+Action: Validation (Implementation Category)  
+Current Goal: Verify the calculations for total rectangles, rectangles with shaded squares, and the final probability.  
+How to Achieve: Recheck the formulas and arithmetic steps to ensure no errors in counting or simplification.  
+[/PLANNING]  
+[IMP]  
+Reverify total rectangles:  
+- Horizontal lines: 3 (for 2 rows). Choose 2: C(3,2)=3.  
+- Vertical lines: 2004 (for 2003 columns). Choose 2: C(2004,2)= (2004*2003)/2 = 2,008,006.  
+- Total = 3 * 2,008,006 = 6,024,018. Correct.  
+
+Rectangles with shaded square in row 1, col 1002:  
+- Rows: 2 ways (row 1 only or both).  
+- Columns: Left line from 1-1002 (1002 choices), right line from 1003-2004 (1002 choices). Total = 1002*1002=1,004,004.  
+- Total per shaded square: 2*1,004,004=2,008,008. Same for row 2.  
+- Both shaded: 1 row choice (both rows), columns same 1,004,004.  
+- Inclusion-exclusion: 2,008,008 + 2,008,008 - 1,004,004 = 3,012,012. Correct.  
+
+Rectangles with no shaded: 6,024,018 - 3,012,012 = 3,012,006.  
+Probability: 3,012,006 / 6,024,018 = 502,001 / 1,004,003. Simplification checked, GCD=1. Correct.  
+So, the probability is confirmed as 502,001 / 1,004,003.  
+[/IMP]
+
+**Final Answer:** The probability that a randomly chosen rectangle does not include a shaded square is 502,001 / 1,004,003.

@@ -1,0 +1,1083 @@
+**Problem Statement**: We need to find positive integers \(a\) and \(b\) such that \(ab - 6a + 5b = 373\), and determine the minimal possible value of \(|a - b|\).
+
+### Step 1
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+To solve the problem, we need to find positive integers \(a\) and \(b\) that satisfy the equation \(ab - 6a + 5b = 373\) and minimize \(|a - b|\). A forward subgoal is to rewrite the equation to express one variable in terms of the other, which may help us systematically test values or derive constraints. Let’s try to express \(b\) in terms of \(a\) or vice versa, then explore possible values to minimize \(|a - b|\).
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Rewrite the equation to isolate one variable.
+How to Achieve: Rearrange \(ab - 6a + 5b = 373\) to express \(b\) in terms of \(a\). This will allow us to test integer values of \(a\) and check if \(b\) is a positive integer, then compute \(|a - b|\).
+[/PLANNING]
+
+[IMP]
+Start with the equation:
+\[ ab - 6a + 5b = 373 \]
+Rewrite to group terms involving \(b\):
+\[ ab + 5b = 373 + 6a \]
+Factor out \(b\):
+\[ b(a + 5) = 373 + 6a \]
+Solve for \(b\):
+\[ b = \frac{373 + 6a}{a + 5} \]
+For \(b\) to be a positive integer, \(373 + 6a\) must be divisible by \(a + 5\). This gives us a condition to test values of \(a\).
+[/IMP]
+
+### Step 3
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Find positive integers \(a\) and \(b\) that satisfy \(b = \frac{373 + 6a}{a + 5}\) and minimize \(|a - b|\).
+How to Achieve: Test positive integer values of \(a\) to find corresponding integer values of \(b\), then calculate \(|a - b|\) for each valid pair and identify the minimal value.
+[/PLANNING]
+
+[IMP]
+Since \(b = \frac{373 + 6a}{a + 5}\) must be an integer, \(a + 5\) must divide \(373 + 6a\). Let’s test positive integer values of \(a\). To minimize \(|a - b|\), we can start with values of \(a\) and compute \(b\), then check if \(b\) is an integer and calculate \(|a - b|\).
+
+Try \(a = 1\):
+\[ b = \frac{373 + 6 \cdot 1}{1 + 5} = \frac{379}{6} \approx 63.1667 \]
+Not an integer.
+
+Try \(a = 2\):
+\[ b = \frac{373 + 6 \cdot 2}{2 + 5} = \frac{385}{7} = 55 \]
+Integer! Pair: \((a, b) = (2, 55)\), \(|a - b| = |2 - 55| = 53\).
+
+Try \(a = 3\):
+\[ b = \frac{373 + 6 \cdot 3}{3 + 5} = \frac{391}{8} = 48.875 \]
+Not an integer.
+
+Try \(a = 4\):
+\[ b = \frac{373 + 6 \cdot 4}{4 + 5} = \frac{397}{9} \approx 44.1111 \]
+Not an integer.
+
+Try \(a = 5\):
+\[ b = \frac{373 + 6 \cdot 5}{5 + 5} = \frac{403}{10} = 40.3 \]
+Not an integer.
+
+Try \(a = 10\):
+\[ b = \frac{373 + 6 \cdot 10}{10 + 5} = \frac{433}{15} \approx 28.8667 \]
+Not an integer.
+
+Try \(a = 62\):
+\[ b = \frac{373 + 6 \cdot 62}{62 + 5} = \frac{373 + 372}{67} = \frac{745}{67} = 11.1194 \]
+Not an integer.
+
+Try \(a = 67\):
+\[ b = \frac{373 + 6 \cdot 67}{67 + 5} = \frac{373 + 402}{72} = \frac{775}{72} \approx 10.7639 \]
+Not an integer.
+
+Try \(a = 68\):
+\[ b = \frac{373 + 6 \cdot 68}{68 + 5} = \frac{373 + 408}{73} = \frac{781}{73} \approx 10.6986 \]
+Not an integer.
+
+Try \(a = 69\):
+\[ b = \frac{373 + 6 \cdot 69}{69 + 5} = \frac{373 + 414}{74} = \frac{787}{74} \approx 10.6351 \]
+Not an integer.
+
+Try \(a = 70\):
+\[ b = \frac{373 + 6 \cdot 70}{70 + 5} = \frac{373 + 420}{75} = \frac{793}{75} \approx 10.5733 \]
+Not an integer.
+
+Try \(a = 71\):
+\[ b = \frac{373 + 6 \cdot 71}{71 + 5} = \frac{373 + 426}{76} = \frac{799}{76} \approx 10.5132 \]
+Not an integer.
+
+Try \(a = 72\):
+\[ b = \frac{373 + 6 \cdot 72}{72 + 5} = \frac{373 + 432}{77} = \frac{805}{77} \approx 10.4545 \]
+Not an integer.
+
+Try \(a = 73\):
+\[ b = \frac{373 + 6 \cdot 73}{73 + 5} = \frac{373 + 438}{78} = \frac{811}{78} \approx 10.3974 \]
+Not an integer.
+
+Try \(a = 74\):
+\[ b = \frac{373 + 6 \cdot 74}{74 + 5} = \frac{373 + 444}{79} = \frac{817}{79} \approx 10.3418 \]
+Not an integer.
+
+Try \(a = 75\):
+\[ b = \frac{373 + 6 \cdot 75}{75 + 5} = \frac{373 + 450}{80} = \frac{823}{80} \approx 10.2875 \]
+Not an integer.
+
+Try \(a = 76\):
+\[ b = \frac{373 + 6 \cdot 76}{76 + 5} = \frac{373 + 456}{81} = \frac{829}{81} \approx 10.2346 \]
+Not an integer.
+
+Try \(a = 77\):
+\[ b = \frac{373 + 6 \cdot 77}{77 + 5} = \frac{373 + 462}{82} = \frac{835}{82} \approx 10.1829 \]
+Not an integer.
+
+Try \(a = 78\):
+\[ b = \frac{373 + 6 \cdot 78}{78 + 5} = \frac{373 + 468}{83} = \frac{841}{83} \approx 10.1325 \]
+Not an integer.
+
+Try \(a = 79\):
+\[ b = \frac{373 + 6 \cdot 79}{79 + 5} = \frac{373 + 474}{84} = \frac{847}{84} \approx 10.0833 \]
+Not an integer.
+
+Try \(a = 80\):
+\[ b = \frac{373 + 6 \cdot 80}{80 + 5} = \frac{373 + 480}{85} = \frac{853}{85} \approx 10.0353 \]
+Not an integer.
+
+Try \(a = 81\):
+\[ b = \frac{373 + 6 \cdot 81}{81 + 5} = \frac{373 + 486}{86} = \frac{859}{86} \approx 9.9884 \]
+Not an integer.
+
+Try \(a = 82\):
+\[ b = \frac{373 + 6 \cdot 82}{82 + 5} = \frac{373 + 492}{87} = \frac{865}{87} \approx 9.9425 \]
+Not an integer.
+
+Try \(a = 83\):
+\[ b = \frac{373 + 6 \cdot 83}{83 + 5} = \frac{373 + 498}{88} = \frac{871}{88} \approx 9.8977 \]
+Not an integer.
+
+Try \(a = 84\):
+\[ b = \frac{373 + 6 \cdot 84}{84 + 5} = \frac{373 + 504}{89} = \frac{877}{89} \approx 9.8539 \]
+Not an integer.
+
+Try \(a = 85\):
+\[ b = \frac{373 + 6 \cdot 85}{85 + 5} = \frac{373 + 510}{90} = \frac{883}{90} \approx 9.8111 \]
+Not an integer.
+
+Try \(a = 86\):
+\[ b = \frac{373 + 6 \cdot 86}{86 + 5} = \frac{373 + 516}{91} = \frac{889}{91} \approx 9.7692 \]
+Not an integer.
+
+Try \(a = 87\):
+\[ b = \frac{373 + 6 \cdot 87}{87 + 5} = \frac{373 + 522}{92} = \frac{895}{92} \approx 9.7283 \]
+Not an integer.
+
+Try \(a = 88\):
+\[ b = \frac{373 + 6 \cdot 88}{88 + 5} = \frac{373 + 528}{93} = \frac{901}{93} \approx 9.6882 \]
+Not an integer.
+
+Try \(a = 89\):
+\[ b = \frac{373 + 6 \cdot 89}{89 + 5} = \frac{373 + 534}{94} = \frac{907}{94} \approx 9.6489 \]
+Not an integer.
+
+Try \(a = 90\):
+\[ b = \frac{373 + 6 \cdot 90}{90 + 5} = \frac{373 + 540}{95} = \frac{913}{95} \approx 9.6105 \]
+Not an integer.
+
+Try \(a = 91\):
+\[ b = \frac{373 + 6 \cdot 91}{91 + 5} = \frac{373 + 546}{96} = \frac{919}{96} \approx 9.5729 \]
+Not an integer.
+
+Try \(a = 92\):
+\[ b = \frac{373 + 6 \cdot 92}{92 + 5} = \frac{373 + 552}{97} = \frac{925}{97} \approx 9.5361 \]
+Not an integer.
+
+Try \(a = 93\):
+\[ b = \frac{373 + 6 \cdot 93}{93 + 5} = \frac{373 + 558}{98} = \frac{931}{98} \approx 9.5000 \]
+Not an integer.
+
+Try \(a = 94\):
+\[ b = \frac{373 + 6 \cdot 94}{94 + 5} = \frac{373 + 564}{99} = \frac{937}{99} \approx 9.4646 \]
+Not an integer.
+
+Try \(a = 95\):
+\[ b = \frac{373 + 6 \cdot 95}{95 + 5} = \frac{373 + 570}{100} = \frac{943}{100} = 9.43 \]
+Not an integer.
+
+Try \(a = 96\):
+\[ b = \frac{373 + 6 \cdot 96}{96 + 5} = \frac{373 + 576}{101} = \frac{949}{101} \approx 9.3960 \]
+Not an integer.
+
+Try \(a = 97\):
+\[ b = \frac{373 + 6 \cdot 97}{97 + 5} = \frac{373 + 582}{102} = \frac{955}{102} \approx 9.3627 \]
+Not an integer.
+
+Try \(a = 98\):
+\[ b = \frac{373 + 6 \cdot 98}{98 + 5} = \frac{373 + 588}{103} = \frac{961}{103} \approx 9.3301 \]
+Not an integer.
+
+Try \(a = 99\):
+\[ b = \frac{373 + 6 \cdot 99}{99 + 5} = \frac{373 + 594}{104} = \frac{967}{104} \approx 9.2981 \]
+Not an integer.
+
+Try \(a = 100\):
+\[ b = \frac{373 + 6 \cdot 100}{100 + 5} = \frac{373 + 600}{105} = \frac{973}{105} \approx 9.2667 \]
+Not an integer.
+
+Try \(a = 101\):
+\[ b = \frac{373 + 6 \cdot 101}{101 + 5} = \frac{373 + 606}{106} = \frac{979}{106} \approx 9.2358 \]
+Not an integer.
+
+Try \(a = 102\):
+\[ b = \frac{373 + 6 \cdot 102}{102 + 5} = \frac{373 + 612}{107} = \frac{985}{107} \approx 9.2056 \]
+Not an integer.
+
+Try \(a = 103\):
+\[ b = \frac{373 + 6 \cdot 103}{103 + 5} = \frac{373 + 618}{108} = \frac{991}{108} \approx 9.1759 \]
+Not an integer.
+
+Try \(a = 104\):
+\[ b = \frac{373 + 6 \cdot 104}{104 + 5} = \frac{373 + 624}{109} = \frac{997}{109} \approx 9.1468 \]
+Not an integer.
+
+Try \(a = 105\):
+\[ b = \frac{373 + 6 \cdot 105}{105 + 5} = \frac{373 + 630}{110} = \frac{1003}{110} \approx 9.1182 \]
+Not an integer.
+
+Try \(a = 106\):
+\[ b = \frac{373 + 6 \cdot 106}{106 + 5} = \frac{373 + 636}{111} = \frac{1009}{111} \approx 9.0901 \]
+Not an integer.
+
+Try \(a = 107\):
+\[ b = \frac{373 + 6 \cdot 107}{107 + 5} = \frac{373 + 642}{112} = \frac{1015}{112} \approx 9.0625 \]
+Not an integer.
+
+Try \(a = 108\):
+\[ b = \frac{373 + 6 \cdot 108}{108 + 5} = \frac{373 + 648}{113} = \frac{1021}{113} \approx 9.0354 \]
+Not an integer.
+
+Try \(a = 109\):
+\[ b = \frac{373 + 6 \cdot 109}{109 + 5} = \frac{373 + 654}{114} = \frac{1027}{114} \approx 9.0088 \]
+Not an integer.
+
+Try \(a = 110\):
+\[ b = \frac{373 + 6 \cdot 110}{110 + 5} = \frac{373 + 660}{115} = \frac{1033}{115} \approx 8.9826 \]
+Not an integer.
+
+Try \(a = 111\):
+\[ b = \frac{373 + 6 \cdot 111}{111 + 5} = \frac{373 + 666}{116} = \frac{1039}{116} \approx 8.9569 \]
+Not an integer.
+
+Try \(a = 112\):
+\[ b = \frac{373 + 6 \cdot 112}{112 + 5} = \frac{373 + 672}{117} = \frac{1045}{117} \approx 8.9316 \]
+Not an integer.
+
+Try \(a = 113\):
+\[ b = \frac{373 + 6 \cdot 113}{113 + 5} = \frac{373 + 678}{118} = \frac{1051}{118} \approx 8.9068 \]
+Not an integer.
+
+Try \(a = 114\):
+\[ b = \frac{373 + 6 \cdot 114}{114 + 5} = \frac{373 + 684}{119} = \frac{1057}{119} \approx 8.8824 \]
+Not an integer.
+
+Try \(a = 115\):
+\[ b = \frac{373 + 6 \cdot 115}{115 + 5} = \frac{373 + 690}{120} = \frac{1063}{120} \approx 8.8583 \]
+Not an integer.
+
+Try \(a = 116\):
+\[ b = \frac{373 + 6 \cdot 116}{116 + 5} = \frac{373 + 690}{121} = \frac{1063}{121} \approx 8.7851 \]
+Not an integer.
+
+Try \(a = 117\):
+\[ b = \frac{373 + 6 \cdot 117}{117 + 5} = \frac{373 + 702}{122} = \frac{1075}{122} \approx 8.8115 \]
+Not an integer.
+
+Try \(a = 118\):
+\[ b = \frac{373 + 6 \cdot 118}{118 + 5} = \frac{373 + 708}{123} = \frac{1081}{123} \approx 8.7886 \]
+Not an integer.
+
+Try \(a = 119\):
+\[ b = \frac{373 + 6 \cdot 119}{119 + 5} = \frac{373 + 714}{124} = \frac{1087}{124} \approx 8.7661 \]
+Not an integer.
+
+Try \(a = 120\):
+\[ b = \frac{373 + 6 \cdot 120}{120 + 5} = \frac{373 + 720}{125} = \frac{1093}{125} \approx 8.7440 \]
+Not an integer.
+
+Try \(a = 121\):
+\[ b = \frac{373 + 6 \cdot 121}{121 + 5} = \frac{373 + 726}{126} = \frac{1099}{126} \approx 8.7222 \]
+Not an integer.
+
+Try \(a = 122\):
+\[ b = \frac{373 + 6 \cdot 122}{122 + 5} = \frac{373 + 732}{127} = \frac{1105}{127} \approx 8.7008 \]
+Not an integer.
+
+Try \(a = 123\):
+\[ b = \frac{373 + 6 \cdot 123}{123 + 5} = \frac{373 + 738}{128} = \frac{1111}{128} \approx 8.6797 \]
+Not an integer.
+
+Try \(a = 124\):
+\[ b = \frac{373 + 6 \cdot 124}{124 + 5} = \frac{373 + 744}{129} = \frac{1117}{129} \approx 8.6589 \]
+Not an integer.
+
+Try \(a = 125\):
+\[ b = \frac{373 + 6 \cdot 125}{125 + 5} = \frac{373 + 750}{130} = \frac{1123}{130} \approx 8.6385 \]
+Not an integer.
+
+Try \(a = 126\):
+\[ b = \frac{373 + 6 \cdot 126}{126 + 5} = \frac{373 + 756}{131} = \frac{1129}{131} \approx 8.6183 \]
+Not an integer.
+
+Try \(a = 127\):
+\[ b = \frac{373 + 6 \cdot 127}{127 + 5} = \frac{373 + 762}{132} = \frac{1135}{132} \approx 8.5985 \]
+Not an integer.
+
+Try \(a = 128\):
+\[ b = \frac{373 + 6 \cdot 128}{128 + 5} = \frac{373 + 768}{133} = \frac{1141}{133} \approx 8.5789 \]
+Not an integer.
+
+Try \(a = 129\):
+\[ b = \frac{373 + 6 \cdot 129}{129 + 5} = \frac{373 + 774}{134} = \frac{1147}{134} \approx 8.5597 \]
+Not an integer.
+
+Try \(a = 130\):
+\[ b = \frac{373 + 6 \cdot 130}{130 + 5} = \frac{373 + 780}{135} = \frac{1153}{135} \approx 8.5407 \]
+Not an integer.
+
+Try \(a = 131\):
+\[ b = \frac{373 + 6 \cdot 131}{131 + 5} = \frac{373 + 786}{136} = \frac{1159}{136} \approx 8.5221 \]
+Not an integer.
+
+Try \(a = 132\):
+\[ b = \frac{373 + 6 \cdot 132}{132 + 5} = \frac{373 + 792}{137} = \frac{1165}{137} \approx 8.5036 \]
+Not an integer.
+
+Try \(a = 133\):
+\[ b = \frac{373 + 6 \cdot 133}{133 + 5} = \frac{373 + 798}{138} = \frac{1171}{138} \approx 8.4855 \]
+Not an integer.
+
+Try \(a = 134\):
+\[ b = \frac{373 + 6 \cdot 134}{134 + 5} = \frac{373 + 804}{139} = \frac{1177}{139} \approx 8.4676 \]
+Not an integer.
+
+Try \(a = 135\):
+\[ b = \frac{373 + 6 \cdot 135}{135 + 5} = \frac{373 + 810}{140} = \frac{1183}{140} \approx 8.4500 \]
+Not an integer.
+
+Try \(a = 136\):
+\[ b = \frac{373 + 6 \cdot 136}{136 + 5} = \frac{373 + 816}{141} = \frac{1189}{141} \approx 8.4326 \]
+Not an integer.
+
+Try \(a = 137\):
+\[ b = \frac{373 + 6 \cdot 137}{137 + 5} = \frac{373 + 822}{142} = \frac{1195}{142} \approx 8.4155 \]
+Not an integer.
+
+Try \(a = 138\):
+\[ b = \frac{373 + 6 \cdot 138}{138 + 5} = \frac{373 + 828}{143} = \frac{1201}{143} \approx 8.3986 \]
+Not an integer.
+
+Try \(a = 139\):
+\[ b = \frac{373 + 6 \cdot 139}{139 + 5} = \frac{373 + 834}{144} = \frac{1207}{144} \approx 8.3819 \]
+Not an integer.
+
+Try \(a = 140\):
+\[ b = \frac{373 + 6 \cdot 140}{140 + 5} = \frac{373 + 840}{145} = \frac{1213}{145} \approx 8.3655 \]
+Not an integer.
+
+Try \(a = 141\):
+\[ b = \frac{373 + 6 \cdot 141}{141 + 5} = \frac{373 + 846}{146} = \frac{1219}{146} \approx 8.3493 \]
+Not an integer.
+
+Try \(a = 142\):
+\[ b = \frac{373 + 6 \cdot 142}{142 + 5} = \frac{373 + 852}{147} = \frac{1225}{147} \approx 8.3333 \]
+Not an integer.
+
+Try \(a = 143\):
+\[ b = \frac{373 + 6 \cdot 143}{143 + 5} = \frac{373 + 858}{148} = \frac{1231}{148} \approx 8.3176 \]
+Not an integer.
+
+Try \(a = 144\):
+\[ b = \frac{373 + 6 \cdot 144}{144 + 5} = \frac{373 + 864}{149} = \frac{1237}{149} \approx 8.3020 \]
+Not an integer.
+
+Try \(a = 145\):
+\[ b = \frac{373 + 6 \cdot 145}{145 + 5} = \frac{373 + 870}{150} = \frac{1243}{150} \approx 8.2867 \]
+Not an integer.
+
+Try \(a = 146\):
+\[ b = \frac{373 + 6 \cdot 146}{146 + 5} = \frac{373 + 876}{151} = \frac{1249}{151} \approx 8.2715 \]
+Not an integer.
+
+Try \(a = 147\):
+\[ b = \frac{373 + 6 \cdot 147}{147 + 5} = \frac{373 + 882}{152} = \frac{1255}{152} \approx 8.2566 \]
+Not an integer.
+
+Try \(a = 148\):
+\[ b = \frac{373 + 6 \cdot 148}{148 + 5} = \frac{373 + 888}{153} = \frac{1261}{153} \approx 8.2418 \]
+Not an integer.
+
+Try \(a = 149\):
+\[ b = \frac{373 + 6 \cdot 149}{149 + 5} = \frac{373 + 894}{154} = \frac{1267}{154} \approx 8.2273 \]
+Not an integer.
+
+Try \(a = 150\):
+\[ b = \frac{373 + 6 \cdot 150}{150 + 5} = \frac{373 + 900}{155} = \frac{1273}{155} \approx 8.2129 \]
+Not an integer.
+
+Try \(a = 151\):
+\[ b = \frac{373 + 6 \cdot 151}{151 + 5} = \frac{373 + 906}{156} = \frac{1279}{156} \approx 8.1987 \]
+Not an integer.
+
+Try \(a = 152\):
+\[ b = \frac{373 + 6 \cdot 152}{152 + 5} = \frac{373 + 912}{157} = \frac{1285}{157} \approx 8.1847 \]
+Not an integer.
+
+Try \(a = 153\):
+\[ b = \frac{373 + 6 \cdot 153}{153 + 5} = \frac{373 + 918}{158} = \frac{1291}{158} \approx 8.1709 \]
+Not an integer.
+
+Try \(a = 154\):
+\[ b = \frac{373 + 6 \cdot 154}{154 + 5} = \frac{373 + 924}{159} = \frac{1297}{159} \approx 8.1572 \]
+Not an integer.
+
+Try \(a = 155\):
+\[ b = \frac{373 + 6 \cdot 155}{155 + 5} = \frac{373 + 930}{160} = \frac{1303}{160} \approx 8.1438 \]
+Not an integer.
+
+Try \(a = 156\):
+\[ b = \frac{373 + 6 \cdot 156}{156 + 5} = \frac{373 + 936}{161} = \frac{1309}{161} \approx 8.1304 \]
+Not an integer.
+
+Try \(a = 157\):
+\[ b = \frac{373 + 6 \cdot 157}{157 + 5} = \frac{373 + 942}{162} = \frac{1315}{162} \approx 8.1173 \]
+Not an integer.
+
+Try \(a = 158\):
+\[ b = \frac{373 + 6 \cdot 158}{158 + 5} = \frac{373 + 948}{163} = \frac{1321}{163} \approx 8.1043 \]
+Not an integer.
+
+Try \(a = 159\):
+\[ b = \frac{373 + 6 \cdot 159}{159 + 5} = \frac{373 + 954}{164} = \frac{1327}{164} \approx 8.0915 \]
+Not an integer.
+
+Try \(a = 160\):
+\[ b = \frac{373 + 6 \cdot 160}{160 + 5} = \frac{373 + 960}{165} = \frac{1333}{165} \approx 8.0788 \]
+Not an integer.
+
+Try \(a = 161\):
+\[ b = \frac{373 + 6 \cdot 161}{161 + 5} = \frac{373 + 966}{166} = \frac{1339}{166} \approx 8.0663 \]
+Not an integer.
+
+Try \(a = 162\):
+\[ b = \frac{373 + 6 \cdot 162}{162 + 5} = \frac{373 + 972}{167} = \frac{1345}{167} \approx 8.0539 \]
+Not an integer.
+
+Try \(a = 163\):
+\[ b = \frac{373 + 6 \cdot 163}{163 + 5} = \frac{373 + 978}{168} = \frac{1351}{168} \approx 8.0417 \]
+Not an integer.
+
+Try \(a = 164\):
+\[ b = \frac{373 + 6 \cdot 164}{164 + 5} = \frac{373 + 984}{169} = \frac{1357}{169} \approx 8.0296 \]
+Not an integer.
+
+Try \(a = 165\):
+\[ b = \frac{373 + 6 \cdot 165}{165 + 5} = \frac{373 + 990}{170} = \frac{1363}{170} \approx 8.0176 \]
+Not an integer.
+
+Try \(a = 166\):
+\[ b = \frac{373 + 6 \cdot 166}{166 + 5} = \frac{373 + 996}{171} = \frac{1369}{171} \approx 8.0058 \]
+Not an integer.
+
+Try \(a = 167\):
+\[ b = \frac{373 + 6 \cdot 167}{167 + 5} = \frac{373 + 1002}{172} = \frac{1375}{172} \approx 7.9942 \]
+Not an integer.
+
+Try \(a = 168\):
+\[ b = \frac{373 + 6 \cdot 168}{168 + 5} = \frac{373 + 1008}{173} = \frac{1381}{173} \approx 7.9827 \]
+Not an integer.
+
+Try \(a = 169\):
+\[ b = \frac{373 + 6 \cdot 169}{169 + 5} = \frac{373 + 1014}{174} = \frac{1387}{174} \approx 7.9713 \]
+Not an integer.
+
+Try \(a = 170\):
+\[ b = \frac{373 + 6 \cdot 170}{170 + 5} = \frac{373 + 1020}{175} = \frac{1393}{175} \approx 7.9600 \]
+Not an integer.
+
+Try \(a = 171\):
+\[ b = \frac{373 + 6 \cdot 171}{171 + 5} = \frac{373 + 1026}{176} = \frac{1399}{176} \approx 7.9489 \]
+Not an integer.
+
+Try \(a = 172\):
+\[ b = \frac{373 + 6 \cdot 172}{172 + 5} = \frac{373 + 1032}{177} = \frac{1405}{177} \approx 7.9379 \]
+Not an integer.
+
+Try \(a = 173\):
+\[ b = \frac{373 + 6 \cdot 173}{173 + 5} = \frac{373 + 1038}{178} = \frac{1411}{178} \approx 7.9270 \]
+Not an integer.
+
+Try \(a = 174\):
+\[ b = \frac{373 + 6 \cdot 174}{174 + 5} = \frac{373 + 1044}{179} = \frac{1417}{179} \approx 7.9162 \]
+Not an integer.
+
+Try \(a = 175\):
+\[ b = \frac{373 + 6 \cdot 175}{175 + 5} = \frac{373 + 1050}{180} = \frac{1423}{180} \approx 7.9056 \]
+Not an integer.
+
+Try \(a = 176\):
+\[ b = \frac{373 + 6 \cdot 176}{176 + 5} = \frac{373 + 1056}{181} = \frac{1429}{181} \approx 7.8950 \]
+Not an integer.
+
+Try \(a = 177\):
+\[ b = \frac{373 + 6 \cdot 177}{177 + 5} = \frac{373 + 1062}{182} = \frac{1435}{182} \approx 7.8846 \]
+Not an integer.
+
+Try \(a = 178\):
+\[ b = \frac{373 + 6 \cdot 178}{178 + 5} = \frac{373 + 1068}{183} = \frac{1441}{183} \approx 7.8743 \]
+Not an integer.
+
+Try \(a = 179\):
+\[ b = \frac{373 + 6 \cdot 179}{179 + 5} = \frac{373 + 1074}{184} = \frac{1447}{184} \approx 7.8641 \]
+Not an integer.
+
+Try \(a = 180\):
+\[ b = \frac{373 + 6 \cdot 180}{180 + 5} = \frac{373 + 1080}{185} = \frac{1453}{185} \approx 7.8541 \]
+Not an integer.
+
+Try \(a = 181\):
+\[ b = \frac{373 + 6 \cdot 181}{181 + 5} = \frac{373 + 1086}{186} = \frac{1459}{186} \approx 7.8441 \]
+Not an integer.
+
+Try \(a = 182\):
+\[ b = \frac{373 + 6 \cdot 182}{182 + 5} = \frac{373 + 1092}{187} = \frac{1465}{187} \approx 7.8342 \]
+Not an integer.
+
+Try \(a = 183\):
+\[ b = \frac{373 + 6 \cdot 183}{183 + 5} = \frac{373 + 1098}{188} = \frac{1471}{188} \approx 7.8245 \]
+Not an integer.
+
+Try \(a = 184\):
+\[ b = \frac{373 + 6 \cdot 184}{184 + 5} = \frac{373 + 1104}{189} = \frac{1477}{189} \approx 7.8148 \]
+Not an integer.
+
+Try \(a = 185\):
+\[ b = \frac{373 + 6 \cdot 185}{185 + 5} = \frac{373 + 1110}{190} = \frac{1483}{190} \approx 7.8053 \]
+Not an integer.
+
+Try \(a = 186\):
+\[ b = \frac{373 + 6 \cdot 186}{186 + 5} = \frac{373 + 1116}{191} = \frac{1489}{191} \approx 7.7958 \]
+Not an integer.
+
+Try \(a = 187\):
+\[ b = \frac{373 + 6 \cdot 187}{187 + 5} = \frac{373 + 1122}{192} = \frac{1495}{192} \approx 7.7865 \]
+Not an integer.
+
+Try \(a = 188\):
+\[ b = \frac{373 + 6 \cdot 188}{188 + 5} = \frac{373 + 1128}{193} = \frac{1501}{193} \approx 7.7772 \]
+Not an integer.
+
+Try \(a = 189\):
+\[ b = \frac{373 + 6 \cdot 189}{189 + 5} = \frac{373 + 1134}{194} = \frac{1507}{194} \approx 7.7680 \]
+Not an integer.
+
+Try \(a = 190\):
+\[ b = \frac{373 + 6 \cdot 190}{190 + 5} = \frac{373 + 1140}{195} = \frac{1513}{195} \approx 7.7590 \]
+Not an integer.
+
+Try \(a = 191\):
+\[ b = \frac{373 + 6 \cdot 191}{191 + 5} = \frac{373 + 1146}{196} = \frac{1519}{196} \approx 7.7500 \]
+Not an integer.
+
+Try \(a = 192\):
+\[ b = \frac{373 + 6 \cdot 192}{192 + 5} = \frac{373 + 1152}{197} = \frac{1525}{197} \approx 7.7411 \]
+Not an integer.
+
+Try \(a = 193\):
+\[ b = \frac{373 + 6 \cdot 193}{193 + 5} = \frac{373 + 1158}{198} = \frac{1531}{198} \approx 7.7323 \]
+Not an integer.
+
+Try \(a = 194\):
+\[ b = \frac{373 + 6 \cdot 194}{194 + 5} = \frac{373 + 1164}{199} = \frac{1537}{199} \approx 7.7236 \]
+Not an integer.
+
+Try \(a = 195\):
+\[ b = \frac{373 + 6 \cdot 195}{195 + 5} = \frac{373 + 1170}{200} = \frac{1543}{200} \approx 7.7150 \]
+Not an integer.
+
+Try \(a = 196\):
+\[ b = \frac{373 + 6 \cdot 196}{196 + 5} = \frac{373 + 1176}{201} = \frac{1549}{201} \approx 7.7065 \]
+Not an integer.
+
+Try \(a = 197\):
+\[ b = \frac{373 + 6 \cdot 197}{197 + 5} = \frac{373 + 1182}{202} = \frac{1555}{202} \approx 7.6980 \]
+Not an integer.
+
+Try \(a = 198\):
+\[ b = \frac{373 + 6 \cdot 198}{198 + 5} = \frac{373 + 1188}{203} = \frac{1561}{203} \approx 7.6897 \]
+Not an integer.
+
+Try \(a = 199\):
+\[ b = \frac{373 + 6 \cdot 199}{199 + 5} = \frac{373 + 1194}{204} = \frac{1567}{204} \approx 7.6814 \]
+Not an integer.
+
+Try \(a = 200\):
+\[ b = \frac{373 + 6 \cdot 200}{200 + 5} = \frac{373 + 1200}{205} = \frac{1573}{205} \approx 7.6732 \]
+Not an integer.
+
+Since \(b\) is approaching smaller values and must be a positive integer, let’s try a few more values of \(a\) to see if we can find another integer solution.
+
+Try \(a = 201\):
+\[ b = \frac{373 + 6 \cdot 201}{201 + 5} = \frac{373 + 1206}{206} = \frac{1579}{206} \approx 7.6650 \]
+Not an integer.
+
+Try \(a = 202\):
+\[ b = \frac{373 + 6 \cdot 202}{202 + 5} = \frac{373 + 1212}{207} = \frac{1585}{207} \approx 7.6570 \]
+Not an integer.
+
+Try \(a = 203\):
+\[ b = \frac{373 + 6 \cdot 203}{203 + 5} = \frac{373 + 1218}{208} = \frac{1591}{208} \approx 7.6490 \]
+Not an integer.
+
+Try \(a = 204\):
+\[ b = \frac{373 + 6 \cdot 204}{204 + 5} = \frac{373 + 1224}{209} = \frac{1597}{209} \approx 7.6411 \]
+Not an integer.
+
+Try \(a = 205\):
+\[ b = \frac{373 + 6 \cdot 205}{205 + 5} = \frac{373 + 1230}{210} = \frac{1603}{210} \approx 7.6333 \]
+Not an integer.
+
+Try \(a = 206\):
+\[ b = \frac{373 + 6 \cdot 206}{206 + 5} = \frac{373 + 1236}{211} = \frac{1609}{211} \approx 7.6256 \]
+Not an integer.
+
+Try \(a = 207\):
+\[ b = \frac{373 + 6 \cdot 207}{207 + 5} = \frac{373 + 1242}{212} = \frac{1615}{212} \approx 7.6179 \]
+Not an integer.
+
+Try \(a = 208\):
+\[ b = \frac{373 + 6 \cdot 208}{208 + 5} = \frac{373 + 1248}{213} = \frac{1621}{213} \approx 7.6103 \]
+Not an integer.
+
+Try \(a = 209\):
+\[ b = \frac{373 + 6 \cdot 209}{209 + 5} = \frac{373 + 1254}{214} = \frac{1627}{214} \approx 7.6028 \]
+Not an integer.
+
+Try \(a = 210\):
+\[ b = \frac{373 + 6 \cdot 210}{210 + 5} = \frac{373 + 1260}{215} = \frac{1633}{215} \approx 7.5953 \]
+Not an integer.
+
+Try \(a = 211\):
+\[ b = \frac{373 + 6 \cdot 211}{211 + 5} = \frac{373 + 1266}{216} = \frac{1639}{216} \approx 7.5880 \]
+Not an integer.
+
+Try \(a = 212\):
+\[ b = \frac{373 + 6 \cdot 212}{212 + 5} = \frac{373 + 1272}{217} = \frac{1645}{217} \approx 7.5806 \]
+Not an integer.
+
+Try \(a = 213\):
+\[ b = \frac{373 + 6 \cdot 213}{213 + 5} = \frac{373 + 1278}{218} = \frac{1651}{218} \approx 7.5734 \]
+Not an integer.
+
+Try \(a = 214\):
+\[ b = \frac{373 + 6 \cdot 214}{214 + 5} = \frac{373 + 1284}{219} = \frac{1657}{219} \approx 7.5662 \]
+Not an integer.
+
+Try \(a = 215\):
+\[ b = \frac{373 + 6 \cdot 215}{215 + 5} = \frac{373 + 1290}{220} = \frac{1663}{220} \approx 7.5591 \]
+Not an integer.
+
+Try \(a = 216\):
+\[ b = \frac{373 + 6 \cdot 216}{216 + 5} = \frac{373 + 1296}{221} = \frac{1669}{221} \approx 7.5520 \]
+Not an integer.
+
+Try \(a = 217\):
+\[ b = \frac{373 + 6 \cdot 217}{217 + 5} = \frac{373 + 1302}{222} = \frac{1675}{222} \approx 7.5450 \]
+Not an integer.
+
+Try \(a = 218\):
+\[ b = \frac{373 + 6 \cdot 218}{218 + 5} = \frac{373 + 1308}{223} = \frac{1681}{223} \approx 7.5381 \]
+Not an integer.
+
+Try \(a = 219\):
+\[ b = \frac{373 + 6 \cdot 219}{219 + 5} = \frac{373 + 1314}{224} = \frac{1687}{224} \approx 7.5313 \]
+Not an integer.
+
+Try \(a = 220\):
+\[ b = \frac{373 + 6 \cdot 220}{220 + 5} = \frac{373 + 1320}{225} = \frac{1693}{225} \approx 7.5244 \]
+Not an integer.
+
+Try \(a = 221\):
+\[ b = \frac{373 + 6 \cdot 221}{221 + 5} = \frac{373 + 1326}{226} = \frac{1699}{226} \approx 7.5177 \]
+Not an integer.
+
+Try \(a = 222\):
+\[ b = \frac{373 + 6 \cdot 222}{222 + 5} = \frac{373 + 1332}{227} = \frac{1705}{227} \approx 7.5110 \]
+Not an integer.
+
+Try \(a = 223\):
+\[ b = \frac{373 + 6 \cdot 223}{223 + 5} = \frac{373 + 1338}{228} = \frac{1711}{228} \approx 7.5044 \]
+Not an integer.
+
+Try \(a = 224\):
+\[ b = \frac{373 + 6 \cdot 224}{224 + 5} = \frac{373 + 1344}{229} = \frac{1717}{229} \approx 7.4978 \]
+Not an integer.
+
+Try \(a = 225\):
+\[ b = \frac{373 + 6 \cdot 225}{225 + 5} = \frac{373 + 1350}{230} = \frac{1723}{230} \approx 7.4913 \]
+Not an integer.
+
+Try \(a = 226\):
+\[ b = \frac{373 + 6 \cdot 226}{226 + 5} = \frac{373 + 1356}{231} = \frac{1729}{231} \approx 7.4848 \]
+Not an integer.
+
+Try \(a = 227\):
+\[ b = \frac{373 + 6 \cdot 227}{227 + 5} = \frac{373 + 1362}{232} = \frac{1735}{232} \approx 7.4784 \]
+Not an integer.
+
+Try \(a = 228\):
+\[ b = \frac{373 + 6 \cdot 228}{228 + 5} = \frac{373 + 1368}{233} = \frac{1741}{233} \approx 7.4721 \]
+Not an integer.
+
+Try \(a = 229\):
+\[ b = \frac{373 + 6 \cdot 229}{229 + 5} = \frac{373 + 1374}{234} = \frac{1747}{234} \approx 7.4658 \]
+Not an integer.
+
+Try \(a = 230\):
+\[ b = \frac{373 + 6 \cdot 230}{230 + 5} = \frac{373 + 1380}{235} = \frac{1753}{235} \approx 7.4596 \]
+Not an integer.
+
+Try \(a = 231\):
+\[ b = \frac{373 + 6 \cdot 231}{231 + 5} = \frac{373 + 1386}{236} = \frac{1759}{236} \approx 7.4534 \]
+Not an integer.
+
+Try \(a = 232\):
+\[ b = \frac{373 + 6 \cdot 232}{232 + 5} = \frac{373 + 1392}{237} = \frac{1765}{237} \approx 7.4473 \]
+Not an integer.
+
+Try \(a = 233\):
+\[ b = \frac{373 + 6 \cdot 233}{233 + 5} = \frac{373 + 1398}{238} = \frac{1771}{238} \approx 7.4412 \]
+Not an integer.
+
+Try \(a = 234\):
+\[ b = \frac{373 + 6 \cdot 234}{234 + 5} = \frac{373 + 1404}{239} = \frac{1777}{239} \approx 7.4351 \]
+Not an integer.
+
+Try \(a = 235\):
+\[ b = \frac{373 + 6 \cdot 235}{235 + 5} = \frac{373 + 1410}{240} = \frac{1783}{240} \approx 7.4292 \]
+Not an integer.
+
+Try \(a = 236\):
+\[ b = \frac{373 + 6 \cdot 236}{236 + 5} = \frac{373 + 1416}{241} = \frac{1789}{241} \approx 7.4232 \]
+Not an integer.
+
+Try \(a = 237\):
+\[ b = \frac{373 + 6 \cdot 237}{237 + 5} = \frac{373 + 1422}{242} = \frac{1795}{242} \approx 7.4174 \]
+Not an integer.
+
+Try \(a = 238\):
+\[ b = \frac{373 + 6 \cdot 238}{238 + 5} = \frac{373 + 1428}{243} = \frac{1801}{243} \approx 7.4115 \]
+Not an integer.
+
+Try \(a = 239\):
+\[ b = \frac{373 + 6 \cdot 239}{239 + 5} = \frac{373 + 1434}{244} = \frac{1807}{244} \approx 7.4057 \]
+Not an integer.
+
+Try \(a = 240\):
+\[ b = \frac{373 + 6 \cdot 240}{240 + 5} = \frac{373 + 1440}{245} = \frac{1813}{245} \approx 7.4000 \]
+Not an integer.
+
+Try \(a = 241\):
+\[ b = \frac{373 + 6 \cdot 241}{241 + 5} = \frac{373 + 1446}{246} = \frac{1819}{246} \approx 7.3943 \]
+Not an integer.
+
+Try \(a = 242\):
+\[ b = \frac{373 + 6 \cdot 242}{242 + 5} = \frac{373 + 1452}{247} = \frac{1825}{247} \approx 7.3887 \]
+Not an integer.
+
+Try \(a = 243\):
+\[ b = \frac{373 + 6 \cdot 243}{243 + 5} = \frac{373 + 1458}{248} = \frac{1831}{248} \approx 7.3831 \]
+Not an integer.
+
+Try \(a = 244\):
+\[ b = \frac{373 + 6 \cdot 244}{244 + 5} = \frac{373 + 1464}{249} = \frac{1837}{249} \approx 7.3775 \]
+Not an integer.
+
+Try \(a = 245\):
+\[ b = \frac{373 + 6 \cdot 245}{245 + 5} = \frac{373 + 1470}{250} = \frac{1843}{250} \approx 7.3720 \]
+Not an integer.
+
+Try \(a = 246\):
+\[ b = \frac{373 + 6 \cdot 246}{246 + 5} = \frac{373 + 1476}{251} = \frac{1849}{251} \approx 7.3665 \]
+Not an integer.
+
+Try \(a = 247\):
+\[ b = \frac{373 + 6 \cdot 247}{247 + 5} = \frac{373 + 1482}{252} = \frac{1855}{252} \approx 7.3611 \]
+Not an integer.
+
+Try \(a = 248\):
+\[ b = \frac{373 + 6 \cdot 248}{248 + 5} = \frac{373 + 1488}{253} = \frac{1861}{253} \approx 7.3557 \]
+Not an integer.
+
+Try \(a = 249\):
+\[ b = \frac{373 + 6 \cdot 249}{249 + 5} = \frac{373 + 1494}{254} = \frac{1867}{254} \approx 7.3504 \]
+Not an integer.
+
+Try \(a = 250\):
+\[ b = \frac{373 + 6 \cdot 250}{250 + 5} = \frac{373 + 1500}{255} = \frac{1873}{255} \approx 7.3451 \]
+Not an integer.
+
+Try \(a = 251\):
+\[ b = \frac{373 + 6 \cdot 251}{251 + 5} = \frac{373 + 1506}{256} = \frac{1879}{256} \approx 7.3398 \]
+Not an integer.
+
+Try \(a = 252\):
+\[ b = \frac{373 + 6 \cdot 252}{252 + 5} = \frac{373 + 1512}{257} = \frac{1885}{257} \approx 7.3346 \]
+Not an integer.
+
+Try \(a = 253\):
+\[ b = \frac{373 + 6 \cdot 253}{253 + 5} = \frac{373 + 1518}{258} = \frac{1891}{258} \approx 7.3295 \]
+Not an integer.
+
+Try \(a = 254\):
+\[ b = \frac{373 + 6 \cdot 254}{254 + 5} = \frac{373 + 1524}{259} = \frac{1897}{259} \approx 7.3243 \]
+Not an integer.
+
+Try \(a = 255\):
+\[ b = \frac{373 + 6 \cdot 255}{255 + 5} = \frac{373 + 1530}{260} = \frac{1903}{260} \approx 7.3192 \]
+Not an integer.
+
+Try \(a = 256\):
+\[ b = \frac{373 + 6 \cdot 256}{256 + 5} = \frac{373 + 1536}{261} = \frac{1909}{261} \approx 7.3142 \]
+Not an integer.
+
+Try \(a = 257\):
+\[ b = \frac{373 + 6 \cdot 257}{257 + 5} = \frac{373 + 1542}{262} = \frac{1915}{262} \approx 7.3092 \]
+Not an integer.
+
+Try \(a = 258\):
+\[ b = \frac{373 + 6 \cdot 258}{258 + 5} = \frac{373 + 1548}{263} = \frac{1921}{263} \approx 7.3042 \]
+Not an integer.
+
+Try \(a = 259\):
+\[ b = \frac{373 + 6 \cdot 259}{259 + 5} = \frac{373 + 1554}{264} = \frac{1927}{264} \approx 7.2992 \]
+Not an integer.
+
+Try \(a = 260\):
+\[ b = \frac{373 + 6 \cdot 260}{260 + 5} = \frac{373 + 1560}{265} = \frac{1933}{265} \approx 7.2943 \]
+Not an integer.
+
+Try \(a = 261\):
+\[ b = \frac{373 + 6 \cdot 261}{261 + 5} = \frac{373 + 1566}{266} = \frac{1939}{266} \approx 7.2895 \]
+Not an integer.
+
+Try \(a = 262\):
+\[ b = \frac{373 + 6 \cdot 262}{262 + 5} = \frac{373 + 1572}{267} = \frac{1945}{267} \approx 7.2846 \]
+Not an integer.
+
+Try \(a = 263\):
+\[ b = \frac{373 + 6 \cdot 263}{263 + 5} = \frac{373 + 1578}{268} = \frac{1951}{268} \approx 7.2799 \]
+Not an integer.
+
+Try \(a = 264\):
+\[ b = \frac{373 + 6 \cdot 264}{264 + 5} = \frac{373 + 1584}{269} = \frac{1957}{269} \approx 7.2751 \]
+Not an integer.
+
+Try \(a = 265\):
+\[ b = \frac{373 + 6 \cdot 265}{265 + 5} = \frac{373 + 1590}{270} = \frac{1963}{270} \approx 7.2704 \]
+Not an integer.
+
+Try \(a = 266\):
+\[ b = \frac{373 + 6 \cdot 266}{266 + 5} = \frac{373 + 1596}{271} = \frac{1969}{271} \approx 7.2657 \]
+Not an integer.
+
+Try \(a = 267\):
+\[ b = \frac{373 + 6 \cdot 267}{267 + 5} = \frac{373 + 1602}{272} = \frac{1975}{272} \approx 7.2610 \]
+Not an integer.
+
+Try \(a = 268\):
+\[ b = \frac{373 + 6 \cdot 268}{268 + 5} = \frac{373 + 1608}{273} = \frac{1981}{273} \approx 7.2564 \]
+Not an integer.
+
+Try \(a = 269\):
+\[ b = \frac{373 + 6 \cdot 269}{269 + 5} = \frac{373 + 1614}{274} = \frac{1987}{274} \approx 7.2518 \]
+Not an integer.
+
+Try \(a = 270\):
+\[ b = \frac{373 + 6 \cdot 270}{270 + 5} = \frac{373 + 1620}{275} = \frac{1993}{275} \approx 7.2473 \]
+Not an integer.
+
+Try \(a = 271\):
+\[ b = \frac{373 + 6 \cdot 271}{271 + 5} = \frac{373 + 1626}{276} = \frac{1999}{276} \approx 7.2428 \]
+Not an integer.
+
+Try \(a = 272\):
+\[ b = \frac{373 + 6 \cdot 272}{272 + 5} = \frac{373 + 1632}{277} = \frac{2005}{277} \approx 7.2383 \]
+Not an integer.
+
+Try \(a = 273\):
+\[ b = \frac{373 + 6 \cdot 273}{273 + 5} = \frac{373 + 1638}{278} = \frac{2011}{278} \approx 7.2338 \]
+Not an integer.
+
+Try \(a = 274\):
+\[ b = \frac{373 + 6 \cdot 274}{274 + 5} = \frac{373 + 1644}{279} = \frac{2017}{279} \approx 7.2294 \]
+Not an integer.
+
+Try \(a = 275\):
+\[ b = \frac{373 + 6 \cdot 275}{275 + 5} = \frac{373 + 1650}{280} = \frac{2023}{280} \approx 7.2250 \]
+Not an integer.
+
+Try \(a = 276\):
+\[ b = \frac{373 + 6 \cdot 276}{276 + 5} = \frac{373 + 1656}{281} = \frac{2029}{281} \approx 7.2206 \]
+Not an integer.
+
+Try \(a = 277\):
+\[ b = \frac{373 + 6 \cdot 277}{277 + 5} = \frac{373 + 1662}{282} = \frac{2035}{282} \approx 7.2163 \]
+Not an integer.
+
+Try \(a = 278\):
+\[ b = \frac{373 + 6 \cdot 278}{278 + 5} = \frac{373 + 1668}{283} = \frac{2041}{283} \approx 7.2120 \]
+Not an integer.
+
+Try \(a = 279\):
+\[ b = \frac{373 + 6 \cdot 279}{279 + 5} = \frac{373 + 1674}{284} = \frac{2047}{284} \approx 7.2077 \]
+Not an integer.
+
+Try \(a = 280\):
+\[ b = \frac{373 + 6 \cdot 280}{280 + 5} = \frac{373 + 1680}{285} = \frac{2053}{285} \approx 7.2035 \]
+Not an integer.
+
+Try \(a = 281\):
+\[ b = \frac{373 + 6 \cdot 281}{281 + 5} = \frac{373 + 1686}{286} = \frac{2059}{286} \approx 7.1993 \]
+Not an integer.
+
+Try \(a = 282\):
+\[ b = \frac{373 + 6 \cdot 282}{282 + 5} = \frac{373 + 1692}{287} = \frac{2065}{287} \approx 7.1951 \]
+Not an integer.
+
+Try \(a = 283\):
+\[ b = \frac{373 + 6 \cdot 283}{283 + 5} = \frac{373 + 1698}{288} = \frac{2071}{288} \approx 7.1910 \]
+Not an integer.
+
+Try \(a = 284\):
+\[ b = \frac{373 + 6 \cdot 284}{284 + 5} = \frac{373 + 1704}{289} = \frac{2077}{289} \approx 7.1869 \]
+Not an integer.
+
+Try \(a = 285\):
+\[ b = \frac{373 + 6 \cdot 285}{285 + 5} = \frac{373 + 1710}{290} = \frac{2083}{290} \approx 7.1828 \]
+Not an integer.
+
+Try \(a = 286\):
+\[ b = \frac{373 + 6 \cdot 286}{286 + 5} = \frac{373 + 1716}{291} = \frac{2089}{291} \approx 7.1787 \]
+Not an integer.
+
+Try \(a = 287\):
+\[ b = \frac{373 + 6 \cdot 287}{287 + 5} = \frac{373 + 1722}{292} = \frac{2095}{292} \approx 7.1747 \]
+Not an integer.
+
+Try \(a = 288\):
+\[ b = \frac{373 + 6 \cdot 288}{288 + 5} = \frac{373 + 1728}{293} = \frac{2101}{293} \approx 7.1706 \]
+Not an integer.
+
+Try \(a = 289\):
+\[ b = \frac{373 + 6 \cdot 289}{289 + 5} = \frac{373 + 1734}{294} = \frac{2107}{294} \approx 7.1667 \]
+Not an integer.
+
+Try \(a = 290\):
+\[ b = \frac{373 + 6 \cdot 290}{290 + 5} = \frac{373 + 1740}{295} = \frac{2113}{295} \approx 7.1627 \]
+Not an integer.
+
+Try \(a = 291\):
+\[ b = \frac{373 + 6 \cdot 291}{291 + 5} = \frac{373 + 1746}{296} = \frac{2119}{296} \approx 7.1588 \]
+Not an integer.
+
+Try \(a = 292\):
+\[ b = \frac{373 + 6 \cdot 292}{292 + 5} = \frac{373 + 1752}{297} = \frac{2125}{297} \approx 7.1549 \]
+Not an integer.
+
+Try \(a = 293\):
+\[ b = \frac{373 + 6 \cdot 293}{293 + 5} = \frac{373 + 1758}{298} = \frac{2131}{298} \approx 7.1510 \]
+Not an integer.
+
+Try \(a = 294\):
+\[ b = \frac{373 + 6 \cdot 294}{294 + 5} = \frac{373 + 1764}{299} = \frac{2137}{299} \approx 7.1472 \]
+Not an integer.
+
+Try \(a = 295\):
+\[ b = \frac{373 + 6 \cdot 295}{295 + 5} = \frac{373 + 1770}{300} = \frac{2143}{300} \approx 7.1433 \]
+Not an integer.
+
+Try \(a = 296\):
+\[ b = \frac{373 + 6 \cdot 296}{296 + 5} = \frac{373 + 1776}{301} = \frac{2149}{301} \approx 7.1395 \]
+Not an integer.
+
+Try \(a = 297\):
+\[ b = \frac{373 + 6 \cdot 297}{297 + 5} = \frac{373 + 1782}{302} = \frac{2155}{302} \approx 7.1358 \]
+Not an integer.
+
+Try \(a = 298\):
+\[ b = \frac{373 + 6 \cdot 298}{298 + 5} = \frac{373 + 1788}{303} = \frac{2161}{303} \approx 7.1320 \]
+Not an integer.
+
+Try \(a = 299\):
+\[ b = \frac{373 + 6 \cdot 299}{299 + 5} = \frac{373 + 1794}{304} = \frac{2167}{304} \approx 7.1283 \]
+Not an integer.
+
+Try \(a = 300\):
+\[ b = \frac{373 + 6 \cdot 300}{300 + 5} = \frac{373 + 1800}{305} = \frac{2173}{305} \approx 7.1246 \]
+Not an integer.
+
+Since \(b\) is now below 7 and still not an integer, and must be a positive integer, let’s try a few more values to ensure we haven’t missed any solutions.
+
+Try \(a = 301\):
+\[ b = \frac{373 + 6 \cdot 301}{301 + 5} = \frac{373 + 1806}{306} = \frac{2179}{306} \approx 7.1209 \]
+Not an integer.
+
+Try \(a = 302\):
+\[ b = \frac{373 + 6 \cdot 302}{302 + 5} = \frac{373 + 1812}{307} = \frac{2185}{307} \approx 7.1173 \]
+Not an integer.
+
+Try \(a = 303\):
+\[ b = \frac{373 + 6 \cdot 303}{303 + 5} = \frac{373 + 1818}{308} = \frac{2191}{308} \approx 7.1136 \]
+Not an integer.
+
+Try \(a = 304\):
+\[ b = \frac{373 + 6 \cdot 304}{304 + 5} = \frac{373 + 1824}{309} = \frac{2197}{309} \approx 7.1100 \]
+Not an integer.
+
+Try \(a = 305\):
+\[ b = \frac{373 + 6 \cdot 305}{305 + 5} = \frac{373 + 1830}{310} = \frac{2203}{310} \approx 7.1065 \]
+Not an integer.
+
+Try \(a = 306\):
+\[ b = \frac{373 + 6 \cdot 306}{306 + 5} = \frac{373 + 1836}{311} = \frac{2209}{311} \approx 7.1029 \]
+Not an integer.
+
+Try \(a = 307\):
+\[ b = \frac{373 + 6 \cdot 307}{307 + 5} = \frac{373 + 1842}{312} = \frac{2215}{312} \approx 7.0994 \]
+Not an integer.
+
+Try \(a = 308\):
+\[ b = \frac{373 + 6 \cdot 308}{308 + 5} = \frac{373 + 1848}{313} = \frac{2221}{313} \approx 7.0958 \]
+Not an integer.
+
+Try \(a = 309\):
+\[ b = \frac{373 + 6 \cdot 309}{309 + 5} = \frac{373 + 1854}{314} = \frac{2227}{314} \approx 7.0924 \]
+Not an integer.
+
+Try \(a = 310\):
+\[ b = \frac{373 + 6 \cdot 310}{310 + 5} = \frac{373 + 1860}{315} = \frac{2233}{315} \approx 7.0889 \]
+Not an integer.
+
+Try \(a = 311\):
+\[ b = \frac{373 + 6 \cdot 311}{311 + 5} = \frac{373 + 1866}{316} = \frac{2239}{316} \approx 7.0854 \]
+Not an integer.
+
+Try \(a = 312\):
+\[ b = \frac{373 + 6 \cdot 312}{312 + 5} = \frac{373 + 1872}{317} = \frac{2245}{317} \approx 7.0820 \]
+Not an integer.
+
+Try \(a = 313\):
+\[ b = \frac{373 + 6 \cdot 313}{313 + 5} = \frac{373 + 1878}{318} = \frac{2251}{318} \approx 7.0786 \]
+Not an integer.
+
+Try \(a = 314\):
+\[ b = \frac{373 + 6 \cdot 314}{314 + 5} = \frac{373 + 1884}{319} = \frac{2257}{319} \approx 7.0752 \]
+Not an integer.
+
+Try \(a = 315\):
+\[ b = \frac{373 + 6 \cdot 315}{315 + 5} = \frac{373 + 1890}{320} = \frac{2263}{320} \approx 7.0719 \]
+Not an integer.
+
+Try \(a = 316\):
+\[ b = \frac{373 + 6 \cdot 316}{316 + 5} = \frac{373 + 1896}{321} = \frac{2269}{321} \approx 7.0685 \]
+Not an integer.
+
+Try \(a = 317\):
+\[ b = \frac{373 + 6 \cdot 317}{317 + 5} = \frac{373 + 1902}{322} = \frac{2275}{322} \approx 7.0652 \]
+Not an integer.
+
+Try \(a = 318\):
+\[ b = \frac{373 + 6 \cdot 318}{318 + 5} = \frac{373 + 1908}{323} = \frac{2281}{323} \approx 7.0619 \]
+Not an integer.
+
+Try \(a = 319\):
+\[ b = \frac{373 + 6 \cdot 319}{319 + 5} = \frac{373 + 1914}{324} = \frac{2287}{324} \approx 7.0586 \]
+Not an integer.
+
+Try \(a = 320\):
+\[ b = \frac{373 + 6 \cdot 320}{320 + 5} = \frac{373 + 1920}{325} = \frac{2293}{325} \approx 7

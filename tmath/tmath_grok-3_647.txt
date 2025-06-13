@@ -1,0 +1,81 @@
+**Problem Statement**: Determine the value of the binomial coefficient \(\dbinom{n}{n-1}\) for any positive integer \(n\), and express the answer in terms of \(n\).
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve for \(\dbinom{n}{n-1}\), break down the problem into intermediate subgoals:  
+1. Understand the definition of the binomial coefficient \(\dbinom{n}{k}\).  
+2. Apply the definition to compute \(\dbinom{n}{n-1}\).  
+3. Simplify the expression to express the result in terms of \(n\).  
+[/PLANNING]
+
+### Step 2: Recall Info
+[PLANNING]  
+**Action**: Recall Info (Review)  
+**Meta-data**: Retrieve the definition of the binomial coefficient \(\dbinom{n}{k}\) to serve as the foundation for computing \(\dbinom{n}{n-1}\).  
+[/PLANNING]  
+
+[REVIEW]  
+The binomial coefficient \(\dbinom{n}{k}\) represents the number of ways to choose \(k\) items from \(n\) items without regard to order. It is defined as:  
+\[
+\dbinom{n}{k} = \frac{n!}{k!(n-k)!}
+\]  
+This formula will be used to compute \(\dbinom{n}{n-1}\).  
+[/REVIEW]
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute \(\dbinom{n}{n-1}\) using the binomial coefficient formula. This will be achieved by substituting \(k = n-1\) into the formula \(\dbinom{n}{k} = \frac{n!}{k!(n-k)!}\) and simplifying the result.  
+[/PLANNING]  
+
+[IMP]  
+Using the binomial coefficient formula:  
+\[
+\dbinom{n}{n-1} = \frac{n!}{(n-1)!(n-(n-1))!} = \frac{n!}{(n-1)! \cdot 1!}
+\]  
+Since \(1! = 1\), this simplifies to:  
+\[
+\dbinom{n}{n-1} = \frac{n!}{(n-1)!}
+\]  
+Rewrite \(n! = n \cdot (n-1)!\):  
+\[
+\dbinom{n}{n-1} = \frac{n \cdot (n-1)!}{(n-1)!} = n
+\]  
+Thus, \(\dbinom{n}{n-1} = n\).  
+[/IMP]
+
+### Step 4: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify that \(\dbinom{n}{n-1} = n\) is correct by checking the computation and considering alternative methods or examples.  
+[/PLANNING]  
+
+[IMP]  
+To validate, consider an alternative interpretation: \(\dbinom{n}{n-1}\) represents the number of ways to choose \(n-1\) items from \(n\), which is equivalent to choosing 1 item from \(n\) (since \(\dbinom{n}{k} = \dbinom{n}{n-k}\)). Thus:  
+\[
+\dbinom{n}{n-1} = \dbinom{n}{1} = \frac{n!}{1!(n-1)!} = \frac{n \cdot (n-1)!}{(n-1)!} = n
+\]  
+Additionally, test with specific values:  
+- For \(n=1\), \(\dbinom{1}{0} = \frac{1!}{0!1!} = 1\).  
+- For \(n=2\), \(\dbinom{2}{1} = \frac{2!}{1!1!} = 2\).  
+- For \(n=3\), \(\dbinom{3}{2} = \frac{3!}{2!1!} = 3\).  
+These confirm that \(\dbinom{n}{n-1} = n\).  
+[/IMP]
+
+### Step 5: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Compute \(\dbinom{n}{n-1}\) in terms of \(n\).  
+  - Subgoal 1: Understand the binomial coefficient definition (completed).  
+  - Subgoal 2: Compute \(\dbinom{n}{n-1}\) using the formula (completed).  
+  - Subgoal 3: Simplify the expression (completed).  
+  - Subgoal 4: Validate the result (completed).  
+**Current Goal**: The main goal is achieved, as \(\dbinom{n}{n-1} = n\) has been computed and validated.  
+[/REVIEW]
+
+**Final Answer**: \(\dbinom{n}{n-1} = n\) for any positive integer \(n\).

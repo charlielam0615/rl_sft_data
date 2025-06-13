@@ -1,0 +1,151 @@
+### Problem Restatement
+We need to find the coordinates of point \( C \) on segment \( AB \), where \( A \) has coordinates \( (-1, 0) \), \( B \) has coordinates \( (3, 8) \), and point \( C \) is three times as far from point \( A \) as it is from point \( B \). This implies the distance \( AC = 3 \cdot BC \), where \( AC \) is the distance from \( A \) to \( C \) and \( BC \) is the distance from \( B \) to \( C \).
+
+---
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+To solve for the coordinates of point \( C \), break the problem into forward-looking subgoals:  
+1. Interpret the condition \( AC = 3 \cdot BC \) in terms of distances along segment \( AB \).  
+2. Determine a method to represent point \( C \)'s position on segment \( AB \), such as using a parameter or ratio.  
+3. Set up equations based on the distance condition and solve for \( C \)'s coordinates.  
+4. Verify the solution by checking distances \( AC \) and \( BC \).  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data:**  
+- **Current goal:** Represent point \( C \)'s position on segment \( AB \) and express the condition \( AC = 3 \cdot BC \).  
+- **How to achieve it:** Since \( C \) lies on segment \( AB \), use the section formula to parameterize \( C \)'s coordinates as a point dividing \( AB \) in some ratio. Then, apply the distance condition \( AC = 3 \cdot BC \) using the distance formula to set up equations.  
+[/PLANNING]
+
+[IMP]  
+Since \( C \) is on segment \( AB \), we can represent \( C \) as a point dividing \( AB \) in the ratio \( k:1 \), where \( k \) is the ratio of \( BC \) to \( AC \). Using the section formula, the coordinates of \( C \) dividing \( AB \) in the ratio \( k:1 \) (where \( AC:BC = 1:k \)) are:
+
+\[
+C = \left( \frac{k \cdot (-1) + 1 \cdot 3}{k + 1}, \frac{k \cdot 0 + 1 \cdot 8}{k + 1} \right) = \left( \frac{-k + 3}{k + 1}, \frac{8}{k + 1} \right)
+\]
+
+Next, interpret \( AC = 3 \cdot BC \). Compute distances \( AC \) and \( BC \):
+
+- **Distance \( AC \)**: From \( A(-1, 0) \) to \( C \left( \frac{-k + 3}{k + 1}, \frac{8}{k + 1} \right) \):
+
+\[
+AC = \sqrt{\left( \frac{-k + 3}{k + 1} - (-1) \right)^2 + \left( \frac{8}{k + 1} - 0 \right)^2} = \sqrt{\left( \frac{-k + 3 + k + 1}{k + 1} \right)^2 + \left( \frac{8}{k + 1} \right)^2} = \sqrt{\left( \frac{4}{k + 1} \right)^2 + \left( \frac{8}{k + 1} \right)^2}
+\]
+
+\[
+= \sqrt{\frac{16}{(k + 1)^2} + \frac{64}{(k + 1)^2}} = \sqrt{\frac{80}{(k + 1)^2}} = \frac{\sqrt{80}}{k + 1} = \frac{4\sqrt{5}}{k + 1}
+\]
+
+- **Distance \( BC \)**: From \( B(3, 8) \) to \( C \left( \frac{-k + 3}{k + 1}, \frac{8}{k + 1} \right) \):
+
+\[
+BC = \sqrt{\left( 3 - \frac{-k + 3}{k + 1} \right)^2 + \left( 8 - \frac{8}{k + 1} \right)^2}
+\]
+
+Simplify the \( x \)-coordinate difference:
+
+\[
+3 - \frac{-k + 3}{k + 1} = \frac{3(k + 1) - (-k + 3)}{k + 1} = \frac{3k + 3 + k - 3}{k + 1} = \frac{4k}{k + 1}
+\]
+
+Simplify the \( y \)-coordinate difference:
+
+\[
+8 - \frac{8}{k + 1} = \frac{8(k + 1) - 8}{k + 1} = \frac{8k + 8 - 8}{k + 1} = \frac{8k}{k + 1}
+\]
+
+\[
+BC = \sqrt{\left( \frac{4k}{k + 1} \right)^2 + \left( \frac{8k}{k + 1} \right)^2} = \sqrt{\frac{16k^2}{(k + 1)^2} + \frac{64k^2}{(k + 1)^2}} = \sqrt{\frac{80k^2}{(k + 1)^2}} = \frac{\sqrt{80k^2}}{k + 1} = \frac{\sqrt{80} \cdot k}{k + 1} = \frac{4\sqrt{5} \cdot k}{k + 1}
+\]
+
+Apply the condition \( AC = 3 \cdot BC \):
+
+\[
+\frac{4\sqrt{5}}{k + 1} = 3 \cdot \frac{4\sqrt{5} \cdot k}{k + 1}
+\]
+
+Since \( 4\sqrt{5} \neq 0 \) and \( k + 1 \neq 0 \), divide both sides by \( \frac{4\sqrt{5}}{k + 1} \):
+
+\[
+1 = 3k
+\]
+
+\[
+k = \frac{1}{3}
+\]
+
+Substitute \( k = \frac{1}{3} \) into \( C \)'s coordinates:
+
+\[
+C_x = \frac{-\frac{1}{3} + 3}{\frac{1}{3} + 1} = \frac{\frac{-1 + 9}{3}}{\frac{1 + 3}{3}} = \frac{\frac{8}{3}}{\frac{4}{3}} = \frac{8}{3} \cdot \frac{3}{4} = 2
+\]
+
+\[
+C_y = \frac{8}{\frac{1}{3} + 1} = \frac{8}{\frac{4}{3}} = 8 \cdot \frac{3}{4} = 6
+\]
+
+Thus, the coordinates of \( C \) are \( (2, 6) \).  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data:**  
+- **Current goal:** Verify that the coordinates \( C(2, 6) \) satisfy the condition \( AC = 3 \cdot BC \).  
+- **How to achieve it:** Compute the distances \( AC \) and \( BC \) using the distance formula and check if \( AC = 3 \cdot BC \).  
+[/PLANNING]
+
+[IMP]  
+Verify by calculating distances:
+
+- **Distance \( AC \)**: From \( A(-1, 0) \) to \( C(2, 6) \):
+
+\[
+AC = \sqrt{(2 - (-1))^2 + (6 - 0)^2} = \sqrt{(3)^2 + (6)^2} = \sqrt{9 + 36} = \sqrt{45} = 3\sqrt{5}
+\]
+
+- **Distance \( BC \)**: From \( B(3, 8) \) to \( C(2, 6) \):
+
+\[
+BC = \sqrt{(3 - 2)^2 + (8 - 6)^2} = \sqrt{(1)^2 + (2)^2} = \sqrt{1 + 4} = \sqrt{5}
+\]
+
+Check the condition:
+
+\[
+3 \cdot BC = 3 \cdot \sqrt{5} = 3\sqrt{5} = AC
+\]
+
+The condition \( AC = 3 \cdot BC \) holds, confirming the coordinates \( C(2, 6) \) are correct.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Track Goals (Review)**  
+Track the hierarchy of goals to ensure all objectives are met and provide context for the solution.  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy:**  
+- Main goal: Find the coordinates of point \( C \) such that \( AC = 3 \cdot BC \) on segment \( AB \).  
+  - Subgoal 1: Interpret \( AC = 3 \cdot BC \) and represent \( C \)'s position (completed in Step 2).  
+  - Subgoal 2: Set up and solve equations for \( C \)'s coordinates (completed in Step 2).  
+  - Subgoal 3: Verify the solution (completed in Step 3).  
+
+**Current Goal:** The main goal is achieved, as the coordinates \( C(2, 6) \) satisfy the condition \( AC = 3 \cdot BC \). No further subgoals are needed.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The coordinates of point \( C \) are \( (2, 6) \).

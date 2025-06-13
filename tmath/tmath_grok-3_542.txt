@@ -1,0 +1,83 @@
+**Problem Statement**: Mark borrows $10 from Emily with a simple interest rate of 15% per day. We need to determine the least integer number of days after which the amount Mark owes (principal plus interest) is at least twice the borrowed amount, i.e., at least $20.
+
+---
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to find the least number of days where the total amount owed is at least $20.  
+- Subgoal 1: Understand the simple interest formula and apply it to calculate the total amount owed after \( n \) days.  
+- Subgoal 2: Set up an inequality to find when the total amount is at least $20.  
+- Subgoal 3: Solve for the smallest integer \( n \) that satisfies the inequality.  
+
+---
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to apply the simple interest formula to calculate the total amount owed after \( n \) days. Use the formula \( A = P + P \cdot r \cdot t \), where \( P = 10 \), \( r = 0.15 \), and \( t = n \) days, to express the total amount in terms of \( n \).  
+
+[IMP]  
+The simple interest formula is:  
+\[ A = P + P \cdot r \cdot t \]  
+where:  
+- \( P = 10 \) (principal),  
+- \( r = 0.15 \) (daily interest rate),  
+- \( t = n \) (number of days).  
+
+So, the total amount owed after \( n \) days is:  
+\[ A = 10 + 10 \cdot 0.15 \cdot n = 10 + 1.5n \]  
+
+---
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to set up an inequality to find when the total amount owed is at least twice the borrowed amount ($20). Use the expression \( A = 10 + 1.5n \) and solve for \( n \) when \( A \geq 20 \).  
+
+[IMP]  
+We need the total amount to be at least $20:  
+\[ 10 + 1.5n \geq 20 \]  
+Subtract 10 from both sides:  
+\[ 1.5n \geq 10 \]  
+Divide by 1.5:  
+\[ n \geq \frac{10}{1.5} = \frac{10 \cdot 2}{3} = \frac{20}{3} \approx 6.666\ldots \]  
+Since \( n \) must be an integer, take the smallest integer \( n \geq \frac{20}{3} \), which is \( n = 7 \).  
+
+---
+
+### Step 4
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate the solution by checking if \( n = 7 \) satisfies the condition (total amount is at least $20) and if \( n = 6 \) does not.  
+
+[IMP]  
+For \( n = 7 \):  
+\[ A = 10 + 1.5 \cdot 7 = 10 + 10.5 = 20.5 \]  
+Since \( 20.5 \geq 20 \), \( n = 7 \) satisfies the condition.  
+
+For \( n = 6 \):  
+\[ A = 10 + 1.5 \cdot 6 = 10 + 9 = 19 \]  
+Since \( 19 < 20 \), \( n = 6 \) does not satisfy the condition.  
+
+Thus, \( n = 7 \) is the smallest integer that works.  
+
+---
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the least integer number of days after which the amount owed is at least $20.  
+  - Subgoal 1: Apply the simple interest formula (completed).  
+  - Subgoal 2: Set up and solve the inequality \( 10 + 1.5n \geq 20 \) (completed).  
+  - Subgoal 3: Validate the smallest integer \( n \) (completed).  
+
+**Current Goal**: Conclude the solution since all subgoals are completed and validated.  
+The least integer number of days is 7, as it satisfies \( A \geq 20 \), and \( n = 6 \) does not.  
+
+---
+
+**Final Answer**: The least integer number of days after which Mark will have to pay back at least twice as much as he borrowed is **7 days**.

@@ -1,0 +1,111 @@
+### Problem Statement
+We need to determine the range of the function \( r(x) = \frac{1}{(1-x)^2} \) and express it in interval notation. The range is the set of all possible output values \( y \) that \( r(x) \) can produce as \( x \) varies over its domain.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to find the range:  
+1. Determine the domain of \( r(x) \).  
+2. Analyze the behavior of \( r(x) \) over its domain to identify all possible output values.  
+3. Express the range in interval notation.
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Determine the domain of \( r(x) \).  
+**How to Achieve**: Identify values of \( x \) for which \( r(x) = \frac{1}{(1-x)^2} \) is defined by checking where the denominator is non-zero.
+[/PLANNING]
+
+[IMP]
+The function \( r(x) = \frac{1}{(1-x)^2} \) is undefined when the denominator \( (1-x)^2 = 0 \), which occurs when \( 1-x = 0 \), i.e., \( x = 1 \). Thus, the domain is all real numbers except \( x = 1 \), or in interval notation, \( (-\infty, 1) \cup (1, \infty) \).
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Analyze the behavior of \( r(x) \) to find all possible output values.  
+**How to Achieve**: Evaluate \( r(x) \) over its domain, considering limits, critical points, and the function’s behavior to determine the set of \( y \)-values produced.
+[/PLANNING]
+
+[IMP]
+Since \( r(x) = \frac{1}{(1-x)^2} \), and the denominator \( (1-x)^2 \) is always positive for \( x \neq 1 \), we have \( r(x) > 0 \) for all \( x \) in the domain. Let’s explore the output values:
+
+- **As \( x \to 1^- \) (approaching 1 from the left)**:  
+  \( 1-x > 0 \), but \( 1-x \to 0^+ \), so \( (1-x)^2 \to 0^+ \), and \( r(x) = \frac{1}{(1-x)^2} \to +\infty \).
+
+- **As \( x \to 1^+ \) (approaching 1 from the right)**:  
+  \( 1-x < 0 \), but \( (1-x)^2 \to 0^+ \), so \( r(x) \to +\infty \).
+
+- **As \( x \to \pm \infty \)**:  
+  If \( x \to +\infty \), \( 1-x \to -\infty \), so \( (1-x)^2 \to +\infty \), and \( r(x) = \frac{1}{(1-x)^2} \to 0^+ \).  
+  If \( x \to -\infty \), \( 1-x \to +\infty \), so \( (1-x)^2 \to +\infty \), and \( r(x) \to 0^+ \).
+
+- **Test values to understand behavior**:  
+  - At \( x = 0 \): \( r(0) = \frac{1}{(1-0)^2} = 1 \).  
+  - At \( x = 2 \): \( r(2) = \frac{1}{(1-2)^2} = \frac{1}{(-1)^2} = 1 \).  
+  - At \( x = 0.5 \): \( r(0.5) = \frac{1}{(1-0.5)^2} = \frac{1}{(0.5)^2} = \frac{1}{0.25} = 4 \).  
+  - At \( x = 1.5 \): \( r(1.5) = \frac{1}{(1-1.5)^2} = \frac{1}{(-0.5)^2} = \frac{1}{0.25} = 4 \).
+
+To find the range, solve \( y = r(x) = \frac{1}{(1-x)^2} \) for \( x \):  
+\[ y = \frac{1}{(1-x)^2} \implies (1-x)^2 = \frac{1}{y} \implies 1-x = \pm \sqrt{\frac{1}{y}} \implies x = 1 \pm \sqrt{\frac{1}{y}}. \]  
+For \( x \) to be real, \( \frac{1}{y} \geq 0 \), so \( y > 0 \). For any \( y > 0 \), we can compute \( x = 1 + \sqrt{\frac{1}{y}} \) or \( x = 1 - \sqrt{\frac{1}{y}} \), both of which are real and not equal to 1. Thus, every \( y > 0 \) is achievable.
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify that the range includes all positive real numbers and excludes others.  
+**How to Achieve**: Check if \( y \leq 0 \) is possible and confirm that all \( y > 0 \) are covered.
+[/PLANNING]
+
+[IMP]
+- **Can \( y \leq 0 \)?** Since \( (1-x)^2 > 0 \) for \( x \neq 1 \), we have \( r(x) = \frac{1}{(1-x)^2} > 0 \). Thus, \( y = 0 \) or \( y < 0 \) is not possible.  
+- **Are all \( y > 0 \) achievable?** From the previous step, for any \( y > 0 \), we can find \( x = 1 \pm \sqrt{\frac{1}{y}} \), which is in the domain (\( x \neq 1 \)). For example:  
+  - If \( y = 2 \), then \( \frac{1}{y} = \frac{1}{2} \), so \( x = 1 \pm \sqrt{\frac{1}{2}} = 1 \pm \frac{\sqrt{2}}{2} \).  
+  - Check: For \( x = 1 + \frac{\sqrt{2}}{2} \), compute \( 1-x = 1 - (1 + \frac{\sqrt{2}}{2}) = -\frac{\sqrt{2}}{2} \), so \( r(x) = \frac{1}{\left(-\frac{\sqrt{2}}{2}\right)^2} = \frac{1}{\frac{2}{4}} = 2 \).  
+Thus, the range is all \( y > 0 \), or in interval notation, \( (0, \infty) \).
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main Goal: Determine the range of \( r(x) = \frac{1}{(1-x)^2} \) in interval notation.  
+  - Subgoal 1: Determine the domain of \( r(x) \). (Completed: Domain is \( (-\infty, 1) \cup (1, \infty) \)).  
+  - Subgoal 2: Analyze the behavior of \( r(x) \) to find all possible output values. (Completed: \( y > 0 \)).  
+  - Subgoal 3: Express the range in interval notation. (Pending).  
+**Current Goal**: Express the range in interval notation.  
+Based on the analysis, the range is \( (0, \infty) \).
+[/REVIEW]
+
+---
+
+### Step 6: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Express the range in interval notation.  
+**How to Achieve**: Use the results from the analysis to state the range concisely.
+[/PLANNING]
+
+[IMP]
+The range of \( r(x) = \frac{1}{(1-x)^2} \) is all positive real numbers, expressed in interval notation as \( (0, \infty) \).
+[/IMP]
+
+---
+
+### Final Answer
+The range of the function \( r(x) = \frac{1}{(1-x)^2} \) is \( (0, \infty) \).

@@ -1,0 +1,122 @@
+**Problem Statement**: Compute the sum of the geometric series \(-1 + 2 - 4 + 8 - \cdots + 512\).
+
+---
+
+**Step 1**
+
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of computing the sum of the geometric series into intermediate subgoals:  
+1. Identify the pattern and confirm the series is geometric.  
+2. Determine the first term, common ratio, and number of terms.  
+3. Apply the geometric series sum formula.  
+4. Compute the final sum.  
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify the pattern and confirm the series is geometric. Achieve this by analyzing the given terms to find the first term and common ratio, and verify the series follows a geometric pattern.  
+[/PLANNING]
+
+[IMP]  
+The series is \(-1 + 2 - 4 + 8 - \cdots + 512\). To confirm it’s geometric, compute the ratio between consecutive terms:  
+- \( \frac{2}{-1} = -2 \)  
+- \( \frac{-4}{2} = -2 \)  
+- \( \frac{8}{-4} = -2 \)  
+The ratio is constant (\(-2\)), confirming a geometric series. The first term \( a = -1 \), and the common ratio \( r = -2 \).  
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to determine the number of terms in the series. Achieve this by expressing the last term (512) in terms of the first term, common ratio, and number of terms, then solving for the number of terms.  
+[/PLANNING]
+
+[IMP]  
+For a geometric series, the \( n \)-th term is given by \( a_n = a \cdot r^{n-1} \). Here, \( a = -1 \), \( r = -2 \), and the last term is 512. Set up the equation:  
+\[ 512 = (-1) \cdot (-2)^{n-1} \]  
+Since \((-1) \cdot (-2)^{n-1} = -(-2)^{n-1}\), we have:  
+\[ 512 = -(-2)^{n-1} \]  
+\[ (-2)^{n-1} = -512 \]  
+Since \((-2)^{n-1}\) is negative, \( n-1 \) must be odd (as \(-2\) raised to an odd power is negative). Solve:  
+\[ (-2)^{n-1} = -512 \]  
+\[ (-2)^{n-1} = -2^9 \] (since \( 2^9 = 512 \))  
+\[ (-2)^{n-1} = (-2)^9 \]  
+Thus, \( n-1 = 9 \), so \( n = 10 \). The series has 10 terms.  
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Compute the sum of the geometric series \(-1 + 2 - 4 + 8 - \cdots + 512\).  
+  - Subgoal 1: Identify the pattern and confirm the series is geometric (completed: series is geometric with \( a = -1 \), \( r = -2 \)).  
+  - Subgoal 2: Determine the number of terms (completed: \( n = 10 \)).  
+  - Subgoal 3: Apply the geometric series sum formula (pending).  
+  - Subgoal 4: Compute the final sum (pending).  
+**Current Goal**: Apply the geometric series sum formula.  
+[/REVIEW]
+
+---
+
+**Step 5**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to apply the geometric series sum formula. Use the formula \( S_n = a \frac{1 - r^n}{1 - r} \) with \( a = -1 \), \( r = -2 \), and \( n = 10 \).  
+[/PLANNING]
+
+[IMP]  
+The sum of a geometric series with \( n \) terms is:  
+\[ S_n = a \frac{1 - r^n}{1 - r} \]  
+Substitute \( a = -1 \), \( r = -2 \), \( n = 10 \):  
+\[ S_{10} = (-1) \frac{1 - (-2)^{10}}{1 - (-2)} \]  
+Compute:  
+- \( (-2)^{10} = 2^{10} = 1024 \)  
+- \( 1 - (-2)^{10} = 1 - 1024 = -1023 \)  
+- \( 1 - (-2) = 1 + 2 = 3 \)  
+\[ S_{10} = (-1) \frac{-1023}{3} = \frac{1023}{3} = 341 \]  
+The sum is 341.  
+[/IMP]
+
+---
+
+**Step 6**
+
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate the computed sum. Verify the sum by calculating the first few terms manually and checking if the formula-derived sum is consistent with the series.  
+[/PLANNING]
+
+[IMP]  
+Manually compute the sum of the first few terms:  
+- Terms: \(-1 + 2 - 4 + 8 - 16 + 32 - 64 + 128 - 256 + 512\)  
+- Partial sums:  
+  - \(-1 + 2 = 1\)  
+  - \(1 - 4 = -3\)  
+  - \(-3 + 8 = 5\)  
+  - \(5 - 16 = -11\)  
+  - \(-11 + 32 = 21\)  
+  - \(21 - 64 = -43\)  
+  - \(-43 + 128 = 85\)  
+  - \(85 - 256 = -171\)  
+  - \(-171 + 512 = 341\)  
+The manual sum of all 10 terms is 341, matching the formula result.  
+[/IMP]
+
+---
+
+**Final Answer**: The sum of the geometric series \(-1 + 2 - 4 + 8 - \cdots + 512\) is **341**.

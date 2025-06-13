@@ -1,0 +1,142 @@
+### Problem Statement
+We need to compute \( x^2 y + x y^2 \) given the system of equations:
+1. \( \frac{1}{x} + \frac{1}{y} = 3 \)
+2. \( x y + x + y = 4 \)
+
+### Step 1
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+To solve for \( x^2 y + x y^2 \), we need to find values or expressions for \( x \) and \( y \) that satisfy both equations, then compute the target expression. Break this into subgoals:
+1. Simplify the given equations to find relationships between \( x \) and \( y \).
+2. Solve for \( x \) and \( y \) or express \( x^2 y + x y^2 \) in terms of known quantities.
+3. Compute the final expression.
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Simplify the first equation to make it easier to work with.
+How to Achieve: Rewrite \( \frac{1}{x} + \frac{1}{y} = 3 \) in a form that combines the fractions and relates to \( x \) and \( y \).
+[/PLANNING]
+
+[IMP]
+Rewrite the first equation:
+\[
+\frac{1}{x} + \frac{1}{y} = \frac{x + y}{x y} = 3
+\]
+Thus:
+\[
+x + y = 3 x y
+\]
+This gives us a new equation to work with alongside the second equation \( x y + x + y = 4 \).
+[/IMP]
+
+### Step 3
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Compute \( x^2 y + x y^2 \).
+  - Subgoal 1: Simplify the given equations (completed: derived \( x + y = 3 x y \)).
+  - Subgoal 2: Solve for \( x \) and \( y \) or express the target expression.
+  - Subgoal 3: Compute \( x^2 y + x y^2 \).
+Current Goal: Solve for \( x \) and \( y \) or find a way to express \( x^2 y + x y^2 \) directly.
+[/REVIEW]
+
+### Step 4
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Use the simplified equations to find a relationship that helps compute \( x^2 y + x y^2 \).
+How to Achieve: Notice that \( x^2 y + x y^2 = x y (x + y) \). Use the equations \( x + y = 3 x y \) and \( x y + x + y = 4 \) to find \( x y \) and \( x + y \).
+[/PLANNING]
+
+[IMP]
+From Step 2, we have:
+\[
+x + y = 3 x y
+\]
+The second equation is:
+\[
+x y + x + y = 4
+\]
+Substitute \( x + y = 3 x y \) into the second equation:
+\[
+x y + (x + y) = x y + 3 x y = 4 x y = 4
+\]
+Solve for \( x y \):
+\[
+x y = 1
+\]
+Now, use \( x + y = 3 x y \):
+\[
+x + y = 3 \cdot 1 = 3
+\]
+So, we have:
+\[
+x y = 1, \quad x + y = 3
+\]
+Now compute \( x^2 y + x y^2 \):
+\[
+x^2 y + x y^2 = x y (x + y) = 1 \cdot 3 = 3
+\]
+[/IMP]
+
+### Step 5
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify the solution for \( x^2 y + x y^2 \).
+How to Achieve: Solve for \( x \) and \( y \) explicitly to confirm that \( x^2 y + x y^2 = 3 \), or check if the derived values satisfy both original equations.
+[/PLANNING]
+
+[IMP]
+Using \( x y = 1 \) and \( x + y = 3 \), solve for \( x \) and \( y \):
+Assume \( y = \frac{1}{x} \) (from \( x y = 1 \)). Substitute into \( x + y = 3 \):
+\[
+x + \frac{1}{x} = 3
+\]
+Multiply through by \( x \):
+\[
+x^2 + 1 = 3 x
+\]
+\[
+x^2 - 3 x + 1 = 0
+\]
+Solve the quadratic equation:
+\[
+x = \frac{3 \pm \sqrt{9 - 4}}{2} = \frac{3 \pm \sqrt{5}}{2}
+\]
+So, \( x = \frac{3 + \sqrt{5}}{2} \), \( y = \frac{2}{3 + \sqrt{5}} = \frac{3 - \sqrt{5}}{2} \) (after rationalizing), or vice versa.
+Compute \( x^2 y + x y^2 \):
+\[
+x y = 1, \quad x + y = 3
+\]
+\[
+x^2 y + x y^2 = x y (x + y) = 1 \cdot 3 = 3
+\]
+This confirms our earlier result. Alternatively, verify the solutions in the original equations:
+- For \( x = \frac{3 + \sqrt{5}}{2} \), \( y = \frac{3 - \sqrt{5}}{2} \):
+  - First equation: \( \frac{1}{x} + \frac{1}{y} = \frac{2}{3 + \sqrt{5}} + \frac{2}{3 - \sqrt{5}} = \frac{2 (3 - \sqrt{5}) + 2 (3 + \sqrt{5})}{(3 + \sqrt{5})(3 - \sqrt{5})} = \frac{6 - 2 \sqrt{5} + 6 + 2 \sqrt{5}}{9 - 5} = \frac{12}{4} = 3 \)
+  - Second equation: \( x y = \frac{(3 + \sqrt{5})(3 - \sqrt{5})}{4} = \frac{9 - 5}{4} = 1 \), and \( x + y = \frac{3 + \sqrt{5} + 3 - \sqrt{5}}{2} = 3 \), so \( x y + x + y = 1 + 3 = 4 \).
+Both equations are satisfied, and \( x^2 y + x y^2 = 3 \).
+[/IMP]
+
+### Step 6
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Compute \( x^2 y + x y^2 \) (completed).
+  - Subgoal 1: Simplify the given equations (completed: derived \( x + y = 3 x y \)).
+  - Subgoal 2: Solve for \( x \) and \( y \) or express the target expression (completed: found \( x y = 1 \), \( x + y = 3 \)).
+  - Subgoal 3: Compute \( x^2 y + x y^2 \) (completed: \( x^2 y + x y^2 = 3 \)).
+Current Goal: None (problem solved).
+[/REVIEW]
+
+### Final Answer
+\[
+x^2 y + x y^2 = 3
+\]

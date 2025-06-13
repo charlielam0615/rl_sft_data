@@ -1,0 +1,99 @@
+**Problem Statement**: Find the sum of all values of \( k \) such that the quadratic equation \( 2x^2 - kx + 8 = 0 \) has two distinct integer solutions.
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to guide the solution process:  
+1. Ensure the quadratic equation has two distinct roots by checking the discriminant.  
+2. Identify conditions for the roots to be integers.  
+3. Solve for possible values of \( k \).  
+4. Sum all valid \( k \) values.  
+[/PLANNING]
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Ensure the quadratic equation has two distinct real roots.  
+**How to Achieve**: For the quadratic equation \( 2x^2 - kx + 8 = 0 \), calculate the discriminant and ensure it is positive for two distinct real roots.  
+[/PLANNING]  
+[IMP]  
+The quadratic equation is \( 2x^2 - kx + 8 = 0 \), where \( a = 2 \), \( b = -k \), and \( c = 8 \). The discriminant is:  
+\[ \Delta = b^2 - 4ac = (-k)^2 - 4 \cdot 2 \cdot 8 = k^2 - 64. \]  
+For two distinct real roots, \( \Delta > 0 \):  
+\[ k^2 - 64 > 0 \implies k^2 > 64 \implies |k| > 8 \implies k < -8 \text{ or } k > 8. \]  
+This condition ensures the equation has two distinct real roots.  
+[/IMP]
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Ensure the roots are integers.  
+**How to Achieve**: Use the quadratic formula to express the roots in terms of \( k \), then determine conditions for the roots to be integers.  
+[/PLANNING]  
+[IMP]  
+The roots of the quadratic equation are given by the quadratic formula:  
+\[ x = \frac{-b \pm \sqrt{\Delta}}{2a} = \frac{k \pm \sqrt{k^2 - 64}}{4}. \]  
+For the roots to be integers, say \( x_1 \) and \( x_2 \), the expressions \( \frac{k + \sqrt{k^2 - 64}}{4} \) and \( \frac{k - \sqrt{k^2 - 64}}{4} \) must be integers. Let the roots be \( m \) and \( n \), where \( m \) and \( n \) are distinct integers. By Vieta's formulas:  
+- Sum of roots: \( m + n = \frac{k}{2} \), so \( k = 2(m + n) \), and \( k \) must be even.  
+- Product of roots: \( m \cdot n = \frac{c}{a} = \frac{8}{2} = 4 \).  
+Thus, \( m \) and \( n \) are integer pairs such that \( m \cdot n = 4 \) and \( m \neq n \).  
+[/IMP]
+
+### Step 4: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Find all integer pairs \( (m, n) \) such that \( m \cdot n = 4 \) and compute corresponding \( k \).  
+**How to Achieve**: List all factor pairs of 4, compute \( k = 2(m + n) \), and verify the discriminant condition.  
+[/PLANNING]  
+[IMP]  
+The integer pairs \( (m, n) \) such that \( m \cdot n = 4 \) and \( m \neq n \) are:  
+- \( (1, 4) \), \( (4, 1) \), \( (-1, -4) \), \( (-4, -1) \), \( (2, 2) \), \( (-2, -2) \).  
+Since \( m \neq n \), exclude \( (2, 2) \) and \( (-2, -2) \). The valid pairs are:  
+1. \( (1, 4) \): Sum = \( 1 + 4 = 5 \), so \( k = 2 \cdot 5 = 10 \).  
+2. \( (4, 1) \): Sum = \( 4 + 1 = 5 \), so \( k = 2 \cdot 5 = 10 \). (Same as above, but roots are swapped.)  
+3. \( (-1, -4) \): Sum = \( -1 + (-4) = -5 \), so \( k = 2 \cdot (-5) = -10 \).  
+4. \( (-4, -1) \): Sum = \( -4 + (-1) = -5 \), so \( k = 2 \cdot (-5) = -10 \). (Same as above.)  
+Unique \( k \) values are \( 10 \) and \( -10 \).  
+Check discriminant:  
+- For \( k = 10 \): \( \Delta = 10^2 - 64 = 100 - 64 = 36 > 0 \). Roots: \( x = \frac{10 \pm \sqrt{36}}{4} = \frac{10 \pm 6}{4} \), giving \( x = 4 \) or \( x = 1 \). Both integers, distinct.  
+- For \( k = -10 \): \( \Delta = (-10)^2 - 64 = 100 - 64 = 36 > 0 \). Roots: \( x = \frac{-10 \pm \sqrt{36}}{4} = \frac{-10 \pm 6}{4} \), giving \( x = -1 \) or \( x = -4 \). Both integers, distinct.  
+Both satisfy \( |k| > 8 \).  
+[/IMP]
+
+### Step 5: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify all possible \( k \) values have been considered.  
+**How to Achieve**: Check if other factor pairs or conditions yield additional integer roots and confirm the discriminant condition.  
+[/PLANNING]  
+[IMP]  
+Reconsider factor pairs for \( m \cdot n = 4 \). Pairs \( (2, 2) \) and \( (-2, -2) \) give \( m = n \), violating the distinct roots condition. Test other integers for the discriminant: \( \sqrt{k^2 - 64} \) must yield integer roots. Since \( k = 2(m + n) \) and \( m \cdot n = 4 \), all pairs have been tested. No other integer pairs satisfy \( m \cdot n = 4 \).  
+[/IMP]
+
+### Step 6: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the sum of all \( k \) such that \( 2x^2 - kx + 8 = 0 \) has two distinct integer solutions.  
+  - Subgoal 1: Ensure two distinct real roots (\( \Delta > 0 \)).  
+  - Subgoal 2: Ensure roots are integers (\( m \cdot n = 4 \), \( k = 2(m + n) \)).  
+  - Subgoal 3: Compute all valid \( k \).  
+  - Subgoal 4: Sum the valid \( k \) values.  
+**Current Goal**: Sum the valid \( k \) values.  
+[/REVIEW]
+
+### Step 7: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Compute the sum of all valid \( k \) values.  
+**How to Achieve**: Add the distinct \( k \) values obtained.  
+[/PLANNING]  
+[IMP]  
+Valid \( k \) values are \( 10 \) and \( -10 \).  
+Sum: \( 10 + (-10) = 0 \).  
+[/IMP]
+
+### Final Answer
+The sum of all values of \( k \) such that the equation \( 2x^2 - kx + 8 = 0 \) has two distinct integer solutions is \( \boxed{0} \).

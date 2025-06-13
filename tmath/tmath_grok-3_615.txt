@@ -1,0 +1,111 @@
+**Problem Statement**: Find all integer values \( n \) such that \( \binom{20}{n} + \binom{20}{10} = \binom{21}{11} \), and compute their sum.
+
+---
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into forward-looking intermediate subgoals:  
+1. Simplify the given equation using binomial coefficient identities.  
+2. Identify possible integer values for \( n \).  
+3. Verify which values of \( n \) satisfy the equation.  
+4. Sum the valid \( n \) values.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current Goal**: Simplify the equation \( \binom{20}{n} + \binom{20}{10} = \binom{21}{11} \) using binomial identities.  
+- **How to Achieve**: Apply the identity \( \binom{m}{k} = \binom{m}{m-k} \) if needed, and explore relationships like \( \binom{m+1}{k} = \binom{m}{k} + \binom{m}{k-1} \) to manipulate the equation.  
+[/PLANNING]
+
+[IMP]  
+Start with the given equation:  
+\[ \binom{20}{n} + \binom{20}{10} = \binom{21}{11} \]
+
+Use the binomial identity \( \binom{m+1}{k} = \binom{m}{k} + \binom{m}{k-1} \):  
+\[ \binom{21}{11} = \binom{20}{11} + \binom{20}{10} \]
+
+Substitute into the equation:  
+\[ \binom{20}{n} + \binom{20}{10} = \binom{20}{11} + \binom{20}{10} \]
+
+Subtract \( \binom{20}{10} \) from both sides:  
+\[ \binom{20}{n} = \binom{20}{11} \]
+
+Since \( \binom{20}{k} = \binom{20}{20-k} \), if \( \binom{20}{n} = \binom{20}{11} \), then either:  
+- \( n = 11 \), or  
+- \( n = 20 - 11 = 9 \).  
+
+Thus, possible values for \( n \) are \( n = 9 \) or \( n = 11 \).  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**:  
+- **Current Goal**: Verify if \( n = 9 \) and \( n = 11 \) satisfy the original equation \( \binom{20}{n} + \binom{20}{10} = \binom{21}{11} \).  
+- **How to Achieve**: Substitute \( n = 9 \) and \( n = 11 \) into the equation and check equality.  
+[/PLANNING]
+
+[IMP]  
+- **For \( n = 9 \)**:  
+  Left side: \( \binom{20}{9} + \binom{20}{10} \)  
+  Since \( \binom{20}{9} = \binom{20}{11} \) (as \( 20 - 9 = 11 \)), compute:  
+  \[ \binom{20}{9} + \binom{20}{10} = \binom{20}{11} + \binom{20}{10} = \binom{21}{11} \]  
+  This matches the right side, so \( n = 9 \) is valid.
+
+- **For \( n = 11 \)**:  
+  Left side: \( \binom{20}{11} + \binom{20}{10} \)  
+  \[ \binom{20}{11} + \binom{20}{10} = \binom{21}{11} \]  
+  This matches the right side, so \( n = 11 \) is valid.
+
+Both \( n = 9 \) and \( n = 11 \) satisfy the equation.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Track Goals (Review)**  
+Maintain a goal-management system and list all goals:  
+- Main Goal: Find the sum of all integer \( n \) such that \( \binom{20}{n} + \binom{20}{10} = \binom{21}{11} \).  
+  - Subgoal 1: Simplify the equation (completed).  
+  - Subgoal 2: Identify possible \( n \) values (completed: \( n = 9, 11 \)).  
+  - Subgoal 3: Verify \( n \) values (completed: both valid).  
+  - Subgoal 4: Sum the valid \( n \) values (current goal).  
+[/PLANNING]
+
+[REVIEW]  
+**Current Goal**: Sum the valid \( n \) values.  
+The valid \( n \) values from previous steps are \( n = 9 \) and \( n = 11 \).  
+[/REVIEW]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current Goal**: Compute the sum of valid \( n \) values.  
+- **How to Achieve**: Add the integers \( n = 9 \) and \( n = 11 \).  
+[/PLANNING]
+
+[IMP]  
+Sum the valid \( n \) values:  
+\[ 9 + 11 = 20 \]
+
+**Final Answer**: The sum of all integer values \( n \) is \( 20 \).  
+[/IMP]
+
+---
+
+**Summary of Solution**:  
+The integer values \( n \) satisfying \( \binom{20}{n} + \binom{20}{10} = \binom{21}{11} \) are \( n = 9 \) and \( n = 11 \). Their sum is \( 20 \).
+
+**Final Answer**:  
+\[ \boxed{20} \]

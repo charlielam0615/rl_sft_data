@@ -1,0 +1,169 @@
+**Problem Statement**: Find \( y \) such that \(\dfrac{y^2 - 9y + 8}{y - 1} + \dfrac{3y^2 + 16y - 12}{3y - 2} = -3\).
+
+---
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to solve for \( y \).  
+1. Simplify each fraction by factoring the numerators, if possible, to identify potential cancellations or simplifications.  
+2. Find a common denominator to combine the fractions.  
+3. Set up and solve the resulting equation equal to \(-3\).  
+4. Solve for \( y \) and verify solutions to ensure no denominators are zero.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Goal**: Simplify the first fraction \(\dfrac{y^2 - 9y + 8}{y - 1}\).  
+**How to achieve**: Factor the numerator \( y^2 - 9y + 8 \) and check for cancellation with the denominator \( y - 1 \).  
+[/PLANNING]
+
+[IMP]  
+The numerator is \( y^2 - 9y + 8 \). We need two numbers that multiply to 8 and add to \(-9\). These are \(-1\) and \(-8\).  
+Thus, \( y^2 - 9y + 8 = (y - 1)(y - 8) \).  
+The fraction becomes:  
+\[
+\dfrac{(y - 1)(y - 8)}{y - 1}
+\]  
+Since \( y \neq 1 \) (to avoid division by zero), the \( y - 1 \) terms cancel, simplifying to:  
+\[
+y - 8
+\]  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Goal**: Simplify the second fraction \(\dfrac{3y^2 + 16y - 12}{3y - 2}\).  
+**How to achieve**: Factor the numerator \( 3y^2 + 16y - 12 \) and check for cancellation with the denominator \( 3y - 2 \).  
+[/PLANNING]
+
+[IMP]  
+Factor \( 3y^2 + 16y - 12 \). Use the quadratic formula for \( ay^2 + by + c \), where \( a = 3 \), \( b = 16 \), \( c = -12 \):  
+\[
+y = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-16 \pm \sqrt{16^2 - 4 \cdot 3 \cdot (-12)}}{2 \cdot 3} = \frac{-16 \pm \sqrt{256 + 144}}{6} = \frac{-16 \pm \sqrt{400}}{6} = \frac{-16 \pm 20}{6}
+\]  
+\[
+y = \frac{4}{6} = \frac{2}{3}, \quad y = \frac{-36}{6} = -6
+\]  
+Thus, \( 3y^2 + 16y - 12 = 3(y - \frac{2}{3})(y + 6) = (3y - 2)(y + 6) \).  
+The fraction becomes:  
+\[
+\dfrac{(3y - 2)(y + 6)}{3y - 2}
+\]  
+Since \( y \neq \frac{2}{3} \) (to avoid division by zero), the \( 3y - 2 \) terms cancel, simplifying to:  
+\[
+y + 6
+\]  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Goal**: Combine the simplified fractions and set up the equation.  
+**How to achieve**: Use the simplified forms \( y - 8 \) and \( y + 6 \), combine them, and set equal to \(-3\).  
+[/PLANNING]
+
+[IMP]  
+The equation becomes:  
+\[
+(y - 8) + (y + 6) = -3
+\]  
+Combine like terms:  
+\[
+y - 8 + y + 6 = 2y - 2
+\]  
+Set equal to \(-3\):  
+\[
+2y - 2 = -3
+\]  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Goal**: Solve the equation \( 2y - 2 = -3 \) for \( y \).  
+**How to achieve**: Isolate \( y \) by adding 2 to both sides and dividing by 2.  
+[/PLANNING]
+
+[IMP]  
+\[
+2y - 2 = -3
+\]  
+Add 2 to both sides:  
+\[
+2y = -1
+\]  
+Divide by 2:  
+\[
+y = -\frac{1}{2}
+\]  
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Goal**: Verify the solution \( y = -\frac{1}{2} \) in the original equation.  
+**How to achieve**: Substitute \( y = -\frac{1}{2} \) into the original fractions, compute each term, and check if their sum equals \(-3\). Ensure denominators are non-zero.  
+[/PLANNING]
+
+[IMP]  
+Check denominators:  
+- \( y - 1 = -\frac{1}{2} - 1 = -\frac{3}{2} \neq 0 \)  
+- \( 3y - 2 = 3 \cdot (-\frac{1}{2}) - 2 = -\frac{3}{2} - 2 = -\frac{7}{2} \neq 0 \)  
+
+First fraction:  
+\[
+y^2 - 9y + 8 = \left(-\frac{1}{2}\right)^2 - 9 \cdot \left(-\frac{1}{2}\right) + 8 = \frac{1}{4} + \frac{9}{2} + 8 = \frac{1}{4} + \frac{18}{4} + \frac{32}{4} = \frac{51}{4}
+\]  
+\[
+\dfrac{\frac{51}{4}}{-\frac{3}{2}} = \frac{51}{4} \cdot \left(-\frac{2}{3}\right) = -\frac{102}{12} = -\frac{17}{2}
+\]  
+
+Second fraction:  
+\[
+3y^2 + 16y - 12 = 3 \cdot \left(-\frac{1}{2}\right)^2 + 16 \cdot \left(-\frac{1}{2}\right) - 12 = 3 \cdot \frac{1}{4} - 8 - 12 = \frac{3}{4} - 20 = \frac{3}{4} - \frac{80}{4} = -\frac{77}{4}
+\]  
+\[
+\dfrac{-\frac{77}{4}}{-\frac{7}{2}} = -\frac{77}{4} \cdot \left(-\frac{2}{7}\right) = \frac{154}{28} = \frac{77}{14}
+\]  
+
+Sum:  
+\[
+-\frac{17}{2} + \frac{77}{14} = -\frac{119}{14} + \frac{77}{14} = -\frac{42}{14} = -3
+\]  
+The sum equals \(-3\), so the solution is valid.  
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Solve \(\dfrac{y^2 - 9y + 8}{y - 1} + \dfrac{3y^2 + 16y - 12}{3y - 2} = -3\) for \( y \).  
+  - Subgoal 1: Simplify the first fraction (completed: \( y - 8 \)).  
+  - Subgoal 2: Simplify the second fraction (completed: \( y + 6 \)).  
+  - Subgoal 3: Combine fractions and set up equation (completed: \( 2y - 2 = -3 \)).  
+  - Subgoal 4: Solve for \( y \) (completed: \( y = -\frac{1}{2} \)).  
+  - Subgoal 5: Verify solution (completed: solution valid).  
+**Current Goal**: Conclude the solution as all subgoals are completed.  
+[/REVIEW]
+
+---
+
+**Final Answer**: \( y = -\frac{1}{2} \)

@@ -1,0 +1,94 @@
+**Problem Statement**: Determine the number of perfect squares between 50 and 250, meaning numbers that are squares of integers and lie strictly between 50 and 250 (exclusive).
+
+---
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of finding the number of perfect squares between 50 and 250 into manageable subgoals:  
+1. Identify the range of integers whose squares fall between 50 and 250.  
+2. Calculate the squares of those integers.  
+3. Count the valid perfect squares within the specified range.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify the range of integers whose squares are between 50 and 250. To achieve this, find the smallest integer \( n \) such that \( n^2 > 50 \) and the largest integer \( n \) such that \( n^2 < 250 \).  
+[/PLANNING]  
+
+[IMP]  
+To find the range of integers:  
+- For the lower bound, solve \( n^2 > 50 \).  
+  \( \sqrt{50} \approx 7.071 \), so the smallest integer \( n \) is 8 (since \( 7^2 = 49 \leq 50 \), but \( 8^2 = 64 > 50 \)).  
+- For the upper bound, solve \( n^2 < 250 \).  
+  \( \sqrt{250} \approx 15.811 \), so the largest integer \( n \) is 15 (since \( 15^2 = 225 < 250 \), but \( 16^2 = 256 > 250 \)).  
+Thus, the integers \( n \) are from 8 to 15 inclusive.  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to calculate the squares of integers from 8 to 15 and verify they are between 50 and 250, then count them. This can be achieved by computing \( n^2 \) for each integer in the range and checking the bounds.  
+[/PLANNING]  
+
+[IMP]  
+Calculate the squares for \( n = 8 \) to \( n = 15 \):  
+- \( n = 8 \): \( 8^2 = 64 \)  
+- \( n = 9 \): \( 9^2 = 81 \)  
+- \( n = 10 \): \( 10^2 = 100 \)  
+- \( n = 11 \): \( 11^2 = 121 \)  
+- \( n = 12 \): \( 12^2 = 144 \)  
+- \( n = 13 \): \( 13^2 = 169 \)  
+- \( n = 14 \): \( 14^2 = 196 \)  
+- \( n = 15 \): \( 15^2 = 225 \)  
+
+Verify each square is between 50 and 250:  
+- All squares (64, 81, 100, 121, 144, 169, 196, 225) satisfy \( 50 < n^2 < 250 \).  
+
+Count the squares: There are 8 perfect squares (from \( n = 8 \) to \( n = 15 \)).  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate the solution by checking the calculations and ensuring no perfect squares were missed. This can be done by confirming the integer range and rechecking the bounds.  
+[/PLANNING]  
+
+[IMP]  
+Recompute the bounds:  
+- Lower bound: \( \sqrt{50} \approx 7.071 \), so \( n \geq 8 \). Check \( n = 7 \): \( 7^2 = 49 \leq 50 \), which is not valid.  
+- Upper bound: \( \sqrt{250} \approx 15.811 \), so \( n \leq 15 \). Check \( n = 16 \): \( 16^2 = 256 > 250 \), which is not valid.  
+The range \( n = 8 \) to \( n = 15 \) is correct.  
+
+Confirm the count: The integers are 8, 9, 10, 11, 12, 13, 14, 15 (8 numbers). All their squares were calculated and verified to be within 50 and 250. No integers outside this range produce valid squares.  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+Track the hierarchy of goals and highlight the current goal.  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the number of perfect squares between 50 and 250.  
+  - Subgoal 1: Identify the range of integers whose squares are between 50 and 250 (completed).  
+  - Subgoal 2: Calculate the squares and verify they are within the range (completed).  
+  - Subgoal 3: Count the valid perfect squares (completed).  
+  - Subgoal 4: Validate the solution (completed).  
+
+**Current Goal**: The main goal is achieved, with 8 perfect squares identified. No further subgoals are needed.  
+[/REVIEW]
+
+---
+
+**Final Answer**: There are 8 perfect squares between 50 and 250.

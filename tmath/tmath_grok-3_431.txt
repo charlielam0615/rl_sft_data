@@ -1,0 +1,81 @@
+**Problem Statement**: Richard has 360 feet of fencing to enclose three sides of a rectangular backyard, with the fourth side bordered by his house. We need to determine the maximum area of the backyard.
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to find the maximum area:  
+1. Define the variables for the rectangle’s dimensions.  
+2. Set up the fencing constraint for three sides.  
+3. Express the area as a function of the dimensions.  
+4. Optimize the area function to find the maximum.  
+5. Verify the solution.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to define the variables and set up the fencing constraint. We will represent the rectangle’s dimensions and use the given 360 feet of fencing to cover three sides, with the house as the fourth side.  
+[/PLANNING]  
+[IMP]  
+Let the width of the backyard (perpendicular to the house) be \( w \) feet, and the length (parallel to the house) be \( l \) feet. The fencing covers two widths and one length: \( 2w + l = 360 \).  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to express the area as a function of one variable. Using the fencing constraint \( 2w + l = 360 \), solve for \( l \) in terms of \( w \) and write the area formula.  
+[/PLANNING]  
+[IMP]  
+From \( 2w + l = 360 \), solve for \( l \):  
+\( l = 360 - 2w \).  
+The area \( A \) of the rectangle is:  
+\( A = l \cdot w = (360 - 2w) \cdot w = 360w - 2w^2 \).  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to optimize the area function \( A = 360w - 2w^2 \) to find the maximum area. Since this is a quadratic function, find the vertex to determine the maximum.  
+[/PLANNING]  
+[IMP]  
+The area function is \( A(w) = 360w - 2w^2 \), a quadratic in \( w \) with coefficients \( a = -2 \), \( b = 360 \), and \( c = 0 \). The vertex of a parabola \( ax^2 + bx + c \) occurs at \( w = -\frac{b}{2a} \).  
+Calculate:  
+\( w = -\frac{360}{2 \cdot (-2)} = \frac{360}{4} = 90 \).  
+Substitute \( w = 90 \) into the fencing constraint:  
+\( l = 360 - 2 \cdot 90 = 360 - 180 = 180 \).  
+Compute the area:  
+\( A = 90 \cdot 180 = 16,200 \) square feet.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify that \( w = 90 \), \( l = 180 \) yields the maximum area. Use calculus (derivative test) or the nature of the quadratic to confirm.  
+[/PLANNING]  
+[IMP]  
+For \( A(w) = 360w - 2w^2 \), compute the derivative:  
+\( A'(w) = 360 - 4w \).  
+Set \( A'(w) = 0 \):  
+\( 360 - 4w = 0 \implies w = 90 \).  
+Check the second derivative:  
+\( A''(w) = -4 < 0 \), indicating a maximum at \( w = 90 \).  
+Alternatively, since the quadratic coefficient \( a = -2 < 0 \), the parabola opens downward, confirming the vertex is a maximum. The area at \( w = 90 \), \( l = 180 \) is \( 16,200 \) square feet, and the fencing constraint holds: \( 2 \cdot 90 + 180 = 360 \).  
+[/IMP]
+
+### Step 6
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the maximum area of the rectangular backyard.  
+  - Subgoal 1: Define variables (completed: \( w \) = width, \( l \) = length).  
+  - Subgoal 2: Set up fencing constraint (completed: \( 2w + l = 360 \)).  
+  - Subgoal 3: Express area as a function (completed: \( A = 360w - 2w^2 \)).  
+  - Subgoal 4: Optimize the area function (completed: \( w = 90 \), \( l = 180 \), area = 16,200 sq ft).  
+  - Subgoal 5: Verify the solution (completed: confirmed maximum via derivative test).  
+**Current Goal**: Conclude the solution as the maximum area has been found and verified.  
+[/REVIEW]
+
+### Final Answer
+The maximum area of the backyard is 16,200 square feet, achieved when the width is 90 feet and the length is 180 feet.

@@ -1,0 +1,94 @@
+**Problem Statement**: Determine the number of positive, three-digit integers (from 100 to 999) that have at least one digit as 3 and no digits as 5.
+
+### Step 1
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to solve it systematically.  
+1. Calculate the total number of three-digit integers.  
+2. Determine the number of three-digit integers with no digit as 5.  
+3. From those, find the number of integers with at least one digit as 3.  
+4. Use complementary counting to simplify calculations if needed.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Calculate the total number of three-digit integers.  
+How to Achieve: A three-digit integer ranges from 100 to 999. Count the numbers in this range inclusively.  
+[/PLANNING]  
+[IMP]  
+The range of three-digit integers is from 100 to 999.  
+Total numbers = 999 - 100 + 1 = 900.  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Determine the number of three-digit integers with no digit as 5.  
+How to Achieve: Each digit (hundreds, tens, units) can be any number from 0 to 9, excluding 5, except the hundreds digit cannot be 0. Calculate the number of valid choices for each digit.  
+[/PLANNING]  
+[IMP]  
+- Hundreds digit: Choices are 1 to 9, excluding 5 → {1, 2, 3, 4, 6, 7, 8, 9} = 8 choices.  
+- Tens digit: Choices are 0 to 9, excluding 5 → {0, 1, 2, 3, 4, 6, 7, 8, 9} = 9 choices.  
+- Units digit: Same as tens → 9 choices.  
+Total numbers with no digit as 5 = 8 × 9 × 9 = 648.  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Find the number of three-digit integers with no digit as 5 and at least one digit as 3.  
+How to Achieve: Use complementary counting. First, calculate the number of three-digit integers with no digit as 5 and no digit as 3. Subtract this from the total number of three-digit integers with no digit as 5.  
+[/PLANNING]  
+[IMP]  
+- For numbers with no digit as 5 and no digit as 3:  
+  - Hundreds digit: Choices are 1 to 9, excluding 3 and 5 → {1, 2, 4, 6, 7, 8, 9} = 7 choices.  
+  - Tens digit: Choices are 0 to 9, excluding 3 and 5 → {0, 1, 2, 4, 6, 7, 8, 9} = 8 choices.  
+  - Units digit: Same as tens → 8 choices.  
+  Total numbers with no 5 and no 3 = 7 × 8 × 8 = 448.  
+- Numbers with no 5 and at least one 3 = Total with no 5 - Total with no 5 and no 3 = 648 - 448 = 200.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify the calculation using an alternative method.  
+How to Achieve: Directly count numbers with at least one 3 and no 5 by considering cases based on the position of the digit 3.  
+[/PLANNING]  
+[IMP]  
+Consider three cases for at least one 3 (no digit is 5):  
+1. **Hundreds digit is 3**:  
+   - Hundreds: 3 (1 choice).  
+   - Tens: {0, 1, 2, 3, 4, 6, 7, 8, 9} = 9 choices.  
+   - Units: 9 choices.  
+   Total = 1 × 9 × 9 = 81.  
+2. **Hundreds digit is not 3, tens digit is 3**:  
+   - Hundreds: {1, 2, 4, 6, 7, 8, 9} = 7 choices.  
+   - Tens: 3 (1 choice).  
+   - Units: 9 choices.  
+   Total = 7 × 1 × 9 = 63.  
+3. **Hundreds and tens digits are not 3, units digit is 3**:  
+   - Hundreds: 7 choices.  
+   - Tens: {0, 1, 2, 4, 6, 7, 8, 9} = 8 choices.  
+   - Units: 3 (1 choice).  
+   Total = 7 × 8 × 1 = 56.  
+Sum cases (disjoint due to exactly one 3 in each case for simplicity, but adjust for overlaps):  
+Total = 81 + 63 + 56 = 200.  
+This matches the previous result, confirming correctness.  
+[/IMP]
+
+### Step 6
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find the number of three-digit integers with at least one 3 and no 5.  
+  - Subgoal 1: Calculate total three-digit integers (completed: 900).  
+  - Subgoal 2: Calculate numbers with no 5 (completed: 648).  
+  - Subgoal 3: Calculate numbers with no 5 and at least one 3 (completed: 200).  
+  - Subgoal 4: Validate the result (completed: confirmed 200).  
+Current Goal: Conclude the solution as all subgoals are achieved.  
+[/REVIEW]
+
+**Final Answer**: The number of positive, three-digit integers that contain at least one 3 as a digit but do not contain a 5 as a digit is 200.

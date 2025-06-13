@@ -1,0 +1,163 @@
+### Problem Restatement
+We need to calculate the probability that a pirate searching 6 islands encounters exactly 3 islands with buried treasure and no islands with traps. Each island has:
+- A \(\frac{1}{4}\) chance of having treasure and no traps.
+- A \(\frac{1}{12}\) chance of having traps but no treasure.
+- A \(\frac{2}{3}\) chance of having neither treasure nor traps.
+
+The goal is to find the probability of exactly 3 islands having treasure and none having traps across all 6 islands.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to compute the desired probability:
+1. Define the event for a single island having treasure and no traps.
+2. Define the event for a single island having traps.
+3. Define the event for a single island having neither treasure nor traps.
+4. Determine the probability of the desired outcome (exactly 3 islands with treasure, 0 with traps, and 3 with neither) using a probability model.
+5. Calculate the probability using the appropriate combinatorial and probability formulas.
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Identify the probabilities for each island outcome and set up the probability model.  
+**How to Achieve**: Assign probabilities to each mutually exclusive outcome for an island, confirm they sum to 1, and identify the relevant outcomes for the problem (treasure and no traps, no traps).
+[/PLANNING]
+
+[IMP]
+For each island, the probabilities are:
+- Treasure and no traps: \(\frac{1}{4}\).
+- Traps and no treasure: \(\frac{1}{12}\).
+- Neither treasure nor traps: \(\frac{2}{3}\).
+
+Verify the probabilities sum to 1:
+\[
+\frac{1}{4} + \frac{1}{12} + \frac{2}{3} = \frac{3}{12} + \frac{1}{12} + \frac{8}{12} = \frac{12}{12} = 1.
+\]
+The outcomes relevant to the problem are:
+- Success (treasure, no traps): \(\frac{1}{4}\).
+- No traps (includes treasure and no traps, or neither): \(\frac{1}{4} + \frac{2}{3} = \frac{3}{12} + \frac{8}{12} = \frac{11}{12}\).
+- Traps: \(\frac{1}{12}\), which must be avoided (0 traps).
+[/IMP]
+
+---
+
+### Step 3: Adjust Subgoals
+[PLANNING]
+**Action: Adjust Subgoals (Planning)**  
+Refine the subgoals based on the previous step:
+1. Model the problem as a multinomial distribution where we need exactly 3 islands with treasure and no traps, 0 islands with traps, and 3 islands with neither treasure nor traps.
+2. Calculate the number of ways to choose 3 islands out of 6 for treasure.
+3. Compute the probability using the multinomial probability formula.
+[/PLANNING]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Compute the probability of exactly 3 islands with treasure, 0 with traps, and 3 with neither using a multinomial distribution.  
+**How to Achieve**: Use the multinomial probability formula, accounting for the number of ways to assign the outcomes to the 6 islands and their respective probabilities.
+[/PLANNING]
+
+[IMP]
+The problem can be modeled as a multinomial distribution with three outcomes for the 6 islands:
+- Outcome 1: Treasure and no traps (\(p_1 = \frac{1}{4}\), need exactly 3 islands).
+- Outcome 2: Traps and no treasure (\(p_2 = \frac{1}{12}\), need exactly 0 islands).
+- Outcome 3: Neither treasure nor traps (\(p_3 = \frac{2}{3}\), need exactly 3 islands).
+
+The multinomial probability formula is:
+\[
+P = \frac{n!}{x_1! x_2! x_3!} \cdot p_1^{x_1} \cdot p_2^{x_2} \cdot p_3^{x_3},
+\]
+where \(n = 6\), \(x_1 = 3\), \(x_2 = 0\), \(x_3 = 3\).
+
+**Step 1: Compute the combinatorial factor**:
+\[
+\frac{6!}{3!0!3!} = \frac{720}{6 \cdot 1 \cdot 6} = \frac{720}{36} = 20.
+\]
+
+**Step 2: Compute the probability term**:
+\[
+p_1^{x_1} \cdot p_2^{x_2} \cdot p_3^{x_3} = \left(\frac{1}{4}\right)^3 \cdot \left(\frac{1}{12}\right)^0 \cdot \left(\frac{2}{3}\right)^3.
+\]
+- \(\left(\frac{1}{4}\right)^3 = \frac{1}{64}\),
+- \(\left(\frac{1}{12}\right)^0 = 1\),
+- \(\left(\frac{2}{3}\right)^3 = \frac{8}{27}\).
+
+So:
+\[
+\frac{1}{64} \cdot 1 \cdot \frac{8}{27} = \frac{8}{64 \cdot 27} = \frac{8}{1728} = \frac{1}{216}.
+\]
+
+**Step 3: Compute the final probability**:
+\[
+P = 20 \cdot \frac{1}{216} = \frac{20}{216} = \frac{5}{54}.
+\]
+
+The probability is \(\frac{5}{54}\).
+[/IMP]
+
+---
+
+### Step 5: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify the calculated probability to ensure correctness.  
+**How to Achieve**: Check the combinatorial factor and probability calculations, and confirm the model accounts for the condition of no traps.
+[/PLANNING]
+
+[IMP]
+Recompute the combinatorial factor:
+\[
+\frac{6!}{3!0!3!} = \frac{720}{6 \cdot 1 \cdot 6} = 20.
+\]
+Recompute the probability term:
+\[
+\left(\frac{1}{4}\right)^3 = \frac{1}{64}, \quad \left(\frac{2}{3}\right)^3 = \frac{8}{27}, \quad \frac{1}{64} \cdot \frac{8}{27} = \frac{8}{1728} = \frac{1}{216}.
+\]
+\[
+P = 20 \cdot \frac{1}{216} = \frac{20}{216} = \frac{5}{54}.
+\]
+Confirm the model: The condition of 0 traps is satisfied by setting \(x_2 = 0\), and the remaining 3 islands (6 - 3 = 3) must have neither treasure nor traps (\(\frac{2}{3}\)). The calculations are consistent.
+
+Alternatively, consider a binomial approach for the no-traps condition:
+- Probability of no traps per island: \(\frac{11}{12}\).
+- Probability of 3 islands with treasure among 6 with no traps:
+  - Choose 3 islands: \(\binom{6}{3} = 20\).
+  - Probability of treasure given no traps: \(\frac{\frac{1}{4}}{\frac{11}{12}} = \frac{3}{11}\).
+  - Probability of no treasure, no traps: \(\frac{\frac{2}{3}}{\frac{11}{12}} = \frac{8}{11}\).
+  - Probability: \(\binom{6}{3} \cdot \left(\frac{3}{11}\right)^3 \cdot \left(\frac{8}{11}\right)^3 \cdot \left(\frac{11}{12}\right)^6\).
+
+This is more complex and equivalent to the multinomial approach, so the original calculation is preferred for simplicity. The result \(\frac{5}{54}\) is consistent.
+[/IMP]
+
+---
+
+### Step 6: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+List and organize the hierarchy of goals, highlighting the current goal.
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Calculate the probability of exactly 3 islands with treasure and 0 with traps.
+  - Subgoal 1: Define the probabilities for each island outcome (completed in Step 2).
+  - Subgoal 2: Model the problem as a multinomial distribution (completed in Step 3).
+  - Subgoal 3: Compute the combinatorial factor and probability (completed in Step 4).
+  - Subgoal 4: Validate the calculations (completed in Step 5).
+
+**Current Goal**: Conclude the solution as the calculations are validated.
+
+The main goal has been achieved, and all subgoals are complete. The final probability is \(\frac{5}{54}\).
+[/REVIEW]
+
+---
+
+### Final Answer
+The probability that the pirate encounters exactly 3 islands with treasure and none with traps is \(\frac{5}{54}\).

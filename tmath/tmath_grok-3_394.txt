@@ -1,0 +1,158 @@
+### Problem Restatement
+Laura bikes 20 miles at a speed of \(2x + 1\) miles per hour, spends 5 minutes transitioning (parking bike, changing shoes, drinking water), and runs 5 miles at a speed of \(x\) miles per hour. The total workout time is 110 minutes. We need to find \(x\), Laura's running speed in miles per hour, rounded to the nearest hundredth.
+
+---
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of finding Laura’s running speed into intermediate subgoals:  
+1. Express the time for each activity (biking, transitioning, running) in terms of \(x\).  
+2. Set up an equation based on the total workout time of 110 minutes.  
+3. Solve the equation for \(x\).  
+4. Round the solution to the nearest hundredth.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to express the time for each activity in terms of \(x\) and set up the total time equation. Achieve this by calculating biking time as distance divided by speed, converting transition time to hours, calculating running time as distance divided by speed, and summing these to equal 110 minutes (converted to hours).  
+[/PLANNING]  
+
+[IMP]  
+- **Biking time**: Distance = 20 miles, speed = \(2x + 1\) mph. Time = \(\frac{20}{2x + 1}\) hours.  
+- **Transition time**: 5 minutes = \(\frac{5}{60} = \frac{1}{12}\) hours.  
+- **Running time**: Distance = 5 miles, speed = \(x\) mph. Time = \(\frac{5}{x}\) hours.  
+- **Total time**: Convert 110 minutes to hours: \(110 \div 60 = \frac{110}{60} = \frac{11}{6}\) hours.  
+- **Equation**:  
+\[
+\frac{20}{2x + 1} + \frac{1}{12} + \frac{5}{x} = \frac{11}{6}
+\]  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to solve the equation \(\frac{20}{2x + 1} + \frac{1}{12} + \frac{5}{x} = \frac{11}{6}\) for \(x\). Achieve this by eliminating denominators, simplifying, and solving the resulting equation, possibly using numerical methods or a calculator since permitted.  
+[/PLANNING]  
+
+[IMP]  
+To solve:  
+\[
+\frac{20}{2x + 1} + \frac{1}{12} + \frac{5}{x} = \frac{11}{6}
+\]
+1. Find a common denominator: The denominators are \(2x + 1\), 12, \(x\), and 6. The least common denominator is \(12x(2x + 1)\).  
+2. Multiply through by \(12x(2x + 1)\):  
+\[
+12x(2x + 1) \cdot \frac{20}{2x + 1} + 12x(2x + 1) \cdot \frac{1}{12} + 12x(2x + 1) \cdot \frac{5}{x} = 12x(2x + 1) \cdot \frac{11}{6}
+\]
+- Left side:  
+  - First term: \(12x \cdot 20 = 240x\).  
+  - Second term: \(x(2x + 1) \cdot 1 = 2x^2 + x\).  
+  - Third term: \(12(2x + 1) \cdot 5 = 60(2x + 1) = 120x + 60\).  
+- Right side:  
+  - \(12x(2x + 1) \cdot \frac{11}{6} = 2x(2x + 1) \cdot 11 = 22x(2x + 1) = 44x^2 + 22x\).  
+3. Combine terms:  
+\[
+240x + (2x^2 + x) + (120x + 60) = 44x^2 + 22x
+\]
+Left side: \(2x^2 + 361x + 60\).  
+Equation:  
+\[
+2x^2 + 361x + 60 = 44x^2 + 22x
+\]
+4. Simplify: Move all terms to one side:  
+\[
+2x^2 + 361x + 60 - 44x^2 - 22x = 0
+\]
+\[
+-42x^2 + 339x + 60 = 0
+\]
+Multiply by \(-1\):  
+\[
+42x^2 - 339x - 60 = 0
+\]
+5. Solve using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\), where \(a = 42\), \(b = -339\), \(c = -60\).  
+- Discriminant:  
+\[
+b^2 - 4ac = (-339)^2 - 4 \cdot 42 \cdot (-60) = 114921 + 10080 = 125001
+\]
+- \(\sqrt{125001} \approx 353.558\) (using calculator).  
+- Solutions:  
+\[
+x = \frac{339 \pm \sqrt{125001}}{2 \cdot 42} = \frac{339 \pm 353.558}{84}
+\]
+- Positive root:  
+\[
+x = \frac{339 + 353.558}{84} = \frac{692.558}{84} \approx 8.256
+\]
+- Negative root (discard, as speed is positive):  
+\[
+x = \frac{339 - 353.558}{84} \approx -0.173
+\]
+Thus, \(x \approx 8.256\) mph.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the solution \(x \approx 8.256\) mph by substituting it into the time equation and checking if the total time approximates 110 minutes. Use a calculator for precision.  
+[/PLANNING]  
+
+[IMP]  
+Substitute \(x = 8.256\):  
+- Biking speed: \(2x + 1 = 2 \cdot 8.256 + 1 = 16.512 + 1 = 17.512\) mph.  
+- Biking time: \(\frac{20}{17.512} \approx 1.142\) hours.  
+- Transition time: \(\frac{1}{12} \approx 0.0833\) hours.  
+- Running time: \(\frac{5}{8.256} \approx 0.6058\) hours.  
+- Total time:  
+\[
+1.142 + 0.0833 + 0.6058 \approx 1.8311 \text{ hours}
+\]
+Convert to minutes: \(1.8311 \cdot 60 \approx 109.866\) minutes.  
+This is very close to 110 minutes, suggesting the solution is reasonable (slight difference due to rounding).  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to round \(x \approx 8.256\) to the nearest hundredth as required. Achieve this by examining the thousandths digit and applying rounding rules.  
+[/PLANNING]  
+
+[IMP]  
+\(x = 8.256\). The hundredths digit is 5, thousandths digit is 6. Since 6 \(\geq 5\), round up:  
+\[
+x \approx 8.26 \text{ mph}
+\]  
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]  
+**Action: Track Goals (Review)**  
+Maintain a goal-management system and list all goals, highlighting the current one.  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Find Laura’s running speed \(x\) in mph, rounded to the nearest hundredth.  
+  - Subgoal 1: Express times for biking, transitioning, running in terms of \(x\). (Completed)  
+  - Subgoal 2: Set up and solve the total time equation. (Completed)  
+  - Subgoal 3: Validate the solution. (Completed)  
+  - Subgoal 4: Round to the nearest hundredth. (Completed)  
+**Current Goal**: None, as all subgoals are completed. The final answer is \(x = 8.26\) mph.  
+[/REVIEW]
+
+---
+
+### Final Answer
+Laura’s running speed is **8.26 miles per hour**.

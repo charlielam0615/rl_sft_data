@@ -1,0 +1,108 @@
+**Problem Statement**: We need to calculate the probability that it rains on at most 2 days in June in Capital City, given that the probability of rain on any given day is \(\frac{1}{10}\). June has 30 days, and we assume each day's weather is independent. The answer should be expressed as a decimal to the nearest thousandth.
+
+---
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve the problem, break it down into manageable subgoals:  
+1. Identify the type of probability distribution and parameters.  
+2. Determine the mathematical expression for the probability of raining on at most 2 days.  
+3. Compute the probabilities for 0, 1, and 2 rainy days.  
+4. Sum these probabilities and round to the nearest thousandth.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to identify the probability distribution and its parameters. Since each day has a fixed probability of rain (\(\frac{1}{10}\)) and days are independent, this is a binomial distribution with \(n = 30\) (days in June) and \(p = \frac{1}{10}\).  
+[/PLANNING]  
+
+[IMP]  
+The problem involves calculating the probability of rain on at most 2 days in June, which suggests a binomial distribution. Each day is a trial with a success probability (rain) of \(p = \frac{1}{10} = 0.1\) and failure probability (no rain) of \(1 - p = 0.9\). Since June has 30 days, the number of trials is \(n = 30\). The binomial probability formula for exactly \(k\) successes is:  
+\[ P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]  
+Here, \(X\) is the number of rainy days, \(n = 30\), \(p = 0.1\), and \(1-p = 0.9\). We need \(P(X \leq 2) = P(X = 0) + P(X = 1) + P(X = 2)\).  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to set up the mathematical expression for \(P(X \leq 2)\). This involves calculating \(P(X = 0)\), \(P(X = 1)\), and \(P(X = 2)\) using the binomial formula and summing them.  
+[/PLANNING]  
+
+[IMP]  
+We need to compute:  
+\[ P(X \leq 2) = P(X = 0) + P(X = 1) + P(X = 2) \]  
+Using the binomial formula \(P(X = k) = \binom{n}{k} (0.1)^k (0.9)^{n-k}\), where \(n = 30\):  
+- For \(k = 0\):  
+  \[ P(X = 0) = \binom{30}{0} (0.1)^0 (0.9)^{30} = 1 \cdot 1 \cdot (0.9)^{30} \]  
+- For \(k = 1\):  
+  \[ P(X = 1) = \binom{30}{1} (0.1)^1 (0.9)^{29} = 30 \cdot 0.1 \cdot (0.9)^{29} \]  
+- For \(k = 2\):  
+  \[ P(X = 2) = \binom{30}{2} (0.1)^2 (0.9)^{28} = \frac{30 \cdot 29}{2} \cdot 0.01 \cdot (0.9)^{28} = 435 \cdot 0.01 \cdot (0.9)^{28} \]  
+We will compute these probabilities in the next step.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute the probabilities \(P(X = 0)\), \(P(X = 1)\), and \(P(X = 2)\), sum them, and round the result to the nearest thousandth.  
+[/PLANNING]  
+
+[IMP]  
+Calculate each term:  
+- \(P(X = 0) = (0.9)^{30}\):  
+  \((0.9)^{10} \approx 0.3486784401\), so \((0.9)^{30} = [(0.9)^{10}]^3 \approx (0.3486784401)^3 \approx 0.042391158\).  
+- \(P(X = 1) = 30 \cdot 0.1 \cdot (0.9)^{29}\):  
+  \((0.9)^{29} = (0.9)^{30} \div 0.9 \approx 0.042391158 \div 0.9 \approx 0.047101286\).  
+  So, \(P(X = 1) = 30 \cdot 0.1 \cdot 0.047101286 \approx 0.141303858\).  
+- \(P(X = 2) = 435 \cdot 0.01 \cdot (0.9)^{28}\):  
+  \((0.9)^{28} = (0.9)^{29} \div 0.9 \approx 0.047101286 \div 0.9 \approx 0.052334762\).  
+  So, \(P(X = 2) = 435 \cdot 0.01 \cdot 0.052334762 \approx 0.227665215\).  
+Sum:  
+\[ P(X \leq 2) = 0.042391158 + 0.141303858 + 0.227665215 \approx 0.411360231 \]  
+Rounded to the nearest thousandth: \(0.411\).  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify the calculations by checking the binomial probabilities and ensuring the sum is reasonable for a binomial distribution with a low success probability.  
+[/PLANNING]  
+
+[IMP]  
+To validate, note that \(p = 0.1\) is small, and \(n = 30\) is moderately large, so the expected number of rainy days is \(np = 30 \cdot 0.1 = 3\). Since "at most 2 days" is below the expected value, a probability around 0.4 seems plausible. Recalculate key terms:  
+- \((0.9)^{30} \approx 0.042391158\) is accurate (confirmed via computation tools).  
+- Binomial coefficients: \(\binom{30}{1} = 30\), \(\binom{30}{2} = 435\) are correct.  
+The sum \(0.411\) aligns with the binomial distribution's behavior. The calculations are consistent.  
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Calculate the probability of rain on at most 2 days in June, expressed as a decimal to the nearest thousandth.  
+  - Subgoal 1: Identify the probability distribution (binomial, \(n=30\), \(p=0.1\)). [Completed]  
+  - Subgoal 2: Set up the expression \(P(X \leq 2) = P(X = 0) + P(X = 1) + P(X = 2)\). [Completed]  
+  - Subgoal 3: Compute individual probabilities and sum them. [Completed]  
+  - Subgoal 4: Validate the calculations. [Completed]  
+**Current Goal**: Finalize the answer by confirming the rounded result.  
+The calculations yield \(P(X \leq 2) \approx 0.411\), which satisfies the problem's requirements.  
+[/REVIEW]
+
+---
+
+**Final Answer**: The probability that it rains on at most 2 days in June is \(0.411\).

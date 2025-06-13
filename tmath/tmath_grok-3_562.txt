@@ -1,0 +1,116 @@
+### Problem Restatement
+The Cookie Monster has encountered a cookie with a boundary defined by the equation \( x^2 + y^2 + 21 = 4x + 18y \). He wants to determine whether this cookie is lunch-sized or snack-sized by finding its radius.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+To solve for the radius of the cookie, we need to identify the shape described by the equation \( x^2 + y^2 + 21 = 4x + 18y \). The goal is to find the radius, which suggests the equation represents a circle. The subgoals are:
+1. Rewrite the equation in standard circle form to identify the center and radius.
+2. Extract the radius from the standard form.
+3. Interpret the radius to determine if the cookie is lunch-sized or snack-sized.
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to rewrite the equation \( x^2 + y^2 + 21 = 4x + 18y \) into the standard form of a circle, \((x - h)^2 + (y - k)^2 = r^2\), to identify the radius. This can be achieved by completing the square for both \( x \) and \( y \) terms.
+[/PLANNING]
+
+[IMP]
+Start with the given equation:
+\[ x^2 + y^2 + 21 = 4x + 18y \]
+
+Rearrange all terms to one side:
+\[ x^2 + y^2 - 4x - 18y + 21 = 0 \]
+
+Group the \( x \)- and \( y \)-terms:
+\[ (x^2 - 4x) + (y^2 - 18y) + 21 = 0 \]
+
+Complete the square for \( x \):
+- For \( x^2 - 4x \), the coefficient of \( x \) is \(-4\). Half of \(-4\) is \(-2\), and its square is \( (-2)^2 = 4 \).
+- Add and subtract 4 inside the expression: \( x^2 - 4x = (x - 2)^2 - 4 \).
+
+Complete the square for \( y \):
+- For \( y^2 - 18y \), the coefficient of \( y \) is \(-18\). Half of \(-18\) is \(-9\), and its square is \( (-9)^2 = 81 \).
+- Add and subtract 81 inside the expression: \( y^2 - 18y = (y - 9)^2 - 81 \).
+
+Rewrite the equation:
+\[ (x^2 - 4x) + (y^2 - 18y) + 21 = (x - 2)^2 - 4 + (y - 9)^2 - 81 + 21 \]
+
+Simplify the constants:
+\[ -4 - 81 + 21 = -64 \]
+
+So the equation becomes:
+\[ (x - 2)^2 + (y - 9)^2 - 64 = 0 \]
+
+\[ (x - 2)^2 + (y - 9)^2 = 64 \]
+
+This is the standard form of a circle, \((x - h)^2 + (y - k)^2 = r^2\), where the center is \((h, k) = (2, 9)\) and the radius \( r = \sqrt{64} = 8 \).
+[/IMP]
+
+---
+
+### Step 3: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data:** The current goal is to verify that the equation \( (x - 2)^2 + (y - 9)^2 = 64 \) correctly represents the original equation and that the radius is \( r = 8 \). This can be achieved by expanding the standard form back to the original form and checking for consistency.
+[/PLANNING]
+
+[IMP]
+Expand \( (x - 2)^2 + (y - 9)^2 = 64 \):
+- \( (x - 2)^2 = x^2 - 4x + 4 \)
+- \( (y - 9)^2 = y^2 - 18y + 81 \)
+
+So:
+\[ (x - 2)^2 + (y - 9)^2 = x^2 - 4x + 4 + y^2 - 18y + 81 = x^2 + y^2 - 4x - 18y + 85 \]
+
+Set equal to 64:
+\[ x^2 + y^2 - 4x - 18y + 85 = 64 \]
+
+\[ x^2 + y^2 - 4x - 18y + 85 - 64 = 0 \]
+
+\[ x^2 + y^2 - 4x - 18y + 21 = 0 \]
+
+This matches the original equation after moving terms:
+\[ x^2 + y^2 + 21 = 4x + 18y \]
+
+The derivation is consistent, confirming the radius is \( r = 8 \).
+[/IMP]
+
+---
+
+### Step 4: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy:**
+- **Main Goal:** Determine the radius of the cookie and classify it as lunch-sized or snack-sized.
+  - **Subgoal 1:** Rewrite the equation in standard circle form (completed).
+  - **Subgoal 2:** Extract the radius from the standard form (completed, radius = 8).
+  - **Subgoal 3:** Interpret the radius to classify the cookie (pending).
+
+**Current Goal:** Interpret the radius to determine if the cookie is lunch-sized or snack-sized.
+[/REVIEW]
+
+---
+
+### Step 5: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data:** The current goal is to interpret the radius \( r = 8 \) to classify the cookie as lunch-sized or snack-sized. Since no specific criteria for "lunch-sized" or "snack-sized" are provided, we will assume a reasonable threshold (e.g., a radius greater than 5 units is lunch-sized, otherwise snack-sized) and conclude based on the radius.
+[/PLANNING]
+
+[IMP]
+The radius of the cookie is 8 units. Assuming a threshold where a radius greater than 5 units indicates a lunch-sized cookie (a common-sense assumption for a larger cookie suitable for a meal), since \( 8 > 5 \), the cookie is classified as lunch-sized.
+[/IMP]
+
+---
+
+### Final Answer
+The radius of the cookie is 8 units. Based on a reasonable threshold, this is a lunch-sized cookie.

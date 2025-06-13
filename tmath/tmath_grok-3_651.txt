@@ -1,0 +1,195 @@
+### Problem Restatement
+In triangle \( ABC \) with side lengths \( AB = 5 \), \( BC = 4 \), and \( CA = 3 \), a point \( P \) is randomly selected inside the triangle. We need to find the probability that point \( P \) is closer to vertex \( C \) than to either vertex \( A \) or vertex \( B \). That is, we need the probability that the distance from \( P \) to \( C \) is less than the distance from \( P \) to \( A \) and less than the distance from \( P \) to \( B \).
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal into intermediate subgoals to compute the probability.  
+1. Determine the coordinates of vertices \( A \), \( B \), and \( C \) using the given side lengths and the Asymptote code.  
+2. Compute the area of triangle \( ABC \).  
+3. Define the region inside triangle \( ABC \) where point \( P \) is closer to \( C \) than to \( A \) or \( B \).  
+4. Calculate the area of this region.  
+5. Compute the probability as the ratio of the area of the region to the total area of the triangle.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to determine the coordinates of vertices \( A \), \( B \), and \( C \). Use the Asymptote code provided, which assigns \( C = (0,0) \), \( A = (0,3) \), and \( B = (4,0) \), and verify that these coordinates satisfy the given side lengths \( AB = 5 \), \( BC = 4 \), and \( CA = 3 \).
+[/PLANNING]
+
+[IMP]
+Verify the coordinates:  
+- **Distance \( CA \)**: From \( C(0,0) \) to \( A(0,3) \), distance = \( \sqrt{(0-0)^2 + (3-0)^2} = \sqrt{9} = 3 \). Matches \( CA = 3 \).  
+- **Distance \( BC \)**: From \( B(4,0) \) to \( C(0,0) \), distance = \( \sqrt{(4-0)^2 + (0-0)^2} = \sqrt{16} = 4 \). Matches \( BC = 4 \).  
+- **Distance \( AB \)**: From \( A(0,3) \) to \( B(4,0) \), distance = \( \sqrt{(4-0)^2 + (0-3)^2} = \sqrt{16 + 9} = \sqrt{25} = 5 \). Matches \( AB = 5 \).  
+The coordinates \( A(0,3) \), \( B(4,0) \), \( C(0,0) \) are consistent with the given side lengths.
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute the area of triangle \( ABC \). Use the coordinates \( A(0,3) \), \( B(4,0) \), \( C(0,0) \) and apply the shoelace formula for the area of a triangle given its vertices.
+[/PLANNING]
+
+[IMP]
+Apply the shoelace formula for vertices \( (x_1, y_1) = (0,3) \), \( (x_2, y_2) = (4,0) \), \( (x_3, y_3) = (0,0) \):  
+\[
+\text{Area} = \frac{1}{2} \left| x_1 (y_2 - y_3) + x_2 (y_3 - y_1) + x_3 (y_1 - y_2) \right|
+\]
+\[
+= \frac{1}{2} \left| 0 \cdot (0 - 0) + 4 \cdot (0 - 3) + 0 \cdot (3 - 0) \right| = \frac{1}{2} \left| 4 \cdot (-3) \right| = \frac{1}{2} \cdot 12 = 6
+\]
+The area of triangle \( ABC \) is 6 square units.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to define the region where point \( P(x,y) \) is closer to \( C \) than to \( A \) or \( B \). This means \( \text{distance}(P, C) < \text{distance}(P, A) \) and \( \text{distance}(P, C) < \text{distance}(P, B) \). Express these conditions using the coordinates.
+[/PLANNING]
+
+[IMP]
+For point \( P(x,y) \):  
+- **Distance to \( C(0,0) \)**: \( \sqrt{x^2 + y^2} \).  
+- **Distance to \( A(0,3) \)**: \( \sqrt{x^2 + (y-3)^2} \).  
+- **Distance to \( B(4,0) \)**: \( \sqrt{(x-4)^2 + y^2} \).  
+
+Conditions:  
+1. \( \text{distance}(P, C) < \text{distance}(P, A) \):  
+\[
+\sqrt{x^2 + y^2} < \sqrt{x^2 + (y-3)^2}
+\]
+Square both sides:  
+\[
+x^2 + y^2 < x^2 + (y-3)^2
+\]
+\[
+y^2 < y^2 - 6y + 9 \implies 0 < -6y + 9 \implies 6y < 9 \implies y < \frac{3}{2}
+\]
+
+2. \( \text{distance}(P, C) < \text{distance}(P, B) \):  
+\[
+\sqrt{x^2 + y^2} < \sqrt{(x-4)^2 + y^2}
+\]
+Square both sides:  
+\[
+x^2 + y^2 < (x-4)^2 + y^2
+\]
+\[
+x^2 < x^2 - 8x + 16 \implies 0 < -8x + 16 \implies 8x < 16 \implies x < 2
+\]
+
+The region is defined by \( y < \frac{3}{2} \), \( x < 2 \), and \( P \) must lie inside triangle \( ABC \).
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to determine the boundaries of triangle \( ABC \) to ensure point \( P(x,y) \) lies inside it. Find the equations of the sides of the triangle using the vertices’ coordinates.
+[/PLANNING]
+
+[IMP]
+- **Side \( BC \)**: From \( B(4,0) \) to \( C(0,0) \), equation is \( y = 0 \).  
+- **Side \( CA \)**: From \( C(0,0) \) to \( A(0,3) \), equation is \( x = 0 \).  
+- **Side \( AB \)**: From \( A(0,3) \) to \( B(4,0) \). Slope = \( \frac{0-3}{4-0} = -\frac{3}{4} \). Equation using point-slope form at \( A(0,3) \):  
+\[
+y - 3 = -\frac{3}{4} (x - 0) \implies y = -\frac{3}{4}x + 3
+\]
+
+For \( P(x,y) \) to be inside or on the triangle, check the region using inequalities (orientations relative to lines):  
+- For \( BC \): \( y \geq 0 \).  
+- For \( CA \): \( x \geq 0 \).  
+- For \( AB \): Line \( y = -\frac{3}{4}x + 3 \). Test point below the line (e.g., \( C(0,0) \)): \( 0 \leq -\frac{3}{4} \cdot 0 + 3 = 3 \), true. Thus, \( y \leq -\frac{3}{4}x + 3 \).
+
+The triangle is bounded by \( x \geq 0 \), \( y \geq 0 \), \( y \leq -\frac{3}{4}x + 3 \).
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find the area of the region inside triangle \( ABC \) where \( x < 2 \), \( y < \frac{3}{2} \). Set up an integral over the triangle’s region, restricted by these conditions.
+[/PLANNING]
+
+[IMP]
+The region is defined by:  
+- Triangle boundaries: \( 0 \leq x \leq 4 \), \( 0 \leq y \leq -\frac{3}{4}x + 3 \).  
+- Additional constraints: \( x < 2 \), \( y < \frac{3}{2} \).
+
+Find intersection points:  
+- Line \( y = -\frac{3}{4}x + 3 \) at \( x = 2 \):  
+\[
+y = -\frac{3}{4} \cdot 2 + 3 = -\frac{6}{4} + 3 = \frac{6}{4} = \frac{3}{2}
+\]
+Point: \( (2, \frac{3}{2}) \).  
+- Line \( y = \frac{3}{2} \) with \( y = -\frac{3}{4}x + 3 \):  
+\[
+\frac{3}{2} = -\frac{3}{4}x + 3 \implies \frac{3}{2} - 3 = -\frac{3}{4}x \implies -\frac{3}{2} = -\frac{3}{4}x \implies x = 2
+\]
+Confirms point \( (2, \frac{3}{2}) \).  
+- Line \( x = 2 \) with \( y = 0 \): Point \( (2, 0) \).  
+- Line \( y = \frac{3}{2} \) with \( x = 0 \): Point \( (0, \frac{3}{2}) \).
+
+The region is a quadrilateral with vertices: \( (0,0) \), \( (0, \frac{3}{2}) \), \( (2, \frac{3}{2}) \), \( (2,0) \). Use the shoelace formula:  
+Vertices in order: \( (0,0) \), \( (2,0) \), \( (2, \frac{3}{2}) \), \( (0, \frac{3}{2}) \).  
+\[
+\text{Area} = \frac{1}{2} \left| (0 \cdot 0 + 2 \cdot \frac{3}{2} + 2 \cdot \frac{3}{2} + 0 \cdot 0) - (0 \cdot 2 + 0 \cdot 2 + \frac{3}{2} \cdot 0 + \frac{3}{2} \cdot 0) \right|
+\]
+\[
+= \frac{1}{2} \left| (0 + 3 + 3 + 0) - (0 + 0 + 0 + 0) \right| = \frac{1}{2} \cdot 6 = 3
+\]
+Area of the region is 3 square units.
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute the probability as the ratio of the area of the region where \( P \) is closer to \( C \) to the total area of triangle \( ABC \).
+[/PLANNING]
+
+[IMP]
+Total area of triangle \( ABC \): 6 square units (from Step 3).  
+Area of region where \( P \) is closer to \( C \): 3 square units (from Step 6).  
+Probability = \( \frac{\text{Area of region}}{\text{Total area}} = \frac{3}{6} = \frac{1}{2} \).
+[/IMP]
+
+---
+
+### Step 8
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the solution by checking the geometric interpretation and ensuring the region’s area is consistent with the problem’s constraints.
+[/PLANNING]
+
+[IMP]
+The region \( x < 2 \), \( y < \frac{3}{2} \) forms a quadrilateral covering the lower-left half of the triangle near \( C(0,0) \). Since the area is exactly half the triangle’s area, verify geometrically:  
+- The lines \( x = 2 \) and \( y = \frac{3}{2} \) intersect at \( (2, \frac{3}{2}) \), which lies on side \( AB \).  
+- This suggests the region is bounded by the perpendicular bisectors of \( CA \) and \( BC \), adjusted to the triangle’s boundaries.  
+Recalculate area using integration to confirm:  
+Integrate over \( 0 \leq x \leq 2 \), \( 0 \leq y \leq \min\left(\frac{3}{2}, -\frac{3}{4}x + 3\right) \):  
+- For \( x \) from 0 to 2, check when \( -\frac{3}{4}x + 3 = \frac{3}{2} \): Solved in Step 6 as \( x = 2 \).  
+- Thus, \( y \) from 0 to \( \frac{3}{2} \) for \( 0 \leq x \leq 2 \).  
+\[
+\text{Area} = \int_0^2 \int_0^{3/2} dy \, dx = \int_0^2 \left[ y \right]_0^{3/2} dx = \int_0^2 \frac{3}{2} dx = \frac{3}{2} \cdot 2 = 3
+\]
+Matches previous calculation. Solution is consistent.
+[/IMP]
+
+---
+
+### Final Answer
+The probability that a randomly selected point \( P \) inside triangle \( ABC \) is closer to vertex \( C \) than to either vertex \( A \) or vertex \( B \) is \( \frac{1}{2} \).

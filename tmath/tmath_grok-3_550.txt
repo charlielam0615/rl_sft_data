@@ -1,0 +1,79 @@
+**Problem Statement**: Find the greatest possible sum of two consecutive integers such that their product is less than 400.
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to find the greatest sum of two consecutive integers with a product less than 400:  
+1. Define the two consecutive integers.  
+2. Set up the mathematical condition for their product.  
+3. Determine the maximum integers that satisfy the condition.  
+4. Calculate their sum.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**:  
+- **Current Goal**: Define the two consecutive integers and express their product mathematically.  
+- **How to Achieve**: Represent the integers as \( n \) and \( n+1 \), and set up the inequality for their product: \( n(n+1) < 400 \).  
+[/PLANNING]  
+[IMP]  
+Let the two consecutive integers be \( n \) and \( n+1 \), where \( n \) is an integer. Their product must satisfy:  
+\[ n(n+1) < 400 \]  
+This inequality will guide us to find the largest possible \( n \).  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**:  
+- **Current Goal**: Find the largest integer \( n \) such that \( n(n+1) < 400 \).  
+- **How to Achieve**: Solve the inequality \( n(n+1) < 400 \) by approximating the solution to the equation \( n(n+1) = 400 \) and checking integer bounds.  
+[/PLANNING]  
+[IMP]  
+To find the largest \( n \), solve the quadratic equation \( n(n+1) = 400 \):  
+\[ n^2 + n - 400 = 0 \]  
+Use the quadratic formula \( n = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \), where \( a = 1 \), \( b = 1 \), \( c = -400 \):  
+\[ n = \frac{-1 \pm \sqrt{1 + 1600}}{2} = \frac{-1 \pm \sqrt{1601}}{2} \]  
+Since \( \sqrt{1601} \approx 40.0125 \),  
+\[ n \approx \frac{-1 + 40.0125}{2} \approx 19.50625 \]  
+Since \( n \) must be an integer, test \( n = 19 \):  
+\[ 19 \times 20 = 380 < 400 \]  
+Test \( n = 20 \):  
+\[ 20 \times 21 = 420 > 400 \]  
+Thus, \( n = 19 \) is the largest integer satisfying \( n(n+1) < 400 \).  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**:  
+- **Current Goal**: Verify that \( n = 19 \) gives the largest possible sum and satisfies the product condition.  
+- **How to Achieve**: Check the product for \( n = 19 \), compute the sum, and confirm no larger \( n \) is valid.  
+[/PLANNING]  
+[IMP]  
+For \( n = 19 \):  
+- Product: \( 19 \times 20 = 380 < 400 \) (valid).  
+- Sum: \( 19 + 20 = 39 \).  
+For \( n = 20 \):  
+- Product: \( 20 \times 21 = 420 > 400 \) (invalid).  
+No larger \( n \) satisfies the condition, so the sum \( 19 + 20 = 39 \) is the maximum.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the greatest sum of two consecutive integers with product less than 400.  
+  - Subgoal 1: Define the integers as \( n \) and \( n+1 \).  
+  - Subgoal 2: Set up and solve \( n(n+1) < 400 \).  
+  - Subgoal 3: Find the largest valid \( n \).  
+  - Subgoal 4: Compute the sum for the largest valid \( n \).  
+  - Subgoal 5: Validate the solution.  
+**Current Goal**: Validate the solution (completed).  
+The solution \( n = 19 \), sum = 39, is consistent with all subgoals.  
+[/REVIEW]
+
+**Final Answer**: The greatest possible sum of two consecutive integers whose product is less than 400 is **39** (from integers 19 and 20).

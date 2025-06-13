@@ -1,0 +1,123 @@
+### Problem Statement
+We need to find the coefficient of \( x^4 \) in the expansion of \( (1 - 2x^2)^5 \).
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action**: Forward Subgoaling (Planning)
+
+To find the coefficient of \( x^4 \) in \( (1 - 2x^2)^5 \), we break down the problem into intermediate subgoals:
+1. Apply the binomial theorem to expand \( (1 - 2x^2)^5 \).
+2. Identify the term in the expansion that contains \( x^4 \).
+3. Calculate the coefficient of that term.
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action**: Reach Goal (Implementation)
+
+**Current Goal**: Expand \( (1 - 2x^2)^5 \) using the binomial theorem and identify the term with \( x^4 \).
+
+**How to Achieve**: Use the binomial theorem for \( (a + b)^n \), where \( a = 1 \), \( b = -2x^2 \), and \( n = 5 \). The general term in the expansion is given by \( \binom{n}{k} a^{n-k} b^k \). Substitute the values, compute the general term, and find the value of \( k \) that produces \( x^4 \).
+[/PLANNING]
+
+[IMP]
+The binomial expansion of \( (1 - 2x^2)^5 \) is:
+
+\[ (1 + (-2x^2))^5 = \sum_{k=0}^5 \binom{5}{k} (1)^{5-k} (-2x^2)^k \]
+
+Simplify the general term:
+
+\[ \binom{5}{k} (1)^{5-k} (-2x^2)^k = \binom{5}{k} (-2)^k (x^2)^k = \binom{5}{k} (-2)^k x^{2k} \]
+
+To find the term with \( x^4 \), set the exponent of \( x \):
+
+\[ 2k = 4 \]
+
+\[ k = 2 \]
+
+For \( k = 2 \), the term is:
+
+\[ \binom{5}{2} (-2)^2 x^{2 \cdot 2} = \binom{5}{2} \cdot 4 \cdot x^4 \]
+
+Calculate:
+
+\[ \binom{5}{2} = \frac{5!}{2! \cdot 3!} = \frac{5 \cdot 4}{2 \cdot 1} = 10 \]
+
+\[ (-2)^2 = 4 \]
+
+\[ \text{Coefficient} = 10 \cdot 4 = 40 \]
+
+Thus, the coefficient of \( x^4 \) is 40.
+[/IMP]
+
+---
+
+### Step 3: Validation
+[PLANNING]
+**Action**: Validation (Implementation)
+
+**Current Goal**: Verify the coefficient of \( x^4 \) is correct.
+
+**How to Achieve**: Check the calculation by recomputing the term for \( k = 2 \) and confirm using an alternative method, such as computing a few terms of the expansion manually.
+[/PLANNING]
+
+[IMP]
+Recompute the term for \( k = 2 \):
+
+\[ \binom{5}{2} (-2)^2 x^4 = 10 \cdot 4 \cdot x^4 = 40 \cdot x^4 \]
+
+To confirm, compute the first few terms of the expansion manually:
+
+\[ (1 - 2x^2)^5 = \sum_{k=0}^5 \binom{5}{k} (-2x^2)^k \]
+
+- For \( k = 0 \):
+
+\[ \binom{5}{0} (-2x^2)^0 = 1 \cdot 1 = 1 \]
+
+- For \( k = 1 \):
+
+\[ \binom{5}{1} (-2x^2)^1 = 5 \cdot (-2x^2) = -10x^2 \]
+
+- For \( k = 2 \):
+
+\[ \binom{5}{2} (-2x^2)^2 = 10 \cdot (4x^4) = 40x^4 \]
+
+- For \( k = 3 \):
+
+\[ \binom{5}{3} (-2x^2)^3 = 10 \cdot (-8x^6) = -80x^6 \]
+
+The term for \( k = 2 \) is \( 40x^4 \), confirming the coefficient is 40.
+
+Alternatively, consider the pattern of exponents. Since \( -2x^2 \) contributes \( x^{2k} \), only even powers of \( x \) appear (\( x^0, x^2, x^4, x^6, x^8, x^{10} \)), and \( k = 2 \) correctly yields \( x^4 \).
+
+The calculations are consistent, so the coefficient is correct.
+[/IMP]
+
+---
+
+### Step 4: Track Goals
+[PLANNING]
+**Action**: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Find the coefficient of \( x^4 \) in \( (1 - 2x^2)^5 \).
+  - Subgoal 1: Apply the binomial theorem to expand \( (1 - 2x^2)^5 \). (Completed)
+  - Subgoal 2: Identify the term with \( x^4 \). (Completed)
+  - Subgoal 3: Calculate the coefficient of the \( x^4 \) term. (Completed)
+  - Subgoal 4: Verify the coefficient. (Completed)
+
+**Current Goal**: None, as all subgoals are completed.
+
+The coefficient of \( x^4 \) has been calculated as 40 and verified.
+[/REVIEW]
+
+---
+
+### Final Answer
+The coefficient of \( x^4 \) in the expansion of \( (1 - 2x^2)^5 \) is 40.

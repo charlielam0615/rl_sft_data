@@ -1,0 +1,125 @@
+### Problem Restatement
+We need to determine the number of possible starting lineups of 5 players that Coach Yellsalot can form from the Screamers, a team of 12 players, given that two specific players, Bob and Yogi, cannot both be in the lineup. The order of players in the lineup does not matter, so we are counting combinations of 5 players.
+
+---
+
+### Step 1
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+To solve the problem, break it into subgoals:
+1. Calculate the total number of possible lineups of 5 players from 12 without restrictions.
+2. Calculate the number of lineups that include both Bob and Yogi.
+3. Subtract the number of lineups with both Bob and Yogi from the total to get the number of valid lineups.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+Action: Reach Goal (Implementation)
+Meta-data: The current goal is to calculate the total number of possible lineups of 5 players from 12 without restrictions. This can be achieved by computing the number of combinations of 5 players from 12, using the combination formula C(n, k) = n! / (k! * (n-k)!).
+[/PLANNING]
+
+[IMP]
+The total number of lineups is the number of ways to choose 5 players from 12:
+C(12, 5) = 12! / (5! * 7!) = (12 * 11 * 10 * 9 * 8) / (5 * 4 * 3 * 2 * 1) = 792.
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+Action: Reach Goal (Implementation)
+Meta-data: The current goal is to calculate the number of lineups that include both Bob and Yogi. To do this, select Bob and Yogi (2 players), then choose 3 more players from the remaining 10 players using the combination formula.
+[/PLANNING]
+
+[IMP]
+If both Bob and Yogi are in the lineup, 2 of the 5 positions are fixed. We need to choose 3 additional players from the remaining 10 players:
+C(10, 3) = 10! / (3! * 7!) = (10 * 9 * 8) / (3 * 2 * 1) = 120.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+Action: Reach Goal (Implementation)
+Meta-data: The current goal is to find the number of valid lineups by subtracting the number of lineups with both Bob and Yogi from the total number of lineups.
+[/PLANNING]
+
+[IMP]
+Subtract the number of lineups with both Bob and Yogi from the total:
+792 - 120 = 672.
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+
+[REVIEW]
+Goal hierarchy:
+- Main goal: Determine the number of starting lineups of 5 players where Bob and Yogi are not both included.
+  - Subgoal 1: Calculate total lineups (completed: C(12, 5) = 792).
+  - Subgoal 2: Calculate lineups with both Bob and Yogi (completed: C(10, 3) = 120).
+  - Subgoal 3: Subtract to find valid lineups (completed: 792 - 120 = 672).
+Current goal: Achieved (final answer: 672 lineups).
+[/REVIEW]
+
+---
+
+### Step 6
+[PLANNING]
+Action: Validation (Implementation)
+Meta-data: The current goal is to verify the solution. An alternative approach is to calculate the number of lineups where either Bob or neither is included (but not both) by summing the cases: (1) Bob is in the lineup, Yogi is not; (2) Neither Bob nor Yogi is in the lineup.
+[/PLANNING]
+
+[IMP]
+- Case 1: Bob is in the lineup, Yogi is not. Choose Bob (1 player), then choose 4 more players from the remaining 10 players (excluding Yogi):
+  C(10, 4) = 10! / (4! * 6!) = (10 * 9 * 8 * 7) / (4 * 3 * 2 * 1) = 210.
+- Case 2: Neither Bob nor Yogi is in the lineup. Choose 5 players from the remaining 10 players:
+  C(10, 5) = 10! / (5! * 5!) = (10 * 9 * 8 * 7 * 6) / (5 * 4 * 3 * 2 * 1) = 252.
+- Total valid lineups: 210 + 252 = 462.
+This result (462) differs from the previous calculation (672). Let’s proceed to review to identify the correct approach.
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]
+Action: Recall Info (Review)
+Meta-data: The current goal is to resolve the discrepancy between the two calculations (672 vs. 462). Retrieve information from previous steps to identify potential errors in either approach.
+[/PLANNING]
+
+[REVIEW]
+- Step 2: Total lineups calculated as C(12, 5) = 792.
+- Step 3: Lineups with both Bob and Yogi calculated as C(10, 3) = 120.
+- Step 4: Valid lineups = 792 - 120 = 672.
+- Step 6: Alternative approach:
+  - Bob in, Yogi out: C(10, 4) = 210.
+  - Neither in: C(10, 5) = 252.
+  - Total = 210 + 252 = 462.
+The discrepancy suggests an error. The first approach (672) uses the principle of subtraction: total lineups minus invalid ones. The second approach (462) sums valid cases but may miss cases or misinterpret the constraint. Let’s test the first approach’s logic: If we include lineups with Yogi in and Bob out (missed in Step 6), we calculate C(10, 4) = 210 for Yogi in, Bob out. Adding to Step 6: 210 (Bob in, Yogi out) + 210 (Yogi in, Bob out) + 252 (neither) = 672, matching the first approach.
+[/REVIEW]
+
+---
+
+### Step 8
+[PLANNING]
+Action: Validation (Implementation)
+Meta-data: The current goal is to confirm the correct answer by recomputing the alternative approach correctly, including all valid cases: (1) Bob in, Yogi out; (2) Yogi in, Bob out; (3) Neither in.
+[/PLANNING]
+
+[IMP]
+- Case 1: Bob in, Yogi out: C(10, 4) = 210.
+- Case 2: Yogi in, Bob out: Choose Yogi, then 4 from the remaining 10 (excluding Bob): C(10, 4) = 210.
+- Case 3: Neither in: C(10, 5) = 252.
+Total: 210 + 210 + 252 = 672.
+This matches the result from Step 4, confirming the solution.
+[/IMP]
+
+---
+
+### Final Answer
+The number of starting lineups Coach Yellsalot can make, where Bob and Yogi are not both included, is **672**.

@@ -1,0 +1,144 @@
+### Problem Restatement
+We need to find the value of \( A + B \) given the functions \( f(x) = Ax + B \) and \( g(x) = Bx + A \), where \( A \neq B \), and the condition \( f(g(x)) - g(f(x)) = B - A \).
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to solve for \( A + B \):  
+1. Compute the composition \( f(g(x)) \).  
+2. Compute the composition \( g(f(x)) \).  
+3. Form the expression \( f(g(x)) - g(f(x)) \).  
+4. Set the resulting expression equal to \( B - A \) and simplify.  
+5. Solve for \( A + B \) using the resulting equation.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Compute \( f(g(x)) \) and \( g(f(x)) \).  
+**How to Achieve**: Substitute \( g(x) \) into \( f(x) \) to find \( f(g(x)) \), and substitute \( f(x) \) into \( g(x) \) to find \( g(f(x)) \).  
+[/PLANNING]
+
+[IMP]  
+Compute \( g(x) \):  
+\[ g(x) = Bx + A \]  
+
+Compute \( f(g(x)) \):  
+\[ f(g(x)) = f(Bx + A) = A(Bx + A) + B = ABx + A^2 + B \]  
+
+Compute \( f(x) \):  
+\[ f(x) = Ax + B \]  
+
+Compute \( g(f(x)) \):  
+\[ g(f(x)) = g(Ax + B) = B(Ax + B) + A = BAx + B^2 + A \]  
+Since \( AB = BA \), we have:  
+\[ g(f(x)) = ABx + B^2 + A \]  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Form the expression \( f(g(x)) - g(f(x)) \) and set it equal to \( B - A \).  
+**How to Achieve**: Subtract \( g(f(x)) \) from \( f(g(x)) \), simplify the resulting expression, and equate it to \( B - A \).  
+[/PLANNING]
+
+[IMP]  
+From Step 2:  
+\[ f(g(x)) = ABx + A^2 + B \]  
+\[ g(f(x)) = ABx + B^2 + A \]  
+
+Compute:  
+\[ f(g(x)) - g(f(x)) = (ABx + A^2 + B) - (ABx + B^2 + A) \]  
+\[ = ABx + A^2 + B - ABx - B^2 - A \]  
+\[ = (A^2 - B^2) + (B - A) \]  
+\[ = (A - B)(A + B) - (A - B) \]  
+Factorize:  
+\[ = (A - B)(A + B - 1) \]  
+
+Set equal to the given condition:  
+\[ (A - B)(A + B - 1) = B - A \]  
+Since \( B - A = -(A - B) \), rewrite the right-hand side:  
+\[ (A - B)(A + B - 1) = -(A - B) \]  
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Solve the equation \( (A - B)(A + B - 1) = -(A - B) \) for \( A + B \).  
+**How to Achieve**: Analyze the equation by considering cases where \( A - B \neq 0 \) (since \( A \neq B \)) and solve for \( A + B \).  
+[/PLANNING]
+
+[IMP]  
+From Step 3:  
+\[ (A - B)(A + B - 1) = -(A - B) \]  
+
+Since \( A \neq B \), \( A - B \neq 0 \), so divide both sides by \( A - B \):  
+\[ A + B - 1 = -1 \]  
+\[ A + B = 0 \]  
+[/IMP]
+
+---
+
+### Step 5: Validation
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify the solution \( A + B = 0 \) by substituting back into the original condition.  
+**How to Achieve**: Substitute \( A + B = 0 \) (i.e., \( B = -A \)) into \( f(g(x)) - g(f(x)) \) and check if it equals \( B - A \).  
+[/PLANNING]
+
+[IMP]  
+If \( A + B = 0 \), then \( B = -A \). Redefine the functions:  
+\[ f(x) = Ax + B = Ax - A \]  
+\[ g(x) = Bx + A = -Ax + A \]  
+
+Compute \( f(g(x)) \):  
+\[ g(x) = -Ax + A \]  
+\[ f(g(x)) = f(-Ax + A) = A(-Ax + A) - A = -A^2x + A^2 - A \]  
+
+Compute \( g(f(x)) \):  
+\[ f(x) = Ax - A \]  
+\[ g(f(x)) = g(Ax - A) = -A(Ax - A) + A = -A^2x + A^2 + A \]  
+
+Compute:  
+\[ f(g(x)) - g(f(x)) = (-A^2x + A^2 - A) - (-A^2x + A^2 + A) \]  
+\[ = (-A^2x + A^2 - A) + (A^2x - A^2 - A) \]  
+\[ = (A^2 - A^2) + (-A - A) \]  
+\[ = -2A \]  
+
+Check the right-hand side:  
+\[ B - A = -A - A = -2A \]  
+
+Since \( f(g(x)) - g(f(x)) = -2A = B - A \), the solution is valid.  
+[/IMP]
+
+---
+
+### Step 6: Track Goals
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find \( A + B \) such that \( f(g(x)) - g(f(x)) = B - A \).  
+  - Subgoal 1: Compute \( f(g(x)) \) and \( g(f(x)) \). (Completed in Step 2)  
+  - Subgoal 2: Form \( f(g(x)) - g(f(x)) \) and set equal to \( B - A \). (Completed in Step 3)  
+  - Subgoal 3: Solve for \( A + B \). (Completed in Step 4)  
+  - Subgoal 4: Validate the solution. (Completed in Step 5)  
+
+**Current Goal**: Conclude the solution since all subgoals are completed.  
+**Solution**: \( A + B = 0 \).  
+[/REVIEW]
+
+---
+
+### Final Answer
+\[ A + B = 0 \]

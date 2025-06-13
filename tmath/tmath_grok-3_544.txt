@@ -1,0 +1,98 @@
+**Problem Statement**: Given the functions \( f(x) = x^2 - 2x + 5 \) and \( g(x) = x + 3 \), compute the value of \( f(g(5)) - g(f(5)) \).
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to compute \( f(g(5)) - g(f(5)) \):  
+1. Compute \( g(5) \).  
+2. Use the result to compute \( f(g(5)) \).  
+3. Compute \( f(5) \).  
+4. Use the result to compute \( g(f(5)) \).  
+5. Subtract \( g(f(5)) \) from \( f(g(5)) \) to find the final value.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute \( g(5) \), which involves substituting \( x = 5 \) into \( g(x) = x + 3 \). This is a straightforward evaluation using the function definition.  
+[/PLANNING]  
+[IMP]  
+Substitute \( x = 5 \) into \( g(x) = x + 3 \):  
+\( g(5) = 5 + 3 = 8 \).  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute \( f(g(5)) \), which is \( f(8) \) since \( g(5) = 8 \). Substitute \( x = 8 \) into \( f(x) = x^2 - 2x + 5 \).  
+[/PLANNING]  
+[IMP]  
+Substitute \( x = 8 \) into \( f(x) = x^2 - 2x + 5 \):  
+\( f(8) = 8^2 - 2 \cdot 8 + 5 = 64 - 16 + 5 = 53 \).  
+So, \( f(g(5)) = 53 \).  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute \( f(5) \), by substituting \( x = 5 \) into \( f(x) = x^2 - 2x + 5 \).  
+[/PLANNING]  
+[IMP]  
+Substitute \( x = 5 \) into \( f(x) = x^2 - 2x + 5 \):  
+\( f(5) = 5^2 - 2 \cdot 5 + 5 = 25 - 10 + 5 = 20 \).  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute \( g(f(5)) \), which is \( g(20) \) since \( f(5) = 20 \). Substitute \( x = 20 \) into \( g(x) = x + 3 \).  
+[/PLANNING]  
+[IMP]  
+Substitute \( x = 20 \) into \( g(x) = x + 3 \):  
+\( g(20) = 20 + 3 = 23 \).  
+So, \( g(f(5)) = 23 \).  
+[/IMP]
+
+### Step 6
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to compute \( f(g(5)) - g(f(5)) \), using the previously computed values \( f(g(5)) = 53 \) and \( g(f(5)) = 23 \). Perform the subtraction to find the final result.  
+[/PLANNING]  
+[IMP]  
+Using the results:  
+\( f(g(5)) - g(f(5)) = 53 - 23 = 30 \).  
+[/IMP]
+
+### Step 7
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate the computation of \( f(g(5)) - g(f(5)) = 30 \) by rechecking each step to ensure correctness.  
+[/PLANNING]  
+[IMP]  
+Recheck calculations:  
+- \( g(5) = 5 + 3 = 8 \).  
+- \( f(8) = 8^2 - 2 \cdot 8 + 5 = 64 - 16 + 5 = 53 \).  
+- \( f(5) = 5^2 - 2 \cdot 5 + 5 = 25 - 10 + 5 = 20 \).  
+- \( g(20) = 20 + 3 = 23 \).  
+- \( 53 - 23 = 30 \).  
+All steps are consistent with the previous calculations, confirming the result.  
+[/IMP]
+
+### Step 8
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Compute \( f(g(5)) - g(f(5)) \).  
+  - Subgoal 1: Compute \( g(5) = 8 \).  
+  - Subgoal 2: Compute \( f(g(5)) = f(8) = 53 \).  
+  - Subgoal 3: Compute \( f(5) = 20 \).  
+  - Subgoal 4: Compute \( g(f(5)) = g(20) = 23 \).  
+  - Subgoal 5: Compute \( 53 - 23 = 30 \).  
+  - Subgoal 6: Validate the result (confirmed as 30).  
+**Current Goal**: The current goal is to present the final validated result.  
+The computations are complete, and the final result is \( f(g(5)) - g(f(5)) = 30 \).  
+[/REVIEW]
+
+**Final Answer**: \( f(g(5)) - g(f(5)) = 30 \).

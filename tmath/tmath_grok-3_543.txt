@@ -1,0 +1,94 @@
+### Problem Statement
+We need to find the degree of the polynomial \( g(x) \), given that \( h(x) = f(g(x)) + g(x) \), the degree of \( h(x) \) is 6, and the degree of \( f(x) \) is 2.
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to determine the degree of \( g(x) \).  
+Subgoals:  
+1. Understand the relationship between the degrees of \( h(x) \), \( f(x) \), and \( g(x) \).  
+2. Express the degree of \( h(x) \) in terms of the degrees of \( f(x) \) and \( g(x) \).  
+3. Solve for the degree of \( g(x) \) using the given degrees of \( h(x) \) and \( f(x) \).  
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to express the degree of \( h(x) \) based on the degrees of \( f(x) \) and \( g(x) \). Since \( h(x) = f(g(x)) + g(x) \), we need to determine the degree of the composite polynomial \( f(g(x)) \) and how it combines with \( g(x) \). We will use the fact that the degree of a polynomial sum is the maximum degree of the terms, provided the leading terms do not cancel.  
+[/PLANNING]
+
+[IMP]
+Since \( f(x) \) is a polynomial of degree 2, let’s denote it as \( f(x) = a x^2 + b x + c \), where \( a \neq 0 \). Let the degree of \( g(x) \) be \( n \), so \( g(x) \) is a polynomial of degree \( n \). The composition \( f(g(x)) \) involves substituting \( g(x) \) into \( f(x) \), so:  
+- The leading term of \( f(g(x)) \) comes from \( a (g(x))^2 \), since the degree of \( f(x) \) is 2.  
+- If the leading term of \( g(x) \) is \( k x^n \) (where \( k \neq 0 \)), then \( (g(x))^2 \approx (k x^n)^2 = k^2 x^{2n} \).  
+- Thus, \( f(g(x)) \approx a (k^2 x^{2n}) = a k^2 x^{2n} \), so the degree of \( f(g(x)) \) is \( 2n \).  
+
+Now, \( h(x) = f(g(x)) + g(x) \). The degree of \( h(x) \) is determined by the term with the highest degree:  
+- Degree of \( f(g(x)) \) is \( 2n \).  
+- Degree of \( g(x) \) is \( n \).  
+- If \( 2n > n \) (i.e., \( n > 0 \)), the degree of \( h(x) \) is \( 2n \), assuming no cancellation of leading terms.  
+- If the leading terms cancel, we need to consider lower-degree terms, but we’ll assume no cancellation for now (standard for generic polynomials).  
+
+Given that the degree of \( h(x) \) is 6, we set up the equation:  
+\[ 2n = 6 \]  
+\[ n = 3 \]  
+So, the degree of \( g(x) \) is likely 3.  
+[/IMP]
+
+### Step 3
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate whether the degree of \( g(x) \) being 3 satisfies the condition that the degree of \( h(x) \) is 6. We will check if the degree calculation holds and consider the possibility of leading-term cancellation.  
+[/PLANNING]
+
+[IMP]
+Assume \( \deg(g(x)) = 3 \), so \( g(x) = k x^3 + \text{lower terms} \). Then:  
+- \( f(g(x)) \) has degree \( 2 \cdot 3 = 6 \), since \( \deg(f(x)) = 2 \).  
+- \( g(x) \) has degree 3.  
+- For \( h(x) = f(g(x)) + g(x) \), the degree is \( \max(6, 3) = 6 \), unless the leading terms cancel.  
+
+To check for cancellation:  
+- Let \( f(x) = a x^2 + b x + c \), and \( g(x) = k x^3 + m x^2 + p x + q \).  
+- The leading term of \( f(g(x)) \) is \( a (k x^3)^2 = a k^2 x^6 \).  
+- The leading term of \( g(x) \) is \( k x^3 \).  
+- Thus, \( h(x) \approx a k^2 x^6 + k x^3 + \text{lower terms} \).  
+- The degree of \( h(x) \) is 6 unless \( a k^2 = 0 \), which is not possible since \( a \neq 0 \) (as \( \deg(f) = 2 \)) and \( k \neq 0 \) (as \( \deg(g) = 3 \)).  
+
+Thus, no cancellation occurs, and \( \deg(h(x)) = 6 \), which matches the given condition.  
+[/IMP]
+
+### Step 4
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main goal: Find the degree of \( g(x) \).  
+  - Subgoal 1: Understand the relationship between degrees of \( h(x) \), \( f(x) \), and \( g(x) \) (completed).  
+  - Subgoal 2: Express the degree of \( h(x) \) in terms of degrees of \( f(x) \) and \( g(x) \) (completed, \( \deg(h) = 2 \cdot \deg(g) \)).  
+  - Subgoal 3: Solve for \( \deg(g) \) (computed as 3).  
+  - Subgoal 4: Validate the solution (confirmed degree 3 works).  
+
+**Current Goal**: Confirm the solution by reviewing all steps.  
+The degree of \( g(x) \) is 3, as it satisfies \( 2 \cdot 3 = 6 \), and validation shows no leading-term cancellation.  
+[/REVIEW]
+
+### Step 5
+[PLANNING]
+**Action: Recall Info (Review)**  
+**Meta-data**: The current goal is to confirm the degree of \( g(x) \) by recalling information about degree calculations and assumptions made. Retrieve details from previous steps to ensure consistency.  
+[/PLANNING]
+
+[REVIEW]
+Relevant information:  
+- From Step 2: \( \deg(f(g(x))) = 2 \cdot \deg(g) \), and since \( \deg(h) = 6 \), we derived \( \deg(g) = 3 \).  
+- From Step 3: Validation confirmed that with \( \deg(g) = 3 \), \( \deg(f(g(x))) = 6 \), and no leading-term cancellation occurs for generic polynomials.  
+- Assumption: The leading terms of \( f(g(x)) \) and \( g(x) \) do not cancel, which holds since \( f \) and \( g \) are arbitrary polynomials with non-zero leading coefficients.  
+
+This confirms \( \deg(g(x)) = 3 \).  
+[/REVIEW]
+
+### Final Answer
+The degree of \( g(x) \) is 3.  
+\[ \boxed{3} \]

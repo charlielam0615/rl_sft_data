@@ -1,0 +1,162 @@
+**Problem Restatement**: We need to find the ordered pair \((a, c)\) for the quadratic equation \(ax^2 + 20x + c = 0\), which has exactly one solution, given that \(a + c = 29\) and \(a < c\).
+
+---
+
+**Step 1**
+
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+To solve the problem, break it into intermediate subgoals:  
+1. Determine the condition for a quadratic equation to have exactly one solution.  
+2. Use the given condition \(a + c = 29\) to express one variable in terms of the other.  
+3. Apply the constraint \(a < c\) to filter solutions.  
+4. Solve for \(a\) and \(c\) to find the ordered pair \((a, c)\).  
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Determine the condition for the quadratic equation \(ax^2 + 20x + c = 0\) to have exactly one solution.  
+How to Achieve: A quadratic equation \(ax^2 + bx + c = 0\) has exactly one solution when its discriminant is zero. For the given equation, identify coefficients and set the discriminant equal to zero.  
+[/PLANNING]
+
+[IMP]  
+The quadratic equation is \(ax^2 + 20x + c = 0\). The coefficients are:  
+- Coefficient of \(x^2\): \(a\)  
+- Coefficient of \(x\): \(b = 20\)  
+- Constant term: \(c\)  
+
+The discriminant of a quadratic \(ax^2 + bx + c = 0\) is given by \(\Delta = b^2 - 4ac\). For exactly one solution, set the discriminant to zero:  
+\[
+\Delta = 20^2 - 4ac = 0
+\]
+\[
+400 - 4ac = 0
+\]
+\[
+4ac = 400
+\]
+\[
+ac = 100
+\]
+Thus, the condition for exactly one solution is \(ac = 100\).  
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Use the condition \(a + c = 29\) to express one variable in terms of the other and combine with \(ac = 100\).  
+How to Achieve: Express \(c\) as \(c = 29 - a\) using \(a + c = 29\). Substitute into \(ac = 100\) to form an equation in terms of \(a\).  
+[/PLANNING]
+
+[IMP]  
+From \(a + c = 29\), express \(c\):  
+\[
+c = 29 - a
+\]
+Substitute into \(ac = 100\):  
+\[
+a(29 - a) = 100
+\]
+\[
+29a - a^2 = 100
+\]
+Rearrange into standard quadratic form:  
+\[
+-a^2 + 29a - 100 = 0
+\]
+Multiply by \(-1\) for simplicity:  
+\[
+a^2 - 29a + 100 = 0
+\]
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Solve the quadratic equation \(a^2 - 29a + 100 = 0\) to find possible values of \(a\).  
+How to Achieve: Solve the quadratic equation using the quadratic formula or factoring, then compute corresponding \(c\) values.  
+[/PLANNING]
+
+[IMP]  
+Solve \(a^2 - 29a + 100 = 0\). Try factoring:  
+Find two numbers that multiply to \(100\) and add to \(-29\). Testing pairs:  
+- \(-4\) and \(-25\): \((-4) \cdot (-25) = 100\), \(-4 + (-25) = -29\).  
+
+Thus:  
+\[
+a^2 - 29a + 100 = (a - 4)(a - 25) = 0
+\]
+Solutions:  
+\[
+a = 4 \quad \text{or} \quad a = 25
+\]
+For each \(a\), compute \(c = 29 - a\):  
+- If \(a = 4\):  
+\[
+c = 29 - 4 = 25
+\]
+- If \(a = 25\):  
+\[
+c = 29 - 25 = 4
+\]
+Possible pairs \((a, c)\): \((4, 25)\) and \((25, 4)\).  
+[/IMP]
+
+---
+
+**Step 5**
+
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify which pair \((a, c)\) satisfies \(a < c\) and ensures the quadratic has exactly one solution.  
+How to Achieve: Check the constraint \(a < c\) for both pairs and confirm the discriminant is zero.  
+[/PLANNING]
+
+[IMP]  
+Check \(a < c\):  
+- For \((a, c) = (4, 25)\): \(4 < 25\), satisfies \(a < c\).  
+- For \((a, c) = (25, 4)\): \(25 < 4\), does not satisfy \(a < c\).  
+
+Verify the discriminant for \((4, 25)\):  
+Equation: \(4x^2 + 20x + 25 = 0\).  
+Discriminant:  
+\[
+\Delta = 20^2 - 4 \cdot 4 \cdot 25 = 400 - 400 = 0
+\]
+The discriminant is zero, confirming exactly one solution.  
+
+Thus, the pair \((4, 25)\) is valid.  
+[/IMP]
+
+---
+
+**Step 6**
+
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]
+
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find the ordered pair \((a, c)\) for the quadratic equation \(ax^2 + 20x + c = 0\) with exactly one solution, given \(a + c = 29\) and \(a < c\).  
+  - Subgoal 1: Determine the condition for exactly one solution (discriminant = 0, yielding \(ac = 100\)).  
+  - Subgoal 2: Use \(a + c = 29\) to form a quadratic equation in \(a\).  
+  - Subgoal 3: Solve for \(a\) and compute \(c\).  
+  - Subgoal 4: Validate solutions against \(a < c\) and discriminant condition.  
+
+Current Goal: Completed validation, identified \((4, 25)\) as the solution.  
+[/REVIEW]
+
+---
+
+**Final Answer**: The ordered pair \((a, c)\) is \((4, 25)\).

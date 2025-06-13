@@ -1,0 +1,174 @@
+**Problem Statement**: Bill can buy jags at $1 each, jigs at $2 each, and jogs at $7 each. He must buy at least one of each item and spend exactly $50. Determine the largest number of jogs he can purchase.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve for the largest number of jogs Bill can buy while spending exactly $50 and purchasing at least one jag, one jig, and one jog, break the problem into subgoals:  
+1. Define the variables and constraints based on the problem.  
+2. Set up an equation to represent the total cost.  
+3. Maximize the number of jogs while satisfying the constraints.  
+4. Verify the solution ensures at least one of each item and exact expenditure.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Define the variables and set up the cost equation.  
+**How to Achieve**: Assign variables to the number of jags, jigs, and jogs, and formulate an equation based on their costs and the total budget of $50.  
+
+[IMP]  
+Let:  
+- \( x \) = number of jags ($1 each),  
+- \( y \) = number of jigs ($2 each),  
+- \( z \) = number of jogs ($7 each).  
+
+The total cost must be exactly $50, and Bill must buy at least one of each item:  
+\[ x \cdot 1 + y \cdot 2 + z \cdot 7 = 50 \]  
+\[ x, y, z \geq 1 \] (since at least one of each item is required).  
+Additionally, \( x, y, z \) must be non-negative integers, as Bill cannot buy a fraction of an item. The goal is to maximize \( z \), the number of jogs.  
+[/IMP]
+
+---
+
+### Step 3: Adjust Subgoals
+[PLANNING]  
+**Action**: Adjust Subgoals (Planning)  
+Since the goal is to maximize the number of jogs (\( z \)), adjust the approach to focus on testing high values of \( z \) first, as jogs are the most expensive item at $7 each. Reformulate the subgoals:  
+1. Express \( x \) and \( y \) in terms of \( z \) using the cost equation.  
+2. Test integer values of \( z \) starting from the maximum possible, ensuring \( x, y \geq 1 \).  
+3. Validate solutions to ensure they meet the $50 total and integer constraints.  
+[/PLANNING]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Express \( x \) and \( y \) in terms of \( z \) and determine the maximum possible \( z \).  
+**How to Achieve**: Rewrite the cost equation to isolate \( x \) and \( y \), estimate the maximum \( z \), and test values to find the largest \( z \) that satisfies all constraints.  
+
+[IMP]  
+From the cost equation:  
+\[ x + 2y + 7z = 50 \]  
+Solve for \( x \):  
+\[ x = 50 - 2y - 7z \]  
+Since \( x \geq 1 \):  
+\[ 50 - 2y - 7z \geq 1 \]  
+\[ 2y + 7z \leq 49 \]  
+Also, \( y \geq 1 \). To maximize \( z \), estimate the upper bound for \( z \):  
+If \( y = 1 \) (minimum), then:  
+\[ 2 \cdot 1 + 7z \leq 49 \]  
+\[ 7z \leq 47 \]  
+\[ z \leq \lfloor 47/7 \rfloor = 6 \]  
+Thus, \( z \leq 6 \). Start with \( z = 6 \) and work downward, ensuring \( x, y \geq 1 \) and all are integers.  
+[/IMP]
+
+---
+
+### Step 5: Reach Goal
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Test integer values of \( z \) starting from 6 to find the largest \( z \) that satisfies the equation and constraints.  
+**How to Achieve**: Substitute \( z \) values into \( x = 50 - 2y - 7z \), ensure \( x, y \geq 1 \), and check if \( x \) is an integer.  
+
+[IMP]  
+Test \( z = 6 \):  
+\[ 2y + 7 \cdot 6 \leq 49 \]  
+\[ 2y + 42 \leq 49 \]  
+\[ 2y \leq 7 \]  
+\[ y \leq 3.5 \]  
+Since \( y \) is an integer and \( y \geq 1 \), try \( y = 1, 2, 3 \):  
+- For \( y = 1 \):  
+  \[ x = 50 - 2 \cdot 1 - 7 \cdot 6 = 50 - 2 - 42 = 6 \]  
+  Solution: \( x = 6, y = 1, z = 6 \). Check:  
+  \[ 6 \cdot 1 + 1 \cdot 2 + 6 \cdot 7 = 6 + 2 + 42 = 50 \]  
+  Valid, satisfies \( x, y, z \geq 1 \).  
+- For \( y = 2 \):  
+  \[ x = 50 - 2 \cdot 2 - 7 \cdot 6 = 50 - 4 - 42 = 4 \]  
+  Solution: \( x = 4, y = 2, z = 6 \). Check:  
+  \[ 4 \cdot 1 + 2 \cdot 2 + 6 \cdot 7 = 4 + 4 + 42 = 50 \]  
+  Valid.  
+- For \( y = 3 \):  
+  \[ x = 50 - 2 \cdot 3 - 7 \cdot 6 = 50 - 6 - 42 = 2 \]  
+  Solution: \( x = 2, y = 3, z = 6 \). Check:  
+  \[ 2 \cdot 1 + 3 \cdot 2 + 6 \cdot 7 = 2 + 6 + 42 = 50 \]  
+  Valid.  
+
+Test \( z = 5 \):  
+\[ 2y + 7 \cdot 5 \leq 49 \]  
+\[ 2y + 35 \leq 49 \]  
+\[ 2y \leq 14 \]  
+\[ y \leq 7 \]  
+Try \( y = 1 \):  
+\[ x = 50 - 2 \cdot 1 - 7 \cdot 5 = 50 - 2 - 35 = 13 \]  
+Solution: \( x = 13, y = 1, z = 5 \). Check:  
+\[ 13 \cdot 1 + 1 \cdot 2 + 5 \cdot 7 = 13 + 2 + 35 = 50 \]  
+Valid.  
+
+Test \( z = 7 \):  
+\[ 2y + 7 \cdot 7 \leq 49 \]  
+\[ 2y + 49 \leq 49 \]  
+\[ 2y \leq 0 \]  
+Since \( y \geq 1 \), this is impossible. Thus, \( z = 7 \) is not feasible.  
+
+Since \( z = 6 \) is the largest value yielding valid solutions, the maximum number of jogs is 6.  
+[/IMP]
+
+---
+
+### Step 6: Track Goals
+[PLANNING]  
+**Action**: Track Goals (Review)  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the largest number of jogs Bill can buy while spending exactly $50 and buying at least one jag, jig, and jog.  
+  - Subgoal 1: Define variables and set up the cost equation (completed).  
+  - Subgoal 2: Express \( x \) and \( y \) in terms of \( z \) to maximize \( z \) (completed).  
+  - Subgoal 3: Test integer values of \( z \) to find the maximum feasible value (completed).  
+  - Subgoal 4: Validate solutions to ensure constraints are met (in progress).  
+**Current Goal**: Validate the solutions for \( z = 6 \) and confirm it is the maximum.  
+[/REVIEW]
+
+---
+
+### Step 7: Validation
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Validate the solutions for \( z = 6 \) and confirm no higher \( z \) is possible.  
+**How to Achieve**: Recheck the solutions for \( z = 6 \), test \( z = 5 \) and lower values briefly, and confirm \( z = 7 \) is infeasible to ensure \( z = 6 \) is the maximum.  
+
+[IMP]  
+From Step 5, valid solutions for \( z = 6 \):  
+- \( x = 6, y = 1, z = 6 \): \( 6 + 2 + 42 = 50 \).  
+- \( x = 4, y = 2, z = 6 \): \( 4 + 4 + 42 = 50 \).  
+- \( x = 2, y = 3, z = 6 \): \( 2 + 6 + 42 = 50 \).  
+All satisfy \( x, y, z \geq 1 \) and total $50.  
+
+For \( z = 5 \), a valid solution exists (e.g., \( x = 13, y = 1, z = 5 \)), but \( z = 5 < 6 \).  
+For \( z = 7 \), we found \( 2y + 49 \leq 49 \), which is impossible since \( y \geq 1 \).  
+No higher \( z \) is feasible, confirming \( z = 6 \) is the maximum.  
+[/IMP]
+
+---
+
+### Step 8: Recall Info
+[PLANNING]  
+**Action**: Recall Info (Review)  
+**Meta-Data**: Retrieve information related to the maximum number of jogs and the constraints ensuring at least one of each item and exact $50 expenditure.  
+
+[REVIEW]  
+- The cost equation is \( x + 2y + 7z = 50 \), with \( x, y, z \geq 1 \) (Step 2).  
+- The maximum \( z \leq 6 \) was derived from \( 2y + 7z \leq 49 \) (Step 4).  
+- Valid solutions for \( z = 6 \): \( (x=6, y=1, z=6) \), \( (x=4, y=2, z=6) \), \( (x=2, y=3, z=6) \) (Step 5).  
+- \( z = 7 \) is infeasible; \( z = 5 \) is feasible but lower (Steps 5, 7).  
+The largest number of jogs is 6.  
+[/REVIEW]
+
+---
+
+**Final Answer**: The largest number of jogs Bill can purchase is **6**.

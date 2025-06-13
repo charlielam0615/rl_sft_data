@@ -1,0 +1,104 @@
+**Problem Statement**: We need to find \( f(f(-2)) \) for the function \( f(x) = x^{-1} + \frac{x^{-1}}{1 + x^{-1}} \), and express the answer as a common fraction.
+
+### Step 1
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+To solve \( f(f(-2)) \), break the problem into forward-looking subgoals:  
+1. Compute \( f(-2) \), which gives the input to the outer function.  
+2. Use the result from step 1 as the input to compute \( f(f(-2)) \).  
+3. Simplify the final result into a common fraction.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Compute \( f(-2) \).  
+How to Achieve: Substitute \( x = -2 \) into \( f(x) = x^{-1} + \frac{x^{-1}}{1 + x^{-1}} \), simplify the expression, and obtain a numerical value.  
+[/PLANNING]  
+
+[IMP]  
+For \( x = -2 \), compute \( x^{-1} = \frac{1}{-2} = -\frac{1}{2} \).  
+The function is:  
+\[ f(x) = x^{-1} + \frac{x^{-1}}{1 + x^{-1}} \]  
+So,  
+\[ f(-2) = \left(-\frac{1}{2}\right) + \frac{-\frac{1}{2}}{1 + \left(-\frac{1}{2}\right)} \]  
+Compute the second term:  
+\[ 1 + \left(-\frac{1}{2}\right) = 1 - \frac{1}{2} = \frac{1}{2} \]  
+\[ \frac{-\frac{1}{2}}{\frac{1}{2}} = -\frac{1}{2} \cdot \frac{2}{1} = -1 \]  
+Now combine:  
+\[ f(-2) = -\frac{1}{2} + (-1) = -\frac{1}{2} - 1 = -\frac{1}{2} - \frac{2}{2} = -\frac{3}{2} \]  
+Thus, \( f(-2) = -\frac{3}{2} \).  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify the computation of \( f(-2) \).  
+How to Achieve: Recompute \( f(-2) \) using an alternative approach to confirm the result is consistent.  
+[/PLANNING]  
+
+[IMP]  
+Rewrite the function to simplify computation:  
+\[ f(x) = x^{-1} + \frac{x^{-1}}{1 + x^{-1}} = \frac{1}{x} + \frac{\frac{1}{x}}{1 + \frac{1}{x}} \]  
+For the second term:  
+\[ 1 + \frac{1}{x} = \frac{x + 1}{x} \]  
+\[ \frac{\frac{1}{x}}{\frac{x + 1}{x}} = \frac{1}{x} \cdot \frac{x}{x + 1} = \frac{1}{x + 1} \]  
+Thus,  
+\[ f(x) = \frac{1}{x} + \frac{1}{x + 1} = \frac{(x + 1) + x}{x(x + 1)} = \frac{2x + 1}{x(x + 1)} \]  
+For \( x = -2 \):  
+\[ f(-2) = \frac{2(-2) + 1}{(-2)(-2 + 1)} = \frac{-4 + 1}{(-2)(-1)} = \frac{-3}{2} = -\frac{3}{2} \]  
+This matches the previous result, confirming \( f(-2) = -\frac{3}{2} \).  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Compute \( f(f(-2)) = f\left(-\frac{3}{2}\right) \).  
+How to Achieve: Substitute \( x = -\frac{3}{2} \) into the simplified form of \( f(x) = \frac{2x + 1}{x(x + 1)} \), compute, and simplify to a common fraction.  
+[/PLANNING]  
+
+[IMP]  
+For \( x = -\frac{3}{2} \):  
+\[ f\left(-\frac{3}{2}\right) = \frac{2\left(-\frac{3}{2}\right) + 1}{\left(-\frac{3}{2}\right)\left(-\frac{3}{2} + 1\right)} \]  
+Numerator:  
+\[ 2\left(-\frac{3}{2}\right) + 1 = -3 + 1 = -2 \]  
+Denominator:  
+\[ -\frac{3}{2} + 1 = -\frac{3}{2} + \frac{2}{2} = -\frac{1}{2} \]  
+\[ \left(-\frac{3}{2}\right)\left(-\frac{1}{2}\right) = \frac{3}{4} \]  
+So,  
+\[ f\left(-\frac{3}{2}\right) = \frac{-2}{\frac{3}{4}} = -2 \cdot \frac{4}{3} = -\frac{8}{3} \]  
+Thus, \( f(f(-2)) = -\frac{8}{3} \).  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify the computation of \( f\left(-\frac{3}{2}\right) \).  
+How to Achieve: Use the original function form to recompute \( f\left(-\frac{3}{2}\right) \) and check consistency.  
+[/PLANNING]  
+
+[IMP]  
+Using \( f(x) = x^{-1} + \frac{x^{-1}}{1 + x^{-1}} \), for \( x = -\frac{3}{2} \):  
+\[ x^{-1} = \frac{1}{-\frac{3}{2}} = -\frac{2}{3} \]  
+\[ 1 + x^{-1} = 1 - \frac{2}{3} = \frac{1}{3} \]  
+\[ \frac{x^{-1}}{1 + x^{-1}} = \frac{-\frac{2}{3}}{\frac{1}{3}} = -\frac{2}{3} \cdot \frac{3}{1} = -2 \]  
+\[ f\left(-\frac{3}{2}\right) = -\frac{2}{3} + (-2) = -\frac{2}{3} - \frac{6}{3} = -\frac{8}{3} \]  
+This confirms \( f\left(-\frac{3}{2}\right) = -\frac{8}{3} \).  
+[/IMP]
+
+### Step 6
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Compute \( f(f(-2)) \) and express as a common fraction.  
+  - Subgoal 1: Compute \( f(-2) \). [Completed: \( f(-2) = -\frac{3}{2} \)]  
+  - Subgoal 2: Compute \( f\left(-\frac{3}{2}\right) \). [Completed: \( f\left(-\frac{3}{2}\right) = -\frac{8}{3} \)]  
+  - Subgoal 3: Simplify the result to a common fraction. [Completed: Result is \( -\frac{8}{3} \)]  
+Current Goal: Finalize the solution as the common fraction is obtained.  
+[/REVIEW]
+
+**Final Answer**:  
+\[ f(f(-2)) = -\frac{8}{3} \]

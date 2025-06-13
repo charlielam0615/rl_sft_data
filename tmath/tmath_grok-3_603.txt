@@ -1,0 +1,134 @@
+### Problem Statement
+We need to find the sum of all integer values \( n \) for which the equation \(\binom{26}{13} + \binom{26}{n} = \binom{27}{14}\) holds true. This involves working with binomial coefficients, which represent the number of ways to choose a subset of items from a set. Our goal is to identify all possible integers \( n \) that satisfy the equation and compute their sum.
+
+---
+
+### Step 1: Define the Goal and Break Down the Problem
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into manageable subgoals to solve the equation:
+1. Understand the binomial coefficient equation \(\binom{26}{13} + \binom{26}{n} = \binom{27}{14}\).
+2. Simplify or manipulate the equation using properties of binomial coefficients.
+3. Solve for possible integer values of \( n \) within the valid range (0 to 26, since \(\binom{26}{n}\) is defined for \( n \) in this range).
+4. Verify the solutions by substituting back into the equation.
+5. Sum all valid integer values of \( n \).
+[/PLANNING]
+
+---
+
+### Step 2: Explore Binomial Coefficient Properties
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current Goal**: Simplify the equation \(\binom{26}{13} + \binom{26}{n} = \binom{27}{14}\) using binomial coefficient identities.  
+- **How to Achieve**: Use the binomial identity \(\binom{m+1}{k} = \binom{m}{k} + \binom{m}{k-1}\) to relate \(\binom{27}{14}\) to binomial coefficients with 26, and manipulate the equation to isolate \(\binom{26}{n}\).
+
+[/PLANNING]
+
+[IMP]
+Apply the binomial identity to \(\binom{27}{14}\):
+\[
+\binom{27}{14} = \binom{26}{14} + \binom{26}{13}.
+\]
+Substitute this into the given equation:
+\[
+\binom{26}{13} + \binom{26}{n} = \binom{26}{14} + \binom{26}{13}.
+\]
+Subtract \(\binom{26}{13}\) from both sides:
+\[
+\binom{26}{n} = \binom{26}{14}.
+\]
+Since binomial coefficients are equal when their indices are equal (or symmetric), we have:
+\[
+\binom{26}{n} = \binom{26}{14} \implies n = 14 \text{ or } n = 26 - 14 = 12,
+\]
+because \(\binom{26}{k} = \binom{26}{26-k}\). Thus, potential solutions are \( n = 12 \) and \( n = 14 \).
+[/IMP]
+
+---
+
+### Step 3: Validate the Solutions
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**:  
+- **Current Goal**: Verify that \( n = 12 \) and \( n = 14 \) satisfy the original equation.  
+- **How to Achieve**: Substitute \( n = 12 \) and \( n = 14 \) into \(\binom{26}{13} + \binom{26}{n} = \binom{27}{14}\) and check if the equation holds.
+[/PLANNING]
+
+[IMP]
+**Check \( n = 14 \)**:
+\[
+\binom{26}{13} + \binom{26}{14} = \binom{27}{14}.
+\]
+Using the identity again:
+\[
+\binom{27}{14} = \binom{26}{14} + \binom{26}{13}.
+\]
+This matches the left-hand side exactly, so \( n = 14 \) is a solution.
+
+**Check \( n = 12 \)**:
+\[
+\binom{26}{13} + \binom{26}{12} = \binom{27}{14}.
+\]
+Since \(\binom{26}{12} = \binom{26}{14}\) (because \(\binom{26}{k} = \binom{26}{26-k}\)), we have:
+\[
+\binom{26}{13} + \binom{26}{12} = \binom{26}{13} + \binom{26}{14} = \binom{27}{14}.
+\]
+This also holds, so \( n = 12 \) is a solution.
+
+**Check other values**: Since \(\binom{26}{n} = \binom{26}{14}\) only when \( n = 14 \) or \( n = 12 \), and \(\binom{26}{n}\) is a strictly increasing function for \( n \leq 13 \) and decreasing for \( n \geq 13 \), no other integer \( n \) (from 0 to 26) will satisfy \(\binom{26}{n} = \binom{26}{14}\).
+[/IMP]
+
+---
+
+### Step 4: Review the Goal Hierarchy
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- **Main Goal**: Find the sum of all integer \( n \) such that \(\binom{26}{13} + \binom{26}{n} = \binom{27}{14}\).
+  - Subgoal 1: Simplify the equation using binomial identities (completed).
+  - Subgoal 2: Solve for \( n \) (found \( n = 12, 14 \)).
+  - Subgoal 3: Validate solutions (verified \( n = 12, 14 \)).
+  - Subgoal 4: Sum the valid \( n \) values (pending).
+- **Current Goal**: Compute the sum of valid \( n \) values.
+[/REVIEW]
+
+---
+
+### Step 5: Compute the Sum
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current Goal**: Sum the valid integer values of \( n \).  
+- **How to Achieve**: Add the verified values \( n = 12 \) and \( n = 14 \).
+[/PLANNING]
+
+[IMP]
+The valid values are \( n = 12 \) and \( n = 14 \). Their sum is:
+\[
+12 + 14 = 26.
+\]
+[/IMP]
+
+---
+
+### Step 6: Final Verification
+[PLANNING]
+**Action: Recall Info (Review)**  
+**Meta-data**: Retrieve information related to the solutions \( n = 12 \) and \( n = 14 \) to ensure no other values were missed.
+[/PLANNING]
+
+[REVIEW]
+From Step 2, we derived \(\binom{26}{n} = \binom{26}{14}\), leading to \( n = 12 \) or \( n = 14 \). In Step 3, we confirmed these satisfy the original equation. The binomial coefficient \(\binom{26}{n}\) is symmetric and peaks at \( n = 13 \), so other integers \( n \) produce values either too large or too small to equal \(\binom{26}{14}\). No other solutions exist.
+[/REVIEW]
+
+---
+
+### Final Answer
+The sum of all integer values \( n \) for which \(\binom{26}{13} + \binom{26}{n} = \binom{27}{14}\) is:
+\[
+\boxed{26}
+\]

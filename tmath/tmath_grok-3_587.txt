@@ -1,0 +1,134 @@
+**Problem Restatement**: Calculate the probability that three cards dealt at random from a standard deck of 52 cards, without replacement, result in the first card being a Jack, the second a Queen, and the third a King.
+
+---
+
+**Step 1**
+
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+Break down the problem into intermediate subgoals:
+1. Determine the probability of drawing a Jack as the first card.
+2. Determine the probability of drawing a Queen as the second card, given the first card is a Jack.
+3. Determine the probability of drawing a King as the third card, given the first two cards are a Jack and a Queen.
+4. Multiply these probabilities to find the overall probability.
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the probability of drawing a Jack as the first card.
+Description: In a standard deck of 52 cards, there are 4 Jacks. The probability is the number of favorable outcomes (4 Jacks) divided by the total number of cards (52).
+[/PLANNING]
+
+[IMP]
+A standard deck has 52 cards, with 4 Jacks. The probability of drawing a Jack as the first card is:
+\[ P(\text{Jack}) = \frac{4}{52} = \frac{1}{13} \]
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the probability of drawing a Queen as the second card, given the first card is a Jack.
+Description: After drawing a Jack, 51 cards remain, with 4 Queens. The probability is the number of Queens (4) divided by the remaining cards (51).
+[/PLANNING]
+
+[IMP]
+After drawing a Jack, 51 cards remain, with 4 Queens. The probability of drawing a Queen as the second card is:
+\[ P(\text{Queen} \mid \text{Jack}) = \frac{4}{51} \]
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the probability of drawing a King as the third card, given the first card is a Jack and the second is a Queen.
+Description: After drawing a Jack and a Queen, 50 cards remain, with 4 Kings. The probability is the number of Kings (4) divided by the remaining cards (50).
+[/PLANNING]
+
+[IMP]
+After drawing a Jack and a Queen, 50 cards remain, with 4 Kings. The probability of drawing a King as the third card is:
+\[ P(\text{King} \mid \text{Jack, Queen}) = \frac{4}{50} = \frac{2}{25} \]
+[/IMP]
+
+---
+
+**Step 5**
+
+[PLANNING]
+Action: Track Goals (Review)
+Track the hierarchy of goals and highlight the current goal.
+[/PLANNING]
+
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Calculate the probability that the first card is a Jack, the second is a Queen, and the third is a King.
+  - Subgoal 1: Calculate P(Jack) = 4/52 = 1/13 (completed).
+  - Subgoal 2: Calculate P(Queen | Jack) = 4/51 (completed).
+  - Subgoal 3: Calculate P(King | Jack, Queen) = 4/50 = 2/25 (completed).
+  - Subgoal 4: Multiply the probabilities to find the overall probability (pending).
+Current Goal: Multiply the probabilities to find the overall probability.
+[/REVIEW]
+
+---
+
+**Step 6**
+
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Multiply the probabilities to find the overall probability.
+Description: Since the draws are without replacement, multiply the conditional probabilities: P(Jack) × P(Queen | Jack) × P(King | Jack, Queen).
+[/PLANNING]
+
+[IMP]
+The overall probability is:
+\[ P = \frac{4}{52} \times \frac{4}{51} \times \frac{4}{50} = \frac{1}{13} \times \frac{4}{51} \times \frac{2}{25} \]
+Calculate:
+\[ \frac{1 \times 4 \times 2}{13 \times 51 \times 25} = \frac{8}{16575} \]
+Simplify:
+- Numerator: 8
+- Denominator: 16575 = 3 × 5² × 13 × 17
+Since 8 = 2³ and 16575 has no factors of 2, check for common factors: none exist.
+Thus, \(\frac{8}{16575}\) is in simplest form.
+Decimal approximation: \( \frac{8}{16575} \approx 0.0004826 \).
+[/IMP]
+
+---
+
+**Step 7**
+
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify the correctness of the calculated probability.
+Description: Recalculate the probability using the number of favorable outcomes over the total number of ways to choose 3 cards in order, ensuring consistency.
+[/PLANNING]
+
+[IMP]
+Total ways to choose 3 cards in order (permutations):
+\[ 52 \times 51 \times 50 \]
+Favorable outcomes: 4 Jacks for the first card, 4 Queens for the second, 4 Kings for the third:
+\[ 4 \times 4 \times 4 = 64 \]
+Probability:
+\[ P = \frac{4 \times 4 \times 4}{52 \times 51 \times 50} = \frac{64}{132600} \]
+Simplify:
+- Numerator: 64 = 2⁶
+- Denominator: 132600 = 2³ × 3 × 5² × 13 × 17
+- GCD: 2³ = 8
+\[ \frac{64 \div 8}{132600 \div 8} = \frac{8}{16575} \]
+This matches the previous result, confirming correctness.
+[/IMP]
+
+---
+
+**Final Answer**
+
+The probability that the first card is a Jack, the second is a Queen, and the third is a King, when three cards are dealt without replacement from a standard deck of 52 cards, is:
+
+\[ \boxed{\frac{8}{16575}} \]

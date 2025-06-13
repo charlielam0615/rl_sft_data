@@ -1,0 +1,183 @@
+### Problem Restatement
+We need to calculate the probability of winning a state lottery. The lottery has two drawings:
+1. A MegaBall is picked from 27 numbered balls.
+2. Five WinnerBalls are picked from 44 numbered balls, where the order of selection does not matter.
+To win, a ticket must correctly match the MegaBall number and all five WinnerBall numbers (order irrelevant for WinnerBalls). We need to find the probability that a single ticket has the winning numbers.
+
+---
+
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of calculating the probability into intermediate subgoals. The probability is the number of favorable outcomes divided by the total number of possible outcomes. Subgoals:
+1. Calculate the number of ways to choose the MegaBall correctly.
+2. Calculate the number of ways to choose the five WinnerBalls correctly.
+3. Combine these to find the total number of winning combinations.
+4. Calculate the total number of possible ticket combinations.
+5. Compute the probability as the ratio of winning combinations to total combinations.
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the number of ways to choose the MegaBall correctly. Since one MegaBall is picked from 27 numbered balls, we need to determine the number of favorable outcomes for selecting the correct MegaBall number.
+[/PLANNING]
+
+[IMP]
+There is exactly 1 way to choose the correct MegaBall number out of 27 possible balls.
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the number of ways to choose the five WinnerBalls correctly. Since five WinnerBalls are picked from 44 numbered balls and the order does not matter, we use the combination formula \( C(n, k) = \frac{n!}{k!(n-k)!} \) to find the number of ways to select the correct five numbers.
+[/PLANNING]
+
+[IMP]
+The number of ways to choose 5 WinnerBalls correctly from 44 balls is given by the combination:
+\[
+C(44, 5) = \frac{44!}{5!(44-5)!} = \frac{44 \times 43 \times 42 \times 41 \times 40}{5 \times 4 \times 3 \times 2 \times 1}
+\]
+Calculate the numerator:
+\[
+44 \times 43 = 1892, \quad 1892 \times 42 = 79464, \quad 79464 \times 41 = 3258024, \quad 3258024 \times 40 = 130320960
+\]
+Denominator:
+\[
+5! = 120
+\]
+So:
+\[
+C(44, 5) = \frac{130320960}{120} = 1086008
+\]
+There is exactly 1 way to choose the correct set of 5 WinnerBalls, since only one specific combination matches the winning numbers.
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the total number of winning combinations. Since the MegaBall and WinnerBalls are independent draws, multiply the number of ways to choose the MegaBall correctly by the number of ways to choose the WinnerBalls correctly.
+[/PLANNING]
+
+[IMP]
+The number of winning combinations is:
+\[
+1 \text{ (MegaBall)} \times 1 \text{ (WinnerBalls)} = 1
+\]
+There is exactly 1 winning ticket combination.
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the total number of possible ticket combinations. A ticket consists of choosing 1 MegaBall from 27 balls and 5 WinnerBalls from 44 balls (order irrelevant). Multiply the number of MegaBall choices by the number of WinnerBall combinations.
+[/PLANNING]
+
+[IMP]
+- Number of ways to choose 1 MegaBall from 27: \( 27 \).
+- Number of ways to choose 5 WinnerBalls from 44:
+\[
+C(44, 5) = 1086008 \text{ (calculated in Step 3)}
+\]
+Total possible ticket combinations:
+\[
+27 \times 1086008
+\]
+Calculate:
+\[
+1086008 \times 20 = 21720160, \quad 1086008 \times 7 = 7602056, \quad 21720160 + 7602056 = 29322216
+\]
+So:
+\[
+27 \times 1086008 = 29322216
+\]
+There are 29,322,216 possible ticket combinations.
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]
+**Action: Track Goals (Review)**  
+Track the hierarchy of goals and highlight the current goal.
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:
+- Main Goal: Calculate the probability of a ticket having the winning numbers.
+  - Subgoal 1: Calculate the number of ways to choose the MegaBall correctly (completed: 1 way).
+  - Subgoal 2: Calculate the number of ways to choose the five WinnerBalls correctly (completed: 1 way).
+  - Subgoal 3: Calculate the total number of winning combinations (completed: 1 combination).
+  - Subgoal 4: Calculate the total number of possible ticket combinations (completed: 29,322,216 combinations).
+  - Subgoal 5: Compute the probability (current goal).
+
+**Current Goal**: Compute the probability as the ratio of winning combinations to total combinations.
+[/REVIEW]
+
+---
+
+### Step 7
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute the probability. The probability is the number of winning combinations (1) divided by the total number of possible ticket combinations (29,322,216).
+[/PLANNING]
+
+[IMP]
+The probability of a ticket having the winning numbers is:
+\[
+\frac{\text{Number of winning combinations}}{\text{Total possible combinations}} = \frac{1}{29322216}
+\]
+As a decimal (approximate):
+\[
+\frac{1}{29322216} \approx 0.0000000341 \text{ or } 3.41 \times 10^{-8}
+\]
+Alternatively, the probability can be expressed as a fraction:
+\[
+\frac{1}{29322216}
+\]
+[/IMP]
+
+---
+
+### Step 8
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the calculated probability. Check the calculations for the number of winning combinations, total combinations, and the final probability.
+[/PLANNING]
+
+[IMP]
+- **MegaBall**: 1 correct choice out of 27 is straightforward.
+- **WinnerBalls**: Recalculate \( C(44, 5) \):
+\[
+C(44, 5) = \frac{44 \times 43 \times 42 \times 41 \times 40}{120} = \frac{130320960}{120} = 1086008
+\]
+Confirmed correct.
+- **Total combinations**: \( 27 \times 1086008 = 29322216 \). Recalculate:
+\[
+1086008 \times 27 = 1086008 \times (20 + 7) = (1086008 \times 20) + (1086008 \times 7)
+\]
+\[
+1086008 \times 20 = 21720160, \quad 1086008 \times 7 = 7602056, \quad 21720160 + 7602056 = 29322216
+\]
+Confirmed correct.
+- **Winning combinations**: \( 1 \times 1 = 1 \). Correct.
+- **Probability**: \( \frac{1}{29322216} \). The division is consistent, and the decimal approximation aligns with the order of magnitude.
+The calculations are valid.
+[/IMP]
+
+---
+
+### Final Answer
+The probability that the ticket you hold has the winning numbers is:
+\[
+\boxed{\frac{1}{29322216}}
+\]
+Approximate decimal: \( 3.41 \times 10^{-8} \).

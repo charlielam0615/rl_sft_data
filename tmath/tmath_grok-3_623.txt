@@ -1,0 +1,108 @@
+### Problem Restatement
+We need to find the probability that a randomly selected ball from a randomly chosen container (A, B, or C) is green. Container A has 4 red balls and 6 green balls (10 total). Containers B and C each have 6 red balls and 4 green balls (10 total each). The answer should be a common fraction.
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to compute the probability of selecting a green ball.  
+1. Calculate the probability of selecting each container.  
+2. Determine the probability of selecting a green ball from each container.  
+3. Combine these probabilities to find the total probability of selecting a green ball.  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Calculate the probability of selecting each container.  
+**How to Achieve**: Since there are three containers (A, B, C) and one is chosen at random, each container has an equal probability of being selected. There are 3 containers, so the probability of selecting any one is 1/3.  
+[/PLANNING]
+
+[IMP]
+There are three containers: A, B, and C. Since the selection is random, the probability of choosing each container is:  
+\[ P(A) = P(B) = P(C) = \frac{1}{3} \]  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Determine the probability of selecting a green ball from each container.  
+**How to Achieve**: For each container, calculate the probability of drawing a green ball by dividing the number of green balls by the total number of balls in that container.  
+[/PLANNING]
+
+[IMP]
+- **Container A**: 4 red + 6 green = 10 balls total. Probability of green:  
+  \[ P(\text{Green} | A) = \frac{6}{10} = \frac{3}{5} \]  
+- **Container B**: 6 red + 4 green = 10 balls total. Probability of green:  
+  \[ P(\text{Green} | B) = \frac{4}{10} = \frac{2}{5} \]  
+- **Container C**: Same as B, 6 red + 4 green = 10 balls total. Probability of green:  
+  \[ P(\text{Green} | C) = \frac{4}{10} = \frac{2}{5} \]  
+[/IMP]
+
+---
+
+### Step 4: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Compute the total probability of selecting a green ball.  
+**How to Achieve**: Use the law of total probability. Multiply the probability of selecting each container by the probability of drawing a green ball from that container, then sum the results.  
+[/PLANNING]
+
+[IMP]
+The total probability of selecting a green ball is:  
+\[ P(\text{Green}) = P(A) \cdot P(\text{Green} | A) + P(B) \cdot P(\text{Green} | B) + P(C) \cdot P(\text{Green} | C) \]  
+Substitute the values:  
+\[ P(\text{Green}) = \left( \frac{1}{3} \cdot \frac{3}{5} \right) + \left( \frac{1}{3} \cdot \frac{2}{5} \right) + \left( \frac{1}{3} \cdot \frac{2}{5} \right) \]  
+Calculate each term:  
+- For A: \[ \frac{1}{3} \cdot \frac{3}{5} = \frac{3}{15} = \frac{1}{5} \]  
+- For B: \[ \frac{1}{3} \cdot \frac{2}{5} = \frac{2}{15} \]  
+- For C: \[ \frac{1}{3} \cdot \frac{2}{5} = \frac{2}{15} \]  
+Sum them:  
+\[ \frac{1}{5} = \frac{3}{15} \]  
+\[ \frac{3}{15} + \frac{2}{15} + \frac{2}{15} = \frac{3 + 2 + 2}{15} = \frac{7}{15} \]  
+So, \[ P(\text{Green}) = \frac{7}{15} \].  
+[/IMP]
+
+---
+
+### Step 5: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify the calculation of the total probability.  
+**How to Achieve**: Recalculate the probability using an alternative method (e.g., total green balls across all containers) to ensure correctness.  
+[/PLANNING]
+
+[IMP]
+Alternative method: Consider all balls across the three containers.  
+- Total balls: 10 (A) + 10 (B) + 10 (C) = 30 balls.  
+- Total green balls: 6 (A) + 4 (B) + 4 (C) = 14 green balls.  
+- Probability of selecting a green ball: \[ \frac{14}{30} = \frac{7}{15} \].  
+This matches the previous result, confirming the calculation.  
+[/IMP]
+
+---
+
+### Step 6: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
+**Goal Hierarchy**:  
+- Main Goal: Find the probability that a randomly selected ball from a randomly chosen container is green.  
+  - Subgoal 1: Calculate the probability of selecting each container (completed: each is 1/3).  
+  - Subgoal 2: Determine the probability of selecting a green ball from each container (completed: A: 3/5, B: 2/5, C: 2/5).  
+  - Subgoal 3: Compute the total probability of selecting a green ball (completed: 7/15).  
+  - Subgoal 4: Validate the result (completed: confirmed via alternative method).  
+**Current Goal**: None, as the main goal is achieved and validated.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The probability that the selected ball is green is \(\frac{7}{15}\).

@@ -1,0 +1,101 @@
+### Problem Statement
+We need to find the value of \( x^3 + y^3 \) given the equations \( x + y = 4 \) and \( x^2 + y^2 = 8 \).
+
+---
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of finding \( x^3 + y^3 \) into intermediate subgoals. To compute \( x^3 + y^3 \), we can use the identity \( x^3 + y^3 = (x + y)(x^2 - xy + y^2) \). We already know \( x + y = 4 \), so we need to find \( x^2 - xy + y^2 \). Since \( x^2 + y^2 = 8 \) is given, we need to determine \( xy \) to compute \( x^2 - xy + y^2 \). Thus, the first subgoal is to find \( xy \).  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find \( xy \). We can achieve this by using the identity \( (x + y)^2 = x^2 + 2xy + y^2 \). Given \( x + y = 4 \) and \( x^2 + y^2 = 8 \), we can compute \( 2xy \).  
+[/PLANNING]
+
+[IMP]  
+Using the identity \( (x + y)^2 = x^2 + 2xy + y^2 \):  
+\[ (x + y)^2 = 4^2 = 16 \]  
+\[ x^2 + 2xy + y^2 = x^2 + y^2 + 2xy = 8 + 2xy \]  
+Equating:  
+\[ 8 + 2xy = 16 \]  
+\[ 2xy = 8 \]  
+\[ xy = 4 \]  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute \( x^2 - xy + y^2 \). We know \( x^2 + y^2 = 8 \) and \( xy = 4 \). We can rewrite \( x^2 - xy + y^2 \) as \( x^2 + y^2 - xy \) and substitute the known values.  
+[/PLANNING]
+
+[IMP]  
+Compute \( x^2 - xy + y^2 \):  
+\[ x^2 - xy + y^2 = x^2 + y^2 - xy = 8 - 4 = 4 \]  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute \( x^3 + y^3 \). Using the identity \( x^3 + y^3 = (x + y)(x^2 - xy + y^2) \), we can substitute \( x + y = 4 \) and \( x^2 - xy + y^2 = 4 \).  
+[/PLANNING]
+
+[IMP]  
+Using the identity:  
+\[ x^3 + y^3 = (x + y)(x^2 - xy + y^2) = 4 \cdot 4 = 16 \]  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the result \( x^3 + y^3 = 16 \). We can verify by finding the values of \( x \) and \( y \) from the given equations, computing \( x^3 + y^3 \), and checking if it matches.  
+[/PLANNING]
+
+[IMP]  
+Solve for \( x \) and \( y \):  
+From \( x + y = 4 \), express \( y = 4 - x \). Substitute into \( x^2 + y^2 = 8 \):  
+\[ x^2 + (4 - x)^2 = 8 \]  
+\[ x^2 + 16 - 8x + x^2 = 8 \]  
+\[ 2x^2 - 8x + 16 = 8 \]  
+\[ 2x^2 - 8x + 8 = 0 \]  
+\[ x^2 - 4x + 4 = 0 \]  
+\[ (x - 2)^2 = 0 \]  
+\[ x = 2 \]  
+Then, \( y = 4 - x = 4 - 2 = 2 \).  
+Compute \( x^3 + y^3 \):  
+\[ x^3 = 2^3 = 8, \quad y^3 = 2^3 = 8 \]  
+\[ x^3 + y^3 = 8 + 8 = 16 \]  
+This matches our result. Alternatively, consider other possible solutions by solving the quadratic numerically or checking for complex roots, but since \( x = 2, y = 2 \) satisfies both equations and gives a real solution, the result is consistent.  
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Compute \( x^3 + y^3 \).  
+  - Subgoal 1: Find \( xy \) (completed in Step 2).  
+  - Subgoal 2: Compute \( x^2 - xy + y^2 \) (completed in Step 3).  
+  - Subgoal 3: Compute \( x^3 + y^3 \) using the identity (completed in Step 4).  
+  - Subgoal 4: Validate the result (completed in Step 5).  
+**Current Goal**: The main goal of computing \( x^3 + y^3 \) has been achieved, with the result validated.  
+[/REVIEW]
+
+---
+
+### Final Answer
+\[ x^3 + y^3 = 16 \]

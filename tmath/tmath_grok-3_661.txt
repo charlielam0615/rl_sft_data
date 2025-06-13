@@ -1,0 +1,118 @@
+### Problem Statement
+We have a bag containing six green balls and four red balls, making a total of ten balls. A ball is drawn, its color recorded, and returned to the bag. Then, a second ball is drawn, and its color recorded. We need to find the probability that both balls drawn are the same color (either both green or both red).
+
+---
+
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+To solve the problem, break it into subgoals:  
+1. Determine the total number of possible outcomes for drawing two balls with replacement.  
+2. Calculate the probability of drawing two green balls.  
+3. Calculate the probability of drawing two red balls.  
+4. Sum the probabilities of the two favorable outcomes (both green or both red) to find the total probability.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to determine the total number of possible outcomes for drawing two balls with replacement. Since the first ball is replaced, the draws are independent, and there are 10 possible outcomes (6 green + 4 red) for each draw. The total number of outcomes is calculated by multiplying the number of outcomes for each draw.  
+[/PLANNING]  
+
+[IMP]  
+Since each draw has 10 possible outcomes (any of the 10 balls), and the draws are independent due to replacement, the total number of possible outcomes is:  
+\[ 10 \times 10 = 100 \]  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the probability of drawing two green balls. With 6 green balls out of 10, the probability of drawing a green ball on the first draw is 6/10. Since the ball is replaced, the probability remains 6/10 for the second draw. Multiply these probabilities to find the probability of both being green.  
+[/PLANNING]  
+
+[IMP]  
+The probability of drawing a green ball on the first draw is \( \frac{6}{10} \).  
+The probability of drawing a green ball on the second draw (after replacement) is also \( \frac{6}{10} \).  
+The probability of both balls being green is:  
+\[ \frac{6}{10} \times \frac{6}{10} = \frac{36}{100} \]  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to calculate the probability of drawing two red balls. With 4 red balls out of 10, the probability of drawing a red ball on the first draw is 4/10. Since the ball is replaced, the probability remains 4/10 for the second draw. Multiply these probabilities to find the probability of both being red.  
+[/PLANNING]  
+
+[IMP]  
+The probability of drawing a red ball on the first draw is \( \frac{4}{10} \).  
+The probability of drawing a red ball on the second draw (after replacement) is also \( \frac{4}{10} \).  
+The probability of both balls being red is:  
+\[ \frac{4}{10} \times \frac{4}{10} = \frac{16}{100} \]  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to find the total probability that both balls are the same color by summing the probabilities of drawing two green balls and two red balls. Add the probabilities calculated in the previous steps.  
+[/PLANNING]  
+
+[IMP]  
+The probability of both balls being green is \( \frac{36}{100} \).  
+The probability of both balls being red is \( \frac{16}{100} \).  
+The total probability that both balls are the same color is:  
+\[ \frac{36}{100} + \frac{16}{100} = \frac{36 + 16}{100} = \frac{52}{100} = \frac{13}{25} \]  
+[/IMP]
+
+---
+
+### Step 6
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the calculated probability. Check the calculations by ensuring the probabilities are consistent with the problem’s constraints and by using an alternative method: calculate the probability using the proportion of each color squared and summed.  
+[/PLANNING]  
+
+[IMP]  
+**Check calculations**:  
+- Probability of two green balls: \( \frac{6}{10} \times \frac{6}{10} = \frac{36}{100} \).  
+- Probability of two red balls: \( \frac{4}{10} \times \frac{4}{10} = \frac{16}{100} \).  
+- Total: \( \frac{36}{100} + \frac{16}{100} = \frac{52}{100} = \frac{13}{25} \). The arithmetic is correct.  
+
+**Alternative method**: The probability can be computed as the sum of the squared proportions of each color:  
+- Proportion of green balls: \( \frac{6}{10} = 0.6 \), so \( (0.6)^2 = 0.36 \).  
+- Proportion of red balls: \( \frac{4}{10} = 0.4 \), so \( (0.4)^2 = 0.16 \).  
+- Total probability: \( 0.36 + 0.16 = 0.52 = \frac{52}{100} = \frac{13}{25} \).  
+
+Both methods yield \( \frac{13}{25} \), confirming the solution is correct.  
+[/IMP]
+
+---
+
+### Step 7
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Find the probability that two balls drawn with replacement are the same color.  
+  - Subgoal 1: Determine the total number of possible outcomes (completed: 100 outcomes).  
+  - Subgoal 2: Calculate the probability of drawing two green balls (completed: \( \frac{36}{100} \)).  
+  - Subgoal 3: Calculate the probability of drawing two red balls (completed: \( \frac{16}{100} \)).  
+  - Subgoal 4: Sum the probabilities of favorable outcomes (completed: \( \frac{13}{25} \)).  
+  - Subgoal 5: Validate the solution (completed: confirmed via alternative method).  
+
+**Current Goal**: The main goal has been achieved, and the solution validated. No further subgoals are needed.  
+[/REVIEW]
+
+---
+
+### Final Answer
+The probability that the two balls drawn are the same color is \( \frac{13}{25} \).

@@ -1,0 +1,130 @@
+### Problem Restatement
+We need to find the ordered pair \((a, c)\) for the quadratic equation \(ax^2 + 8x + c = 0\), which has exactly one solution (i.e., a double root), given the conditions \(a + c = 10\) and \(a < c\).
+
+---
+
+### Step 1: Forward Subgoaling
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+To solve the problem, break it down into intermediate subgoals:  
+1. Understand the condition for a quadratic equation to have exactly one solution.  
+2. Use the given condition \(a + c = 10\) to express \(c\) in terms of \(a\).  
+3. Apply the constraint \(a < c\).  
+4. Solve for \(a\) and \(c\) to find the ordered pair \((a, c)\).  
+[/PLANNING]
+
+---
+
+### Step 2: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Determine the condition for the quadratic equation \(ax^2 + 8x + c = 0\) to have exactly one solution.  
+**How to Achieve**: A quadratic equation has exactly one solution when its discriminant is zero. For \(ax^2 + bx + c = 0\), the discriminant is \(\Delta = b^2 - 4ac\). Here, \(b = 8\), so set \(\Delta = 0\) and solve.  
+[/PLANNING]  
+
+[IMP]  
+The discriminant of the quadratic equation \(ax^2 + 8x + c = 0\) is:  
+\[
+\Delta = b^2 - 4ac = 8^2 - 4ac = 64 - 4ac.  
+\]  
+For exactly one solution, set the discriminant to zero:  
+\[
+64 - 4ac = 0 \implies 4ac = 64 \implies ac = 16.  
+\]  
+[/IMP]
+
+---
+
+### Step 3: Reach Goal
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Use the condition \(a + c = 10\) to express \(c\) in terms of \(a\) and combine with \(ac = 16\).  
+**How to Achieve**: Substitute \(c = 10 - a\) into \(ac = 16\) to form a new equation and solve for \(a\).  
+[/PLANNING]  
+
+[IMP]  
+From \(a + c = 10\), we get:  
+\[
+c = 10 - a.  
+\]  
+Substitute into \(ac = 16\):  
+\[
+a(10 - a) = 16.  
+\]  
+Expand and simplify:  
+\[
+10a - a^2 = 16 \implies a^2 - 10a + 16 = 0.  
+\]  
+Solve this quadratic equation using the quadratic formula \(a = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\), where \(a = 1\), \(b = -10\), and \(c = 16\):  
+\[
+\Delta = (-10)^2 - 4 \cdot 1 \cdot 16 = 100 - 64 = 36.  
+\]  
+\[
+a = \frac{10 \pm \sqrt{36}}{2 \cdot 1} = \frac{10 \pm 6}{2}.  
+\]  
+\[
+a = \frac{10 + 6}{2} = 8 \quad \text{or} \quad a = \frac{10 - 6}{2} = 2.  
+\]  
+For each value of \(a\), compute \(c = 10 - a\):  
+- If \(a = 8\), then \(c = 10 - 8 = 2\).  
+- If \(a = 2\), then \(c = 10 - 2 = 8\).  
+[/IMP]
+
+---
+
+### Step 4: Validation
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Current Goal**: Check which pair \((a, c)\) satisfies \(a < c\) and verify that the discriminant is zero.  
+**How to Achieve**: Evaluate the condition \(a < c\) for the pairs \((8, 2)\) and \((2, 8)\), and confirm that \(ac = 16\) and the discriminant is zero for the valid pair.  
+[/PLANNING]  
+
+[IMP]  
+Check \(a < c\):  
+- For \((a, c) = (8, 2)\): \(8 < 2\) is false.  
+- For \((a, c) = (2, 8)\): \(2 < 8\) is true.  
+
+Verify the discriminant for \((a, c) = (2, 8)\):  
+\[
+\Delta = 8^2 - 4 \cdot 2 \cdot 8 = 64 - 64 = 0.  
+\]  
+Verify \(ac = 16\):  
+\[
+2 \cdot 8 = 16.  
+\]  
+Both conditions are satisfied. Verify \(a + c = 10\):  
+\[
+2 + 8 = 10.  
+\]  
+The pair \((2, 8)\) is valid. For completeness, check \((8, 2)\):  
+\[
+\Delta = 8^2 - 4 \cdot 8 \cdot 2 = 64 - 64 = 0, \quad 8 + 2 = 10, \quad 8 \cdot 2 = 16.  
+\]  
+This satisfies the discriminant and sum conditions but fails \(a < c\). Thus, only \((2, 8)\) is valid.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the ordered pair \((a, c)\) for the quadratic equation \(ax^2 + 8x + c = 0\) with one solution, \(a + c = 10\), and \(a < c\).  
+  - Subgoal 1: Determine the condition for one solution (\(\Delta = 0\)).  
+  - Subgoal 2: Use \(a + c = 10\) to express \(c\) and combine with \(ac = 16\).  
+  - Subgoal 3: Solve for \(a\) and \(c\).  
+  - Subgoal 4: Validate the solution against all conditions.  
+**Current Goal**: Confirm the final solution.  
+The pair \((2, 8)\) satisfies all conditions: \(\Delta = 0\), \(a + c = 10\), \(a < c\), and \(ac = 16\).  
+[/REVIEW]
+
+---
+
+### Final Answer
+The ordered pair \((a, c)\) is \((2, 8)\).  
+\[
+\boxed{(2, 8)}
+\]

@@ -1,0 +1,97 @@
+**Problem Statement**: Krista starts with 1 cent in her bank on Sunday and doubles the amount she deposits each day for two weeks. We need to determine the day of the week when the total amount in her bank first exceeds $2 (200 cents).
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to find the day when the total amount exceeds 200 cents:  
+1. Model the daily deposits as a geometric sequence.  
+2. Calculate the total amount in the bank each day by summing the deposits.  
+3. Identify the first day the total exceeds 200 cents.  
+4. Determine the corresponding day of the week, given the sequence starts on Sunday.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to model the daily deposits and calculate the total amount in the bank each day. Achieve this by defining the deposit amounts as a geometric sequence and computing the cumulative sum until it exceeds 200 cents.  
+[/PLANNING]  
+
+[IMP]  
+The deposits form a geometric sequence starting with 1 cent on Sunday (day 0):  
+- Day 0 (Sunday): 1 cent  
+- Day 1 (Monday): 2 cents  
+- Day 2 (Tuesday): 4 cents  
+- Day n: \( 2^n \) cents  
+
+The total amount in the bank after \( n \) days is the sum of the geometric series:  
+\[ S_n = 1 + 2 + 4 + \dots + 2^n = \sum_{k=0}^n 2^k \]  
+The sum of a geometric series with first term 1, common ratio 2, and \( n+1 \) terms is:  
+\[ S_n = 2^{n+1} - 1 \]  
+
+We need \( S_n > 200 \):  
+\[ 2^{n+1} - 1 > 200 \]  
+\[ 2^{n+1} > 201 \]  
+Taking the base-2 logarithm:  
+\[ n+1 > \log_2(201) \]  
+Since \( \log_2(201) \approx 7.651 \), we need \( n+1 > 7.651 \), so \( n \geq 7 \).  
+Thus, check \( n = 7 \):  
+\[ S_7 = 2^{7+1} - 1 = 2^8 - 1 = 256 - 1 = 255 \text{ cents} \]  
+For \( n = 6 \):  
+\[ S_6 = 2^{6+1} - 1 = 2^7 - 1 = 128 - 1 = 127 \text{ cents} \]  
+Since 127 cents ≤ 200 cents and 255 cents > 200 cents, the total first exceeds 200 cents on day 7.  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify the calculation that the total exceeds 200 cents on day 7. Achieve this by confirming the sum formula and checking the day’s calculation.  
+[/PLANNING]  
+
+[IMP]  
+Recompute the sum for day 7:  
+\[ S_7 = 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 = 255 \text{ cents} \]  
+For day 6:  
+\[ S_6 = 1 + 2 + 4 + 8 + 16 + 32 + 64 = 127 \text{ cents} \]  
+The formula \( S_n = 2^{n+1} - 1 \) is consistent:  
+- \( n = 6 \): \( 2^7 - 1 = 127 \)  
+- \( n = 7 \): \( 2^8 - 1 = 255 \)  
+Since 127 ≤ 200 and 255 > 200, day 7 is correct.  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to determine the day of the week for day 7, given the sequence starts on Sunday. Achieve this by mapping the day number to the corresponding day of the week.  
+[/PLANNING]  
+
+[IMP]  
+Starting on Sunday (day 0):  
+- Day 0: Sunday  
+- Day 1: Monday  
+- Day 2: Tuesday  
+- Day 3: Wednesday  
+- Day 4: Thursday  
+- Day 5: Friday  
+- Day 6: Saturday  
+- Day 7: Sunday  
+
+Thus, day 7 corresponds to the following Sunday.  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Determine the day of the week when the total amount first exceeds $2.  
+  - Subgoal 1: Model the daily deposits as a geometric sequence (completed).  
+  - Subgoal 2: Calculate the total amount each day (completed).  
+  - Subgoal 3: Identify the first day the total exceeds 200 cents (completed, day 7).  
+  - Subgoal 4: Determine the corresponding day of the week (completed, Sunday).  
+**Current Goal**: Confirm the final answer aligns with all calculations.  
+The total exceeds 200 cents on day 7, which is a Sunday, satisfying the problem’s requirements.  
+[/REVIEW]
+
+**Final Answer**: The total amount in Krista’s bank first exceeds $2 on **Sunday**.

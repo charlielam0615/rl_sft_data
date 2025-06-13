@@ -1,0 +1,82 @@
+**Problem Statement**: In a bacterial colony starting with 3 bacteria, the population doubles daily (6 at end of day 1, 12 at end of day 2, etc.). Find the first day when the colony exceeds 100 bacteria at day's end.
+
+---
+
+### Step 1
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+To solve for the first day when the colony exceeds 100 bacteria, break the problem into subgoals:  
+1. Model the bacterial growth mathematically.  
+2. Determine the day when the population first exceeds 100.  
+3. Verify the solution.  
+[/PLANNING]
+
+---
+
+### Step 2
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Model the bacterial growth mathematically.  
+How to Achieve: Since the colony starts with 3 bacteria and doubles daily, express the population at the end of day \( n \) as a function. The initial population is 3, and it doubles each day, suggesting an exponential model.  
+[/PLANNING]  
+[IMP]  
+The population doubles every day, so for day \( n \):  
+- Day 0: 3 bacteria (initial).  
+- Day 1: \( 3 \times 2 = 6 \).  
+- Day 2: \( 6 \times 2 = 12 \), or \( 3 \times 2^2 \).  
+- Day 3: \( 12 \times 2 = 24 \), or \( 3 \times 2^3 \).  
+Thus, the population at the end of day \( n \) is \( 3 \times 2^n \).  
+[/IMP]
+
+---
+
+### Step 3
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Determine the day when the population first exceeds 100.  
+How to Achieve: Use the model \( 3 \times 2^n \) to find the smallest integer \( n \) such that \( 3 \times 2^n > 100 \). Solve the inequality algebraically.  
+[/PLANNING]  
+[IMP]  
+Solve \( 3 \times 2^n > 100 \):  
+1. Divide both sides by 3: \( 2^n > \frac{100}{3} \approx 33.333 \).  
+2. Estimate \( n \): Since \( 2^n \) is exponential, try integer values:  
+   - \( 2^5 = 32 \), so \( 3 \times 32 = 96 \leq 100 \).  
+   - \( 2^6 = 64 \), so \( 3 \times 64 = 192 > 100 \).  
+3. Thus, \( n = 6 \) is a candidate. Check if \( n = 5 \) is sufficient: \( 3 \times 2^5 = 96 \), which is not > 100.  
+So, day 6 is the first day where the population exceeds 100.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify the solution.  
+How to Achieve: Confirm calculations for days 5 and 6, and check intermediate days if necessary, to ensure day 6 is the first day exceeding 100 bacteria.  
+[/PLANNING]  
+[IMP]  
+- Day 5: \( 3 \times 2^5 = 3 \times 32 = 96 \). Since \( 96 \leq 100 \), day 5 does not exceed 100.  
+- Day 6: \( 3 \times 2^6 = 3 \times 64 = 192 \). Since \( 192 > 100 \), day 6 does exceed 100.  
+- No fractional days exist, as the problem specifies the population at the end of each day.  
+The transition occurs between day 5 and day 6, confirming day 6 as the first day.  
+[/IMP]
+
+---
+
+### Step 5
+[PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+Goal-Management System:  
+- Main Goal: Find the first day when the colony exceeds 100 bacteria.  
+  - Subgoal 1: Model the bacterial growth mathematically (completed: \( 3 \times 2^n \)).  
+  - Subgoal 2: Determine the day when the population exceeds 100 (completed: day 6)).  
+  - Subgoal 3: Verify the solution (completed: confirmed day 6)).  
+Current Goal: Completed (all subgoals achieved).  
+The solution indicates day 6 is the first day the colony has more than 100 bacteria.  
+[/REVIEW]
+
+---
+
+**Final Answer**: The first day when the colony has more than 100 bacteria at the end of the day is day 6.

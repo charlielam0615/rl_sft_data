@@ -1,0 +1,64 @@
+**Problem Statement**: Find the greatest product obtainable from two integers whose sum is 1998.
+
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to find the two integers that maximize their product given their sum is 1998.  
+- Subgoal 1: Express the product of two integers in terms of a single variable using the sum constraint.  
+- Subgoal 2: Formulate the product as a function to maximize.  
+- Subgoal 3: Determine the optimal values of the integers to achieve the maximum product.  
+- Subgoal 4: Verify the solution to ensure it is the maximum.  
+[/PLANNING]
+
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to express the product of two integers as a function of one variable, given their sum is 1998. This can be achieved by defining one integer in terms of the other using the sum constraint and then forming the product function.  
+[/PLANNING]  
+[IMP]  
+Let the two integers be \( x \) and \( y \), with \( x + y = 1998 \). Express \( y \) as \( y = 1998 - x \). The product to maximize is \( P = x \cdot y = x \cdot (1998 - x) = 1998x - x^2 \).  
+[/IMP]
+
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to maximize the product function \( P = 1998x - x^2 \). This can be achieved by finding the vertex of the quadratic function, as it opens downward (indicating a maximum).  
+[/PLANNING]  
+[IMP]  
+The function \( P(x) = -x^2 + 1998x \) is a quadratic with a negative leading coefficient, so its maximum occurs at the vertex. For a quadratic \( ax^2 + bx + c \), the vertex is at \( x = -\frac{b}{2a} \). Here, \( a = -1 \), \( b = 1998 \), so:  
+\[ x = -\frac{1998}{2 \cdot (-1)} = \frac{1998}{2} = 999 \]  
+Then, \( y = 1998 - x = 1998 - 999 = 999 \). The product is:  
+\[ P = x \cdot y = 999 \cdot 999 = 999^2 = 998001 \]  
+[/IMP]
+
+### Step 4
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to verify that \( x = 999 \), \( y = 999 \) yields the maximum product. This can be achieved by checking nearby integer pairs and using calculus to confirm the maximum.  
+[/PLANNING]  
+[IMP]  
+**Check nearby integers**:  
+- For \( x = 998 \), \( y = 1998 - 998 = 1000 \), product = \( 998 \cdot 1000 = 998000 \).  
+- For \( x = 1000 \), \( y = 1998 - 1000 = 998 \), product = \( 1000 \cdot 998 = 998000 \).  
+- For \( x = 997 \), \( y = 1998 - 997 = 1001 \), product = \( 997 \cdot 1001 = 997997 \).  
+All are less than \( 999 \cdot 999 = 998001 \).  
+**Calculus confirmation**: The derivative of \( P(x) = -x^2 + 1998x \) is \( P'(x) = -2x + 1998 \). Set \( P'(x) = 0 \):  
+\[ -2x + 1998 = 0 \implies x = 999 \]  
+The second derivative is \( P''(x) = -2 < 0 \), confirming a maximum at \( x = 999 \).  
+[/IMP]
+
+### Step 5
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the greatest product of two integers whose sum is 1998.  
+  - Subgoal 1: Express the product as a function (completed: \( P = x \cdot (1998 - x) \)).  
+  - Subgoal 2: Maximize the product function (completed: maximum at \( x = 999 \)).  
+  - Subgoal 3: Determine the integers (completed: \( x = 999 \), \( y = 999 \)).  
+  - Subgoal 4: Verify the solution (completed: product = 998001, verified by comparison and calculus).  
+**Current Goal**: Conclude the solution as the maximum product has been found and verified.  
+[/REVIEW]
+
+**Final Answer**: The greatest product obtainable from two integers whose sum is 1998 is \( 999 \cdot 999 = 998001 \).

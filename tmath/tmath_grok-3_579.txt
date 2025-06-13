@@ -1,0 +1,101 @@
+**Problem Statement**: We need to find the probability that at least one woman is selected when three people are chosen at random from a group of seven men and three women. The answer should be expressed as a common fraction.
+
+### Step 1
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+To solve this probability problem, break it down into manageable subgoals:
+1. Determine the total number of ways to select 3 people from 10 (7 men + 3 women).
+2. Calculate the number of ways to select 3 people with no women (i.e., all men).
+3. Find the number of ways to select at least one woman by subtracting the no-women case from the total.
+4. Compute the probability as a fraction and simplify it.
+[/PLANNING]
+
+### Step 2
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the total number of ways to select 3 people from 10.
+How to Achieve: Use the combination formula \( C(n, k) = \frac{n!}{k!(n-k)!} \), where \( n \) is the total number of people, and \( k \) is the number of people to choose. Here, \( n = 10 \), \( k = 3 \).
+[/PLANNING]
+[IMP]
+Compute \( C(10, 3) \):
+\[
+C(10, 3) = \frac{10!}{3!(10-3)!} = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = \frac{720}{6} = 120
+\]
+Total ways to select 3 people from 10 is 120.
+[/IMP]
+
+### Step 3
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Calculate the number of ways to select 3 people with no women (all men).
+How to Achieve: Use the combination formula to select 3 men from 7 men, since there are 7 men in the group.
+[/PLANNING]
+[IMP]
+Compute \( C(7, 3) \):
+\[
+C(7, 3) = \frac{7!}{3!(7-3)!} = \frac{7 \times 6 \times 5}{3 \times 2 \times 1} = \frac{210}{6} = 35
+\]
+Number of ways to select 3 men (no women) is 35.
+[/IMP]
+
+### Step 4
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Find the number of ways to select at least one woman.
+How to Achieve: Subtract the number of ways to select no women (all men) from the total number of ways to select 3 people.
+[/PLANNING]
+[IMP]
+Total ways to select 3 people: 120 (from Step 2).
+Ways to select no women: 35 (from Step 3).
+Ways to select at least one woman: \( 120 - 35 = 85 \).
+[/IMP]
+
+### Step 5
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Compute the probability of selecting at least one woman as a fraction.
+How to Achieve: Divide the number of favorable outcomes (at least one woman) by the total number of outcomes and simplify the resulting fraction.
+[/PLANNING]
+[IMP]
+Probability = \(\frac{\text{Ways to select at least one woman}}{\text{Total ways to select 3 people}} = \frac{85}{120}\).
+Simplify the fraction:
+\[
+\frac{85}{120} \div \frac{5}{5} = \frac{17}{24}
+\]
+Verify if \( \frac{17}{24} \) is in simplest form: 17 is prime, and 24 (\( 2^3 \times 3 \)) shares no common factors with 17 other than 1.
+Thus, the probability is \( \frac{17}{24} \).
+[/IMP]
+
+### Step 6
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify the correctness of the probability calculation.
+How to Achieve: Recalculate the probability using an alternative method (e.g., sum the probabilities of selecting exactly 1, 2, or 3 women) to confirm the result.
+[/PLANNING]
+[IMP]
+Calculate the number of ways for each case:
+- **Exactly 1 woman**: \( C(3, 1) \times C(7, 2) = 3 \times \frac{7 \times 6}{2} = 3 \times 21 = 63 \).
+- **Exactly 2 women**: \( C(3, 2) \times C(7, 1) = 3 \times 7 = 21 \).
+- **Exactly 3 women**: \( C(3, 3) \times C(7, 0) = 1 \times 1 = 1 \).
+Total ways with at least one woman: \( 63 + 21 + 1 = 85 \).
+Probability: \( \frac{85}{120} = \frac{17}{24} \), which matches the previous result.
+The calculation is consistent.
+[/IMP]
+
+### Step 7
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Find the probability that at least one woman is selected when three people are chosen from 7 men and 3 women, expressed as a common fraction.
+  - Subgoal 1: Calculate total ways to select 3 people from 10 (completed: 120 ways).
+  - Subgoal 2: Calculate ways to select 3 men (no women) (completed: 35 ways).
+  - Subgoal 3: Calculate ways to select at least one woman (completed: 85 ways).
+  - Subgoal 4: Compute the probability as a simplified fraction (completed: \( \frac{17}{24} \)).
+  - Subgoal 5: Validate the result using an alternative method (completed: confirmed \( \frac{17}{24} \)).
+Current Goal: None (all subgoals completed).
+The solution process is complete, and the probability is confirmed as \( \frac{17}{24} \).
+[/REVIEW]
+
+**Final Answer**: The probability that at least one woman is selected is \( \frac{17}{24} \).

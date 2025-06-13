@@ -1,0 +1,127 @@
+**Problem Statement**: Find three consecutive one-digit, positive, odd integers whose sum is one-seventh of their product. Determine the middle integer when these integers are listed in ascending order.
+
+---
+
+**Step 1**
+
+[PLANNING]  
+Action: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals to solve it systematically:  
+1. Define the three consecutive odd integers in terms of a variable.  
+2. Set up equations based on the given condition (sum equals one-seventh of the product).  
+3. Solve the resulting equation for valid one-digit, positive, odd integers.  
+4. Identify the middle integer from the solution.  
+
+[/PLANNING]
+
+---
+
+**Step 2**
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Define the three consecutive odd integers and set up the equations.  
+How to Achieve: Represent the integers as \(n\), \(n+2\), and \(n+4\), where \(n\) is an odd integer. Write the sum as \(n + (n+2) + (n+4)\) and the product as \(n \cdot (n+2) \cdot (n+4)\). Set up the equation based on the condition that the sum equals one-seventh of the product.  
+
+[/PLANNING]  
+
+[IMP]  
+Let the three consecutive odd integers be \(n\), \(n+2\), and \(n+4\), where \(n\) is a positive, odd integer between 1 and 9 (since they are one-digit numbers).  
+The sum is:  
+\[ n + (n+2) + (n+4) = 3n + 6 \]  
+The product is:  
+\[ n \cdot (n+2) \cdot (n+4) \]  
+According to the problem, the sum is one-seventh of the product:  
+\[ 3n + 6 = \frac{1}{7} \cdot n \cdot (n+2) \cdot (n+4) \]  
+Multiply both sides by 7 to eliminate the fraction:  
+\[ 7(3n + 6) = n \cdot (n+2) \cdot (n+4) \]  
+\[ 21n + 42 = n(n+2)(n+4) \]  
+This equation will be solved in the next step.  
+
+[/IMP]
+
+---
+
+**Step 3**
+
+[PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Solve the equation \(21n + 42 = n(n+2)(n+4)\) for valid values of \(n\).  
+How to Achieve: Expand the right-hand side, simplify the equation into a polynomial, and solve for \(n\) while ensuring \(n\) is a positive, odd, one-digit integer (i.e., \(n \in \{1, 3, 5, 7, 9\}\)).  
+
+[/PLANNING]  
+
+[IMP]  
+Start with the equation:  
+\[ 21n + 42 = n(n+2)(n+4) \]  
+Expand the right-hand side:  
+\[ (n+2)(n+4) = n^2 + 4n + 2n + 8 = n^2 + 6n + 8 \]  
+\[ n(n^2 + 6n + 8) = n^3 + 6n^2 + 8n \]  
+So the equation becomes:  
+\[ 21n + 42 = n^3 + 6n^2 + 8n \]  
+Move all terms to one side:  
+\[ n^3 + 6n^2 + 8n - 21n - 42 = 0 \]  
+\[ n^3 + 6n^2 - 13n - 42 = 0 \]  
+Test possible values of \(n\) (odd integers: 1, 3, 5, 7, 9):  
+- For \(n = 1\):  
+  \[ 1^3 + 6 \cdot 1^2 - 13 \cdot 1 - 42 = 1 + 6 - 13 - 42 = -48 \neq 0 \]  
+- For \(n = 3\):  
+  \[ 3^3 + 6 \cdot 3^2 - 13 \cdot 3 - 42 = 27 + 54 - 39 - 42 = 0 \]  
+- For \(n = 5\):  
+  \[ 5^3 + 6 \cdot 5^2 - 13 \cdot 5 - 42 = 125 + 150 - 65 - 42 = 168 \neq 0 \]  
+- For \(n = 7\):  
+  \[ 7^3 + 6 \cdot 7^2 - 13 \cdot 7 - 42 = 343 + 294 - 91 - 42 = 504 \neq 0 \]  
+- For \(n = 9\):  
+  \[ 9^3 + 6 \cdot 9^2 - 13 \cdot 9 - 42 = 729 + 486 - 117 - 42 = 1056 \neq 0 \]  
+Thus, \(n = 3\) is a solution. The integers are \(3\), \(5\), and \(7\).  
+
+[/IMP]
+
+---
+
+**Step 4**
+
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify that the integers \(3\), \(5\), and \(7\) satisfy the problem's condition.  
+How to Achieve: Compute the sum and product of \(3\), \(5\), and \(7\), and check if the sum equals one-seventh of the product.  
+
+[/PLANNING]  
+
+[IMP]  
+Integers: \(3\), \(5\), \(7\).  
+Sum:  
+\[ 3 + 5 + 7 = 15 \]  
+Product:  
+\[ 3 \cdot 5 \cdot 7 = 105 \]  
+One-seventh of the product:  
+\[ \frac{105}{7} = 15 \]  
+Since \(15 = 15\), the condition is satisfied. The integers \(3\), \(5\), and \(7\) are valid.  
+
+[/IMP]
+
+---
+
+**Step 5**
+
+[PLANNING]  
+Action: Track Goals (Review)  
+
+[/PLANNING]  
+
+[REVIEW]  
+Goal Hierarchy:  
+- Main Goal: Find three consecutive one-digit, positive, odd integers whose sum is one-seventh of their product and identify the middle integer.  
+  - Subgoal 1: Define the integers as \(n\), \(n+2\), \(n+4\). (Completed)  
+  - Subgoal 2: Set up the equation \(3n + 6 = \frac{1}{7} \cdot n \cdot (n+2) \cdot (n+4)\). (Completed)  
+  - Subgoal 3: Solve the equation for \(n\). (Completed, \(n = 3\))  
+  - Subgoal 4: Verify the solution. (Completed, integers \(3\), \(5\), \(7\) satisfy the condition)  
+  - Subgoal 5: Identify the middle integer. (Current)  
+Current Goal: Identify the middle integer from \(3\), \(5\), \(7\) when listed in ascending order.  
+The integers in ascending order are \(3\), \(5\), \(7\). The middle integer is \(5\).  
+
+[/REVIEW]
+
+---
+
+**Final Answer**: The middle integer is \(5\).
