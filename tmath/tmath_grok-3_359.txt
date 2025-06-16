@@ -1,89 +1,155 @@
-**Problem Statement**: Find the number of pairs of positive integers \((x, y)\) that satisfy the equation \(x^2 - y^2 = 51\).
+### Problem Statement
+We need to find the number of pairs of positive integers \((x, y)\) that satisfy the equation \(x^2 - y^2 = 51\). Positive integers are whole numbers greater than 0 (i.e., \(x, y \in \{1, 2, 3, \dots\}\)).
 
-### Step 1
-[PLANNING]  
-**Action**: Forward Subgoaling (Planning)  
-Break down the problem into forward-looking intermediate subgoals to solve the equation \(x^2 - y^2 = 51\) for positive integer pairs \((x, y)\).  
+---
 
-1. Recognize that \(x^2 - y^2 = 51\) is a difference of squares, which can be factored as \((x - y)(x + y) = 51\).  
-2. Since \(x\) and \(y\) are positive integers, determine the possible values for the factors \(x - y\) and \(x + y\).  
-3. Solve for \(x\) and \(y\) using the factor pairs, ensuring they are positive integers.  
-4. Count all valid pairs \((x, y)\) that satisfy the equation.  
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into manageable subgoals to solve the equation \(x^2 - y^2 = 51\) for positive integer pairs \((x, y)\).  
+- Subgoal 1: Rewrite the equation using the difference of squares identity to simplify it.  
+- Subgoal 2: Identify constraints for \(x\) and \(y\) as positive integers.  
+- Subgoal 3: Find all possible integer pairs \((x, y)\) that satisfy the rewritten equation.  
+- Subgoal 4: Verify that all solutions meet the condition of being positive integers.  
 [/PLANNING]
 
-### Step 2
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to factor the equation \(x^2 - y^2 = 51\) as \((x - y)(x + y) = 51\) and identify possible factor pairs for 51. This will be achieved by listing the positive factor pairs of 51 and setting up equations for \(x - y\) and \(x + y\).  
-[/PLANNING]  
-[IMP]  
-Since \(x^2 - y^2 = (x - y)(x + y) = 51\), we need to find pairs of positive integers \((a, b)\) such that \(a \cdot b = 51\), where \(a = x - y\) and \(b = x + y\). The positive factor pairs of 51 are:  
-- \(1 \cdot 51 = 51\)  
-- \(3 \cdot 17 = 51\)  
+---
 
-For each pair \((a, b)\):  
-- Solve the system: \(x - y = a\), \(x + y = b\).  
-- Add the equations: \((x - y) + (x + y) = a + b \implies 2x = a + b \implies x = \frac{a + b}{2}\).  
-- Subtract the equations: \((x + y) - (x - y) = b - a \implies 2y = b - a \implies y = \frac{b - a}{2}\).  
-- For \(x\) and \(y\) to be positive integers, \(a + b\) and \(b - a\) must be even, and \(x, y > 0\).  
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Rewrite the equation \(x^2 - y^2 = 51\) using the difference of squares identity.  
+**How to Achieve**: Use the identity \(x^2 - y^2 = (x - y)(x + y)\) to transform the equation into a form that is easier to solve for integer pairs.  
+[/PLANNING]
 
-**Case 1**: \(a = 1\), \(b = 51\)  
-- \(x = \frac{1 + 51}{2} = \frac{52}{2} = 26\)  
-- \(y = \frac{51 - 1}{2} = \frac{50}{2} = 25\)  
-- Pair: \((x, y) = (26, 25)\)  
-- Verify: \(26^2 - 25^2 = 676 - 625 = 51\). Valid.  
+[IMP]
+Apply the difference of squares identity:  
+\[
+x^2 - y^2 = (x - y)(x + y) = 51
+\]
+Let \(a = x - y\) and \(b = x + y\). Then the equation becomes:
+\[
+a \cdot b = 51
+\]
+Since \(x\) and \(y\) are positive integers, \(x > y\) (because \(x^2 - y^2 = 51 > 0\), so \(x^2 > y^2\)), and thus \(a = x - y \geq 1\) and \(b = x + y > x - y \geq 1\). Additionally, since \(x + y > x - y\), it follows that \(b > a\). Both \(a\) and \(b\) must be positive integers because \(x\) and \(y\) are positive integers.
 
-**Case 2**: \(a = 3\), \(b = 17\)  
-- \(x = \frac{3 + 17}{2} = \frac{20}{2} = 10\)  
-- \(y = \frac{17 - 3}{2} = \frac{14}{2} = 7\)  
-- Pair: \((x, y) = (10, 7)\)  
-- Verify: \(10^2 - 7^2 = 100 - 49 = 51\). Valid.  
-
-**Case 3**: \(a = 17\), \(b = 3\)  
-- \(x = \frac{17 + 3}{2} = \frac{20}{2} = 10\)  
-- \(y = \frac{3 - 17}{2} = \frac{-14}{2} = -7\)  
-- Since \(y\) is negative, this pair is not valid.  
-
-**Case 4**: \(a = 51\), \(b = 1\)  
-- \(x = \frac{51 + 1}{2} = \frac{52}{2} = 26\)  
-- \(y = \frac{1 - 51}{2} = \frac{-50}{2} = -25\)  
-- Since \(y\) is negative, this pair is not valid.  
-
-Since 51 has no other positive factor pairs, the valid pairs are \((26, 25)\) and \((10, 7)\).  
+Next, solve for \(x\) and \(y\) in terms of \(a\) and \(b\):  
+- Add the equations \(x - y = a\) and \(x + y = b\):  
+  \[
+  (x - y) + (x + y) = a + b \implies 2x = a + b \implies x = \frac{a + b}{2}
+  \]
+- Subtract the equations:  
+  \[
+  (x + y) - (x - y) = b - a \implies 2y = b - a \implies y = \frac{b - a}{2}
+  \]
+For \(x\) and \(y\) to be integers, \(a + b\) and \(b - a\) must both be even, so \(a\) and \(b\) must have the same parity (both odd or both even). Since their product \(a \cdot b = 51\) is odd, both \(a\) and \(b\) must be odd (if either were even, the product would be even).  
 [/IMP]
 
-### Step 3
-[PLANNING]  
-**Action**: Validation (Implementation)  
-**Meta-data**: The current goal is to validate the solutions by checking if any other factor pairs or approaches yield additional valid pairs \((x, y)\). This will be achieved by considering negative factor pairs and rechecking the constraints.  
-[/PLANNING]  
-[IMP]  
-To ensure completeness, consider negative factor pairs of 51 (e.g., \((-1) \cdot (-51) = 51\), \((-3) \cdot (-17) = 51\)). However, since \(x - y\) and \(x + y\) represent differences and sums of positive integers, and \(x + y > x - y > 0\), negative factors are unlikely to yield valid solutions. Let’s test:  
+---
 
-**Case 1**: \(a = -1\), \(b = -51\)  
-- \(x = \frac{-1 - 51}{2} = \frac{-52}{2} = -26\) (not positive). Invalid.  
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Find all positive integer pairs \((a, b)\) such that \(a \cdot b = 51\), \(a\) and \(b\) are odd, and \(b > a\).  
+**How to Achieve**: Factorize 51 into pairs of positive integers, filter for pairs where both numbers are odd, and ensure \(b > a\). Then compute corresponding \((x, y)\) pairs.  
+[/PLANNING]
 
-**Case 2**: \(a = -3\), \(b = -17\)  
-- \(x = \frac{-3 - 17}{2} = \frac{-20}{2} = -10\) (not positive). Invalid.  
+[IMP]
+Factorize 51:  
+\[
+51 = 1 \cdot 51, \quad 3 \cdot 17
+\]
+List the factor pairs \((a, b)\): \((1, 51)\), \((3, 17)\), \((17, 3)\), \((51, 1)\). Since \(b > a\), consider:  
+- \((a, b) = (1, 51)\): Both 1 and 51 are odd.  
+- \((a, b) = (3, 17)\): Both 3 and 17 are odd.  
+- \((a, b) = (17, 3)\): Invalid since \(b = 3 < 17 = a\).  
+- \((a, b) = (51, 1)\): Invalid since \(b = 1 < 51 = a\).  
 
-No valid pairs arise from negative factors. The positive factor pairs were exhaustively checked in Step 2, and only \((26, 25)\) and \((10, 7)\) satisfy \(x, y > 0\).  
+Valid pairs: \((1, 51)\), \((3, 17)\).  
+
+For each valid pair, compute \(x\) and \(y\):  
+1. \((a, b) = (1, 51)\):  
+   \[
+   x = \frac{a + b}{2} = \frac{1 + 51}{2} = \frac{52}{2} = 26
+   \]
+   \[
+   y = \frac{b - a}{2} = \frac{51 - 1}{2} = \frac{50}{2} = 25
+   \]
+   Pair: \((x, y) = (26, 25)\).  
+
+2. \((a, b) = (3, 17)\):  
+   \[
+   x = \frac{a + b}{2} = \frac{3 + 17}{2} = \frac{20}{2} = 10
+   \]
+   \[
+   y = \frac{b - a}{2} = \frac{17 - 3}{2} = \frac{14}{2} = 7
+   \]
+   Pair: \((x, y) = (10, 7)\).  
+
+Both pairs \((26, 25)\) and \((10, 7)\) yield positive integers.  
 [/IMP]
 
-### Step 4
-[PLANNING]  
-**Action**: Track Goals (Review)  
-[/PLANNING]  
-[REVIEW]  
+---
+
+### Step 4: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify that the pairs \((x, y) = (26, 25)\) and \((10, 7)\) satisfy the original equation \(x^2 - y^2 = 51\).  
+**How to Achieve**: Substitute each pair into the equation and check if the result equals 51.  
+[/PLANNING]
+
+[IMP]
+Check \((x, y) = (26, 25)\):  
+\[
+x^2 - y^2 = 26^2 - 25^2 = 676 - 625 = 51
+\]
+This satisfies the equation.  
+
+Check \((x, y) = (10, 7)\):  
+\[
+x^2 - y^2 = 10^2 - 7^2 = 100 - 49 = 51
+\]
+This satisfies the equation.  
+
+Both pairs are valid solutions.  
+[/IMP]
+
+---
+
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
 **Goal Hierarchy**:  
-- Main Goal: Find the number of positive integer pairs \((x, y)\) such that \(x^2 - y^2 = 51\).  
-  - Subgoal 1: Factor the equation as \((x - y)(x + y) = 51\) and identify factor pairs (completed).  
-  - Subgoal 2: Solve for \(x\) and \(y\) using factor pairs and check for positive integers (completed).  
-  - Subgoal 3: Validate by checking for other possible solutions (completed).  
-  - Subgoal 4: Count the valid pairs (current goal).  
+- Main Goal: Find the number of positive integer pairs \((x, y)\) that satisfy \(x^2 - y^2 = 51\).  
+  - Subgoal 1: Rewrite the equation using the difference of squares identity (completed).  
+  - Subgoal 2: Identify constraints for \(x\) and \(y\) as positive integers (completed).  
+  - Subgoal 3: Find all possible integer pairs \((x, y)\) (completed).  
+  - Subgoal 4: Verify solutions (completed).  
 
-**Current Goal**: Count the valid pairs \((x, y)\).  
-From previous steps, the valid pairs are \((26, 25)\) and \((10, 7)\). Thus, there are 2 pairs.  
+**Current Goal**: Determine the total number of valid \((x, y)\) pairs.  
+The solutions found are \((26, 25)\) and \((10, 7)\). No additional pairs were identified from other factorizations, as checked in Step 3.  
 [/REVIEW]
 
+---
+
+### Step 6: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Count the total number of valid positive integer pairs \((x, y)\).  
+**How to Achieve**: Summarize the valid pairs found and confirm no other solutions exist by considering the constraints and factorization.  
+[/PLANNING]
+
+[IMP]
+The valid pairs are \((26, 25)\) and \((10, 7)\), as verified. Since 51 has only two factor pairs with both numbers odd and \(b > a\), and both have been tested, there are no additional solutions. Thus, there are exactly 2 pairs of positive integers \((x, y)\) that satisfy \(x^2 - y^2 = 51\).  
+[/IMP]
+
+---
+
 ### Final Answer
-There are 2 pairs of positive integers \((x, y)\) that satisfy \(x^2 - y^2 = 51\): \((10, 7)\) and \((26, 25)\).
+There are **2 pairs** of positive integers \((x, y)\) that satisfy \(x^2 - y^2 = 51\): \((10, 7)\) and \((26, 25)\).  
+\[
+\boxed{2}
+\]

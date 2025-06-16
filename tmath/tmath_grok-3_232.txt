@@ -1,102 +1,58 @@
-**Problem Restated**: Find two positive integers whose sum is 246 and whose product is maximized. 
+### Problem Statement
+Find the greatest product obtainable from two integers whose sum is 246.
 
----
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals to maximize the product of two integers summing to 246.  
+1. Define the two integers as \( x \) and \( y \) such that \( x + y = 246 \).  
+2. Express the product as \( P = x \cdot y \) and rewrite it using the sum constraint: \( y = 246 - x \), so \( P = x \cdot (246 - x) \).  
+3. Determine the value of \( x \) that maximizes the quadratic function \( P = x \cdot (246 - x) \).  
+4. Verify the integers are valid and compute the maximum product.  
+[/PLANNING]
 
-### Step 1: Select Action from Meta-Cognitive Action Set
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to maximize the product \( P = x \cdot (246 - x) \). This can be achieved by finding the vertex of the quadratic function, either through calculus (taking the derivative) or by recognizing the symmetry of the parabola.  
+[/PLANNING]
 
-[PLANNING]  
-Action: Forward Subgoaling - Planning  
-To solve the problem, we need to break it down into manageable subgoals. The goal is to find two integers, \( a \) and \( b \), such that \( a + b = 246 \) and their product \( a \cdot b \) is maximized. Subgoals:  
-1. Formulate the problem mathematically to express the product in terms of one variable.  
-2. Determine the optimal values of the integers by maximizing the product.  
-3. Verify the solution to ensure it meets the constraints and is the maximum.  
-[/PLANNING]  
+[IMP]
+Rewrite the product: \( P = x \cdot (246 - x) = 246x - x^2 \). This is a quadratic function in the form \( P(x) = -x^2 + 246x \). The maximum of a quadratic function \( ax^2 + bx + c \) occurs at \( x = -\frac{b}{2a} \). Here, \( a = -1 \), \( b = 246 \), so:  
+\[ x = -\frac{246}{2(-1)} = \frac{246}{2} = 123. \]  
+Thus, \( x = 123 \), and \( y = 246 - 123 = 123 \). The product is:  
+\[ P = 123 \cdot 123 = 123^2 = 15129. \]  
+[/IMP]
 
----
+### Step 3
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate that \( x = 123 \) and \( y = 123 \) yield the maximum product by checking the sum and testing nearby integer pairs.  
+[/PLANNING]
 
-### Step 2: Select Action from Meta-Cognitive Action Set
+[IMP]
+Verify the sum: \( 123 + 123 = 246 \), which satisfies the condition.  
+Test nearby integer pairs to confirm the maximum:  
+- For \( x = 122 \), \( y = 124 \): \( 122 + 124 = 246 \), product = \( 122 \cdot 124 = 15128 \).  
+- For \( x = 121 \), \( y = 125 \): \( 121 + 125 = 246 \), product = \( 121 \cdot 125 = 15125 \).  
+- For \( x = 124 \), \( y = 122 \): Same as \( 122 \cdot 124 = 15128 \).  
+Since \( 15128 < 15129 \) and \( 15125 < 15129 \), the product at \( x = 123 \), \( y = 123 \) is larger.  
+[/IMP]
 
-[PLANNING]  
-Action: Reach Goal - Implementation  
-Current Goal: Formulate the product mathematically in terms of one variable.  
-How to Achieve: Express one integer in terms of the other using the sum constraint \( a + b = 246 \), and write the product as a function of one variable.  
-[/PLANNING]  
+### Step 4
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
 
-[IMP]  
-Let the two integers be \( a \) and \( b \). Given \( a + b = 246 \), we can express \( b \) as \( b = 246 - a \). The product to maximize is \( P = a \cdot b = a \cdot (246 - a) \). Thus, the product function is:  
-\[ P(a) = a (246 - a) = 246a - a^2 \]  
-This is a quadratic function in \( a \).  
-[/IMP]  
-
----
-
-### Step 3: Select Action from Meta-Cognitive Action Set
-
-[PLANNING]  
-Action: Reach Goal - Implementation  
-Current Goal: Determine the optimal values of the integers by maximizing the product.  
-How to Achieve: Since \( P(a) = 246a - a^2 \) is a quadratic function, find the vertex of the parabola to maximize the product, as the coefficient of \( a^2 \) is negative, indicating a downward-opening parabola.  
-[/PLANNING]  
-
-[IMP]  
-To maximize \( P(a) = 246a - a^2 \), rewrite it in standard quadratic form:  
-\[ P(a) = -a^2 + 246a \]  
-The vertex of a quadratic function \( f(a) = ma^2 + na + c \) occurs at \( a = -\frac{n}{2m} \). Here, \( m = -1 \), \( n = 246 \), so:  
-\[ a = -\frac{246}{2 \cdot (-1)} = \frac{246}{2} = 123 \]  
-Then, \( b = 246 - a = 246 - 123 = 123 \).  
-The product is:  
-\[ P = a \cdot b = 123 \cdot 123 = 123^2 \]  
-Calculate \( 123^2 \):  
-\[ 123 \cdot 123 = (120 + 3) \cdot (120 + 3) = 120^2 + 2 \cdot 120 \cdot 3 + 3^2 = 14400 + 720 + 9 = 15129 \]  
-Thus, when \( a = 123 \) and \( b = 123 \), the product is 15129.  
-[/IMP]  
-
----
-
-### Step 4: Select Action from Meta-Cognitive Action Set
-
-[PLANNING]  
-Action: Validation - Implementation  
-Current Goal: Verify that the solution \( a = 123 \), \( b = 123 \) maximizes the product and satisfies the constraints.  
-How to Achieve: Check if the sum is 246, compare the product with nearby integer pairs, and confirm the quadratic function’s maximum occurs at \( a = 123 \).  
-[/PLANNING]  
-
-[IMP]  
-1. **Check the sum**:  
-\[ a + b = 123 + 123 = 246 \]  
-The sum constraint is satisfied.  
-
-2. **Compare with nearby integer pairs**:  
-Test pairs like \( (122, 124) \) and \( (124, 122) \):  
-\[ 122 \cdot 124 = 122 \cdot (120 + 4) = 122 \cdot 120 + 122 \cdot 4 = 14640 + 488 = 15128 \]  
-Test \( (121, 125) \):  
-\[ 121 \cdot 125 = 121 \cdot (120 + 5) = 121 \cdot 120 + 121 \cdot 5 = 14520 + 605 = 15125 \]  
-The product 15128 (for \( 122, 124 \)) is less than 15129, and 15125 (for \( 121, 125 \)) is also less, suggesting \( 123 \cdot 123 = 15129 \) is the maximum.  
-
-3. **Confirm the quadratic maximum**:  
-The vertex at \( a = 123 \) gives the maximum for \( P(a) = -a^2 + 246a \). Alternatively, note that for a fixed sum \( S = a + b \), the product is maximized when \( a \) and \( b \) are as equal as possible (by AM-GM inequality):  
-\[ \frac{a + b}{2} \geq \sqrt{ab} \implies \frac{246}{2} = 123 \geq \sqrt{ab} \]  
-Equality holds when \( a = b \), so \( a = b = 123 \).  
-[/IMP]  
-
----
-
-### Step 5: Select Action from Meta-Cognitive Action Set
-
-[PLANNING]  
-Action: Track Goals - Review  
-[/PLANNING]  
-
-[REVIEW]  
+[REVIEW]
 **Goal Hierarchy**:  
-- Main Goal: Find two integers whose sum is 246 and product is maximized.  
-  - Subgoal 1: Formulate the product mathematically (completed in Step 2).  
-  - Subgoal 2: Determine the optimal integers by maximizing the product (completed in Step 3).  
-  - Subgoal 3: Verify the solution (completed in Step 4).  
+- Main goal: Find the greatest product of two integers summing to 246.  
+  - Subgoal 1: Define the integers and express the product (completed).  
+  - Subgoal 2: Maximize the product using the quadratic function (completed).  
+  - Subgoal 3: Validate the solution (completed).  
+**Current Goal**: Confirm the solution by summarizing results.  
+The maximum product is achieved when \( x = 123 \), \( y = 123 \), yielding \( 123 \cdot 123 = 15129 \).  
+[/REVIEW]
 
-**Current Goal**: The main goal is achieved, as all subgoals are completed. The solution is \( a = 123 \), \( b = 123 \), with product 15129.  
-[/REVIEW]  
-
----
-
-**Final Answer**: The greatest product obtainable from two integers whose sum is 246 is **15129**, achieved when the integers are **123** and **123**.
+### Final Answer
+The greatest product obtainable from two integers whose sum is 246 is **15129**, achieved when both integers are 123.

@@ -1,144 +1,175 @@
-**Problem Statement**: We need to find the value of \( a \) that makes the piecewise function \( f(x) = \begin{cases} x + 2 & \text{if } x > 3, \\ 2x + a & \text{if } x \leq 3 \end{cases} \) continuous. A function is continuous at a point if the left-hand limit, right-hand limit, and function value at that point are equal. Since this is a piecewise function with a transition at \( x = 3 \), we need to ensure continuity at \( x = 3 \).
+### Problem Restatement
+We need to find the value of \( a \) that makes the piecewise function \( f(x) \) continuous for all real numbers \( x \). The function is defined as:
+
+\[
+f(x) = \left\{
+\begin{array}{cl}
+x + 2 & \text{if } x > 3, \\
+2x + a & \text{if } x \leq 3.
+\end{array}
+\right.
+\]
+
+Continuity at a point requires that the left-hand limit, right-hand limit, and function value at that point are equal. Since the function changes definition at \( x = 3 \), we need to ensure continuity at this point.
 
 ---
 
-### Step 1: Forward Subgoaling
-[PLANNING]  
-**Action**: Forward Subgoaling (Planning)  
-To solve for \( a \), we need to ensure the function is continuous at \( x = 3 \). This involves the following subgoals:  
-1. Compute the right-hand limit of \( f(x) \) as \( x \to 3^+ \).  
-2. Compute the left-hand limit of \( f(x) \) as \( x \to 3^- \).  
-3. Compute the function value at \( x = 3 \).  
-4. Set the left-hand limit equal to the right-hand limit and the function value to ensure continuity.  
-5. Solve for \( a \).  
+### Step 1
+[PLANNING]
+Action: Forward Subgoaling (Planning)
+To solve for \( a \), break down the goal into subgoals:
+1. Identify the condition for continuity at \( x = 3 \).
+2. Compute the right-hand limit as \( x \) approaches 3 from values greater than 3.
+3. Compute the left-hand limit (or function value) as \( x \) approaches 3 from values less than or equal to 3.
+4. Set the limits equal to ensure continuity and solve for \( a \).
 [/PLANNING]
 
 ---
 
-### Step 2: Reach Goal
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Current Goal**: Compute the right-hand limit of \( f(x) \) as \( x \to 3^+ \).  
-**How to Achieve**: For \( x > 3 \), the function is \( f(x) = x + 2 \). Evaluate the limit as \( x \) approaches 3 from the right using this expression.  
+### Step 2
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Identify the condition for continuity at \( x = 3 \).
+How to Achieve: For \( f(x) \) to be continuous at \( x = 3 \), the right-hand limit (\( \lim_{x \to 3^+} f(x) \)), the left-hand limit (\( \lim_{x \to 3^-} f(x) \)), and the function value at \( x = 3 \) (\( f(3) \)) must be equal. Since \( x = 3 \) falls in the domain \( x \leq 3 \), use \( f(3) = 2 \cdot 3 + a \).
+[/PLANNING]
 
-[IMP]  
-For \( x > 3 \), \( f(x) = x + 2 \). The right-hand limit is:  
+[IMP]
+The condition for continuity at \( x = 3 \) is:
+
 \[
-\lim_{x \to 3^+} f(x) = \lim_{x \to 3^+} (x + 2) = 3 + 2 = 5.
-\]  
+\lim_{x \to 3^+} f(x) = \lim_{x \to 3^-} f(x) = f(3)
+\]
+
+Since \( f(3) \) is defined by the piece \( x \leq 3 \), we have:
+
+\[
+f(3) = 2 \cdot 3 + a = 6 + a
+\]
+
+We will compute the limits in the next steps to set up the equation.
 [/IMP]
 
 ---
 
-### Step 3: Reach Goal
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Current Goal**: Compute the left-hand limit of \( f(x) \) as \( x \to 3^- \).  
-**How to Achieve**: For \( x \leq 3 \), the function is \( f(x) = 2x + a \). Evaluate the limit as \( x \) approaches 3 from the left using this expression.  
+### Step 3
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Compute the right-hand limit, \( \lim_{x \to 3^+} f(x) \).
+How to Achieve: For \( x > 3 \), the function is \( f(x) = x + 2 \). Evaluate the limit as \( x \) approaches 3 from the right by substituting \( x = 3 \) into \( x + 2 \).
+[/PLANNING]
 
-[IMP]  
-For \( x \leq 3 \), \( f(x) = 2x + a \). The left-hand limit is:  
+[IMP]
 \[
-\lim_{x \to 3^-} f(x) = \lim_{x \to 3^-} (2x + a) = 2 \cdot 3 + a = 6 + a.
-\]  
+\lim_{x \to 3^+} f(x) = \lim_{x \to 3^+} (x + 2) = 3 + 2 = 5
+\]
 [/IMP]
 
 ---
 
-### Step 4: Reach Goal
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Current Goal**: Compute the function value at \( x = 3 \).  
-**How to Achieve**: Since \( x = 3 \) falls in the domain \( x \leq 3 \), use \( f(x) = 2x + a \) to evaluate \( f(3) \).  
+### Step 4
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Compute the left-hand limit, \( \lim_{x \to 3^-} f(x) \), and the function value at \( x = 3 \).
+How to Achieve: For \( x \leq 3 \), the function is \( f(x) = 2x + a \). Since the function is a linear polynomial, it is continuous for \( x \leq 3 \). Thus, the left-hand limit is the function value at \( x = 3 \), i.e., \( f(3) = 2 \cdot 3 + a \).
+[/PLANNING]
 
-[IMP]  
-For \( x = 3 \), \( f(x) = 2x + a \). Thus:  
+[IMP]
 \[
-f(3) = 2 \cdot 3 + a = 6 + a.
-\]  
+\lim_{x \to 3^-} f(x) = \lim_{x \to 3^-} (2x + a) = 2 \cdot 3 + a = 6 + a
+\]
+
+Since \( x = 3 \) is in the domain \( x \leq 3 \), the function value is:
+
+\[
+f(3) = 2 \cdot 3 + a = 6 + a
+\]
+
+Thus, \( \lim_{x \to 3^-} f(x) = f(3) = 6 + a \).
 [/IMP]
 
 ---
 
-### Step 5: Reach Goal
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Current Goal**: Ensure continuity at \( x = 3 \) by setting the left-hand limit, right-hand limit, and function value equal.  
-**How to Achieve**: For continuity at \( x = 3 \), we need \( \lim_{x \to 3^-} f(x) = \lim_{x \to 3^+} f(x) = f(3) \). Set the expressions from previous steps equal and solve for \( a \).  
+### Step 5
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Set the right-hand and left-hand limits equal to ensure continuity and solve for \( a \).
+How to Achieve: Equate \( \lim_{x \to 3^+} f(x) = \lim_{x \to 3^-} f(x) \), i.e., \( 5 = 6 + a \), and solve for \( a \).
+[/PLANNING]
 
-[IMP]  
-From Step 2, the right-hand limit is:  
+[IMP]
 \[
-\lim_{x \to 3^+} f(x) = 5.
-\]  
-From Step 3, the left-hand limit is:  
+5 = 6 + a
+\]
+
 \[
-\lim_{x \to 3^-} f(x) = 6 + a.
-\]  
-From Step 4, the function value is:  
-\[
-f(3) = 6 + a.
-\]  
-For continuity, set the limits and function value equal:  
-\[
-6 + a = 5 \quad \text{and} \quad 6 + a = f(3) = 6 + a.
-\]  
-Solving \( 6 + a = 5 \):  
-\[
-a = 5 - 6 = -1.
-\]  
-Since \( f(3) = 6 + a = 6 + (-1) = 5 \), the function value matches the right-hand limit, confirming continuity at \( x = 3 \).  
+a = 5 - 6 = -1
+\]
 [/IMP]
 
 ---
 
-### Step 6: Validation
-[PLANNING]  
-**Action**: Validation (Implementation)  
-**Current Goal**: Verify that \( a = -1 \) makes the function continuous at \( x = 3 \).  
-**How to Achieve**: Substitute \( a = -1 \) into the function, recompute the limits and function value at \( x = 3 \), and check if they are equal.  
+### Step 6
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify that \( a = -1 \) makes the function continuous at \( x = 3 \).
+How to Achieve: Substitute \( a = -1 \) into the function, recompute \( f(3) \), and check if \( \lim_{x \to 3^+} f(x) = \lim_{x \to 3^-} f(x) = f(3) \).
+[/PLANNING]
 
-[IMP]  
-With \( a = -1 \), the function is:  
+[IMP]
+With \( a = -1 \), the function becomes:
+
 \[
-f(x) = \begin{cases} 
-x + 2 & \text{if } x > 3, \\ 
+f(x) = \left\{
+\begin{array}{cl}
+x + 2 & \text{if } x > 3, \\
 2x - 1 & \text{if } x \leq 3.
-\end{cases}
-\]  
-- Right-hand limit:  
+\end{array}
+\right.
+\]
+
+- Right-hand limit:
+
 \[
-\lim_{x \to 3^+} f(x) = \lim_{x \to 3^+} (x + 2) = 3 + 2 = 5.
-\]  
-- Left-hand limit:  
+\lim_{x \to 3^+} f(x) = 3 + 2 = 5
+\]
+
+- Left-hand limit:
+
 \[
-\lim_{x \to 3^-} f(x) = \lim_{x \to 3^-} (2x - 1) = 2 \cdot 3 - 1 = 6 - 1 = 5.
-\]  
-- Function value:  
+\lim_{x \to 3^-} f(x) = 2 \cdot 3 - 1 = 6 - 1 = 5
+\]
+
+- Function value at \( x = 3 \):
+
 \[
-f(3) = 2 \cdot 3 - 1 = 6 - 1 = 5.
-\]  
-Since \( \lim_{x \to 3^-} f(x) = \lim_{x \to 3^+} f(x) = f(3) = 5 \), the function is continuous at \( x = 3 \).  
+f(3) = 2 \cdot 3 - 1 = 5
+\]
+
+Since \( \lim_{x \to 3^+} f(x) = \lim_{x \to 3^-} f(x) = f(3) = 5 \), the function is continuous at \( x = 3 \).
 [/IMP]
 
 ---
 
-### Step 7: Track Goals
-[PLANNING]  
-**Action**: Track Goals (Review)  
+### Step 7
+[PLANNING]
+Action: Track Goals (Review)
+[/PLANNING]
 
-[REVIEW]  
-**Goal Hierarchy**:  
-- Main Goal: Find \( a \) to make \( f(x) \) continuous at \( x = 3 \).  
-  - Subgoal 1: Compute the right-hand limit at \( x = 3 \). (Completed: Step 2)  
-  - Subgoal 2: Compute the left-hand limit at \( x = 3 \). (Completed: Step 3)  
-  - Subgoal 3: Compute the function value at \( x = 3 \). (Completed: Step 4)  
-  - Subgoal 4: Set limits and function value equal to solve for \( a \). (Completed: Step 5)  
-  - Subgoal 5: Validate the solution. (Completed: Step 6)  
-**Current Goal**: None, as all subgoals are completed, and the main goal is achieved.  
-**Result**: The value of \( a = -1 \) ensures continuity.  
+[REVIEW]
+Goal Hierarchy:
+- Main Goal: Find \( a \) to make \( f(x) \) continuous at \( x = 3 \).
+  - Subgoal 1: Identify the condition for continuity (completed).
+  - Subgoal 2: Compute the right-hand limit (completed).
+  - Subgoal 3: Compute the left-hand limit and function value (completed).
+  - Subgoal 4: Solve for \( a \) by equating limits (completed).
+  - Subgoal 5: Validate the solution (completed).
+
+Current Goal: None (solution validated).
+
+The value \( a = -1 \) satisfies the continuity condition.
 [/REVIEW]
 
 ---
 
-**Final Answer**: The value of \( a \) that makes the function continuous is \( a = -1 \).
+### Final Answer
+The value of \( a \) that makes the function continuous is \( a = -1 \).

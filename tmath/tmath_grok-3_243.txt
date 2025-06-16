@@ -1,105 +1,85 @@
-**Problem Statement**: A bookstore wants to determine the price \( p \) (in dollars, where \( p \leq 26 \)) to charge for a book to maximize its monthly revenue. The number of books sold per month is given by the function \( 130 - 5p \). Revenue is calculated as price times quantity sold, and we need to find the price \( p \) that maximizes this revenue.
+### Problem Statement
+The bookstore wants to determine the price \( p \) (in dollars, where \( p \leq 26 \)) for a book such that the monthly revenue is maximized. The number of books sold per month is given by the function \( 130 - 5p \). Revenue is calculated as price times quantity sold, so we need to maximize the revenue function \( R(p) = p \cdot (130 - 5p) \), subject to the constraint \( p \leq 26 \).
 
 ---
 
-**Step 1**
-
-[PLANNING]  
-**Action**: Forward Subgoaling (Planning)  
-To solve the problem of maximizing revenue, break it down into subgoals:  
-1. Define the revenue function based on price \( p \) and the number of books sold.  
+### Step 1
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of maximizing revenue into intermediate subgoals:  
+1. Define the revenue function based on price and quantity sold.  
 2. Determine the mathematical approach to maximize the revenue function.  
 3. Account for the constraint \( p \leq 26 \).  
-4. Verify the solution to ensure it maximizes revenue within the given constraints.  
+4. Solve for the optimal price and verify the solution.  
 [/PLANNING]
 
 ---
 
-**Step 2**
-
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to define the revenue function. This will be achieved by multiplying the price \( p \) by the number of books sold, \( 130 - 5p \), to express revenue as a function of \( p \).  
+### Step 2
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to define the revenue function and set up the optimization problem. This will be achieved by expressing revenue as a function of price \( p \) using the given quantity function \( 130 - 5p \), and identifying the method to find the maximum (e.g., calculus or completing the square, since the function is quadratic).  
 [/PLANNING]
 
-[IMP]  
-The revenue \( R \) is the product of the price \( p \) and the quantity sold \( 130 - 5p \):  
+[IMP]
+The revenue \( R \) is the product of price \( p \) and the number of books sold \( 130 - 5p \):  
 \[ R(p) = p \cdot (130 - 5p) = 130p - 5p^2 \]  
-This gives the revenue function \( R(p) = -5p^2 + 130p \).  
+This is a quadratic function in the form \( R(p) = -5p^2 + 130p \). Since the coefficient of \( p^2 \) is negative (\(-5\)), the parabola opens downward, indicating a maximum at the vertex. To find the vertex, we can use the formula for the vertex of a quadratic function \( ax^2 + bx + c \), where the vertex occurs at \( p = -\frac{b}{2a} \). Here, \( a = -5 \), \( b = 130 \), so:  
+\[ p = -\frac{130}{2 \cdot (-5)} = \frac{130}{10} = 13 \]  
+Thus, the potential optimal price is \( p = 13 \).  
 [/IMP]
 
 ---
 
-**Step 3**
-
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to find the price \( p \) that maximizes the revenue function \( R(p) = -5p^2 + 130p \). Since this is a quadratic function, we can find the maximum by determining the vertex of the parabola, and then check the constraint \( p \leq 26 \).  
+### Step 3
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the price \( p = 13 \) by checking if it satisfies the constraint \( p \leq 26 \) and confirming it maximizes revenue by evaluating the revenue at this point and considering boundary conditions.  
 [/PLANNING]
 
-[IMP]  
-The revenue function \( R(p) = -5p^2 + 130p \) is a quadratic function of the form \( ap^2 + bp + c \), where \( a = -5 \), \( b = 130 \), and \( c = 0 \). Since \( a < 0 \), the parabola opens downward, and the maximum occurs at the vertex. The vertex of a quadratic function \( ap^2 + bp + c \) is at \( p = -\frac{b}{2a} \).
-
-Calculate the vertex:  
-\[ p = -\frac{b}{2a} = -\frac{130}{2 \cdot (-5)} = \frac{130}{10} = 13 \]
-
-Thus, the price that maximizes revenue is \( p = 13 \). Since \( p = 13 \leq 26 \), it satisfies the constraint.  
+[IMP]
+First, check the constraint: \( p = 13 \leq 26 \), which is satisfied.  
+Next, compute the revenue at \( p = 13 \):  
+\[ R(13) = 13 \cdot (130 - 5 \cdot 13) = 13 \cdot (130 - 65) = 13 \cdot 65 = 845 \]  
+To ensure this is the maximum, evaluate the revenue at the boundary \( p = 26 \):  
+\[ R(26) = 26 \cdot (130 - 5 \cdot 26) = 26 \cdot (130 - 130) = 26 \cdot 0 = 0 \]  
+Since \( R(26) = 0 \) is much lower than \( R(13) = 845 \), and the function is a downward-opening parabola, the vertex at \( p = 13 \) is likely the maximum. For additional confirmation, test a nearby point, e.g., \( p = 12 \):  
+\[ R(12) = 12 \cdot (130 - 5 \cdot 12) = 12 \cdot (130 - 60) = 12 \cdot 70 = 840 \]  
+Since \( R(12) = 840 < 845 \), and the function is symmetric around the vertex, \( p = 13 \) appears to maximize revenue.  
 [/IMP]
 
 ---
 
-**Step 4**
-
-[PLANNING]  
-**Action**: Validation (Implementation)  
-**Meta-data**: The current goal is to validate that \( p = 13 \) maximizes revenue within the constraint \( p \leq 26 \). This will be achieved by checking the revenue at \( p = 13 \), comparing it with boundary points (e.g., \( p = 26 \)), and confirming the behavior of the function.  
+### Step 4
+[PLANNING]
+**Action: Track Goals (Review)**  
 [/PLANNING]
 
-[IMP]  
-Calculate the revenue at \( p = 13 \):  
-\[ R(13) = -5(13)^2 + 130 \cdot 13 = -5 \cdot 169 + 1690 = -845 + 1690 = 845 \]
-
-Check the boundary at \( p = 26 \):  
-\[ R(26) = -5(26)^2 + 130 \cdot 26 = -5 \cdot 676 + 3380 = -3380 + 3380 = 0 \]
-
-Check another point, e.g., \( p = 10 \):  
-\[ R(10) = -5(10)^2 + 130 \cdot 10 = -5 \cdot 100 + 1300 = -500 + 1300 = 800 \]
-
-The revenue at \( p = 13 \) (\( 845 \)) is higher than at \( p = 10 \) (\( 800 \)) and \( p = 26 \) (\( 0 \)). To further confirm, note that the second derivative of \( R(p) = -5p^2 + 130p \) is \( R''(p) = -10 \), which is negative, confirming a maximum at \( p = 13 \).  
-[/IMP]
-
----
-
-**Step 5**
-
-[PLANNING]  
-**Action**: Track Goals (Review)  
-[/PLANNING]
-
-[REVIEW]  
+[REVIEW]
 **Goal Hierarchy**:  
-- Main goal: Find the price \( p \leq 26 \) that maximizes revenue.  
-  - Subgoal 1: Define the revenue function (completed: \( R(p) = -5p^2 + 130p \)).  
-  - Subgoal 2: Maximize the revenue function (completed: found \( p = 13 \)).  
-  - Subgoal 3: Account for the constraint \( p \leq 26 \) (completed: \( p = 13 \leq 26 \)).  
-  - Subgoal 4: Verify the solution (completed: revenue at \( p = 13 \) is \( 845 \), higher than other points).  
-
-**Current Goal**: The current goal is to finalize the solution by confirming all steps are complete and presenting the final answer.  
+- Main goal: Maximize the bookstore’s revenue.  
+  - Subgoal 1: Define the revenue function (completed: \( R(p) = 130p - 5p^2 \)).  
+  - Subgoal 2: Determine the mathematical approach to maximize the revenue function (completed: used vertex of quadratic).  
+  - Subgoal 3: Account for the constraint \( p \leq 26 \) (completed: verified \( p = 13 \leq 26 \)).  
+  - Subgoal 4: Solve for the optimal price and verify the solution (completed: \( p = 13 \), revenue = 845, validated with boundary and nearby points).  
+**Current Goal**: Confirm the final solution and summarize.  
 [/REVIEW]
 
 ---
 
-**Step 6**
-
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to provide the final answer by stating the price that maximizes revenue, based on the validated results.  
+### Step 5
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to finalize the solution by stating the optimal price and maximum revenue, ensuring all constraints and calculations are addressed.  
 [/PLANNING]
 
-[IMP]  
-The bookstore should charge **$13** for the book to maximize its monthly revenue, which will be **$845**.  
+[IMP]
+The optimal price is \( p = 13 \) dollars, which yields a maximum revenue of:  
+\[ R(13) = 13 \cdot (130 - 5 \cdot 13) = 13 \cdot 65 = 845 \text{ dollars per month.} \]  
+This satisfies the constraint \( p \leq 26 \), and validation confirms it is the maximum by comparing with boundary and nearby points.  
 [/IMP]
 
 ---
 
-**Final Answer**: The bookstore should charge **$13** to maximize its monthly revenue.
+### Final Answer
+The bookstore should charge **$13** per book to maximize its monthly revenue, resulting in a revenue of **$845**.

@@ -1,71 +1,99 @@
-**Problem Statement**: The bacteria in a lab dish double in number every four hours. Starting with 500 bacteria cells, we need to determine in how many hours there will be exactly 32,000 bacteria.
+### Problem Statement
+We need to determine how many hours it will take for a population of 500 bacteria, which doubles every 4 hours, to reach exactly 32,000 bacteria.
+
+---
 
 ### Step 1
 [PLANNING]  
 **Action: Forward Subgoaling (Planning)**  
-Break down the problem into intermediate subgoals to find the time required for the bacteria to reach 32,000.  
-- Subgoal 1: Model the bacteria growth using an exponential growth formula.  
-- Subgoal 2: Set up an equation to find the number of doubling periods needed to reach 32,000 bacteria.  
-- Subgoal 3: Convert the number of doubling periods into hours.  
+To solve this, break the problem into subgoals:  
+1. Model the bacterial growth mathematically.  
+2. Set up an equation to find the time when the population reaches 32,000.  
+3. Solve the equation for the number of hours.  
 [/PLANNING]
+
+---
 
 ### Step 2
 [PLANNING]  
 **Action: Reach Goal (Implementation)**  
-**Meta-data**: The current goal is to model the bacteria growth. Since the bacteria double every four hours, we can use the exponential growth formula \( N = N_0 \cdot 2^t \), where \( N_0 \) is the initial number of bacteria, \( N \) is the final number, and \( t \) is the number of doubling periods.  
+**Meta-data**: The current goal is to model the bacterial growth. Since the bacteria double every 4 hours, use an exponential growth model of the form \( P = P_0 \cdot 2^{t/T} \), where \( P_0 \) is the initial population, \( t \) is time in hours, and \( T \) is the doubling time.  
 [/PLANNING]  
+
 [IMP]  
-The initial number of bacteria is 500, and the final number is 32,000. The formula is:  
-\[ 32,000 = 500 \cdot 2^t \]  
-Simplify by dividing both sides by 500:  
-\[ 64 = 2^t \]  
+The initial population is 500 bacteria, and the doubling time is 4 hours. Thus, the population at time \( t \) is:  
+\[ P(t) = 500 \cdot 2^{t/4} \]  
+This equation represents the number of bacteria after \( t \) hours.  
 [/IMP]
+
+---
 
 ### Step 3
 [PLANNING]  
 **Action: Reach Goal (Implementation)**  
-**Meta-data**: The current goal is to solve for \( t \), the number of doubling periods, in the equation \( 64 = 2^t \). This can be achieved by expressing 64 as a power of 2.  
+**Meta-data**: The current goal is to set up an equation for when the population reaches 32,000. Using the model \( P(t) = 500 \cdot 2^{t/4} \), set \( P(t) = 32,000 \) and prepare to solve for \( t \).  
 [/PLANNING]  
+
 [IMP]  
-Since \( 64 = 2^6 \), we have:  
-\[ 2^6 = 2^t \]  
-Thus, \( t = 6 \). This means it takes 6 doubling periods to reach 32,000 bacteria.  
+Set the population equal to 32,000:  
+\[ 500 \cdot 2^{t/4} = 32,000 \]  
+Divide both sides by 500:  
+\[ 2^{t/4} = \frac{32,000}{500} = 64 \]  
+Thus, the equation to solve is:  
+\[ 2^{t/4} = 64 \]  
 [/IMP]
+
+---
 
 ### Step 4
 [PLANNING]  
-**Action: Validation (Implementation)**  
-**Meta-data**: The current goal is to validate the solution by checking if 6 doubling periods result in 32,000 bacteria. Substitute \( t = 6 \) back into the growth formula.  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to solve \( 2^{t/4} = 64 \) for \( t \). Recognize that 64 is a power of 2, so express 64 as \( 2^6 \), then equate exponents to find \( t \).  
 [/PLANNING]  
+
 [IMP]  
-Using the formula \( N = 500 \cdot 2^t \):  
-\[ N = 500 \cdot 2^6 = 500 \cdot 64 = 32,000 \]  
-The calculation confirms that after 6 doubling periods, the number of bacteria is exactly 32,000, validating the solution.  
+Since \( 64 = 2^6 \), rewrite the equation:  
+\[ 2^{t/4} = 2^6 \]  
+Equate the exponents:  
+\[ \frac{t}{4} = 6 \]  
+Multiply both sides by 4:  
+\[ t = 6 \cdot 4 = 24 \]  
+So, \( t = 24 \) hours.  
 [/IMP]
+
+---
 
 ### Step 5
 [PLANNING]  
-**Action: Reach Goal (Implementation)**  
-**Meta-data**: The current goal is to convert the number of doubling periods into hours. Since each doubling period is 4 hours, multiply the number of doubling periods by 4.  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to verify the solution \( t = 24 \) hours. Substitute \( t = 24 \) into the growth model \( P(t) = 500 \cdot 2^{t/4} \) and check if the population equals 32,000.  
 [/PLANNING]  
+
 [IMP]  
-With \( t = 6 \) doubling periods and each period lasting 4 hours:  
-\[ \text{Total time} = 6 \cdot 4 = 24 \text{ hours} \]  
+Substitute \( t = 24 \):  
+\[ P(24) = 500 \cdot 2^{24/4} = 500 \cdot 2^6 = 500 \cdot 64 = 32,000 \]  
+The population is exactly 32,000, confirming the solution is correct.  
 [/IMP]
+
+---
 
 ### Step 6
 [PLANNING]  
 **Action: Track Goals (Review)**  
 [/PLANNING]  
+
 [REVIEW]  
 **Goal Hierarchy**:  
-- Main goal: Determine the time in hours for the bacteria to reach 32,000.  
-  - Subgoal 1: Model the bacteria growth (completed).  
-  - Subgoal 2: Solve for the number of doubling periods (completed, \( t = 6 \)).  
-  - Subgoal 3: Convert doubling periods to hours (completed, 24 hours).  
-**Current Goal**: Finalize the solution by confirming the time calculated.  
-The main goal has been achieved, with the answer being 24 hours.  
+- Main goal: Find the time for 500 bacteria to reach 32,000, doubling every 4 hours.  
+  - Subgoal 1: Model the bacterial growth (completed).  
+  - Subgoal 2: Set up an equation for 32,000 bacteria (completed).  
+  - Subgoal 3: Solve the equation for time (completed).  
+  - Subgoal 4: Validate the solution (completed).  
+**Current Goal**: None, as all subgoals are completed, and the solution is verified.  
+The solution is \( t = 24 \) hours.  
 [/REVIEW]
 
+---
+
 ### Final Answer
-It will take 24 hours for the bacteria to reach exactly 32,000.
+It will take **24 hours** for the bacteria population to reach exactly 32,000.

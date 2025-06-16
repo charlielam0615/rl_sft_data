@@ -1,139 +1,121 @@
-### Problem Statement
-We need to completely factor the expression \[(6a^3 + 92a^2 - 7) - (-7a^3 + a^2 - 7)\].
+**Problem Statement**: Completely factor the expression \[(6a^3 + 92a^2 - 7) - (-7a^3 + a^2 - 7)\].
 
 ---
 
-### Step 1: Forward Subgoaling
-[PLANNING]
-**Action: Forward Subgoaling (Planning)**  
-Break down the problem into intermediate subgoals to factor the expression completely:  
-1. Simplify the given expression by handling the subtraction and combining like terms.  
-2. Factor the resulting polynomial.  
-3. Check if the factored form can be factored further to achieve complete factorization.  
+**Step 1**
+
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the goal of factoring the expression into intermediate subgoals:  
+1. Simplify the given expression by removing the parentheses and combining like terms.  
+2. Factor the resulting polynomial completely.  
+3. Verify the factorization.  
+
 [/PLANNING]
 
 ---
 
-### Step 2: Reach Goal
-[PLANNING]
-**Action: Reach Goal (Implementation)**  
-**Current Goal**: Simplify the given expression by handling the subtraction and combining like terms.  
-**How to Achieve**: Distribute the negative sign across the second polynomial and combine like terms based on the powers of \(a\).  
+**Step 2**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Simplify the given expression by removing the parentheses and combining like terms.  
+**How to Achieve**: Distribute the negative sign across the second polynomial, combine like terms by adding or subtracting coefficients of matching powers of \(a\), and simplify to obtain a single polynomial.  
+
 [/PLANNING]
 
-[IMP]
+[IMP]  
 Start with the expression:  
-\[
-(6a^3 + 92a^2 - 7) - (-7a^3 + a^2 - 7)
-\]
+\[(6a^3 + 92a^2 - 7) - (-7a^3 + a^2 - 7)\]  
 
 Distribute the negative sign:  
-\[
-= 6a^3 + 92a^2 - 7 + 7a^3 - a^2 + 7
-\]
+\[6a^3 + 92a^2 - 7 + 7a^3 - a^2 + 7\]  
 
 Combine like terms:  
 - For \(a^3\): \(6a^3 + 7a^3 = 13a^3\)  
 - For \(a^2\): \(92a^2 - a^2 = 91a^2\)  
-- For the constant terms: \(-7 + 7 = 0\)
+- For constants: \(-7 + 7 = 0\)  
 
 The simplified expression is:  
-\[
-13a^3 + 91a^2
-\]
+\[13a^3 + 91a^2\]  
+
 [/IMP]
 
 ---
 
-### Step 3: Validation
-[PLANNING]
-**Action: Validation (Implementation)**  
-**Current Goal**: Verify the correctness of the simplified expression.  
-**How to Achieve**: Recompute the simplification to ensure no errors in combining like terms and check if the result aligns with the original expression.  
+**Step 3**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Factor the simplified polynomial \(13a^3 + 91a^2\) completely.  
+**How to Achieve**: Identify common factors in the polynomial, factor them out, and check if the resulting expression can be factored further.  
+
 [/PLANNING]
 
-[IMP]
-Recompute the simplification:  
-Original: \((6a^3 + 92a^2 - 7) - (-7a^3 + a^2 - 7)\)  
-Distribute: \(6a^3 + 92a^2 - 7 + 7a^3 - a^2 + 7\)  
-Combine:  
-- \(a^3\) terms: \(6a^3 + 7a^3 = 13a^3\)  
-- \(a^2\) terms: \(92a^2 - a^2 = 91a^2\)  
-- Constants: \(-7 + 7 = 0\)  
+[IMP]  
+The polynomial is:  
+\[13a^3 + 91a^2\]  
 
-Result: \(13a^3 + 91a^2\), which matches the previous step.  
+Factor out the greatest common factor (GCF):  
+- Both terms share a common factor of \(a^2\).  
+- The coefficients 13 and 91 have a GCF of 13 (since \(91 = 13 \times 7\)).  
+- Thus, the GCF of the polynomial is \(13a^2\).  
 
-To further validate, substitute \(a = 1\):  
-- Original: \((6(1)^3 + 92(1)^2 - 7) - (-7(1)^3 + 1^2 - 7) = (6 + 92 - 7) - (-7 + 1 - 7) = 91 - (-13) = 104\)  
-- Simplified: \(13(1)^3 + 91(1)^2 = 13 + 91 = 104\)  
-The values match, confirming the simplification is correct.  
+Factor out \(13a^2\):  
+\[13a^3 + 91a^2 = 13a^2(a + 7)\]  
+
+Check if further factoring is possible:  
+- \(13a^2\) is fully factored (13 is prime, \(a^2\) is a power).  
+- The binomial \((a + 7)\) is linear and cannot be factored further over the real numbers.  
+
+The factored form is:  
+\[13a^2(a + 7)\]  
+
 [/IMP]
 
 ---
 
-### Step 4: Reach Goal
-[PLANNING]
-**Action: Reach Goal (Implementation)**  
-**Current Goal**: Factor the simplified expression \(13a^3 + 91a^2\).  
-**How to Achieve**: Identify common factors and factor the polynomial, checking for further factorization.  
+**Step 4**
+
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify the factorization \(13a^2(a + 7)\) is correct.  
+**How to Achieve**: Expand the factored expression and check if it matches the simplified polynomial \(13a^3 + 91a^2\).  
+
 [/PLANNING]
 
-[IMP]
-The expression is:  
-\[
-13a^3 + 91a^2
-\]
+[IMP]  
+Expand the factored expression:  
+\[13a^2(a + 7) = 13a^2 \cdot a + 13a^2 \cdot 7 = 13a^3 + 91a^2\]  
 
-Factor out the greatest common factor:  
-- Both terms have \(a^2\) and a common factor of 13 (since \(13 \cdot 7 = 91\)).  
-\[
-13a^3 + 91a^2 = 13a^2(a + 7)
-\]
+This matches the simplified polynomial \(13a^3 + 91a^2\).  
+The factorization is correct.  
 
-Verify the factorization:  
-Distribute \(13a^2(a + 7) = 13a^2 \cdot a + 13a^2 \cdot 7 = 13a^3 + 91a^2\), which matches the expression.  
 [/IMP]
 
 ---
 
-### Step 5: Validation
-[PLANNING]
-**Action: Validation (Implementation)**  
-**Current Goal**: Check if the factored form \(13a^2(a + 7)\) can be factored further.  
-**How to Achieve**: Analyze each factor to determine if it can be broken down further.  
+**Step 5**
+
+[PLANNING]  
+**Action**: Track Goals (Review)  
+
 [/PLANNING]
 
-[IMP]
-The factored expression is \(13a^2(a + 7)\).  
-- \(13\) is a prime number and cannot be factored further.  
-- \(a^2 = a \cdot a\), which is fully factored as a single variable.  
-- \(a + 7\) is a linear polynomial. Check if it can be factored over the real numbers by finding roots:  
-  Set \(a + 7 = 0 \implies a = -7\). This is a single real root, so \(a + 7\) is irreducible over the reals.  
-
-Thus, \(13a^2(a + 7)\) is the complete factorization over the real numbers.  
-[/IMP]
-
----
-
-### Step 6: Track Goals
-[PLANNING]
-**Action: Track Goals (Review)**  
-[/PLANNING]
-
-[REVIEW]
+[REVIEW]  
 **Goal Hierarchy**:  
-- Main Goal: Completely factor the expression \((6a^3 + 92a^2 - 7) - (-7a^3 + a^2 - 7)\).  
-  - Subgoal 1: Simplify the expression by combining like terms (completed: \(13a^3 + 91a^2\)).  
-  - Subgoal 2: Factor the simplified expression (completed: \(13a^2(a + 7)\)).  
-  - Subgoal 3: Verify the factorization is complete (completed: \(13\), \(a^2\), and \(a + 7\) are irreducible).  
+- Main Goal: Completely factor the expression \[(6a^3 + 92a^2 - 7) - (-7a^3 + a^2 - 7)\].  
+  - Subgoal 1: Simplify the expression by removing parentheses and combining like terms (completed: \(13a^3 + 91a^2\)).  
+  - Subgoal 2: Factor the simplified polynomial completely (completed: \(13a^2(a + 7)\)).  
+  - Subgoal 3: Verify the factorization (completed: factorization verified).  
 
-**Current Goal**: The main goal is achieved, as the expression is fully factored.  
+**Current Goal**: None (all subgoals completed).  
+The factorization \(13a^2(a + 7)\) is the final result.  
+
 [/REVIEW]
 
 ---
 
-### Final Answer
+**Final Answer**:  
 The completely factored form of the expression is:  
-\[
-\boxed{13a^2(a + 7)}
-\]
+\[ \boxed{13a^2(a + 7)} \]

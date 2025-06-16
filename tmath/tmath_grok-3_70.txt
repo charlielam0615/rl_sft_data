@@ -4,69 +4,81 @@
 [PLANNING]
 Action: Forward Subgoaling (Planning)
 To find the inverse of \( f(x) = 4 - 5x \), break down the goal into intermediate subgoals:
-1. Understand the process of finding an inverse function.
-2. Set up the equation by swapping \( x \) and \( y \).
-3. Solve for \( y \) to express the inverse function.
-4. Verify the solution by checking if the composition of the function and its inverse yields the identity function.
+1. Verify that the function is one-to-one to ensure the inverse exists.
+2. Set up the equation by replacing \( f(x) \) with \( y \), i.e., \( y = 4 - 5x \).
+3. Swap \( x \) and \( y \) to form \( x = 4 - 5y \).
+4. Solve for \( y \) to express the inverse function.
+5. Verify the inverse by checking if \( f(f^{-1}(x)) = x \) and \( f^{-1}(f(x)) = x \).
+6. Express the inverse in function notation.
 [/PLANNING]
 
 ### Step 2
 [PLANNING]
 Action: Reach Goal (Implementation)
-Current Goal: Set up the equation for the inverse by swapping \( x \) and \( y \).
-Description: Replace \( f(x) \) with \( y \), then swap \( x \) and \( y \) to form the equation \( x = 4 - 5y \), which will be solved for \( y \).
+Current Goal: Verify that the function \( f(x) = 4 - 5x \) is one-to-one.
+How to Achieve: A function is one-to-one if it is either strictly increasing or decreasing. Compute the derivative of \( f(x) \) to determine its monotonicity.
 [/PLANNING]
 
 [IMP]
-Start with the function \( y = 4 - 5x \). To find the inverse, swap \( x \) and \( y \):
-\[ x = 4 - 5y \]
+Compute the derivative of \( f(x) = 4 - 5x \):
+\[ f'(x) = -5 \]
+Since \( f'(x) = -5 < 0 \) for all \( x \), the function is strictly decreasing, hence one-to-one, and an inverse exists.
 [/IMP]
 
 ### Step 3
 [PLANNING]
 Action: Reach Goal (Implementation)
-Current Goal: Solve the equation \( x = 4 - 5y \) for \( y \).
-Description: Isolate \( y \) by performing algebraic operations to express \( y \) in terms of \( x \).
+Current Goal: Set up the equation and swap variables to find the inverse.
+How to Achieve: Replace \( f(x) \) with \( y \), write \( y = 4 - 5x \), then swap \( x \) and \( y \) to get \( x = 4 - 5y \).
 [/PLANNING]
 
 [IMP]
-Solve the equation:
+Start with:
+\[ y = 4 - 5x \]
+Swap \( x \) and \( y \):
 \[ x = 4 - 5y \]
-Subtract 4 from both sides:
-\[ x - 4 = -5y \]
-Divide both sides by \(-5\):
-\[ y = \frac{x - 4}{-5} \]
-Simplify:
-\[ y = -\frac{1}{5}x + \frac{4}{5} \]
-Thus, the inverse function is:
-\[ f^{-1}(x) = -\frac{1}{5}x + \frac{4}{5} \]
 [/IMP]
 
 ### Step 4
 [PLANNING]
-Action: Validation (Implementation)
-Current Goal: Verify the inverse function by checking if \( f(f^{-1}(x)) = x \) and \( f^{-1}(f(x)) = x \).
-Description: Compute the compositions of the original function and the inverse to confirm they yield the identity function.
+Action: Reach Goal (Implementation)
+Current Goal: Solve for \( y \) in the equation \( x = 4 - 5y \).
+How to Achieve: Isolate \( y \) by performing algebraic operations.
 [/PLANNING]
 
 [IMP]
-Verify \( f(f^{-1}(x)) = x \):
-\[ f^{-1}(x) = -\frac{1}{5}x + \frac{4}{5} \]
-\[ f(f^{-1}(x)) = f\left(-\frac{1}{5}x + \frac{4}{5}\right) = 4 - 5\left(-\frac{1}{5}x + \frac{4}{5}\right) \]
-\[ = 4 - 5\left(-\frac{1}{5}x\right) - 5\left(\frac{4}{5}\right) \]
-\[ = 4 + x - 4 = x \]
-This holds.
-
-Verify \( f^{-1}(f(x)) = x \):
-\[ f(x) = 4 - 5x \]
-\[ f^{-1}(f(x)) = f^{-1}(4 - 5x) = -\frac{1}{5}(4 - 5x) + \frac{4}{5} \]
-\[ = -\frac{4}{5} + x + \frac{4}{5} = x \]
-This also holds.
-
-The inverse function is correct.
+Solve:
+\[ x = 4 - 5y \]
+Subtract 4 from both sides:
+\[ x - 4 = -5y \]
+Divide by \(-5\):
+\[ y = \frac{x - 4}{-5} = -\frac{x - 4}{5} = -\frac{x}{5} + \frac{4}{5} \]
+So, the inverse is:
+\[ y = -\frac{x}{5} + \frac{4}{5} \]
 [/IMP]
 
 ### Step 5
+[PLANNING]
+Action: Validation (Implementation)
+Current Goal: Verify the inverse by checking \( f(f^{-1}(x)) = x \) and \( f^{-1}(f(x)) = x \).
+How to Achieve: Substitute \( f^{-1}(x) = -\frac{x}{5} + \frac{4}{5} \) into \( f(x) \) and vice versa, and simplify to confirm both equalities hold.
+[/PLANNING]
+
+[IMP]
+1. Compute \( f(f^{-1}(x)) \):
+\[ f^{-1}(x) = -\frac{x}{5} + \frac{4}{5} \]
+\[ f(f^{-1}(x)) = f\left(-\frac{x}{5} + \frac{4}{5}\right) = 4 - 5\left(-\frac{x}{5} + \frac{4}{5}\right) \]
+\[ = 4 - 5\left(-\frac{x}{5}\right) - 5\left(\frac{4}{5}\right) = 4 + x - 4 = x \]
+
+2. Compute \( f^{-1}(f(x)) \):
+\[ f(x) = 4 - 5x \]
+\[ f^{-1}(f(x)) = f^{-1}(4 - 5x) = -\frac{(4 - 5x)}{5} + \frac{4}{5} \]
+\[ = -\frac{4}{5} + x + \frac{4}{5} = x \]
+
+Both checks confirm the inverse is correct.
+[/IMP]
+
+### Step 6
 [PLANNING]
 Action: Track Goals (Review)
 [/PLANNING]
@@ -74,14 +86,26 @@ Action: Track Goals (Review)
 [REVIEW]
 Goal Hierarchy:
 - Main Goal: Find the inverse of \( f(x) = 4 - 5x \).
-  - Subgoal 1: Understand the process of finding an inverse function (completed).
-  - Subgoal 2: Set up the equation by swapping \( x \) and \( y \) (completed).
-  - Subgoal 3: Solve for \( y \) to express the inverse function (completed).
-  - Subgoal 4: Verify the solution (completed).
-Current Goal: None (all subgoals completed).
-
-The inverse function is \( f^{-1}(x) = -\frac{1}{5}x + \frac{4}{5} \).
+  - Subgoal 1: Verify the function is one-to-one (completed: strictly decreasing, inverse exists).
+  - Subgoal 2: Set up the equation \( y = 4 - 5x \) (completed).
+  - Subgoal 3: Swap \( x \) and \( y \) to get \( x = 4 - 5y \) (completed).
+  - Subgoal 4: Solve for \( y \) to get \( y = -\frac{x}{5} + \frac{4}{5} \) (completed).
+  - Subgoal 5: Verify the inverse (completed: both compositions yield \( x \)).
+  - Subgoal 6: Express the inverse in function notation (pending).
+Current Goal: Express the inverse in function notation.
 [/REVIEW]
 
+### Step 7
+[PLANNING]
+Action: Reach Goal (Implementation)
+Current Goal: Express the inverse in function notation.
+How to Achieve: Use the result \( y = -\frac{x}{5} + \frac{4}{5} \) and write it as \( f^{-1}(x) \).
+[/PLANNING]
+
+[IMP]
+The inverse function is:
+\[ f^{-1}(x) = -\frac{x}{5} + \frac{4}{5} \]
+[/IMP]
+
 **Final Answer**: The inverse of \( f(x) = 4 - 5x \) is:
-\[ f^{-1}(x) = -\frac{1}{5}x + \frac{4}{5} \]
+\[ f^{-1}(x) = -\frac{x}{5} + \frac{4}{5} \]

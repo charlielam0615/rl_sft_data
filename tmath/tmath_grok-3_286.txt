@@ -1,4 +1,4 @@
-**Problem Statement**: Find the greatest value of \( a \) such that the quadratic inequality \( a^2 - 10a + 21 \leq 0 \) holds for all real numbers \( a \) in the solution set.
+**Problem Statement**: Find the greatest value of \( a \) such that the inequality \( a^2 - 10a + 21 \leq 0 \) holds.
 
 ---
 
@@ -6,10 +6,10 @@
 
 [PLANNING]  
 **Action**: Forward Subgoaling (Planning)  
-To solve the inequality \( a^2 - 10a + 21 \leq 0 \), break down the goal into subgoals:  
-1. Solve the quadratic equation \( a^2 - 10a + 21 = 0 \) to find the boundary points.  
-2. Determine the intervals where the inequality \( a^2 - 10a + 21 \leq 0 \) holds.  
-3. Identify the greatest value of \( a \) from the solution set.  
+To solve the inequality \( a^2 - 10a + 21 \leq 0 \), break down the problem into subgoals:  
+1. Solve the quadratic equation \( a^2 - 10a + 21 = 0 \) to find the roots, which define the boundary points of the inequality.  
+2. Determine the intervals where the quadratic expression is less than or equal to zero.  
+3. Identify the greatest value of \( a \) within these intervals.  
 [/PLANNING]
 
 ---
@@ -18,17 +18,16 @@ To solve the inequality \( a^2 - 10a + 21 \leq 0 \), break down the goal into su
 
 [PLANNING]  
 **Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to solve the quadratic equation \( a^2 - 10a + 21 = 0 \) to find the roots, which will serve as boundary points for the inequality. This can be achieved by factoring the quadratic or using the quadratic formula.  
+**Current Goal**: Solve the quadratic equation \( a^2 - 10a + 21 = 0 \) to find the roots.  
+**How to Achieve**: Use the quadratic formula \( a = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \) for the equation \( a^2 - 10a + 21 = 0 \), where the variable is \( a \), and coefficients are \( A = 1 \), \( B = -10 \), \( C = 21 \).  
 [/PLANNING]
 
 [IMP]  
-Rewrite the quadratic: \( a^2 - 10a + 21 = 0 \).  
-We need to find two numbers that multiply to 21 and add to \(-10\). Testing pairs:  
-- \(-3\) and \(-7\): \((-3) \cdot (-7) = 21\), \(-3 + (-7) = -10\).  
-
-Thus, factorize:  
-\[ a^2 - 10a + 21 = (a - 3)(a - 7) = 0. \]  
-Roots are \( a = 3 \) and \( a = 7 \).  
+Apply the quadratic formula:  
+\[ a = \frac{-(-10) \pm \sqrt{(-10)^2 - 4 \cdot 1 \cdot 21}}{2 \cdot 1} = \frac{10 \pm \sqrt{100 - 84}}{2} = \frac{10 \pm \sqrt{16}}{2} = \frac{10 \pm 4}{2} \]  
+Roots are:  
+\[ a = \frac{10 + 4}{2} = 7 \quad \text{and} \quad a = \frac{10 - 4}{2} = 3 \]  
+The roots of the equation are \( a = 3 \) and \( a = 7 \).  
 [/IMP]
 
 ---
@@ -37,22 +36,20 @@ Roots are \( a = 3 \) and \( a = 7 \).
 
 [PLANNING]  
 **Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to determine the intervals where \( a^2 - 10a + 21 \leq 0 \) holds, using the roots \( a = 3 \) and \( a = 7 \). This can be achieved by analyzing the sign of the quadratic expression across the intervals defined by the roots.  
+**Current Goal**: Determine the intervals where \( a^2 - 10a + 21 \leq 0 \).  
+**How to Achieve**: Since the quadratic \( a^2 - 10a + 21 \) has a positive leading coefficient (\( A = 1 \)), the parabola opens upward. The expression is less than or equal to zero between the roots (inclusive). Test the interval between the roots \( a = 3 \) and \( a = 7 \), and include the roots since the inequality includes equality.  
 [/PLANNING]
 
 [IMP]  
-The quadratic \( a^2 - 10a + 21 = (a - 3)(a - 7) \) has roots at \( a = 3 \) and \( a = 7 \). Since the coefficient of \( a^2 \) is positive (1), the parabola opens upward, so the expression is non-positive (\(\leq 0\)) between the roots, including the endpoints.  
-
-Test intervals defined by the roots \( a = 3 \) and \( a = 7 \):  
-- **Interval 1**: \( a < 3 \). Choose \( a = 2 \):  
-  \[ (2 - 3)(2 - 7) = (-1)(-5) = 5 > 0. \]  
-- **Interval 2**: \( 3 < a < 7 \). Choose \( a = 5 \):  
-  \[ (5 - 3)(5 - 7) = (2)(-2) = -4 \leq 0. \]  
-- **Interval 3**: \( a > 7 \). Choose \( a = 8 \):  
-  \[ (8 - 3)(8 - 7) = (5)(1) = 5 > 0. \]  
-- **Boundary points**: At \( a = 3 \), \( (3 - 3)(3 - 7) = 0 \); at \( a = 7 \), \( (7 - 3)(7 - 7) = 0 \). Both satisfy \(\leq 0\).  
-
-Thus, the inequality holds for \( 3 \leq a \leq 7 \).  
+The quadratic can be factored using the roots:  
+\[ a^2 - 10a + 21 = (a - 3)(a - 7) \]  
+For \( (a - 3)(a - 7) \leq 0 \), the product is negative or zero when \( a \) is between the roots, including the endpoints:  
+- At \( a = 3 \): \( (3 - 3)(3 - 7) = 0 \cdot (-4) = 0 \leq 0 \)  
+- At \( a = 7 \): \( (7 - 3)(7 - 7) = 4 \cdot 0 = 0 \leq 0 \)  
+- Test \( a = 5 \) (between 3 and 7): \( (5 - 3)(5 - 7) = 2 \cdot (-2) = -4 \leq 0 \)  
+- Test \( a = 2 \) (left of 3): \( (2 - 3)(2 - 7) = (-1) \cdot (-5) = 5 > 0 \)  
+- Test \( a = 8 \) (right of 7): \( (8 - 3)(8 - 7) = 5 \cdot 1 = 5 > 0 \)  
+Thus, the solution to \( a^2 - 10a + 21 \leq 0 \) is \( 3 \leq a \leq 7 \).  
 [/IMP]
 
 ---
@@ -60,30 +57,33 @@ Thus, the inequality holds for \( 3 \leq a \leq 7 \).
 **Step 4**
 
 [PLANNING]  
-**Action**: Track Goals (Review)  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Identify the greatest value of \( a \) within the interval \( 3 \leq a \leq 7 \).  
+**How to Achieve**: Since the inequality holds for \( a \in [3, 7] \), the greatest value of \( a \) is the upper bound of this interval.  
 [/PLANNING]
 
-[REVIEW]  
-**Goal Hierarchy**:  
-- Main goal: Find the greatest value of \( a \) such that \( a^2 - 10a + 21 \leq 0 \).  
-  - Subgoal 1: Solve \( a^2 - 10a + 21 = 0 \) (completed: roots are \( a = 3 \), \( a = 7 \)).  
-  - Subgoal 2: Determine intervals where \( a^2 - 10a + 21 \leq 0 \) (completed: \( 3 \leq a \leq 7 \)).  
-  - Subgoal 3: Identify the greatest value of \( a \) (current goal).  
-
-**Current Goal**: Identify the greatest value of \( a \) from the solution set \( 3 \leq a \leq 7 \).  
-[/REVIEW]
+[IMP]  
+The interval where \( a^2 - 10a + 21 \leq 0 \) is \( 3 \leq a \leq 7 \). The greatest value of \( a \) in this interval is \( a = 7 \).  
+[/IMP]
 
 ---
 
 **Step 5**
 
 [PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to identify the greatest value of \( a \) from the solution set \( 3 \leq a \leq 7 \). This can be achieved by examining the upper bound of the interval.  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify that \( a = 7 \) is the greatest value satisfying \( a^2 - 10a + 21 \leq 0 \).  
+**How to Achieve**: Check the value at \( a = 7 \), and test a value slightly greater than 7 to confirm the inequality does not hold beyond the interval.  
 [/PLANNING]
 
 [IMP]  
-The solution set is \( 3 \leq a \leq 7 \). The greatest value of \( a \) in this interval is the upper bound, \( a = 7 \).  
+- At \( a = 7 \):  
+\[ 7^2 - 10 \cdot 7 + 21 = 49 - 70 + 21 = -0 = 0 \leq 0 \]  
+The inequality holds.  
+- At \( a = 7.1 \):  
+\[ 7.1^2 - 10 \cdot 7.1 + 21 = 50.41 - 71 + 21 = 0.41 > 0 \]  
+The inequality does not hold for \( a > 7 \).  
+This confirms that \( a = 7 \) is the greatest value satisfying the inequality.  
 [/IMP]
 
 ---
@@ -91,21 +91,18 @@ The solution set is \( 3 \leq a \leq 7 \). The greatest value of \( a \) in this
 **Step 6**
 
 [PLANNING]  
-**Action**: Validation (Implementation)  
-**Meta-data**: The current goal is to validate that \( a = 7 \) is the greatest value satisfying \( a^2 - 10a + 21 \leq 0 \). This can be achieved by checking the inequality at \( a = 7 \) and confirming no larger value satisfies it.  
+**Action**: Track Goals (Review)  
 [/PLANNING]
 
-[IMP]  
-Check at \( a = 7 \):  
-\[ 7^2 - 10 \cdot 7 + 21 = 49 - 70 + 21 = 0 \leq 0. \]  
-The inequality holds.  
-
-Test a value slightly greater, e.g., \( a = 7.1 \):  
-\[ 7.1^2 - 10 \cdot 7.1 + 21 = 50.41 - 71 + 21 = 0.41 > 0. \]  
-The inequality does not hold for \( a > 7 \).  
-
-Thus, \( a = 7 \) is the greatest value satisfying the inequality.  
-[/IMP]
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the greatest value of \( a \) such that \( a^2 - 10a + 21 \leq 0 \).  
+  - Subgoal 1: Solve \( a^2 - 10a + 21 = 0 \) to find roots (completed: roots are \( a = 3 \), \( a = 7 \)).  
+  - Subgoal 2: Determine intervals where \( a^2 - 10a + 21 \leq 0 \) (completed: interval is \( 3 \leq a \leq 7 \)).  
+  - Subgoal 3: Identify the greatest value of \( a \) in the interval (completed: greatest value is \( a = 7 \)).  
+  - Subgoal 4: Validate the solution (completed: \( a = 7 \) satisfies, \( a > 7 \) does not).  
+**Current Goal**: Completed main goal—greatest value is \( a = 7 \).  
+[/REVIEW]
 
 ---
 

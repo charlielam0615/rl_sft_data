@@ -1,201 +1,202 @@
-### Problem Restatement
-We need to find the greatest positive integer value of \( a \) such that the quadratic equation \( x^2 + ax = -14 \) has only integer solutions for \( x \). This can be rewritten as \( x^2 + ax + 14 = 0 \), and we must ensure the solutions for \( x \) are integers.
+**Problem Restatement**: We need to find the greatest possible positive integer value of \( a \) such that the quadratic equation \( x^2 + ax = -14 \) has only integer solutions for \( x \). The equation can be rewritten as \( x^2 + ax + 14 = 0 \). We need to determine the value of \( a \) that results in integer roots for \( x \).
 
 ---
 
-### Step 1: Forward Subgoaling
-[PLANNING]
-**Action: Forward Subgoaling (Planning)**  
-To solve the problem, we break it down into intermediate subgoals:  
-1. Rewrite the equation in standard quadratic form.  
-2. Use the quadratic formula to express the solutions for \( x \) in terms of \( a \).  
-3. Ensure the solutions are integers by analyzing the discriminant.  
-4. Identify the positive integer \( a \) that maximizes \( a \) while keeping \( x \) as integers.  
-5. Verify that only integer solutions exist for the chosen \( a \).  
+**Step 1**
+
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+To solve the problem, break it down into intermediate subgoals:  
+1. Rewrite the quadratic equation in standard form.  
+2. Identify the condition for integer solutions by analyzing the roots of the quadratic equation.  
+3. Use the quadratic formula to express the roots in terms of \( a \).  
+4. Ensure the roots are integers by examining the discriminant.  
+5. Find the greatest positive integer \( a \) that satisfies the integer root condition.  
+
 [/PLANNING]
 
 ---
 
-### Step 2: Reach Goal
-[PLANNING]
-**Action: Reach Goal (Implementation)**  
-**Meta-data:**  
-- **Current Goal:** Rewrite the equation in standard quadratic form and apply the quadratic formula to find the solutions for \( x \).  
-- **How to Achieve:** Move all terms to one side to form \( x^2 + ax + 14 = 0 \), then use the quadratic formula \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \), where \( a = 1 \), \( b = a \), and \( c = 14 \).  
+**Step 2**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to rewrite the equation in standard form and identify the condition for integer solutions. This can be achieved by transforming the given equation and analyzing the quadratic formula for integer roots.  
+
 [/PLANNING]
 
-[IMP]
-The given equation is \( x^2 + ax = -14 \). Rewrite it by moving all terms to one side:  
+[IMP]  
+Rewrite the equation \( x^2 + ax = -14 \) by moving all terms to one side:  
 \[ x^2 + ax + 14 = 0 \]  
-This is a quadratic equation in the form \( Ax^2 + Bx + C = 0 \), with coefficients \( A = 1 \), \( B = a \), and \( C = 14 \).
+This is a quadratic equation of the form \( x^2 + bx + c = 0 \), where the coefficients are:  
+- \( b = a \)  
+- \( c = 14 \)  
 
-Apply the quadratic formula to find the roots:  
-\[ x = \frac{-B \pm \sqrt{B^2 - 4AC}}{2A} \]  
-Substitute \( A = 1 \), \( B = a \), and \( C = 14 \):  
+For the roots to be integers, apply the quadratic formula:  
+\[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]  
+Here, \( a = 1 \), \( b = a \), and \( c = 14 \). Substituting these values:  
 \[ x = \frac{-a \pm \sqrt{a^2 - 4 \cdot 1 \cdot 14}}{2 \cdot 1} = \frac{-a \pm \sqrt{a^2 - 56}}{2} \]  
-For \( x \) to be an integer, the discriminant \( a^2 - 56 \) must be a perfect square, and the numerator \( -a \pm \sqrt{a^2 - 56} \) must be divisible by 2 (since the denominator is 2).  
+For the roots \( x \) to be integers, the discriminant \( \Delta = a^2 - 56 \) must be a perfect square (to ensure the square root is an integer), and the numerator \( -a \pm \sqrt{a^2 - 56} \) must be divisible by 2 (the denominator) to produce an integer.  
+
 [/IMP]
 
 ---
 
-### Step 3: Reach Goal
-[PLANNING]
-**Action: Reach Goal (Implementation)**  
-**Meta-data:**  
-- **Current Goal:** Ensure the solutions \( x \) are integers by making the discriminant a perfect square and checking the numerator’s divisibility.  
-- **How to Achieve:** Set \( a^2 - 56 = k^2 \) for some integer \( k \), solve for positive integer \( a \), and verify that the resulting \( x \) values are integers.  
+**Step 3**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to ensure the roots are integers by setting the discriminant as a perfect square and checking the divisibility condition. This involves solving for \( a \) such that \( a^2 - 56 \) is a perfect square and the resulting roots are integers.  
+
 [/PLANNING]
 
-[IMP]
-For the solutions to be integers, the discriminant must be a perfect square:  
+[IMP]  
+Let the discriminant \( \Delta = a^2 - 56 \) be a perfect square, say \( k^2 \), where \( k \) is a non-negative integer:  
 \[ a^2 - 56 = k^2 \]  
-where \( k \) is a non-negative integer (since the square root must be real). Rearrange:  
 \[ a^2 - k^2 = 56 \]  
 This is a difference of squares:  
 \[ (a - k)(a + k) = 56 \]  
-Since \( a \) and \( k \) are integers, let \( a - k = m \) and \( a + k = n \), where \( m \cdot n = 56 \), and both \( m \) and \( n \) are integers. Solve for \( a \) and \( k \):  
-\[ a - k = m, \quad a + k = n \]  
-Add the equations:  
-\[ 2a = m + n \implies a = \frac{m + n}{2} \]  
-Subtract the equations:  
-\[ 2k = n - m \implies k = \frac{n - m}{2} \]  
-For \( a \) and \( k \) to be integers, \( m + n \) and \( n - m \) must be even, so \( m \) and \( n \) must have the same parity (both even or both odd). Additionally, since \( a \) is positive, \( m + n > 0 \), and since \( k \geq 0 \), \( n \geq m \).
+Since \( a \) is a positive integer, factor pairs of 56 (positive and negative) need to be considered, ensuring \( a - k \) and \( a + k \) are integers and \( a > 0 \). List the factor pairs of 56:  
+- \( (1, 56) \), \( (2, 28) \), \( (4, 14) \), \( (7, 8) \), \( (8, 7) \), \( (14, 4) \), \( (28, 2) \), \( (56, 1) \)  
+- Negative pairs: \( (-1, -56) \), \( (-2, -28) \), \( (-4, -14) \), \( (-7, -8) \), \( (-8, -7) \), \( (-14, -4) \), \( (-28, -2) \), \( (-56, -1) \)
 
-List the factor pairs of 56 (including negative pairs, as \( m \) and \( n \) can be negative):  
-- Positive pairs: \( (1, 56), (2, 28), (4, 14), (7, 8), (8, 7), (14, 4), (28, 2), (56, 1) \)  
-- Negative pairs: \( (-1, -56), (-2, -28), (-4, -14), (-7, -8), (-8, -7), (-14, -4), (-28, -2), (-56, -1) \)
+For each pair \( (m, n) \) where \( m \cdot n = 56 \):  
+- Solve:  
+  \[ a - k = m, \quad a + k = n \]  
+  Add the equations:  
+  \[ 2a = m + n \implies a = \frac{m + n}{2} \]  
+  Subtract the equations:  
+  \[ (a + k) - (a - k) = n - m \implies 2k = n - m \implies k = \frac{n - m}{2} \]  
+  For \( a \) and \( k \) to be integers, \( m + n \) and \( n - m \) must be even, so \( m \) and \( n \) must have the same parity (both odd or both even).
 
-For each pair \( (m, n) \), compute \( a = \frac{m + n}{2} \) and check if it’s a positive integer. Also, ensure \( k = \frac{n - m}{2} \geq 0 \).
+Test positive factor pairs:  
+- Pair \( (1, 56) \):  
+  \[ a = \frac{1 + 56}{2} = \frac{57}{2} = 28.5 \] (not an integer)  
+- Pair \( (2, 28) \):  
+  \[ a = \frac{2 + 28}{2} = 15, \quad k = \frac{28 - 2}{2} = 13 \]  
+  Check: \( a^2 - k^2 = 15^2 - 13^2 = 225 - 169 = 56 \). Valid.  
+- Pair \( (4, 14) \):  
+  \[ a = \frac{4 + 14}{2} = 9, \quad k = \frac{14 - 4}{2} = 5 \]  
+  Check: \( 9^2 - 5^2 = 81 - 25 = 56 \). Valid.  
+- Pair \( (7, 8) \):  
+  \[ a = \frac{7 + 8}{2} = 7.5 \] (not an integer)  
+- Pair \( (8, 7) \): Same as \( (7, 8) \), not integer.  
+- Pair \( (14, 4) \): Same as \( (4, 14) \), already tested.  
+- Pair \( (28, 2) \): Same as \( (2, 28) \), already tested.  
+- Pair \( (56, 1) \): Same as \( (1, 56) \), not integer.
 
-**Positive pairs:**  
-- \( (1, 56) \): \( a = \frac{1 + 56}{2} = 28.5 \), not an integer.  
-- \( (2, 28) \): \( a = \frac{2 + 28}{2} = 15 \), integer; \( k = \frac{28 - 2}{2} = 13 \geq 0 \).  
-- \( (4, 14) \): \( a = \frac{4 + 14}{2} = 9 \), integer; \( k = \frac{14 - 4}{2} = 5 \geq 0 \).  
-- \( (7, 8) \): \( a = \frac{7 + 8}{2} = 7.5 \), not an integer.  
-- \( (8, 7) \): Same as above, not an integer.  
-- \( (14, 4) \): \( a = \frac{14 + 4}{2} = 9 \), integer; \( k = \frac{4 - 14}{2} = -5 < 0 \), invalid.  
-- \( (28, 2) \): \( a = \frac{28 + 2}{2} = 15 \), integer; \( k = \frac{2 - 28}{2} = -13 < 0 \), invalid.  
-- \( (56, 1) \): \( a = \frac{56 + 1}{2} = 28.5 \), not an integer.
+Test negative pairs, e.g., \( (-1, -56) \):  
+\[ a = \frac{-1 + (-56)}{2} = \frac{-57}{2} \] (not an integer)  
+Similarly, other negative pairs yield non-integer or negative \( a \), which are invalid since \( a \) must be positive.
 
-**Negative pairs:**  
-- \( (-1, -56) \): \( a = \frac{-1 - 56}{2} = -28.5 \), not a positive integer.  
-- \( (-2, -28) \): \( a = \frac{-2 - 28}{2} = -15 \), not positive.  
-- \( (-4, -14) \): \( a = \frac{-4 - 14}{2} = -9 \), not positive.  
-- \( (-7, -8) \): \( a = \frac{-7 - 8}{2} = -7.5 \), not an integer.  
-- Others yield negative or non-integer \( a \).
-
-Possible positive integer \( a \): \( a = 9, 15 \).
-
-For each valid \( a \), compute the roots:  
-- \( a = 9 \):  
-  \[ x = \frac{-9 \pm \sqrt{9^2 - 56}}{2} = \frac{-9 \pm \sqrt{81 - 56}}{2} = \frac{-9 \pm \sqrt{25}}{2} = \frac{-9 \pm 5}{2} \]  
+Possible \( a \): 9, 15 (from positive pairs). Now, verify the roots:  
+- For \( a = 9 \):  
+  \[ \Delta = 9^2 - 56 = 81 - 56 = 25 = 5^2 \]  
+  Roots:  
+  \[ x = \frac{-9 \pm \sqrt{25}}{2} = \frac{-9 \pm 5}{2} \]  
   \[ x = \frac{-9 + 5}{2} = -2, \quad x = \frac{-9 - 5}{2} = -7 \]  
-  Roots are \( x = -2, -7 \), both integers.
-
-- \( a = 15 \):  
-  \[ x = \frac{-15 \pm \sqrt{15^2 - 56}}{2} = \frac{-15 \pm \sqrt{225 - 56}}{2} = \frac{-15 \pm \sqrt{169}}{2} = \frac{-15 \pm 13}{2} \]  
+  Both are integers.  
+- For \( a = 15 \):  
+  \[ \Delta = 15^2 - 56 = 225 - 56 = 169 = 13^2 \]  
+  Roots:  
+  \[ x = \frac{-15 \pm \sqrt{169}}{2} = \frac{-15 \pm 13}{2} \]  
   \[ x = \frac{-15 + 13}{2} = -1, \quad x = \frac{-15 - 13}{2} = -14 \]  
-  Roots are \( x = -1, -14 \), both integers.
-
-Both \( a = 9 \) and \( a = 15 \) yield integer solutions. Since we want the greatest possible \( a \), consider \( a = 15 \).  
-[/IMP]
-
----
-
-### Step 4: Validation
-[PLANNING]
-**Action: Validation (Implementation)**  
-**Meta-data:**  
-- **Current Goal:** Verify that \( a = 15 \) is the greatest possible positive integer and that the equation has only two integer solutions.  
-- **How to Achieve:** Check if larger positive integers \( a > 15 \) yield integer solutions by testing a few values and analyzing the discriminant’s behavior. Also, confirm the quadratic has exactly two roots.  
-[/PLANNING]
-
-[IMP]
-To ensure \( a = 15 \) is the maximum, test larger \( a \) values:  
-- \( a = 16 \): Discriminant = \( 16^2 - 56 = 256 - 56 = 196 = 14^2 \).  
-  \[ x = \frac{-16 \pm 14}{2} = \frac{-16 \pm 14}{2} = -1, -15 \]  
-  Integer roots exist, so \( a = 16 \) is a candidate.
-
-- \( a = 17 \): Discriminant = \( 17^2 - 289 -56 = 233 \), not a perfect square (since \( 15^2 = 225 \), \( 16^2 = 256 \)). Non-integer roots.
-
-- \( a = 28 \): From earlier, discriminant = \( 28^2 - 56 = 784 - 56 = 728 \), not a perfect square (since \( 27^2 = 729, \), \( 26^2 = 676 \)). Non-integer roots.
-
-Try factor pairs for larger \( a \): For \( (m, n) = (8, 56) \):  
-\[ a = \frac{8 + 56}{2} = 32, \quad k = \frac{56 - 8}{2} = 24 \]  
-Discriminant: \( 32^2 - 1024 - 56 = 968 \), not a perfect square. (since \( 31^2 = 961 \), \( 30^2 = 900 \)).
-
-Since \( a^2 - k^2 = be 56, square: try larger \( a^2 = k^2 + k 56 \). As \( k \) increases, \( a^2 \) grows, but \( k^2 \) must be close to \( a^2 - 56 \). For \( a > 16 \), the discriminant rarely hits perfect squares (e.g., \( a = 17 \): discriminant non-square).
-
-Verify \( a = 16 \):  
-\[ x^2 + 16x + 16x 14 = 0 \]  
-Roots: \( x = \frac{-16 \pm \sqrt{196}}{2} = \frac{-16 \pm 14}{2} = -1, -15 \), integer roots.
-
-Try \( a = 32 \):  
-Discriminant: \( 32^2 - 1024 - 56 = 968 \), not a perfect square. No integer roots.
-
-Since \( a = 16 \) yields an integer solutions and larger \( a \) (e.g., 17, 32) generally don’t, \( a = 16 \) seems to be the greatest.
-
-Confirm the quadratic has two roots: For \( a = 16 \), discriminant \( 196 > 0 \), so there are two distinct real roots, both integers. The problem’s phrasing (“has only integer solutions”) implies the roots from the quadratic equation are the only integer solutions, which holds since it’s a quadratic.
+  Both are integers.
 
 [/IMP]
 
 ---
 
-### Step 5: Track Goals
-[PLANNING]
-**Action: Track Goals (Review)**  
+**Step 4**
+
+[PLANNING]  
+**Action**: Adjust Subgoals (Planning)  
+The previous step identified \( a = 9 \) and \( a = 15 \) as valid. Adjust the subgoal to test larger values of \( a \) to find the greatest possible integer \( a \). Since \( a^2 - 56 \) must be a perfect square, try larger \( a \) to maximize it while ensuring integer roots.  
+
 [/PLANNING]
 
-[REVIEW]
-**Goal Hierarchy:**  
-- Main goal: Find the greatest positive integer \( a \) such that \( x^2 + ax^2 = -14 \) has only integer solutions.  
-  - Subgoal 1: Rewrite equation in standard form. (Completed)  
-  - Subgoal 2.: Apply quadratic formula to find solutions. (Completed)  
-  - Subgoal 3: Ensure integer solutions via via discriminant. (Completed)  
-  - Subgoal 4.: Maximize \( a \). (In Progress, tentative \( a = 16 \))  
-  - Subgoal 5: Verify only integer solutions. (Completed for \( a = 16 \))  
+---
 
-**Current Goal:** Maximize \( a \) and finalize the solution.  
+**Step 5**
+
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Meta-data**: The current goal is to test larger values of \( a \) to find the greatest possible integer \( a \) such that \( a^2 - 56 \) is a perfect square and the roots are integers.  
+
+[/PLANNING]
+
+[IMP]  
+Since \( a^2 - 56 = k^2 \), try larger \( a \):  
+- Let \( a = 57 \) (from pair \( (1, 56) \) in reverse or next possible integer):  
+  \[ \Delta = 57^2 - 56 = 3249 - 56 = 3193 \]  
+  Check if 3193 is a perfect square: \( 56^2 = 3136 \), \( 57^2 = 3249 \). Since \( 3136 < 3193 < 3249 \), not a perfect square.  
+- Try \( a = 16 \):  
+  \[ \Delta = 16^2 - 56 = 256 - 56 = 200 \]  
+  Not a perfect square (\( 14^2 = 196 \), \( 15^2 = 225 \)).  
+- Try \( a = 25 \):  
+  \[ \Delta = 25^2 - 56 = 625 - 56 = 569 \]  
+  Not a perfect square (\( 23^2 = 529 \), \( 24^2 = 576 \)).  
+
+Since factor pairs become sparse for larger \( a \), test larger \( k \):  
+\[ a^2 - k^2 = 56 \implies (a - k)(a + k) = 56 \]  
+For large \( a \), \( a - k \) and \( a + k \) are close to each other. Try \( a - k = 1 \), \( a + k = 56 \):  
+\[ a = \frac{1 + 56}{2} = 28.5 \] (not integer).  
+No larger integer pairs seem to work. Check the next possible \( k \):  
+- \( k = 23 \), \( a^2 - 23^2 = 56 \), \( a^2 - 529 = 56 \), \( a^2 = 585 \), not a perfect square.  
+
+Since no larger \( a \) yields a perfect square discriminant, the largest \( a \) from earlier is 15.
+
+[/IMP]
+
+---
+
+**Step 6**
+
+[PLANNING]  
+**Action**: Track Goals (Review)  
+
+[/PLANNING]
+
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Find the greatest positive integer \( a \) such that \( x^2 + ax + 14 = 0 \) has integer roots.  
+  - Subgoal 1: Rewrite the equation in standard form (completed).  
+  - Subgoal 2: Identify conditions for integer roots using the quadratic formula (completed).  
+  - Subgoal 3: Solve for \( a \) such that the discriminant is a perfect square (completed, found \( a = 9, 15 \)).  
+  - Subgoal 4: Test larger \( a \) to maximize it (completed, no larger valid \( a \)).  
+
+**Current Goal**: Confirm the greatest possible \( a \) is 15.  
+
 [/REVIEW]
 
 ---
 
-### Step 6: Reach Goal
-[PLANNING]
-**Action: Reach Goal (Implementation)**  
-**Meta-Data:**  
-**Meta-data:**  
-- **Current Goal:** Finalize the greatest possible \( a \) and present the solution.  
-- **How to Achieve:** Compare \( a = 15 \) and \( a = 16 \), confirm \( a = 16 \) is the maximum, and ensure all conditions are met.  
-- **How to Achieve:** Compare \( a = 15 and \( a = 16 \), confirm \( a = 16 is \) the maximum by checking a few more values, and ensure the problem’s condition (“only integer solutions”) is satisfied.  
+**Step 7**
+
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Meta-data**: The current goal is to validate that \( a = 15 \) is the greatest possible integer \( a \) by confirming no larger \( a \) produces integer roots.  
+
 [/PLANNING]
 
-[IMP]
-From previous steps, \( a = 15 \) gives roots \( x = -1, -14 \), and \( a = 16 \) gives roots \( x = -1, -15 \), both integer solutions. Tested larger \( a \):  
-- \( a = 17 \): Discriminant \( 233 \), not a perfect square square.  
-- \( a = 32 \): Discriminant \( 968 \), not a perfect square.
+[IMP]  
+Reconfirm roots for \( a = 15 \):  
+\[ x^2 + 15x + 14 = 0 \]  
+Discriminant: \( 15^2 - 4 \cdot 1 \cdot 14 = 225 - 56 = 169 \). Roots:  
+\[ x = \frac{-15 \pm 13}{2} = -1, -14 \] (integers).  
+For \( a = 9 \):  
+\[ x^2 + 9x + 14 = 0 \]  
+Discriminant: \( 9^2 - 56 = 81 - 56 = 25 \). Roots:  
+\[ x = \frac{-9 \pm 5}{2} = -2, -7 \] (integers).  
+Test \( a = 16 \):  
+\[ \Delta = 16^2 - 56 = 256 - 56 = 200 \] (not a perfect square).  
+Larger \( a \) (e.g., 25, 57) already tested and failed. Thus, \( a = 15 \) is the largest.  
 
-To be thorough, try one more large \( a \). Try factor pair \( (m, n) = (16, n 112) \):  
-\[ a = \frac{16 + 112}{2} = 64, \quad k = \frac{112 - 16}{2} = 48 \]  
-Discriminant: \( 64^2 - 4096 - 56 = 4040 \), not a perfect square square (since \( 63^2 = 3969 \), \( 64^2 = 4096 \)).
+[/IMP]
 
-The discriminant for \( a = 64 \) is:  
-\[ 64^2 - 56 = 4096 - 56 = 4040 \]  
-Check if 4040 is a perfect square: \( 63^2 = 3969 \), \( 64^2 = 4096 \), so 4040 is not a perfect square. Thus, \( a = 64 \) does not yield integer roots.
+---
 
-The discriminant must be a perfect square, and as \( a \) increases beyond 16, \( a^2 - 56 \) grows quadratically, making it less likely to hit perfect squares. Since \( a = 16 \) was the largest valid \( a \) found, and higher values like \( a = 17, 32, 64 \) fail, we conclude \( a = 16 \) is likely the maximum.
+**Final Answer**  
+The greatest possible value of \( a \) is **15**.  
 
-Verify \( a = 16 \):  
-\[ x^2 + 16x + 14 = 0 \]  
-Roots:  
-\[ x = \frac{-16 \pm \sqrt{16^2 - 56}}{2} = \frac{-16 \pm \sqrt{256 - 56}}{2} = \frac{-16 \pm \sqrt{196}}{2} = \frac{-16 \pm 14}{2} \]  
-\[ x = \frac{-16 + 14}{2} = -1, \quad x = \frac{-16 - 14}{2} = -15 \]  
-The roots \( x = -1, -15 \) are integers. Since the equation is quadratic, these are the only solutions, satisfying “only integer solutions.”
-
-Thus, the greatest possible positive integer \( a \) is 16.
-
-**Final Answer**
-
-\[ \boxed{16} \]
-
-[/\]
+\[ \boxed{15} \]

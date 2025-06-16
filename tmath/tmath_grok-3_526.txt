@@ -1,28 +1,27 @@
-**Problem Statement**: Solve for \( z \) in the equation \( 2 - iz = -1 + 3iz \), and express the answer in standard form (\( a + bi \)).
+### Problem Statement
+Solve for \( z \) in the equation \( 2 - iz = -1 + 3iz \), and express the answer in standard form (\( a + bi \), where \( a \) and \( b \) are real numbers).
 
 ---
 
-**Step 1**
-
+### Step 1
 [PLANNING]  
-**Action**: Forward Subgoaling (Planning)  
-Break down the goal of solving \( 2 - iz = -1 + 3iz \) into intermediate subgoals:  
-1. Rearrange the equation to isolate terms involving \( z \).  
-2. Solve for \( z \) by combining like terms and isolating the variable.  
-3. Express the solution in standard form \( a + bi \).  
+**Action: Forward Subgoaling (Planning)**  
+To solve the equation \( 2 - iz = -1 + 3iz \), break it into intermediate subgoals:  
+1. Isolate the terms involving \( z \) on one side of the equation.  
+2. Solve for \( z \).  
+3. Express \( z \) in standard form \( a + bi \).  
 [/PLANNING]
 
 ---
 
-**Step 2**
-
+### Step 2
 [PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to rearrange the equation \( 2 - iz = -1 + 3iz \) to isolate terms involving \( z \). This will be achieved by moving all terms with \( z \) to one side and constants to the other side.  
-[/PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to isolate the terms involving \( z \). To achieve this, move all terms with \( z \) to one side of the equation and constants to the other by performing algebraic operations.  
+[/PLANNING]  
 
 [IMP]  
-Start with the given equation:  
+Start with the equation:  
 \[ 2 - iz = -1 + 3iz \]  
 
 Add \( iz \) to both sides to eliminate \( -iz \) on the left:  
@@ -30,83 +29,62 @@ Add \( iz \) to both sides to eliminate \( -iz \) on the left:
 \[ 2 = -1 + 4iz \]  
 
 Add 1 to both sides to isolate the term with \( z \):  
-\[ 2 + 1 = -1 + 4iz + 1 \]  
-\[ 3 = 4iz \]  
-[/IMP]
-
----
-
-**Step 3**
-
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to solve for \( z \) from the equation \( 3 = 4iz \). This will be achieved by dividing both sides by the coefficient of \( z \) and simplifying.  
-[/PLANNING]
-
-[IMP]  
-From the previous step, we have:  
+\[ 2 + 1 = -1 + 1 + 4iz \]  
 \[ 3 = 4iz \]  
 
 Divide both sides by \( 4i \):  
-\[ z = \frac{3}{4i} \]  
+\[ \frac{3}{4i} = z \]  
 
-To simplify, multiply the numerator and denominator by \( -i \) to eliminate \( i \) in the denominator:  
-\[ z = \frac{3}{4i} \cdot \frac{-i}{-i} = \frac{3(-i)}{4i(-i)} = \frac{-3i}{4(-i^2)} \]  
-Since \( i^2 = -1 \), we have \( -i^2 = -(-1) = 1 \):  
-\[ z = \frac{-3i}{4 \cdot 1} = \frac{-3i}{4} = -\frac{3}{4}i \]  
-
-The solution is \( z = 0 - \frac{3}{4}i \).  
+Simplify \( \frac{3}{4i} \):  
+Multiply numerator and denominator by \( -i \) to rationalize:  
+\[ \frac{3}{4i} \cdot \frac{-i}{-i} = \frac{3(-i)}{4i(-i)} = \frac{-3i}{4(-i^2)} = \frac{-3i}{4 \cdot 1} = \frac{-3i}{4} \]  
+So,  
+\[ z = -\frac{3}{4}i \]  
 [/IMP]
 
 ---
 
-**Step 4**
-
+### Step 3
 [PLANNING]  
-**Action**: Track Goals (Review)  
-[/PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate the solution \( z = -\frac{3}{4}i \). Substitute \( z \) back into the original equation to check if both sides are equal.  
+[/PLANNING]  
+
+[IMP]  
+Substitute \( z = -\frac{3}{4}i \) into \( 2 - iz = -1 + 3iz \):  
+
+Left side:  
+\[ 2 - i \left(-\frac{3}{4}i\right) = 2 - i \cdot -\frac{3}{4}i = 2 + \frac{3}{4}i^2 = 2 + \frac{3}{4}(-1) = 2 - \frac{3}{4} = \frac{8}{4} - \frac{3}{4} = \frac{5}{4} \]  
+
+Right side:  
+\[ -1 + 3i \left(-\frac{3}{4}i\right) = -1 + 3i \cdot -\frac{3}{4}i = -1 - \frac{9}{4}i^2 = -1 - \frac{9}{4}(-1) = -1 + \frac{9}{4} = -\frac{4}{4} + \frac{9}{4} = \frac{5}{4} \]  
+
+Since \( \frac{5}{4} = \frac{5}{4} \), the solution is valid.  
+[/IMP]
+
+---
+
+### Step 4
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]  
 
 [REVIEW]  
 **Goal Hierarchy**:  
 - Main goal: Solve for \( z \) in \( 2 - iz = -1 + 3iz \) and express in standard form.  
-  - Subgoal 1: Rearrange the equation to isolate terms involving \( z \) (completed).  
-  - Subgoal 2: Solve for \( z \) by isolating the variable (completed).  
-  - Subgoal 3: Express the solution in standard form (in progress).  
+  - Subgoal 1: Isolate terms involving \( z \) (completed in Step 2).  
+  - Subgoal 2: Solve for \( z \) (completed in Step 2, result: \( z = -\frac{3}{4}i \)).  
+  - Subgoal 3: Express \( z \) in standard form (completed in Step 2).  
+  - Subgoal 4: Validate the solution (completed in Step 3).  
 
-**Current Goal**: Express the solution \( z = -\frac{3}{4}i \) in standard form \( a + bi \).  
-The solution \( z = 0 - \frac{3}{4}i \) is already in standard form, with \( a = 0 \) and \( b = -\frac{3}{4} \).  
+**Current Goal**: Ensure the solution is in standard form and finalize the answer.  
+
+The solution \( z = -\frac{3}{4}i \) is equivalent to \( 0 - \frac{3}{4}i \), which is in standard form \( a + bi \) with \( a = 0 \), \( b = -\frac{3}{4} \).  
 [/REVIEW]
 
 ---
 
-**Step 5**
-
-[PLANNING]  
-**Action**: Validation (Implementation)  
-**Meta-data**: The current goal is to validate the solution \( z = 0 - \frac{3}{4}i \) by substituting it back into the original equation \( 2 - iz = -1 + 3iz \). This will confirm the solution’s correctness.  
-[/PLANNING]
-
-[IMP]  
-Substitute \( z = -\frac{3}{4}i \) into the original equation:  
-Left side:  
-\[ 2 - iz = 2 - i \left( -\frac{3}{4}i \right) = 2 - i \cdot \left( -\frac{3}{4}i \right) = 2 - \left( -\frac{3}{4}i^2 \right) \]  
-Since \( i^2 = -1 \):  
-\[ -\frac{3}{4}i^2 = -\frac{3}{4}(-1) = \frac{3}{4} \]  
-\[ 2 - \frac{3}{4} = \frac{8}{4} - \frac{3}{4} = \frac{5}{4} \]  
-
-Right side:  
-\[ -1 + 3iz = -1 + 3i \left( -\frac{3}{4}i \right) = -1 + 3i \cdot \left( -\frac{3}{4}i \right) = -1 + 3 \cdot \left( -\frac{3}{4}i^2 \right) \]  
-\[ -\frac{3}{4}i^2 = \frac{3}{4} \]  
-\[ 3 \cdot \frac{3}{4} = \frac{9}{4} \]  
-\[ -1 + \frac{9}{4} = -\frac{4}{4} + \frac{9}{4} = \frac{5}{4} \]  
-
-Both sides equal \( \frac{5}{4} \), so the solution is valid.  
-[/IMP]
-
----
-
-**Final Answer**
-
-The solution to the equation \( 2 - iz = -1 + 3iz \) is:  
+### Final Answer
 \[ z = 0 - \frac{3}{4}i \]  
-In standard form: \( z = -\frac{3}{4}i \).
+In standard form:  
+\[ \boxed{0 - \frac{3}{4}i} \]

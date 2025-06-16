@@ -1,90 +1,87 @@
 **Problem Statement**: Find the coefficient of \( x^2 \) in the simplified expression \( 3(x^2 - x^3) + 2(x - 2x^2 + 3x^5) - (4x^3 - x^2) \).
 
-### Step 1: Forward Subgoaling
-[PLANNING]
-**Action**: Forward Subgoaling (Planning)
-To solve for the coefficient of \( x^2 \), break down the problem into subgoals:
-1. Distribute the constants and simplify each term in the expression.
-2. Combine like terms to obtain the simplified polynomial.
-3. Identify the coefficient of \( x^2 \) in the resulting polynomial.
+### Step 1
+[PLANNING]  
+**Action**: Forward Subgoaling (Planning)  
+Break down the problem into intermediate subgoals:  
+1. Distribute the coefficients in each term of the expression.  
+2. Combine like terms to simplify the expression.  
+3. Identify the coefficient of \( x^2 \) in the simplified expression.  
 [/PLANNING]
 
-### Step 2: Reach Goal
-[PLANNING]
-**Action**: Reach Goal (Implementation)
-**Current Goal**: Distribute the constants and simplify each term in the expression.
-**How to Achieve**: Apply the distributive property to each term: multiply \( 3 \) by \( (x^2 - x^3) \), multiply \( 2 \) by \( (x - 2x^2 + 3x^5) \), and distribute the negative sign to \( (4x^3 - x^2) \). Then, write out all resulting terms.
-[/PLANNING]
-
-[IMP]
-Distribute each part:
-- First term: \( 3(x^2 - x^3) = 3x^2 - 3x^3 \).
-- Second term: \( 2(x - 2x^2 + 3x^5) = 2x - 4x^2 + 6x^5 \).
-- Third term: \( -(4x^3 - x^2) = -4x^3 + x^2 \).
-
-The expression becomes:
-\[ (3x^2 - 3x^3) + (2x - 4x^2 + 6x^5) + (-4x^3 + x^2) \]
+### Step 2
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Distribute the coefficients in each term of the expression.  
+**How to Achieve**: Apply the distributive property to each term: multiply the coefficients \( 3 \), \( 2 \), and \( -1 \) (from the subtraction) by each term inside their respective parentheses.  
+[/PLANNING]  
+[IMP]  
+- For \( 3(x^2 - x^3) \):  
+  \( 3 \cdot x^2 = 3x^2 \), \( 3 \cdot (-x^3) = -3x^3 \).  
+  Result: \( 3x^2 - 3x^3 \).  
+- For \( 2(x - 2x^2 + 3x^5) \):  
+  \( 2 \cdot x = 2x \), \( 2 \cdot (-2x^2) = -4x^2 \), \( 2 \cdot 3x^5 = 6x^5 \).  
+  Result: \( 2x - 4x^2 + 6x^5 \).  
+- For \( -(4x^3 - x^2) \):  
+  \( -1 \cdot 4x^3 = -4x^3 \), \( -1 \cdot (-x^2) = x^2 \).  
+  Result: \( -4x^3 + x^2 \).  
 [/IMP]
 
-### Step 3: Reach Goal
-[PLANNING]
-**Action**: Reach Goal (Implementation)
-**Current Goal**: Combine like terms in the expression \( (3x^2 - 3x^3) + (2x - 4x^2 + 6x^5) + (-4x^3 + x^2) \).
-**How to Achieve**: Group terms by their degree (i.e., terms with \( x^5 \), \( x^3 \), \( x^2 \), \( x \)), add the coefficients for each degree, and write the simplified polynomial.
-[/PLANNING]
-
-[IMP]
-Group like terms:
-- \( x^5 \): \( 6x^5 \) (from the second term).
-- \( x^3 \): \( -3x^3 + (-4x^3) = -7x^3 \).
-- \( x^2 \): \( 3x^2 + (-4x^2) + x^2 = (3 - 4 + 1)x^2 = 0x^2 \).
-- \( x \): \( 2x \).
-
-The simplified expression is:
-\[ 6x^5 - 7x^3 + 0x^2 + 2x \]
+### Step 3
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Combine like terms to simplify the expression.  
+**How to Achieve**: Collect all terms from the distributed expression, group them by powers of \( x \), and sum the coefficients for each power.  
+[/PLANNING]  
+[IMP]  
+The distributed expression is:  
+\( (3x^2 - 3x^3) + (2x - 4x^2 + 6x^5) + (-4x^3 + x^2) \).  
+Group by powers:  
+- \( x^5 \): \( 6x^5 \).  
+- \( x^3 \): \( -3x^3 - 4x^3 = -7x^3 \).  
+- \( x^2 \): \( 3x^2 - 4x^2 + x^2 = (3 - 4 + 1)x^2 = 0x^2 \).  
+- \( x \): \( 2x \).  
+Simplified expression: \( 6x^5 - 7x^3 + 0x^2 + 2x \).  
 [/IMP]
 
-### Step 4: Reach Goal
-[PLANNING]
-**Action**: Reach Goal (Implementation)
-**Current Goal**: Identify the coefficient of \( x^2 \) in the simplified polynomial \( 6x^5 - 7x^3 + 0x^2 + 2x \).
-**How to Achieve**: Examine the simplified polynomial and extract the coefficient of the \( x^2 \) term.
-[/PLANNING]
-
-[IMP]
-In the simplified polynomial \( 6x^5 - 7x^3 + 0x^2 + 2x \), the coefficient of \( x^2 \) is \( 0 \).
+### Step 4
+[PLANNING]  
+**Action**: Reach Goal (Implementation)  
+**Current Goal**: Identify the coefficient of \( x^2 \) in the simplified expression.  
+**How to Achieve**: Examine the simplified expression and extract the coefficient of the \( x^2 \) term.  
+[/PLANNING]  
+[IMP]  
+The simplified expression is \( 6x^5 - 7x^3 + 0x^2 + 2x \).  
+The coefficient of \( x^2 \) is \( 0 \).  
 [/IMP]
 
-### Step 5: Validation
-[PLANNING]
-**Action**: Validation (Implementation)
-**Current Goal**: Verify the correctness of the simplified polynomial and the coefficient of \( x^2 \).
-**How to Achieve**: Recompute the distribution and combination of like terms to ensure no errors were made, then confirm the coefficient of \( x^2 \).
-[/PLANNING]
-
-[IMP]
-Recompute:
-- Distribute: \( 3(x^2 - x^3) = 3x^2 - 3x^3 \), \( 2(x - 2x^2 + 3x^5) = 2x - 4x^2 + 6x^5 \), \( -(4x^3 - x^2) = -4x^3 + x^2 \).
-- Combine: \( 6x^5 + (-3x^3 - 4x^3) + (3x^2 - 4x^2 + x^2) + 2x = 6x^5 - 7x^3 + 0x^2 + 2x \).
-- Coefficient of \( x^2 \): \( 3 - 4 + 1 = 0 \).
-
-The coefficient of \( x^2 \) is confirmed to be \( 0 \).
+### Step 5
+[PLANNING]  
+**Action**: Validation (Implementation)  
+**Current Goal**: Verify the simplification to ensure the coefficient of \( x^2 \) is correct.  
+**How to Achieve**: Redo the distribution and combination of like terms, focusing on the \( x^2 \) terms, to confirm the result.  
+[/PLANNING]  
+[IMP]  
+Recompute \( x^2 \) terms:  
+- From \( 3(x^2 - x^3) \): \( 3x^2 \).  
+- From \( 2(x - 2x^2 + 3x^5) \): \( -4x^2 \).  
+- From \( -(4x^3 - x^2) \): \( x^2 \).  
+Sum of \( x^2 \) coefficients: \( 3 - 4 + 1 = 0 \).  
+This confirms the coefficient of \( x^2 \) is \( 0 \).  
 [/IMP]
 
-### Step 6: Track Goals
-[PLANNING]
-**Action**: Track Goals (Review)
-[/PLANNING]
-
-[REVIEW]
-**Goal Hierarchy**:
-- Main Goal: Find the coefficient of \( x^2 \) in the simplified expression.
-  - Subgoal 1: Distribute constants and simplify each term (completed in Step 2).
-  - Subgoal 2: Combine like terms to obtain the simplified polynomial (completed in Step 3).
-  - Subgoal 3: Identify the coefficient of \( x^2 \) (completed in Step 4).
-  - Subgoal 4: Validate the solution (completed in Step 5).
-
-**Current Goal**: Completed — the coefficient of \( x^2 \) is \( 0 \).
+### Step 6
+[PLANNING]  
+**Action**: Track Goals (Review)  
+[/PLANNING]  
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main Goal: Find the coefficient of \( x^2 \) in the simplified expression.  
+  - Subgoal 1: Distribute coefficients in each term (completed in Step 2).  
+  - Subgoal 2: Combine like terms to simplify the expression (completed in Step 3).  
+  - Subgoal 3: Identify the coefficient of \( x^2 \) (completed in Step 4).  
+  - Subgoal 4: Validate the result (completed in Step 5).  
+**Current Goal**: Completed—coefficient of \( x^2 \) identified as \( 0 \).  
 [/REVIEW]
 
 **Final Answer**: The coefficient of \( x^2 \) is \( 0 \).

@@ -1,132 +1,200 @@
-### Problem Restatement
-We need to find the integers \( G \) and \( H \) such that the equation
+### Problem Statement
+We need to find integers \( G \) and \( H \) such that the equation
+
 \[
 \frac{G}{x+5} + \frac{H}{x^2 - 4x} = \frac{x^2 - 2x + 10}{x^3 + x^2 - 20x}
 \]
-holds for all real values of \( x \) except \( x = -5 \), \( x = 0 \), and \( x = 4 \). Then, compute the ratio \( H/G \).
 
-### Step 1
-[PLANNING]
-Action: Forward Subgoaling (Planning)
-To solve the problem, break it into manageable subgoals:
-1. Simplify the given equation by working with the denominators to ensure they match.
-2. Rewrite the left-hand side with a common denominator.
-3. Equate the numerators of both sides after obtaining a common denominator.
-4. Solve for \( G \) and \( H \) by comparing coefficients or substituting values.
-5. Compute the ratio \( H/G \).
+holds for all real values of \( x \) except \( x = -5, 0, 4 \), and then compute the ratio \( \frac{H}{G} \).
+
+---
+
+### Step 1: Understand the equation and set the goal
+
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of finding \( \frac{H}{G} \) into intermediate subgoals:  
+1. Simplify the given equation by rewriting the denominators to have a common form.  
+2. Set up an equation by equating numerators after combining the left-hand side over a common denominator.  
+3. Solve for \( G \) and \( H \) by comparing coefficients or substituting values.  
+4. Compute the ratio \( \frac{H}{G} \).  
+
 [/PLANNING]
 
-### Step 2
-[PLANNING]
-Action: Reach Goal (Implementation)
-Meta-data: The current goal is to simplify the denominators and rewrite the equation. Achieve this by factoring the denominators on both sides to identify a common denominator.
+---
+
+### Step 2: Simplify the denominators
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to simplify the denominators of both sides of the equation to facilitate comparison. Achieve this by factoring the denominators and finding a common denominator for the left-hand side.  
+
 [/PLANNING]
 
-[IMP]
-Factor the denominators:
-- Left-hand side:
-  - \( x + 5 \) is already factored.
-  - \( x^2 - 4x = x(x - 4) \).
-- Right-hand side:
-  - \( x^3 + x^2 - 20x = x(x^2 + x - 20) = x(x + 5)(x - 4) \).
+[IMP]  
+The right-hand side denominator is \( x^3 + x^2 - 20x \). Factorize it:  
+\[
+x^3 + x^2 - 20x = x(x^2 + x - 20) = x(x + 5)(x - 4).
+\]
 
-The common denominator for the left-hand side is \( x(x - 4)(x + 5) \). Rewrite the left-hand side:
+The left-hand side denominators are:  
+- \( x + 5 \),  
+- \( x^2 - 4x = x(x - 4) \).
+
+The common denominator for the left-hand side is \( x(x - 4)(x + 5) \), which matches the right-hand side denominator. Rewrite the left-hand side:  
 \[
-\frac{G}{x + 5} + \frac{H}{x(x - 4)} = \frac{G \cdot x(x - 4) + H \cdot (x + 5)}{x(x - 4)(x + 5)}.
+\frac{G}{x + 5} + \frac{H}{x(x - 4)}.
 \]
-The right-hand side is:
+Multiply the first term by \( x(x - 4) / x(x - 4) \) and the second by \( (x + 5) / (x + 5) \):  
 \[
-\frac{x^2 - 2x + 10}{x(x - 4)(x + 5)}.
+\frac{G \cdot x(x - 4) + H \cdot (x + 5)}{x(x - 4)(x + 5)}.
 \]
-Since the denominators match, equate the numerators:
+The equation becomes:  
+\[
+\frac{G x(x - 4) + H (x + 5)}{x(x - 4)(x + 5)} = \frac{x^2 - 2x + 10}{x(x - 4)(x + 5)}.
+\]
+Since the denominators are equal, equate the numerators:  
 \[
 G x(x - 4) + H (x + 5) = x^2 - 2x + 10.
 \]
+
 [/IMP]
 
-### Step 3
-[PLANNING]
-Action: Reach Goal (Implementation)
-Meta-data: The current goal is to solve for \( G \) and \( H \) using the numerator equation \( G x(x - 4) + H (x + 5) = x^2 - 2x + 10 \). Achieve this by expanding the left-hand side and comparing coefficients of the polynomials.
+---
+
+### Step 3: Review the equation setup
+
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to verify that the equation \( G x(x - 4) + H (x + 5) = x^2 - 2x + 10 \) is correctly set up by checking the denominators and ensuring the equation holds for permissible values of \( x \).  
+
 [/PLANNING]
 
-[IMP]
-Expand the left-hand side:
-\[
-G x(x - 4) + H (x + 5) = G (x^2 - 4x) + H x + 5H = G x^2 - 4G x + H x + 5H = G x^2 + (H - 4G) x + 5H.
-\]
-Equate to the right-hand side \( x^2 - 2x + 10 \):
-\[
-G x^2 + (H - 4G) x + 5H = x^2 - 2x + 10.
-\]
-Compare coefficients:
-- \( x^2 \): \( G = 1 \).
-- \( x \): \( H - 4G = -2 \).
-- Constant: \( 5H = 10 \).
+[IMP]  
+The common denominator \( x(x - 4)(x + 5) \) matches the factored form of \( x^3 + x^2 - 20x \). The equation is undefined at \( x = -5, 0, 4 \), consistent with the problem statement. Test the numerator equation at a permissible value, e.g., \( x = 1 \):  
+This requires values of \( G \) and \( H \), which we don’t have yet, so defer numerical validation until after solving. The algebraic setup appears correct since the denominators align, and the numerators are equated.  
 
-Solve:
-- From \( G = 1 \), substitute into the second equation:
-  \[
-  H - 4 \cdot 1 = -2 \implies H - 4 = -2 \implies H = 2.
-  \]
-- Check the constant term:
-  \[
-  5H = 10 \implies H = \frac{10}{5} = 2.
-  \]
-Thus, \( G = 1 \), \( H = 2 \).
 [/IMP]
 
-### Step 4
-[PLANNING]
-Action: Validation (Implementation)
-Meta-data: The current goal is to verify that \( G = 1 \), \( H = 2 \) satisfies the original equation. Achieve this by substituting \( G \) and \( H \) back into the left-hand side and checking if it equals the right-hand side.
+---
+
+### Step 4: Solve for \( G \) and \( H \)
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to solve for \( G \) and \( H \) using the equation \( G x(x - 4) + H (x + 5) = x^2 - 2x + 10 \) by expanding the left-hand side and comparing coefficients with the right-hand side.  
+
 [/PLANNING]
 
-[IMP]
-Substitute \( G = 1 \), \( H = 2 \):
+[IMP]  
+Expand the left-hand side:  
 \[
-\frac{1}{x + 5} + \frac{2}{x(x - 4)}.
+G x(x - 4) = G x^2 - 4G x,  
 \]
-With the common denominator \( x(x - 4)(x + 5) \):
 \[
-\frac{x(x - 4) + 2 (x + 5)}{x(x - 4)(x + 5)} = \frac{x^2 - 4x + 2x + 10}{x(x - 4)(x + 5)} = \frac{x^2 - 2x + 10}{x(x - 4)(x + 5)}.
+H (x + 5) = H x + 5H.
 \]
-This matches the right-hand side:
+Combine:  
 \[
-\frac{x^2 - 2x + 10}{x(x - 4)(x + 5)}.
+G x^2 - 4G x + H x + 5H = G x^2 + (-4G + H) x + 5H.
 \]
-The solution is valid.
+The right-hand side is \( x^2 - 2x + 10 \). Equate and compare coefficients:  
+\[
+G x^2 + (-4G + H) x + 5H = x^2 - 2x + 10.
+\]
+Coefficient of \( x^2 \):  
+\[
+G = 1.
+\]
+Coefficient of \( x \):  
+\[
+-4G + H = -2.
+\]
+Substitute \( G = 1 \):  
+\[
+-4(1) + H = -2 \implies -4 + H = -2 \implies H = 2.
+\]
+Constant term:  
+\[
+5H = 10.
+\]
+\[
+5 \cdot 2 = 10, \text{ which is consistent.}
+\]
+Thus, \( G = 1 \), \( H = 2 \).  
+
 [/IMP]
 
-### Step 5
-[PLANNING]
-Action: Reach Goal (Implementation)
-Meta-data: The current goal is to compute the ratio \( H/G \). Achieve this by dividing \( H \) by \( G \) using the values found.
+---
+
+### Step 5: Validate the solution
+
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to validate \( G = 1 \), \( H = 2 \) by substituting into the numerator equation and checking if it holds for a permissible value of \( x \).  
+
 [/PLANNING]
 
-[IMP]
+[IMP]  
+Substitute \( G = 1 \), \( H = 2 \) into \( G x(x - 4) + H (x + 5) \):  
+\[
+1 \cdot x(x - 4) + 2 (x + 5) = x^2 - 4x + 2x + 10 = x^2 - 2x + 10.
+\]
+This matches the right-hand side numerator. Test at \( x = 1 \):  
+Left-hand side:  
+\[
+1 \cdot 1(1 - 4) + 2(1 + 5) = 1 \cdot (-3) + 2 \cdot 6 = -3 + 12 = 9.
+\]
+Right-hand side:  
+\[
+1^2 - 2 \cdot 1 + 10 = 1 - 2 + 10 = 9.
+\]
+The equation holds, confirming the solution.  
+
+[/IMP]
+
+---
+
+### Step 6: Compute the final answer
+
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute \( \frac{H}{G} \) using \( G = 1 \), \( H = 2 \).  
+
+[/PLANNING]
+
+[IMP]  
 \[
 \frac{H}{G} = \frac{2}{1} = 2.
 \]
+
 [/IMP]
 
-### Step 6
-[PLANNING]
-Action: Track Goals (Review)
+---
+
+### Step 7: Review all goals
+
+[PLANNING]  
+**Action: Track Goals (Review)**  
+
 [/PLANNING]
 
-[REVIEW]
-Goal hierarchy:
-- Main goal: Find \( H/G \).
-  - Subgoal 1: Simplify the equation by matching denominators (completed).
-  - Subgoal 2: Equate numerators and solve for \( G \) and \( H \) (completed).
-  - Subgoal 3: Verify the solution (completed).
-  - Subgoal 4: Compute \( H/G \) (completed).
-Current goal: None, as all subgoals are completed.
-The final answer is \( \frac{H}{G} = 2 \).
+[REVIEW]  
+**Goal Hierarchy**:  
+- Main goal: Find \( \frac{H}{G} \).  
+  - Subgoal 1: Simplify denominators to equate numerators.  
+  - Subgoal 2: Set up the numerator equation \( G x(x - 4) + H (x + 5) = x^2 - 2x + 10 \).  
+  - Subgoal 3: Solve for \( G \) and \( H \) by comparing coefficients.  
+  - Subgoal 4: Validate the values of \( G \) and \( H \).  
+  - Subgoal 5: Compute \( \frac{H}{G} \).  
+**Current Goal**: Compute \( \frac{H}{G} \), which has been achieved with the result \( \frac{H}{G} = 2 \).  
+All subgoals have been completed, and the solution is consistent.  
+
 [/REVIEW]
+
+---
 
 ### Final Answer
 \[
-\boxed{2}
+\frac{H}{G} = 2
 \]

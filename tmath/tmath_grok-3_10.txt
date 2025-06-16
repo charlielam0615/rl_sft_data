@@ -1,97 +1,82 @@
-**Problem Restatement**: We need to find the constants \( r \) and \( s \) in the equivalent equation \( (x + r)^2 = s \), which Krzysztof derived by completing the square for the quadratic equation \( 11x^2 - 44x - 99 = 0 \). Then, we compute \( r + s \).
+**Problem Statement**: Solve the quadratic equation \(11x^2 - 44x - 99 = 0\) by completing the square to find the equivalent equation \((x + r)^2 = s\), and determine the value of \(r + s\).
 
----
-
-### Step 1: Forward Subgoaling
-[PLANNING]
-Action: Forward Subgoaling (Planning)
-To solve for \( r + s \), we need to:
-1. Complete the square for \( 11x^2 - 44x - 99 = 0 \) to transform it into the form \( (x + r)^2 = s \).
-2. Identify the constants \( r \) and \( s \) from the resulting equation.
-3. Compute \( r + s \).
+### Step 1
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the goal of finding \(r + s\) into intermediate subgoals:  
+1. Rewrite the quadratic equation in standard form for completing the square.  
+2. Complete the square to express the equation in the form \((x + r)^2 = s\).  
+3. Identify the constants \(r\) and \(s\).  
+4. Compute \(r + s\).  
 [/PLANNING]
 
----
-
-### Step 2: Reach Goal
-[PLANNING]
-Action: Reach Goal (Implementation)
-Current Goal: Complete the square for \( 11x^2 - 44x - 99 = 0 \) to obtain \( (x + r)^2 = s \).
-Description: Divide the equation by the leading coefficient, rewrite the quadratic expression to form a perfect square trinomial, and isolate the constant term to match the form \( (x + r)^2 = s \).
-[/PLANNING]
-
-[IMP]
-Start with the equation:
-\[ 11x^2 - 44x - 99 = 0 \]
-
-Move the constant term to the right:
-\[ 11x^2 - 44x = 99 \]
-
-Divide through by the leading coefficient 11:
-\[ x^2 - 4x = 9 \]
-
-To complete the square, take the coefficient of \( x \), which is \(-4\), halve it to get \(-2\), and square it to get \( 4 \). Add 4 to both sides:
-\[ x^2 - 4x + 4 = 9 + 4 \]
-\[ (x - 2)^2 = 13 \]
-
-Rewrite to match \( (x + r)^2 = s \):
-\[ (x - 2)^2 = 13 \] implies \( (x + (-2))^2 = 13 \).
-
-Thus, \( r = -2 \) and \( s = 13 \).
+### Step 2
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to rewrite the quadratic equation \(11x^2 - 44x - 99 = 0\) in a form suitable for completing the square. This involves dividing through by the leading coefficient and adjusting the equation.  
+[/PLANNING]  
+[IMP]  
+Start with the equation \(11x^2 - 44x - 99 = 0\). Move the constant term to the right:  
+\[11x^2 - 44x = 99\]  
+Divide through by 11 to make the leading coefficient 1:  
+\[x^2 - 4x = 9\]  
 [/IMP]
 
----
-
-### Step 3: Validation
-[PLANNING]
-Action: Validation (Implementation)
-Current Goal: Verify that completing the square yields \( (x - 2)^2 = 13 \) and matches the original equation.
-Description: Expand \( (x - 2)^2 = 13 \), transform it back to the standard quadratic form, and confirm it equals \( 11x^2 - 44x - 99 = 0 \).
-[/PLANNING]
-
-[IMP]
-Expand \( (x - 2)^2 = 13 \):
-\[ (x - 2)^2 = x^2 - 4x + 4 \]
-\[ x^2 - 4x + 4 = 13 \]
-\[ x^2 - 4x - 9 = 0 \]
-
-Multiply through by 11 to match the original equation’s leading coefficient:
-\[ 11(x^2 - 4x - 9) = 0 \]
-\[ 11x^2 - 44x - 99 = 0 \]
-
-This matches the original equation, confirming the solution is correct.
+### Step 3
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to complete the square on \(x^2 - 4x = 9\) to express it as \((x + r)^2 = s\). This involves adding and subtracting the appropriate constant to form a perfect square trinomial on the left.  
+[/PLANNING]  
+[IMP]  
+For \(x^2 - 4x\), take the coefficient of \(x\), which is \(-4\), halve it to get \(-2\), and square it to get \(4\). Add and subtract 4 on the left:  
+\[x^2 - 4x + 4 - 4 = 9\]  
+Rewrite as:  
+\[(x - 2)^2 - 4 = 9\]  
+Add 4 to both sides:  
+\[(x - 2)^2 = 13\]  
+This matches the form \((x + r)^2 = s\), where \(x - 2 = x + (-2)\), so \(r = -2\) and \(s = 13\).  
 [/IMP]
 
----
-
-### Step 4: Reach Goal
-[PLANNING]
-Action: Reach Goal (Implementation)
-Current Goal: Compute \( r + s \).
-Description: Use the values \( r = -2 \) and \( s = 13 \) from Step 2 to calculate their sum.
-[/PLANNING]
-
-[IMP]
-\[ r + s = -2 + 13 = 11 \]
+### Step 4
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to verify that \((x - 2)^2 = 13\) is equivalent to the original equation. Expand the derived equation and check if it matches \(11x^2 - 44x - 99 = 0\) after reversing the steps.  
+[/PLANNING]  
+[IMP]  
+Expand \((x - 2)^2 = 13\):  
+\[(x - 2)^2 = x^2 - 4x + 4\]  
+So:  
+\[x^2 - 4x + 4 = 13\]  
+Subtract 4:  
+\[x^2 - 4x = 9\]  
+Multiply by 11:  
+\[11x^2 - 44x = 99\]  
+Subtract 99:  
+\[11x^2 - 44x - 99 = 0\]  
+This matches the original equation, confirming correctness.  
 [/IMP]
 
----
-
-### Step 5: Track Goals
-[PLANNING]
-Action: Track Goals (Review)
-[/PLANNING]
-
-[REVIEW]
-Goal Hierarchy:
-- Main Goal: Find \( r + s \) for the equation \( (x + r)^2 = s \) derived from \( 11x^2 - 44x - 99 = 0 \).
-  - Subgoal 1: Complete the square to find \( r \) and \( s \). (Completed in Step 2)
-  - Subgoal 2: Verify the completed square form. (Completed in Step 3)
-  - Subgoal 3: Compute \( r + s \). (Completed in Step 4)
-
-Current Goal: Completed — \( r + s = 11 \).
+### Step 5
+[PLANNING]  
+**Action: Track Goals (Review)**  
+Maintain a goal-management system and list all goals:  
+- Main goal: Find \(r + s\) for the equation \((x + r)^2 = s\).  
+  - Subgoal 1: Rewrite the quadratic equation (completed).  
+  - Subgoal 2: Complete the square to find \(r\) and \(s\) (completed, \(r = -2\), \(s = 13\)).  
+  - Subgoal 3: Compute \(r + s\) (current goal).  
+[/PLANNING]  
+[REVIEW]  
+The hierarchy of goals shows that we have identified \(r = -2\) and \(s = 13\). The current goal is to compute \(r + s\).  
 [/REVIEW]
 
----
+### Step 6
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to compute \(r + s\) using the identified values \(r = -2\) and \(s = 13\). This involves simple arithmetic.  
+[/PLANNING]  
+[IMP]  
+Calculate:  
+\[r + s = -2 + 13 = 11\]  
+[/IMP]
 
-**Final Answer**: \( r + s = 11 \)
+**Final Answer**: \(r + s = 11\)

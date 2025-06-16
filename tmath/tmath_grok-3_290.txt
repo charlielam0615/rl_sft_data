@@ -1,67 +1,113 @@
-**Problem Statement**: Find the value of \( y \) in the equation \( \frac{30}{50} = \sqrt{\frac{y}{50}} \).
+**Problem Restatement**: Find the value of \( y \) in the equation \( \frac{30}{50} = \sqrt{\frac{y}{50}} \).
 
-### Step 1
+---
+
+**Step 1**
+
 [PLANNING]  
-**Action**: Forward Subgoaling (Planning)  
-Break down the problem into intermediate subgoals to solve for \( y \).  
-- Subgoal 1: Simplify the left-hand side of the equation.  
-- Subgoal 2: Isolate the square root on the right-hand side.  
-- Subgoal 3: Square both sides to eliminate the square root.  
-- Subgoal 4: Solve for \( y \).  
+Action: Forward Subgoaling (Planning)  
+Break down the goal of finding \( y \) into intermediate subgoals:  
+1. Simplify the left-hand side of the equation.  
+2. Isolate the square root on the right-hand side.  
+3. Eliminate the square root by squaring both sides.  
+4. Solve for \( y \).  
 [/PLANNING]
 
-### Step 2
+---
+
+**Step 2**
+
 [PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to simplify the left-hand side of the equation \( \frac{30}{50} \). This can be achieved by performing the division to obtain a numerical value.  
-[/PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Simplify the left-hand side of the equation \( \frac{30}{50} \).  
+How to Achieve: Reduce the fraction \( \frac{30}{50} \) to its simplest form by dividing numerator and denominator by their greatest common divisor.  
+[/PLANNING]
+
 [IMP]  
-The left-hand side is \( \frac{30}{50} \).  
-\[ \frac{30}{50} = \frac{3}{5} = 0.6 \]  
+Simplify \( \frac{30}{50} \):  
+\[ \frac{30 \div 10}{50 \div 10} = \frac{3}{5} \]  
 So, the equation becomes:  
-\[ 0.6 = \sqrt{\frac{y}{50}} \]  
+\[ \frac{3}{5} = \sqrt{\frac{y}{50}} \]  
 [/IMP]
 
-### Step 3
+---
+
+**Step 3**
+
 [PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to isolate the square root and solve for \( y \). This can be achieved by squaring both sides of the equation to eliminate the square root, then solving the resulting equation for \( y \).  
-[/PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Eliminate the square root on the right-hand side of \( \frac{3}{5} = \sqrt{\frac{y}{50}} \).  
+How to Achieve: Square both sides of the equation to remove the square root.  
+[/PLANNING]
+
 [IMP]  
-Starting with:  
-\[ 0.6 = \sqrt{\frac{y}{50}} \]  
-Square both sides to remove the square root:  
-\[ (0.6)^2 = \left( \sqrt{\frac{y}{50}} \right)^2 \]  
-\[ 0.36 = \frac{y}{50} \]  
-Multiply both sides by 50 to solve for \( y \):  
-\[ y = 0.36 \times 50 = 18 \]  
+Square both sides:  
+\[ \left( \frac{3}{5} \right)^2 = \left( \sqrt{\frac{y}{50}} \right)^2 \]  
+Left-hand side:  
+\[ \left( \frac{3}{5} \right)^2 = \frac{9}{25} \]  
+Right-hand side:  
+\[ \left( \sqrt{\frac{y}{50}} \right)^2 = \frac{y}{50} \]  
+So, the equation becomes:  
+\[ \frac{9}{25} = \frac{y}{50} \]  
 [/IMP]
 
-### Step 4
+---
+
+**Step 4**
+
 [PLANNING]  
-**Action**: Validation (Implementation)  
-**Meta-data**: The current goal is to verify the solution by substituting \( y = 18 \) back into the original equation to check if both sides are equal.  
-[/PLANNING]  
+Action: Reach Goal (Implementation)  
+Current Goal: Solve for \( y \) in \( \frac{9}{25} = \frac{y}{50} \).  
+How to Achieve: Cross-multiply to isolate \( y \), then compute the result.  
+[/PLANNING]
+
 [IMP]  
-Substitute \( y = 18 \) into the right-hand side:  
-\[ \sqrt{\frac{y}{50}} = \sqrt{\frac{18}{50}} = \sqrt{0.36} = 0.6 \]  
-The left-hand side is:  
-\[ \frac{30}{50} = 0.6 \]  
+Cross-multiply:  
+\[ 9 \cdot 50 = 25 \cdot y \]  
+\[ 450 = 25y \]  
+Divide both sides by 25:  
+\[ y = \frac{450}{25} = 18 \]  
+So, \( y = 18 \).  
+[/IMP]
+
+---
+
+**Step 5**
+
+[PLANNING]  
+Action: Validation (Implementation)  
+Current Goal: Verify the solution \( y = 18 \) is correct.  
+How to Achieve: Substitute \( y = 18 \) back into the original equation and check if both sides are equal.  
+[/PLANNING]
+
+[IMP]  
+Substitute \( y = 18 \) into \( \frac{30}{50} = \sqrt{\frac{y}{50}} \):  
+Left-hand side:  
+\[ \frac{30}{50} = \frac{3}{5} = 0.6 \]  
+Right-hand side:  
+\[ \sqrt{\frac{18}{50}} = \sqrt{\frac{18 \div 2}{50 \div 2}} = \sqrt{\frac{9}{25}} = \frac{\sqrt{9}}{\sqrt{25}} = \frac{3}{5} = 0.6 \]  
 Since \( 0.6 = 0.6 \), the solution is valid.  
 [/IMP]
 
-### Step 5
+---
+
+**Step 6**
+
 [PLANNING]  
-**Action**: Track Goals (Review)  
-[/PLANNING]  
+Action: Track Goals (Review)  
+[/PLANNING]
+
 [REVIEW]  
-**Goal Hierarchy**:  
-- Main goal: Find the value of \( y \) in \( \frac{30}{50} = \sqrt{\frac{y}{50}} \).  
-  - Subgoal 1: Simplify the left-hand side (completed: \( \frac{30}{50} = 0.6 \)).  
-  - Subgoal 2: Isolate the square root (completed: obtained \( 0.6 = \sqrt{\frac{y}{50}} \)).  
-  - Subgoal 3: Square both sides and solve for \( y \) (completed: \( y = 18 \)).  
+Goal Hierarchy:  
+- Main Goal: Find the value of \( y \) in \( \frac{30}{50} = \sqrt{\frac{y}{50}} \).  
+  - Subgoal 1: Simplify the left-hand side (completed: \( \frac{30}{50} = \frac{3}{5} \)).  
+  - Subgoal 2: Eliminate the square root (completed: squared both sides to get \( \frac{9}{25} = \frac{y}{50} \)).  
+  - Subgoal 3: Solve for \( y \) (completed: \( y = 18 \)).  
   - Subgoal 4: Validate the solution (completed: verified \( y = 18 \)).  
-**Current Goal**: Completed all subgoals; the solution is \( y = 18 \).  
+Current Goal: None (all subgoals completed, solution found).  
+The value of \( y \) is \( 18 \).  
 [/REVIEW]
 
-**Final Answer**: The value of \( y \) is 18.
+---
+
+**Final Answer**: The value of \( y \) is \( 18 \).

@@ -1,105 +1,67 @@
-**Problem Restatement**:  
-We need to determine the number of measles cases reported in the U.S. in 1987, assuming a linear decrease in cases from 450,000 in 1960 to 500 in 1996. This involves calculating the rate of decrease over the period and interpolating the number of cases for 1987.
+**Problem Statement**: We need to determine the number of measles cases reported in the U.S. in 1987, assuming a linear decrease from 450,000 cases in 1960 to 500 cases in 1996.
 
----
-
-**Step 1: Forward Subgoaling**
-
+### Step 1: Forward Subgoaling
 [PLANNING]  
-**Action**: Forward Subgoaling (Planning)  
-To solve the problem, break it into intermediate subgoals:  
-1. Calculate the time span between 1960 and 1996.  
-2. Determine the total decrease in measles cases over this period.  
-3. Compute the annual rate of decrease, assuming a linear trend.  
-4. Use the rate to estimate the number of cases in 1987.  
-5. Validate the result to ensure it aligns with a linear decrease.  
+**Action: Forward Subgoaling (Planning)**  
+To solve the problem, we need to break it down into intermediate subgoals:  
+1. Calculate the rate of decrease in measles cases per year from 1960 to 1996.  
+2. Use the rate to find the number of cases in 1987, which is a specific year between 1960 and 1996.  
+3. Ensure the calculation accounts for the linear decrease assumption.  
 [/PLANNING]
 
----
-
-**Step 2: Reach Goal**
-
+### Step 2: Reach Goal
 [PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Current Goal**: Calculate the time span and total decrease in measles cases.  
-**How to Achieve**: Subtract the years (1996 - 1960) to find the time span. Subtract the number of cases in 1996 (500) from the number of cases in 1960 (450,000) to find the total decrease.  
-[/PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Calculate the annual rate of decrease in measles cases from 1960 to 1996.  
+**How to Achieve**: Determine the total decrease in cases over the time period and divide by the number of years between 1960 and 1996 to find the annual rate of change.  
+[/PLANNING]  
 
 [IMP]  
-Time span: 1996 - 1960 = 36 years.  
-Total decrease in cases: 450,000 - 500 = 449,500 cases.  
+To calculate the annual rate of decrease:  
+- In 1960, cases = 450,000; in 1996, cases = 500.  
+- Total decrease = 450,000 - 500 = 449,500 cases.  
+- Time span = 1996 - 1960 = 36 years.  
+- Annual rate of decrease = 449,500 / 36 ≈ 12,486.11 cases per year.  
 [/IMP]
 
----
-
-**Step 3: Reach Goal**
-
+### Step 3: Reach Goal
 [PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Current Goal**: Compute the annual rate of decrease in measles cases.  
-**How to Achieve**: Divide the total decrease in cases (449,500) by the time span (36 years) to find the average annual decrease.  
-[/PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Current Goal**: Calculate the number of measles cases in 1987 using the linear decrease rate.  
+**How to Achieve**: Use the rate of decrease to compute the number of cases in 1987 by starting from 1960 and applying the annual decrease for the number of years between 1960 and 1987.  
+[/PLANNING]  
 
 [IMP]  
-Annual rate of decrease = 449,500 cases / 36 years ≈ 12,486.11 cases per year.  
+- Years from 1960 to 1987 = 1987 - 1960 = 27 years.  
+- Total decrease from 1960 to 1987 = 27 × 12,486.11 ≈ 337,124.97 cases.  
+- Cases in 1987 = 450,000 - 337,124.97 ≈ 112,875.03.  
+Since the number of cases must be a whole number, round to the nearest integer: 112,875.  
 [/IMP]
 
----
-
-**Step 4: Reach Goal**
-
+### Step 4: Validation
 [PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Current Goal**: Estimate the number of cases in 1987 using the linear decrease rate.  
-**How to Achieve**: Calculate the number of years from 1960 to 1987. Multiply this by the annual rate of decrease to find the total decrease by 1987. Subtract this from the 1960 case count (450,000).  
-[/PLANNING]
+**Action: Validation (Implementation)**  
+**Current Goal**: Verify the calculation by checking if the linear model correctly predicts the number of cases in 1996 and ensures consistency for 1987.  
+**How to Achieve**: Apply the rate of decrease from 1960 to 1996 and confirm it matches the given 500 cases, then validate the 1987 result.  
+[/PLANNING]  
 
 [IMP]  
-Years from 1960 to 1987: 1987 - 1960 = 27 years.  
-Total decrease by 1987: 27 years × 12,486.11 cases/year ≈ 337,124.97 cases.  
-Cases in 1987: 450,000 - 337,124.97 ≈ 112,875.03.  
-Since case counts are typically whole numbers, round to 112,875 cases.  
+- For 1996: Decrease over 36 years = 36 × 12,486.11 ≈ 449,499.96 cases.  
+- Cases in 1996 = 450,000 - 449,499.96 ≈ 500.04, which rounds to 500, matching the given data.  
+- The calculation for 1987 (112,875 cases) is consistent with the linear model, as it lies between 450,000 (1960) and 500 (1996).  
 [/IMP]
 
----
-
-**Step 5: Validation**
-
+### Step 5: Track Goals
 [PLANNING]  
-**Action**: Validation (Implementation)  
-**Current Goal**: Verify the calculated number of cases for 1987 aligns with a linear decrease.  
-**How to Achieve**: Use the linear equation derived from the data points (1960, 450,000) and (1996, 500) to confirm the 1987 estimate. The linear equation is of the form y = mx + b, where m is the slope (rate of decrease) and b is the y-intercept. Calculate the expected cases for 1987 using this equation and compare with the previous result.  
-[/PLANNING]
-
-[IMP]  
-Slope (m) = (500 - 450,000) / (1996 - 1960) = -449,500 / 36 ≈ -12,486.11 cases/year.  
-Using 1960 as x = 0, the 1960 case count is the y-intercept (b = 450,000).  
-Linear equation: y = -12,486.11x + 450,000.  
-For 1987, x = 1987 - 1960 = 27 years:  
-y = -12,486.11 × 27 + 450,000 ≈ -337,124.97 + 450,000 ≈ 112,875.03.  
-This matches the previous result (112,875 cases), confirming the calculation is consistent with a linear decrease.  
-[/IMP]
-
----
-
-**Step 6: Track Goals**
-
-[PLANNING]  
-**Action**: Track Goals (Review)  
-[/PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]  
 
 [REVIEW]  
 **Goal Hierarchy**:  
 - Main Goal: Determine the number of measles cases in 1987 assuming a linear decrease from 1960 to 1996.  
-  - Subgoal 1: Calculate the time span between 1960 and 1996 (completed: 36 years).  
-  - Subgoal 2: Determine the total decrease in cases (completed: 449,500 cases).  
-  - Subgoal 3: Compute the annual rate of decrease (completed: ≈12,486.11 cases/year).  
-  - Subgoal 4: Estimate cases in 1987 (completed: ≈112,875 cases).  
-  - Subgoal 5: Validate the result (completed: confirmed via linear equation).  
-**Current Goal**: Conclude the solution as all subgoals are completed.  
+  - Subgoal 1: Calculate the annual rate of decrease (completed: 12,486.11 cases/year).  
+  - Subgoal 2: Calculate cases in 1987 using the rate (completed: 112,875 cases).  
+  - Subgoal 3: Validate the linear model and 1987 result (completed: model matches 1996 data and 1987 result is consistent).  
+**Current Goal**: Completed, as all subgoals are addressed, and the result is validated.  
+**Final Answer**: The number of measles cases reported in 1987, assuming a linear decrease, is approximately 112,875.  
 [/REVIEW]
-
----
-
-**Final Answer**:  
-Assuming a linear decrease, the number of measles cases reported in the U.S. in 1987 would have been approximately 112,875.

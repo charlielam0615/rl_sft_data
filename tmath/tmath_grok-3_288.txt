@@ -1,149 +1,170 @@
-**Problem Statement**: A rectangular cow pasture is enclosed on three sides by a fence, with the fourth side being a 400-foot-long barn wall. The fence costs $5 per foot, and the total cost is $1,200. We need to find the length of the side parallel to the barn that maximizes the area of the pasture, rounded to the nearest foot.
+### Problem Statement
+We need to find the length of the side of a rectangular cow pasture that is parallel to a barn, where the barn forms one side of the rectangle (400 feet long), and the other three sides are enclosed by a fence costing $5 per foot with a total fence cost of $1,200. The goal is to maximize the area of the pasture and report the length of the side parallel to the barn to the nearest foot.
 
 ---
 
-**Step 1**
-
+### Step 1
 [PLANNING]  
 **Action: Forward Subgoaling (Planning)**  
-Break down the problem into intermediate subgoals to solve it systematically:  
-1. Define variables for the pasture’s dimensions.  
-2. Set up an equation for the fence cost to express one variable in terms of another.  
-3. Formulate the area function to maximize.  
-4. Use calculus to find the critical points of the area function.  
-5. Determine the length of the side parallel to the barn that maximizes the area.  
-6. Round the result to the nearest foot.  
+Break down the problem into forward-looking intermediate subgoals to maximize the pasture's area and find the length of the side parallel to the barn.
+
+1. Define variables for the pasture's dimensions.
+2. Use the fence cost to determine the total fencing length.
+3. Express the area as a function of the dimensions.
+4. Maximize the area using calculus or geometric optimization.
+5. Solve for the length of the side parallel to the barn and round to the nearest foot.
+
 [/PLANNING]
 
 ---
 
-**Step 2**
-
+### Step 2
 [PLANNING]  
 **Action: Reach Goal (Implementation)**  
-**Meta-data**: Current goal is to define variables and set up the cost equation. Define the length of the side parallel to the barn as \( w \) (width) and the length of the two perpendicular sides as \( l \) (length). Use the cost constraint ($1,200 for three sides at $5 per foot) to relate \( w \) and \( l \).  
+**Meta-data**: The current goal is to define variables and set up equations based on the fence cost and pasture dimensions. Define the length of the side parallel to the barn as \( w \) (width) and the two perpendicular sides as \( l \) (length). Use the total fence cost ($1,200 at $5 per foot) to find the total fencing length and relate it to \( w \) and \( l \).  
 [/PLANNING]
 
 [IMP]  
-Let \( w \) be the length of the side parallel to the barn, and \( l \) be the length of each of the two sides perpendicular to the barn. The pasture is enclosed by two sides of length \( l \) and one side of length \( w \). The total fencing length is \( 2l + w \).  
-Given the fence costs $5 per foot and the total cost is $1,200:  
-\[ 5(2l + w) = 1,200 \]  
-Divide through by 5:  
-\[ 2l + w = 240 \]  
-Solve for \( w \):  
-\[ w = 240 - 2l \]  
+Let:
+- \( w \) = width of the pasture (side parallel to the barn, in feet).
+- \( l \) = length of each side perpendicular to the barn (in feet).
+
+The barn forms one side (400 feet), so the fenced sides are:
+- One side of length \( w \).
+- Two sides of length \( l \).
+
+Total fencing length = \( w + 2l \).
+
+Fence cost = $5 per foot, total cost = $1,200:  
+\[
+5(w + 2l) = 1,200
+\]
+\[
+w + 2l = \frac{1,200}{5} = 240 \text{ feet}
+\]
+\[
+w + 2l = 240
+\]
+
+The area of the rectangular pasture is:  
+\[
+A = w \cdot l
+\]
+
+Express \( w \) in terms of \( l \):  
+\[
+w = 240 - 2l
+\]
+
+Substitute into the area function:  
+\[
+A = (240 - 2l) \cdot l = 240l - 2l^2
+\]
 [/IMP]
 
 ---
 
-**Step 3**
-
+### Step 3
 [PLANNING]  
 **Action: Reach Goal (Implementation)**  
-**Meta-data**: Current goal is to formulate the area function. Use the variables \( w \) and \( l \), and express the area in terms of \( l \) using the cost constraint.  
+**Meta-data**: The current goal is to maximize the area \( A = 240l - 2l^2 \). Since this is a quadratic function in \( l \), find the vertex to determine the value of \( l \) that maximizes the area, then compute the corresponding \( w \).  
 [/PLANNING]
 
 [IMP]  
-The area \( A \) of the rectangular pasture is:  
-\[ A = w \cdot l \]  
-Substitute \( w = 240 - 2l \) from the cost constraint:  
-\[ A = l \cdot (240 - 2l) = 240l - 2l^2 \]  
-This gives the area as a function of \( l \):  
-\[ A(l) = 240l - 2l^2 \]  
+The area function is:  
+\[
+A(l) = 240l - 2l^2
+\]
+This is a quadratic function (\( -2l^2 + 240l \)), where the coefficient of \( l^2 \) is negative, so the parabola opens downward, and the maximum occurs at the vertex.
+
+For a quadratic function \( al^2 + bl + c \), the vertex is at:  
+\[
+l = -\frac{b}{2a}
+\]
+Here, \( a = -2 \), \( b = 240 \), \( c = 0 \):  
+\[
+l = -\frac{240}{2(-2)} = \frac{240}{4} = 60
+\]
+
+Find \( w \):  
+\[
+w = 240 - 2l = 240 - 2 \cdot 60 = 240 - 120 = 120
+\]
+
+The width (side parallel to the barn) is \( w = 120 \) feet.
+
+Verify the area:  
+\[
+A = w \cdot l = 120 \cdot 60 = 7,200 \text{ square feet}
+\]
+
+To confirm the maximum, check the second derivative:  
+\[
+A(l) = 240l - 2l^2
+\]
+\[
+A'(l) = 240 - 4l
+\]
+\[
+A''(l) = -4
+\]
+Since \( A''(l) < 0 \), the function has a maximum at \( l = 60 \).
+
+Alternatively, test boundary points:  
+- If \( l = 0 \), \( w = 240 \), \( A = 240 \cdot 0 = 0 \).  
+- If \( w = 0 \), \( 2l = 240 \), \( l = 120 \), \( A = 0 \cdot 120 = 0 \).  
+The vertex at \( l = 60 \) yields the largest area.
 [/IMP]
 
 ---
 
-**Step 4**
-
-[PLANNING]  
-**Action: Reach Goal (Implementation)**  
-**Meta-data**: Current goal is to maximize the area function \( A(l) = 240l - 2l^2 \). Use calculus to find the critical points by taking the derivative, setting it to zero, and solving for \( l \).  
-[/PLANNING]
-
-[IMP]  
-To maximize the area, take the derivative of \( A(l) = 240l - 2l^2 \) with respect to \( l \):  
-\[ A'(l) = 240 - 4l \]  
-Set the derivative equal to zero to find critical points:  
-\[ 240 - 4l = 0 \]  
-\[ 4l = 240 \]  
-\[ l = 60 \]  
-To confirm this is a maximum, check the second derivative:  
-\[ A''(l) = -4 \]  
-Since \( A''(l) < 0 \), the critical point at \( l = 60 \) is a maximum.  
-[/IMP]
-
----
-
-**Step 5**
-
-[PLANNING]  
-**Action: Reach Goal (Implementation)**  
-**Meta-data**: Current goal is to find the length of the side parallel to the barn (\( w \)) using the critical value of \( l = 60 \). Substitute \( l = 60 \) into the cost constraint equation to compute \( w \).  
-[/PLANNING]
-
-[IMP]  
-Using the cost constraint equation \( w = 240 - 2l \):  
-\[ w = 240 - 2 \cdot 60 = 240 - 120 = 120 \]  
-So, the length of the side parallel to the barn is \( w = 120 \) feet.  
-[/IMP]
-
----
-
-**Step 6**
-
+### Step 4
 [PLANNING]  
 **Action: Validation (Implementation)**  
-**Meta-data**: Current goal is to validate the solution. Check if the dimensions satisfy the cost constraint and confirm the area is maximized by evaluating the area at the critical point and boundaries.  
+**Meta-data**: Validate the solution by checking if the fencing length satisfies the cost constraint and ensures the dimensions are feasible (positive and consistent with the barn's length).  
 [/PLANNING]
 
 [IMP]  
-**Check cost constraint**:  
-Fencing length: \( 2l + w = 2 \cdot 60 + 120 = 120 + 120 = 240 \) feet.  
-Cost: \( 5 \cdot 240 = 1,200 \), which matches the given cost.  
-**Check area maximization**:  
-Area at \( l = 60 \):  
-\[ A = 240l - 2l^2 = 240 \cdot 60 - 2 \cdot 60^2 = 14,400 - 7,200 = 7,200 \text{ square feet} \]  
-Test boundary points (e.g., \( l = 10 \), \( l = 110 \)):  
-- If \( l = 10 \), then \( w = 240 - 2 \cdot 10 = 220 \), so \( A = 10 \cdot 220 = 2,200 \).  
-- If \( l = 110 \), then \( w = 240 - 2 \cdot 110 = 20 \), so \( A = 110 \cdot 20 = 2,200 \).  
-The area at \( l = 60 \) (7,200 square feet) is greater than at the boundaries, confirming the maximum.  
+Check the fencing length:  
+\[
+w + 2l = 120 + 2 \cdot 60 = 120 + 120 = 240 \text{ feet}
+\]
+Cost:  
+\[
+240 \cdot 5 = 1,200
+\]
+The cost matches the given $1,200.
+
+Check dimensions:  
+- Width \( w = 120 \) feet (parallel to the barn).  
+- Length of perpendicular sides \( l = 60 \) feet.  
+- Barn length = 400 feet, and \( w = 120 \leq 400 \), which is feasible (the pasture can be part of the barn's side).
+
+The solution is consistent with the problem constraints.
 [/IMP]
 
 ---
 
-**Step 7**
-
+### Step 5
 [PLANNING]  
 **Action: Track Goals (Review)**  
+Track the hierarchy of goals and highlight the current goal to provide context for the final answer.  
 [/PLANNING]
 
 [REVIEW]  
 **Goal Hierarchy**:  
-- Main goal: Find the length of the side parallel to the barn that maximizes the pasture’s area, rounded to the nearest foot.  
-  - Subgoal 1: Define variables (\( w \) for width, \( l \) for length).  
-  - Subgoal 2: Set up cost equation (\( 2l + w = 240 \)).  
-  - Subgoal 3: Formulate area function (\( A(l) = 240l - 2l^2 \)).  
-  - Subgoal 4: Maximize area using calculus (\( l = 60 \)).  
-  - Subgoal 5: Compute \( w \) (\( w = 120 \)).  
-  - Subgoal 6: Validate solution (cost and area checks).  
-**Current Goal**: Finalize the solution by confirming the length of the side parallel to the barn.  
-The length \( w = 120 \) feet satisfies all constraints and maximizes the area.  
+- Main Goal: Find the length of the side parallel to the barn that maximizes the pasture's area, rounded to the nearest foot.  
+  - Subgoal 1: Define variables and set up equations for fencing and area.  
+  - Subgoal 2: Express the area as a function of one variable and maximize it.  
+  - Subgoal 3: Validate the solution against the cost and geometric constraints.  
+  - Subgoal 4 (Current): Confirm the final answer and ensure it meets the problem's requirements.
+
+**Current Goal**: Confirm the length of the side parallel to the barn (\( w = 120 \) feet) and ensure it is rounded to the nearest foot.
+
+The calculated width \( w = 120 \) feet is already an integer, so no rounding is needed. The area is maximized at 7,200 square feet, and all constraints are satisfied.
 [/REVIEW]
 
 ---
 
-**Step 8**
-
-[PLANNING]  
-**Action: Reach Goal (Implementation)**  
-**Meta-data**: Current goal is to provide the final answer, ensuring it is rounded to the nearest foot as requested. Since \( w = 120 \) is already an integer, no rounding is needed.  
-[/PLANNING]
-
-[IMP]  
-The length of the side parallel to the barn that maximizes the area of the pasture is 120 feet.  
-[/IMP]
-
----
-
-**Final Answer**: The length of the side parallel to the barn that maximizes the area of the pasture is **120 feet**.
+### Final Answer
+The length of the side parallel to the barn that maximizes the area of the pasture is 120 feet.

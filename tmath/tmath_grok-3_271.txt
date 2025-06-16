@@ -1,88 +1,58 @@
-**Problem Statement**: Find the value of \( k \) in the quadratic equation \( x^2 + 6x + k = 0 \), where the nonzero roots are in the ratio \( 2:1 \).
+**Problem Restatement**: We need to find the value of \( k \) in the quadratic equation \( x^2 + 6x + k = 0 \), given that its nonzero roots are in the ratio \( 2:1 \).
 
----
-
-**Step 1**
-
+### Step 1: Forward Subgoaling
 [PLANNING]  
 **Action**: Forward Subgoaling (Planning)  
-Break down the problem into intermediate subgoals to solve for \( k \).  
-1. Define the roots based on the given ratio \( 2:1 \).  
-2. Use the properties of the roots (sum and product) for a quadratic equation.  
-3. Set up equations based on these properties.  
-4. Solve for \( k \).  
+Break down the problem into intermediate subgoals:  
+1. Express the roots in terms of the given ratio \( 2:1 \).  
+2. Use the properties of the roots (sum and product) for the quadratic equation to form equations.  
+3. Solve for \( k \) using these equations.  
 [/PLANNING]
 
----
-
-**Step 2**
-
+### Step 2: Reach Goal
 [PLANNING]  
 **Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to define the roots based on the ratio \( 2:1 \) and use the quadratic formula’s properties to form equations. Assume the roots are \( r \) and \( 2r \), where \( r \neq 0 \). Use the sum of roots (\( -b/a \)) and product of roots (\( c/a \)) for the quadratic \( x^2 + 6x + k = 0 \).  
-[/PLANNING]
+**Current Goal**: Express the roots using the ratio and set up equations based on the quadratic equation's properties.  
+**How to Achieve**: Assume the roots are \( r \) and \( 2r \) (based on the ratio \( 2:1 \)). Use the sum of roots (\( -b/a \)) and product of roots (\( c/a \)) for the quadratic \( x^2 + 6x + k = 0 \), where \( a = 1 \), \( b = 6 \), and \( c = k \).  
+[/PLANNING]  
 
 [IMP]  
-For the quadratic equation \( x^2 + 6x + k = 0 \), the coefficients are \( a = 1 \), \( b = 6 \), and \( c = k \).  
-- **Sum of roots**: If the roots are \( r \) and \( 2r \), their sum is \( r + 2r = 3r \). For a quadratic \( ax^2 + bx + c = 0 \), the sum of roots is \( -b/a \). Thus:  
-  \[
-  3r = -\frac{b}{a} = -\frac{6}{1} = -6 \implies r = -2
-  \]
-- **Roots**: If \( r = -2 \), the roots are \( r = -2 \) and \( 2r = 2 \cdot (-2) = -4 \).  
-- **Product of roots**: The product of roots is \( r \cdot 2r = 2r^2 \), and for the quadratic, it is \( c/a = k/1 = k \). Thus:  
-  \[
-  2r^2 = k
-  \]
-  Substitute \( r = -2 \):  
-  \[
-  2(-2)^2 = 2 \cdot 4 = 8 \implies k = 8
-  \]
+For the quadratic equation \( x^2 + 6x + k = 0 \):  
+- Sum of roots: \( r + 2r = 3r = -b/a = -6/1 = -6 \).  
+  Thus, \( 3r = -6 \), so \( r = -2 \).  
+- Roots are \( r = -2 \) and \( 2r = -4 \).  
+- Product of roots: \( r \cdot 2r = 2r^2 = k/a = k/1 = k \).  
+  Substitute \( r = -2 \): \( 2(-2)^2 = 2 \cdot 4 = 8 \).  
+  Thus, \( k = 8 \).  
 [/IMP]
 
----
-
-**Step 3**
-
+### Step 3: Validation
 [PLANNING]  
 **Action**: Validation (Implementation)  
-**Meta-data**: The current goal is to verify that \( k = 8 \) produces roots in the ratio \( 2:1 \). Substitute \( k = 8 \) into the equation, find the roots, and check their ratio.  
-[/PLANNING]
+**Current Goal**: Verify that the roots of the equation \( x^2 + 6x + 8 = 0 \) are in the ratio \( 2:1 \).  
+**How to Achieve**: Solve the quadratic equation with \( k = 8 \), find the roots, and check their ratio.  
+[/PLANNING]  
 
 [IMP]  
-Substitute \( k = 8 \) into \( x^2 + 6x + 8 = 0 \). Solve using the quadratic formula \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \), where \( a = 1 \), \( b = 6 \), \( c = 8 \):  
-- Discriminant: \( b^2 - 4ac = 6^2 - 4 \cdot 1 \cdot 8 = 36 - 32 = 4 \).  
-- Roots:  
-  \[
-  x = \frac{-6 \pm \sqrt{4}}{2 \cdot 1} = \frac{-6 \pm 2}{2}
-  \]
-  \[
-  x_1 = \frac{-6 + 2}{2} = \frac{-4}{2} = -2, \quad x_2 = \frac{-6 - 2}{2} = \frac{-8}{2} = -4
-  \]
-- **Check ratio**: The roots are \( -2 \) and \( -4 \). Compute the ratio:  
-  \[
-  \frac{-4}{-2} = 2 \quad \text{or} \quad \frac{-2}{-4} = \frac{1}{2}
-  \]
-  This gives the ratio \( 2:1 \), as required.  
+Solve \( x^2 + 6x + 8 = 0 \):  
+Factorize: \( x^2 + 6x + 8 = (x + 2)(x + 4) = 0 \).  
+Roots are \( x = -2 \) and \( x = -4 \).  
+Check the ratio: \( -4 / -2 = 2 \), which satisfies the \( 2:1 \) ratio.  
 [/IMP]
 
----
-
-**Step 4**
-
+### Step 4: Track Goals
 [PLANNING]  
 **Action**: Track Goals (Review)  
-[/PLANNING]
+[/PLANNING]  
 
 [REVIEW]  
 **Goal Hierarchy**:  
-- Main goal: Find \( k \) such that the roots of \( x^2 + 6x + k = 0 \) are in the ratio \( 2:1 \).  
-  - Subgoal 1: Define roots as \( r \) and \( 2r \), and use sum and product of roots. (Completed)  
-  - Subgoal 2: Solve for \( k \) using the product of roots. (Completed, \( k = 8 \))  
-  - Subgoal 3: Validate by checking the roots’ ratio for \( k = 8 \). (Completed)  
-**Current Goal**: Confirm the solution is complete and correct.  
-The solution \( k = 8 \) satisfies the condition, as the roots \( -2 \) and \( -4 \) are in the ratio \( 2:1 \).  
+- Main Goal: Find \( k \) such that the roots of \( x^2 + 6x + k = 0 \) are in the ratio \( 2:1 \).  
+  - Subgoal 1: Express roots in terms of the ratio \( 2:1 \). (Completed)  
+  - Subgoal 2: Use sum and product of roots to find \( k \). (Completed, \( k = 8 \))  
+  - Subgoal 3: Verify the roots satisfy the ratio. (Completed)  
+**Current Goal**: Completed, as \( k = 8 \) is validated.  
 [/REVIEW]
 
----
-
-**Final Answer**: \( k = 8 \)
+### Final Answer
+The value of \( k \) is \( 8 \).

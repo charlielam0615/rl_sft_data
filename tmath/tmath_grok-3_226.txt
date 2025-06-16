@@ -1,100 +1,119 @@
-**Problem Statement**: Determine the number of $x$-intercepts of the parabola defined by the equation $x = -2y^2 + y + 1$. The $x$-intercepts occur where $y = 0$, so we need to solve for $x$ when $y = 0$ and analyze if real solutions exist. Since the equation is given with $x$ as a function of $y$, we also need to consider whether the parabola opens horizontally and how this affects the number of $x$-intercepts.
+### Problem Statement
+We need to determine the number of $x$-intercepts of the parabola defined by the equation $x = -2y^2 + y + 1$. The $x$-intercepts occur where the graph crosses the x-axis, i.e., where $x$ is expressed as a function of $y$, and we need to find the values of $y$ that make $x = 0$. This requires solving the equation $-2y^2 + y + 1 = 0$ and determining the number of real solutions for $y$.
 
 ---
 
-**Step 1**
-
-[PLANNING]  
-**Action**: Forward Subgoaling (Planning)  
-Break down the goal of finding the number of $x$-intercepts into intermediate subgoals:  
-1. Substitute $y = 0$ into the equation to find potential $x$-intercepts.  
-2. Analyze the equation to determine if it yields real solutions.  
-3. Consider the parabola’s orientation (since $x$ is expressed in terms of $y$) to confirm the nature of the intercepts.  
-4. Determine the number of $x$-intercepts based on the results.  
-
+### Step 1: Forward Subgoaling
+[PLANNING]
+**Action: Forward Subgoaling (Planning)**  
+To find the number of $x$-intercepts, break down the problem into subgoals:  
+1. Set the equation equal to zero to find the $y$-values where $x = 0$.  
+2. Solve the resulting quadratic equation in $y$.  
+3. Determine the number of real solutions using the discriminant.  
+4. Conclude the number of $x$-intercepts based on the number of real $y$-solutions.  
 [/PLANNING]
 
 ---
 
-**Step 2**
+### Step 2: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to set the equation $x = -2y^2 + y + 1$ equal to zero and solve for $y$. This involves forming the quadratic equation $-2y^2 + y + 1 = 0$ and finding its roots.  
+[/PLANNING]
 
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to find the $x$-intercepts by substituting $y = 0$ into the equation $x = -2y^2 + y + 1$. This will give the $x$-values where the parabola intersects the $x$-axis.  
-
-[/PLANNING]  
-
-[IMP]  
-Substitute $y = 0$ into the equation:  
-$x = -2(0)^2 + 0 + 1 = 1$.  
-This yields $x = 1$. Thus, there is one potential $x$-intercept at $(1, 0)$.  
-
+[IMP]
+Set $x = 0$ in the equation $x = -2y^2 + y + 1$:  
+\[
+-2y^2 + y + 1 = 0
+\]
+This is a quadratic equation in $y$ of the form $ay^2 + by + c = 0$, where $a = -2$, $b = 1$, and $c = 1$. To solve, we will use the quadratic formula in the next step.  
 [/IMP]
 
 ---
 
-**Step 3**
+### Step 3: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to solve the quadratic equation $-2y^2 + y + 1 = 0$ for $y$ using the quadratic formula and compute the discriminant to determine the number of real roots.  
+[/PLANNING]
 
-[PLANNING]  
-**Action**: Validation (Implementation)  
-**Meta-data**: The current goal is to validate whether $x = 1$ is the only $x$-intercept and confirm the parabola’s behavior. Since the equation expresses $x$ in terms of $y$, check if the parabola opens horizontally and whether multiple $y$-values could yield the same $x$-value, affecting the number of intercepts.  
-
-[/PLANNING]  
-
-[IMP]  
-The equation $x = -2y^2 + y + 1$ is a parabola in the form $x = ay^2 + by + c$, which opens horizontally (leftward since $a = -2 < 0$). To find $x$-intercepts, we only need points where $y = 0$, which we computed as $x = 1$. To ensure no other $x$-intercepts exist, note that substituting $y = 0$ gives a single $x$-value, as it’s a linear evaluation at a specific point. However, let’s explore the parabola’s vertex to understand its shape and confirm the number of intercepts.  
-
-Rewrite the equation by completing the square:  
-$x = -2y^2 + y + 1 = -2\left(y^2 - \frac{1}{2}y\right) + 1$.  
-Inside the parentheses: $y^2 - \frac{1}{2}y = \left(y - \frac{1}{4}\right)^2 - \frac{1}{16}$.  
-Thus, $x = -2\left(\left(y - \frac{1}{4}\right)^2 - \frac{1}{16}\right) + 1 = -2\left(y - \frac{1}{4}\right)^2 + \frac{2}{16} + 1 = -2\left(y - \frac{1}{4}\right)^2 + \frac{9}{8}$.  
-
-The vertex is at $\left(\frac{9}{8}, \frac{1}{4}\right)$. Since the parabola opens leftward (due to the negative coefficient), and the vertex has $x = \frac{9}{8} \approx 1.125$, the parabola reaches its rightmost point at $x = \frac{9}{8}$ and curves leftward. At $y = 0$, $x = 1$, which is to the left of the vertex. As $y$ moves away from $0$, the quadratic term $-2y^2$ ensures $x$ decreases, suggesting a single crossing of the $x$-axis at $x = 1$.  
-
-To confirm, consider solving for $y$ in terms of $x$ to check the number of $y$-values for a given $x$:  
-$-2y^2 + y + 1 = x \implies -2y^2 + y + (1 - x) = 0$.  
-Multiply by $-1$ for simplicity: $2y^2 - y + (x - 1) = 0$.  
-The discriminant for $y$ is: $\Delta = (-1)^2 - 4 \cdot 2 \cdot (x - 1) = 1 - 8(x - 1) = 9 - 8x$.  
-For real $y$, $\Delta \geq 0 \implies 9 - 8x \geq 0 \implies x \leq \frac{9}{8}$. At $x = 1$, $\Delta = 9 - 8 = 1$, so there are two real $y$-roots (but we already know $y = 0$ is one; we need to check if others yield $y = 0$). Solving the quadratic at $x = 1$:  
-$2y^2 - y = 0 \implies y(2y - 1) = 0 \implies y = 0, \frac{1}{2}$.  
-Check $y = \frac{1}{2}$: $x = -2\left(\frac{1}{2}\right)^2 + \frac{1}{2} + 1 = -2 \cdot \frac{1}{4} + \frac{1}{2} + 1 = -\frac{1}{2} + \frac{1}{2} + 1 = 1$.  
-Both $y = 0$ and $y = \frac{1}{2}$ yield $x = 1$, indicating the parabola is tangent to the line $x = 1$ at these points, but since we’re counting distinct $x$-values, there’s still only one $x$-intercept.  
-
+[IMP]
+For a quadratic equation $ay^2 + by + c = 0$, the roots are given by:
+\[
+y = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+Here, $a = -2$, $b = 1$, $c = 1$. First, compute the discriminant:
+\[
+\Delta = b^2 - 4ac = 1^2 - 4(-2)(1) = 1 - (-8) = 1 + 8 = 9
+\]
+Since $\Delta = 9 > 0$, there are two distinct real roots. To find the roots:
+\[
+y = \frac{-1 \pm \sqrt{9}}{2(-2)} = \frac{-1 \pm 3}{-4}
+\]
+Calculate the two solutions:
+\[
+y_1 = \frac{-1 + 3}{-4} = \frac{2}{-4} = -\frac{1}{2}
+\]
+\[
+y_2 = \frac{-1 - 3}{-4} = \frac{-4}{-4} = 1
+\]
+The solutions are $y = -\frac{1}{2}$ and $y = 1$.  
 [/IMP]
 
 ---
 
-**Step 4**
+### Step 4: Validation
+[PLANNING]
+**Action: Validation (Implementation)**  
+**Meta-data**: The current goal is to verify that the solutions $y = -\frac{1}{2}$ and $y = 1$ are correct by substituting them back into the equation $x = -2y^2 + y + 1$ to confirm $x = 0$.  
+[/PLANNING]
 
-[PLANNING]  
-**Action**: Track Goals (Review)  
+[IMP]
+Substitute $y = -\frac{1}{2}$:
+\[
+x = -2\left(-\frac{1}{2}\right)^2 + \left(-\frac{1}{2}\right) + 1 = -2 \cdot \frac{1}{4} - \frac{1}{2} + 1 = -\frac{1}{2} - \frac{1}{2} + 1 = -1 + 1 = 0
+\]
+Substitute $y = 1$:
+\[
+x = -2(1)^2 + 1 + 1 = -2 + 1 + 1 = -2 + 2 = 0
+\]
+Both values satisfy $x = 0$, confirming the roots are correct.  
+[/IMP]
 
-[/PLANNING]  
+---
 
-[REVIEW]  
+### Step 5: Track Goals
+[PLANNING]
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]
 **Goal Hierarchy**:  
-- Main goal: Determine the number of $x$-intercepts of the parabola $x = -2y^2 + y + 1$.  
-  - Subgoal 1: Substitute $y = 0$ to find $x$-intercepts (completed: found $x = 1$).  
-  - Subgoal 2: Validate the number of intercepts by analyzing the parabola’s orientation and behavior (completed: confirmed single $x$-intercept at $x = 1$).  
-  - Subgoal 3: Determine the final number of $x$-intercepts (current goal).  
+- Main Goal: Determine the number of $x$-intercepts of the parabola $x = -2y^2 + y + 1$.  
+  - Subgoal 1: Set $x = 0$ to form the quadratic equation $-2y^2 + y + 1 = 0$.  
+  - Subgoal 2: Solve the quadratic equation for $y$.  
+  - Subgoal 3: Compute the discriminant to determine the number of real roots.  
+  - Subgoal 4: Verify the solutions.  
+  - Subgoal 5: Conclude the number of $x$-intercepts.  
 
-**Current Goal**: Finalize the number of $x$-intercepts based on previous steps.  
+**Current Goal**: Conclude the number of $x$-intercepts based on the number of real $y$-solutions.  
 
+The quadratic equation $-2y^2 + y + 1 = 0$ has two real roots ($y = -\frac{1}{2}$ and $y = 1$), indicating two points where $x = 0$.  
 [/REVIEW]
 
 ---
 
-**Step 5**
+### Step 6: Reach Goal
+[PLANNING]
+**Action: Reach Goal (Implementation)**  
+**Meta-data**: The current goal is to conclude the number of $x$-intercepts based on the two real $y$-solutions found.  
+[/PLANNING]
 
-[PLANNING]  
-**Action**: Reach Goal (Implementation)  
-**Meta-data**: The current goal is to conclude the number of $x$-intercepts based on the findings that $y = 0$ gives $x = 1$, and the parabola’s structure suggests a single distinct $x$-value at the intercept.  
-
-[/PLANNING]  
-
-[IMP]  
-From previous steps, substituting $y = 0$ yields $x = 1$. The parabola, opening leftward with vertex at $x = \frac{9}{8}$, intersects the $x$-axis at $x = 1$. The discriminant analysis and verification at $x = 1$ show that both $y = 0$ and $y = \frac{1}{2}$ produce $x = 1$, but these correspond to the same $x$-coordinate. Since $x$-intercepts are counted by distinct $x$-values, there is exactly one $x$-intercept.  
-
-**Final Answer**: The parabola has **1 $x$-intercept**.  
-
+[IMP]
+Since the equation $-2y^2 + y + 1 = 0$ has two distinct real roots ($y = -\frac{1}{2}$ and $y = 1$), the parabola $x = -2y^2 + y + 1$ intersects the x-axis at two points. Thus, there are **two $x$-intercepts**.  
 [/IMP]
+
+---
+
+### Final Answer
+The parabola $x = -2y^2 + y + 1$ has **two $x$-intercepts**.

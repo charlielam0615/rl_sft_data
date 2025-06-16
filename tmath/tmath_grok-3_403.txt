@@ -1,180 +1,144 @@
 ### Problem Restatement
-We are given the function \( f(x) = 3x^2 - 2 \) and the composition \( g(f(x)) = x^2 + x + 1 \). We need to find \( g(25) \), which means computing the value of the function \( g \) when its input is 25, and then find the sum of all possible values of \( g(25) \). Since \( g(f(x)) = x^2 + x + 1 \), we need to determine the function \( g(y) \) such that when \( y = f(x) = 3x^2 - 2 \), the composition holds. Then, we evaluate \( g(25) \) and sum all possible values.
+We are given the function \( f(x) = 3x^2 - 2 \) and the composition \( g(f(x)) = x^2 + x + 1 \). We need to find the sum of all possible values of \( g(25) \). This means we need to determine \( g(25) \), which requires finding the function \( g(y) \) such that when \( y = f(x) = 3x^2 - 2 \), the composition \( g(f(x)) = x^2 + x + 1 \) holds, and then evaluate \( g(25) \) for all possible inputs that produce \( f(x) = 25 \).
 
 ---
 
 ### Step 1
-[PLANNING]
-Action: Forward Subgoaling (Planning)
-To solve the problem, break it into manageable subgoals:
-1. Determine the function \( g(y) \) by using the given composition \( g(f(x)) = x^2 + x + 1 \).
-2. Compute \( g(25) \) by substituting 25 into the function \( g(y) \).
-3. Identify all possible values of \( g(25) \), considering whether multiple inputs to \( f(x) \) yield 25.
-4. Sum all possible values of \( g(25) \).
+[PLANNING]  
+**Action: Forward Subgoaling (Planning)**  
+Break down the problem into intermediate subgoals:  
+1. Determine the function \( g(y) \) using the given composition \( g(f(x)) = x^2 + x + 1 \).  
+2. Find all values of \( x \) such that \( f(x) = 25 \).  
+3. Evaluate \( g(25) \) for each corresponding input.  
+4. Sum all possible values of \( g(25) \).  
 [/PLANNING]
 
 ---
 
 ### Step 2
-[PLANNING]
-Action: Reach Goal (Implementation)
-Current Goal: Determine the function \( g(y) \).
-How to Achieve: Substitute \( f(x) = 3x^2 - 2 \) into \( g(f(x)) = x^2 + x + 1 \). Let \( y = f(x) = 3x^2 - 2 \), express \( x \) in terms of \( y \), and substitute back to find \( g(y) \).
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current goal**: Determine the function \( g(y) \).  
+- **How to achieve it**: Substitute \( f(x) = 3x^2 - 2 \) into \( g(f(x)) = x^2 + x + 1 \), express \( x \) in terms of \( y = f(x) \), and derive \( g(y) \).  
 [/PLANNING]
 
-[IMP]
-Let \( y = f(x) = 3x^2 - 2 \). Solve for \( x \):
-\[
-y = 3x^2 - 2 \implies y + 2 = 3x^2 \implies x^2 = \frac{y + 2}{3}.
-\]
-Thus, \( x = \pm \sqrt{\frac{y + 2}{3}} \). Now, use the composition:
-\[
-g(f(x)) = x^2 + x + 1.
-\]
-Since \( f(x) = y \), we need \( g(y) = x^2 + x + 1 \), where \( x \) satisfies \( y = 3x^2 - 2 \). Substitute \( x^2 = \frac{y + 2}{3} \) into the expression. However, we need to express \( x^2 + x + 1 \) fully in terms of \( y \). Notice that:
-\[
-g(y) = g(f(x)) = x^2 + x + 1.
-\]
-To find \( g(y) \), assume \( y = f(x) \), so \( x^2 = \frac{y + 2}{3} \). We need the term \( x \). Since \( x = \sqrt{\frac{y + 2}{3}} \) or \( x = -\sqrt{\frac{y + 2}{3}} \), compute:
-\[
-g(y) = x^2 + x + 1 = \frac{y + 2}{3} + \sqrt{\frac{y + 2}{3}} + 1.
-\]
-Simplify:
-\[
-g(y) = \frac{y + 2}{3} + \sqrt{\frac{y + 2}{3}} + \frac{3}{3} = \frac{y + 5}{3} + \sqrt{\frac{y + 2}{3}}.
-\]
-Alternatively, for the negative root:
-\[
-g(y) = \frac{y + 2}{3} - \sqrt{\frac{y + 2}{3}} + 1 = \frac{y + 5}{3} - \sqrt{\frac{y + 2}{3}}.
-\]
-Thus, \( g(y) \) has two possible forms depending on the sign of \( x \):
-\[
-g(y) = \frac{y + 5}{3} \pm \sqrt{\frac{y + 2}{3}}.
-\]
+[IMP]  
+Given \( f(x) = 3x^2 - 2 \), we have \( g(f(x)) = x^2 + x + 1 \). Let \( y = f(x) = 3x^2 - 2 \). Solve for \( x \) in terms of \( y \):  
+\[ y = 3x^2 - 2 \]  
+\[ y + 2 = 3x^2 \]  
+\[ x^2 = \frac{y + 2}{3} \]  
+\[ x = \pm \sqrt{\frac{y + 2}{3}} \]  
+
+Now, compute \( g(f(x)) = x^2 + x + 1 \):  
+\[ x^2 = \frac{y + 2}{3} \]  
+For \( x \), consider the positive root (we’ll check the negative later):  
+\[ x = \sqrt{\frac{y + 2}{3}} \]  
+\[ g(y) = x^2 + x + 1 = \frac{y + 2}{3} + \sqrt{\frac{y + 2}{3}} + 1 \]  
+Simplify:  
+\[ g(y) = \frac{y + 2}{3} + \sqrt{\frac{y + 2}{3}} + \frac{3}{3} = \frac{y + 5}{3} + \sqrt{\frac{y + 2}{3}} \]  
+
+For the negative root, \( x = -\sqrt{\frac{y + 2}{3}} \):  
+\[ g(y) = x^2 + x + 1 = \frac{y + 2}{3} - \sqrt{\frac{y + 2}{3}} + 1 = \frac{y + 5}{3} - \sqrt{\frac{y + 2}{3}} \]  
+
+Thus, \( g(y) \) has two possible forms depending on the sign of \( x \):  
+\[ g(y) = \frac{y + 5}{3} \pm \sqrt{\frac{y + 2}{3}} \]  
 [/IMP]
 
 ---
 
 ### Step 3
-[PLANNING]
-Action: Validation (Implementation)
-Current Goal: Verify the derived function \( g(y) \).
-How to Achieve: Substitute \( y = f(x) = 3x^2 - 2 \) back into both forms of \( g(y) \) and check if they yield \( x^2 + x + 1 \).
+[PLANNING]  
+**Action: Validation (Implementation)**  
+**Meta-data**:  
+- **Current goal**: Verify the derived \( g(y) \).  
+- **How to achieve it**: Substitute \( g(y) \) back into the composition and check if it satisfies \( g(f(x)) = x^2 + x + 1 \).  
 [/PLANNING]
 
-[IMP]
-Substitute \( y = 3x^2 - 2 \) into:
-\[
-g(y) = \frac{y + 5}{3} + \sqrt{\frac{y + 2}{3}}.
-\]
-\[
-y + 5 = (3x^2 - 2) + 5 = 3x^2 + 3, \quad \frac{y + 5}{3} = \frac{3x^2 + 3}{3} = x^2 + 1.
-\]
-\[
-y + 2 = (3x^2 - 2) + 2 = 3x^2, \quad \sqrt{\frac{y + 2}{3}} = \sqrt{\frac{3x^2}{3}} = \sqrt{x^2} = |x|.
-\]
-So:
-\[
-g(y) = x^2 + 1 + |x|.
-\]
-For \( x \geq 0 \), \( |x| = x \), so:
-\[
-g(y) = x^2 + x + 1.
-\]
-For \( x < 0 \), \( |x| = -x \), so:
-\[
-g(y) = x^2 + (-x) + 1 = x^2 - x + 1.
-\]
-Now try the other form:
-\[
-g(y) = \frac{y + 5}{3} - \sqrt{\frac{y + 2}{3}} = x^2 + 1 - |x|.
-\]
-For \( x \geq 0 \):
-\[
-g(y) = x^2 + 1 - x = x^2 - x + 1.
-\]
-For \( x < 0 \):
-\[
-g(y) = x^2 + 1 - (-x) = x^2 + x + 1.
-\]
-The results are consistent but depend on the sign of \( x \). Since \( g(f(x)) = x^2 + x + 1 \), the positive root \( \sqrt{\frac{y + 2}{3}} \) corresponds to \( x \geq 0 \), and the negative root corresponds to \( x < 0 \), producing \( x^2 - x + 1 \). We need to evaluate \( g(25) \).
+[IMP]  
+Take \( g(y) = \frac{y + 5}{3} + \sqrt{\frac{y + 2}{3}} \). Let \( y = f(x) = 3x^2 - 2 \). Then:  
+\[ y + 2 = 3x^2 \]  
+\[ \sqrt{\frac{y + 2}{3}} = \sqrt{\frac{3x^2}{3}} = |x| \]  
+Since \( x \) is positive for the positive root:  
+\[ g(f(x)) = \frac{(3x^2 - 2) + 5}{3} + \sqrt{\frac{(3x^2 - 2) + 2}{3}} = \frac{3x^2 + 3}{3} + \sqrt{\frac{3x^2}{3}} = x^2 + 1 + x = x^2 + x + 1 \]  
+
+For the negative root, \( x < 0 \), so \( |x| = -x \):  
+\[ g(f(x)) = \frac{3x^2 + 3}{3} - \sqrt{\frac{3x^2}{3}} = x^2 + 1 - x \]  
+This does not equal \( x^2 + x + 1 \), so the negative root is invalid for the composition. Thus:  
+\[ g(y) = \frac{y + 5}{3} + \sqrt{\frac{y + 2}{3}} \]  
 [/IMP]
 
 ---
 
 ### Step 4
-[PLANNING]
-Action: Reach Goal (Implementation)
-Current Goal: Compute \( g(25) \).
-How to Achieve: Substitute \( y = 25 \) into both forms of \( g(y) \).
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current goal**: Find all \( x \) such that \( f(x) = 25 \).  
+- **How to achieve it**: Solve the equation \( f(x) = 3x^2 - 2 = 25 \).  
 [/PLANNING]
 
-[IMP]
-Using:
-\[
-g(y) = \frac{y + 5}{3} \pm \sqrt{\frac{y + 2}{3}}.
-\]
-For \( y = 25 \):
-\[
-\frac{y + 5}{3} = \frac{25 + 5}{3} = \frac{30}{3} = 10.
-\]
-\[
-\frac{y + 2}{3} = \frac{25 + 2}{3} = \frac{27}{3} = 9, \quad \sqrt{\frac{y + 2}{3}} = \sqrt{9} = 3.
-\]
-So:
-\[
-g(25) = 10 + 3 = 13, \quad \text{or} \quad g(25) = 10 - 3 = 7.
-\]
-To determine which values are valid, check if \( y = 25 \) is in the range of \( f(x) \). Solve:
-\[
-3x^2 - 2 = 25 \implies 3x^2 = 27 \implies x^2 = 9 \implies x = \pm 3.
-\]
-For \( x = 3 \), \( f(3) = 3(3^2) - 2 = 27 - 2 = 25 \). Use \( x = 3 \):
-\[
-g(25) = x^2 + x + 1 = 3^2 + 3 + 1 = 9 + 3 + 1 = 13.
-\]
-For \( x = -3 \), \( f(-3) = 3((-3)^2) - 2 = 27 - 2 = 25 \). Use \( x = -3 \):
-\[
-g(25) = (-3)^2 + (-3) + 1 = 9 - 3 + 1 = 7.
-\]
-Thus, \( g(25) \) can be 13 or 7.
+[IMP]  
+\[ 3x^2 - 2 = 25 \]  
+\[ 3x^2 = 27 \]  
+\[ x^2 = 9 \]  
+\[ x = \pm 3 \]  
+So, \( x = 3 \) or \( x = -3 \).  
 [/IMP]
 
 ---
 
 ### Step 5
-[PLANNING]
-Action: Track Goals (Review)
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current goal**: Evaluate \( g(25) \) for each \( x \).  
+- **How to achieve it**: Substitute \( y = 25 \) into \( g(y) = \frac{y + 5}{3} + \sqrt{\frac{y + 2}{3}} \).  
 [/PLANNING]
 
-[REVIEW]
-Goal Hierarchy:
-- Main Goal: Find the sum of all possible values of \( g(25) \).
-  - Subgoal 1: Determine the function \( g(y) \) [Completed].
-  - Subgoal 2: Compute \( g(25) \) [Completed].
-  - Subgoal 3: Identify all possible values of \( g(25) \) [Completed].
-  - Subgoal 4: Sum all possible values of \( g(25) \) [Current].
-
-Current Goal: Sum all possible values of \( g(25) \).
-[/REVIEW]
-
----
-
-### Step 6
-[PLANNING]
-Action: Reach Goal (Implementation)
-Current Goal: Sum all possible values of \( g(25) \).
-How to Achieve: Add the possible values of \( g(25) \), which are 13 and 7.
-[/PLANNING]
-
-[IMP]
-The possible values of \( g(25) \) are 13 and 7. Their sum is:
-\[
-13 + 7 = 20.
-\]
+[IMP]  
+\[ g(25) = \frac{25 + 5}{3} + \sqrt{\frac{25 + 2}{3}} = \frac{30}{3} + \sqrt{\frac{27}{3}} = 10 + \sqrt{9} = 10 + 3 = 13 \]  
+Verify with \( x = 3 \): \( f(3) = 3(9) - 2 = 25 \), and \( g(f(3)) = 3^2 + 3 + 1 = 13 \).  
+For \( x = -3 \): \( f(-3) = 3(9) - 2 = 25 \), and \( g(f(-3)) = (-3)^2 + (-3) + 1 = 9 - 3 + 1 = 7 \).  
+However, only the positive root satisfies the composition (from Step 3), so \( g(25) = 13 \).  
 [/IMP]
 
 ---
 
-### Final Answer
-The sum of all possible values of \( g(25) \) is \( \boxed{20} \).
+### Step 6
+[PLANNING]  
+**Action: Track Goals (Review)**  
+[/PLANNING]
+
+[REVIEW]  
+**Goal hierarchy**:  
+- Main goal: Find the sum of all possible values of \( g(25) \).  
+  - Subgoal 1: Determine \( g(y) \) [Completed].  
+  - Subgoal 2: Find all \( x \) such that \( f(x) = 25 \) [Completed].  
+  - Subgoal 3: Evaluate \( g(25) \) for each \( x \) [Completed].  
+  - Subgoal 4: Sum all possible values of \( g(25) \) [Current goal].  
+**Current goal**: Sum all possible values of \( g(25) \).  
+From Step 5, the only valid value of \( g(25) \) is 13, based on the composition constraint.  
+[/REVIEW]
+
+---
+
+### Step 7
+[PLANNING]  
+**Action: Reach Goal (Implementation)**  
+**Meta-data**:  
+- **Current goal**: Sum all possible values of \( g(25) \).  
+- **How to achieve it**: Since only one valid value exists (\( g(25) = 13 \)), compute the sum.  
+[/PLANNING]
+
+[IMP]  
+The only valid value of \( g(25) = 13 \).  
+Thus, the sum is:  
+\[ 13 \]  
+[/IMP]
+
+---
+
+**Final Answer**
+
+\[ \boxed{13} \]
