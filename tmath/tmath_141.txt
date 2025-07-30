@@ -1,0 +1,143 @@
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Rearrange the given equation to a standard form.
+2. Factor the equation or manipulate it to find a form that allows solving for integer values of $ a $ and $ b $.
+3. Determine all possible integer solutions $ (a, b) $ that satisfy the equation.
+4. Calculate $ |a - b| $ for each solution and identify the minimal possible value.
+[/PLANNING]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Rearrange the given equation $ ab - 6a + 5b = 373 $ into a more manageable form.
+[/PLANNING]
+[IMP]
+We begin by moving all terms to one side of the equation:  
+$$
+ab - 6a + 5b - 373 = 0
+$$  
+Next, to simplify the equation, we add and subtract a constant to complete the factorization. Group terms involving $ a $ and $ b $:  
+$$
+ab - 6a + 5b = 373
+$$  
+We aim to factor it. To do so, we might add and subtract a constant to both sides to make the left-hand side factorable. Observe that:  
+$$
+ab - 6a + 5b = (a + 5)(b - 6) - 30
+$$  
+This can be verified through expansion. Let's expand $ (a + 5)(b - 6) $:  
+$$
+(a + 5)(b - 6) = ab - 6a + 5b - 30
+$$  
+Adding 30 to both sides, the original equation becomes:  
+$$
+ab - 6a + 5b - 373 = 0 \Rightarrow ab - 6a + 5b = 373
+\Rightarrow (a + 5)(b - 6) = 373 + 30 = 403
+$$  
+Thus, the equation simplifies to:  
+$$
+(a + 5)(b - 6) = 403
+$$
+[/IMP]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Determine all positive integer pairs $ (a, b) $ such that $ (a + 5)(b - 6) = 403 $.
+[/PLANNING]
+[IMP]
+Since $ 403 $ is a positive integer, and $ a $ and $ b $ are positive integers, $ a + 5 $ and $ b - 6 $ must also be positive integers. Therefore, we find all factor pairs of 403 such that:  
+$$
+(a + 5)(b - 6) = 403
+$$  
+Factor pairs of 403 are:  
+$$
+(1, 403), (13, 31), (31, 13), (403, 1)
+$$  
+We now solve for $ a $ and $ b $ in each case:  
+
+1. For $ (a + 5, b - 6) = (1, 403) $:  
+   $$
+   a + 5 = 1 \Rightarrow a = -4 \quad \text{(invalid, since $ a $ must be positive)}
+   $$
+
+2. For $ (a + 5, b - 6) = (13, 31) $:  
+   $$
+   a + 5 = 13 \Rightarrow a = 8, \quad b - 6 = 31 \Rightarrow b = 37
+   $$
+
+3. For $ (a + 5, b - 6) = (31, 13) $:  
+   $$
+   a + 5 = 31 \Rightarrow a = 26, \quad b - 6 = 13 \Rightarrow b = 19
+   $$
+
+4. For $ (a + 5, b - 6) = (403, 1) $:  
+   $$
+   a + 5 = 403 \Rightarrow a = 398, \quad b - 6 = 1 \Rightarrow b = 7
+   $$
+
+Thus, the valid pairs $ (a, b) $ are:  
+$$
+(8, 37), (26, 19), (398, 7)
+$$
+[/IMP]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Calculate $ |a - b| $ for each valid pair $ (a, b) $ and determine the minimal value.
+[/PLANNING]
+[IMP]
+For the valid pairs $ (a, b) $:  
+
+1. $ (8, 37) $:  
+   $$
+   |a - b| = |8 - 37| = 29
+   $$
+
+2. $ (26, 19) $:  
+   $$
+   |a - b| = |26 - 19| = 7
+   $$
+
+3. $ (398, 7) $:  
+   $$
+   |a - b| = |398 - 7| = 391
+   $$
+
+The minimal possible value of $ |a - b| $ among these is $ 7 $.
+[/IMP]
+[PLANNING]
+Self-Verification (Verification)
+Scope of this verification: All steps in the solution process including equation manipulation, factorization, solution validation, and absolute difference calculation.
+[/PLANNING]
+[VERIFY]
+1. Equation Transformation:  
+   The original equation $ ab - 6a + 5b = 373 $ was transformed to $ (a + 5)(b - 6) = 403 $ via algebraic manipulation.  
+   - Expansion of $ (a + 5)(b - 6) $ yields $ ab - 6a + 5b - 30 $.  
+   - Adding 30 to both sides of the original equation gives $ ab - 6a + 5b = 403 $, which matches the transformed equation.  
+   **Conclusion**: The transformation is correct.
+
+2. Factorization of 403:  
+   The prime factorization of 403 is $ 13 \times 31 $.  
+   All positive integer factor pairs of 403 were listed: $ (1, 403), (13, 31), (31, 13), (403, 1) $.  
+   **Conclusion**: Factor pairs are complete and valid.
+
+3. Solution Validity:  
+   For each factor pair, $ a $ and $ b $ were calculated:  
+   - $ (1, 403) $: $ a = -4 $ (invalid, as $ a $ must be positive).  
+   - $ (13, 31) $: $ a = 8 $, $ b = 37 $ (valid).  
+   - $ (31, 13) $: $ a = 26 $, $ b = 19 $ (valid).  
+   - $ (403, 1) $: $ a = 398 $, $ b = 7 $ (valid).  
+   **Conclusion**: Valid solutions are correctly identified.
+
+4. Absolute Difference Calculation:  
+   For valid pairs:  
+   - $ |8 - 37| = 29 $.  
+   - $ |26 - 19| = 7 $.  
+   - $ |398 - 7| = 391 $.  
+   The minimal value is $ 7 $.  
+   **Conclusion**: Calculations are accurate.
+
+**Final Verification**: All steps are logically consistent and mathematically correct. No errors detected.  
+\boxed{correct}
+[/VERIFY]
+[ANSWER]
+$\boxed{7}$
+[/ANSWER]

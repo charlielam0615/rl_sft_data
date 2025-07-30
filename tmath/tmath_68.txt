@@ -1,0 +1,110 @@
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Understand and analyze the given functions and equation.
+2. Substitute $ g(x) $ into $ f(x) $ and vice versa to compute $ f(g(x)) $ and $ g(f(x)) $.
+3. Simplify the expression $ f(g(x)) - g(f(x)) $ and equate it to $ B - A $.
+4. Solve the resulting equation to find a relationship between $ A $ and $ B $.
+5. Determine the value of $ A + B $.
+[/PLANNING]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Compute $ f(g(x)) $ and $ g(f(x)) $.
+[/PLANNING]
+[IMP]
+To compute $ f(g(x)) $, we substitute $ g(x) = Bx + A $ into $ f(x) = Ax + B $, giving us:
+
+$$ f(g(x)) = A(Bx + A) + B = ABx + A^2 + B $$
+
+To compute $ g(f(x)) $, we substitute $ f(x) = Ax + B $ into $ g(x) = Bx + A $, giving us:
+
+$$ g(f(x)) = B(Ax + B) + A = ABx + B^2 + A $$
+
+Now, we need to simplify the expression $ f(g(x)) - g(f(x)) $:
+
+$$ f(g(x)) - g(f(x)) = (ABx + A^2 + B) - (ABx + B^2 + A) $$
+
+Simplifying this expression:
+
+$$ f(g(x)) - g(f(x)) = ABx + A^2 + B - ABx - B^2 - A = A^2 - B^2 + B - A $$
+
+Given that $ f(g(x)) - g(f(x)) = B - A $, we can equate the two expressions:
+
+$$ A^2 - B^2 + B - A = B - A $$
+
+Solving this equation will help us find a relationship between $ A $ and $ B $.
+[/IMP]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Solve the equation $ A^2 - B^2 + B - A = B - A $ to find a relationship between $ A $ and $ B $.
+[/PLANNING]
+[IMP]
+Starting with the equation:  
+
+$$ A^2 - B^2 + B - A = B - A $$
+
+We can simplify this by subtracting $ B - A $ from both sides:  
+
+$$ A^2 - B^2 + B - A - (B - A) = 0 $$
+
+$$ A^2 - B^2 + B - A - B + A = 0 $$
+
+$$ A^2 - B^2 = 0 $$
+
+This simplifies to:  
+
+$$ A^2 = B^2 $$
+
+Taking the square root of both sides gives:  
+
+$$ A = B \quad \text{or} \quad A = -B $$
+
+However, we are given the condition $ A \neq B $, so $ A = B $ is not valid. Therefore, we must have:  
+
+$$ A = -B $$
+
+Now, using $ A = -B $, we can find $ A + B $.
+[/IMP]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Determine the value of $ A + B $ using $ A = -B $.
+[/PLANNING]
+[IMP]
+Given $ A = -B $, we substitute into $ A + B $:  
+
+$$ A + B = (-B) + B = 0 $$  
+
+Thus, the value of $ A + B $ is $ 0 $.
+[/IMP]
+[PLANNING]
+Self-Verification (Verification)
+Scope of this verification: Verify the entire solution process for correctness, including function composition, algebraic manipulations, and logical deductions.
+[/PLANNING]
+[VERIFY]
+1. **Function Composition Verification**:
+   - f(g(x)) = A(Bx + A) + B = ABx + A² + B (✓)
+   - g(f(x)) = B(Ax + B) + A = ABx + B² + A (✓)
+   - f(g(x)) - g(f(x)) = (ABx + A² + B) - (ABx + B² + A) simplifies to A² - B² + B - A (✓)
+
+2. **Equation Simplification Verification**:
+   - Given f(g(x)) - g(f(x)) = B - A:
+     - A² - B² + B - A = B - A (✓)
+     - Subtracting (B - A) from both sides yields A² - B² = 0 (✓)
+     - Factoring: (A - B)(A + B) = 0 (✓)
+
+3. **Constraint Application Verification**:
+   - A ≠ B is explicitly given, eliminating A = B as a solution (✓)
+   - Remaining solution: A = -B (✓)
+
+4. **Final Computation Verification**:
+   - A + B = (-B) + B = 0 (✓)
+
+All steps are logically consistent and mathematically valid. No errors detected in the reasoning process.
+
+\boxed{correct}
+[/VERIFY]
+[ANSWER]
+0
+[/ANSWER]

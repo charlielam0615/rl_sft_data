@@ -1,0 +1,74 @@
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Let the two numbers be $ x $ and $ y $, both positive integers.
+2. Juan mistakenly subtracted and got $ x - y = 2 $.
+3. Maria mistakenly multiplied and got $ x \cdot y = 120 $.
+4. Solve the system of equations $ x - y = 2 $ and $ x \cdot y = 120 $.
+5. Once $ x $ and $ y $ are determined, compute the correct sum $ x + y $.
+[/PLANNING]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Solve the system of equations $ x - y = 2 $ and $ x \cdot y = 120 $ to find $ x $ and $ y $.
+[/PLANNING]
+[IMP]
+We are given the following two equations:  
+1. $ x - y = 2 $  
+2. $ x \cdot y = 120 $  
+
+From the first equation, we can express $ x $ in terms of $ y $:  
+$$ x = y + 2 $$  
+
+Substitute $ x = y + 2 $ into the second equation:  
+$$ (y + 2) \cdot y = 120 $$  
+$$ y^2 + 2y = 120 $$  
+$$ y^2 + 2y - 120 = 0 $$  
+
+We now solve this quadratic equation. Factoring $ y^2 + 2y - 120 $:  
+$$ (y + 12)(y - 10) = 0 $$  
+
+This gives $ y = -12 $ or $ y = 10 $. Since we are told the numbers are positive integers, we discard $ y = -12 $ and take $ y = 10 $.  
+
+Substitute $ y = 10 $ back into $ x = y + 2 $:  
+$$ x = 10 + 2 = 12 $$  
+
+Thus, the two numbers are $ x = 12 $ and $ y = 10 $.  
+
+Finally, compute the correct sum:  
+$$ x + y = 12 + 10 = 22 $$
+[/IMP]
+[PLANNING]
+Self-Verification (Verification)
+Scope of this verification: Check the correctness of solving the system of equations and the final answer.
+[/PLANNING]
+[VERIFY]
+1. Verify the system of equations:
+   - Juan's subtraction: $ x - y = 2 $
+   - Maria's multiplication: $ x \cdot y = 120 $
+   These equations correctly model the problem constraints.
+
+2. Check algebraic manipulation:
+   - Substituting $ x = y + 2 $ into $ x \cdot y = 120 $:
+     $ (y + 2)y = 120 \Rightarrow y^2 + 2y - 120 = 0 $
+     This is algebraically correct.
+
+3. Validate quadratic solution:
+   - Factoring $ y^2 + 2y - 120 $:
+     $ (y + 12)(y - 10) = 0 \Rightarrow y = -12 $ or $ y = 10 $
+     This factorization is correct since $ (-12)(10) = -120 $ and $ (-12) + 10 = -2 $, but the middle term is +2, so the correct substitution should actually be $ y = 10 $.
+
+4. Confirm solution validity:
+   - For $ y = 10 $, $ x = 12 $:
+     $ 12 - 10 = 2 $ ✓ (matches Juan's result)
+     $ 12 \cdot 10 = 120 $ ✓ (matches Maria's result)
+
+5. Final answer calculation:
+   $ x + y = 12 + 10 = 22 $ ✓
+
+All steps are logically sound and verify the solution. The correct answer is 22.
+
+\boxed{correct}
+[/VERIFY]
+[ANSWER]
+22
+[/ANSWER]

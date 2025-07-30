@@ -1,0 +1,125 @@
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Analyze the equation $ ab - 3a + 4b = 137 $ and rearrange it to simplify.
+2. Factor the equation or find a way to isolate terms involving $ a $ and $ b $.
+3. Examine the equation for integer solutions and determine constraints on $ a $ and $ b $.
+4. Determine the minimal possible value of $ |a - b| $ under the given constraints.
+[/PLANNING]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Rearrange the equation $ ab - 3a + 4b = 137 $ to simplify and find a structure that allows factoring or isolating terms involving $ a $ and $ b $.
+[/PLANNING]
+[IMP]
+We can rearrange the equation as follows:
+$$ ab - 3a + 4b = 137 $$
+Group terms involving $ a $ and $ b $:
+$$ ab - 3a + 4b = 137 $$
+$$ a(b - 3) + 4b = 137 $$
+Now, isolate terms involving $ b $:
+$$ a(b - 3) = 137 - 4b $$
+$$ a = \frac{137 - 4b}{b - 3} $$
+[/IMP]
+
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Simplify the expression $ a = \frac{137 - 4b}{b - 3} $ to find integer values of $ a $ and $ b $.  
+2. Determine the values of $ b $ that make $ \frac{137 - 4b}{b - 3} $ an integer.  
+3. For valid integer values of $ b $, compute corresponding $ a $ values and check if they are positive integers.  
+4. Calculate $ |a - b| $ for each valid pair $ (a, b) $ and determine the minimal value.
+[/PLANNING]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Determine the values of $ b $ that make $ \frac{137 - 4b}{b - 3} $ an integer.
+[/PLANNING]
+[IMP]
+To ensure $ a $ is an integer, $ b - 3 $ must divide $ 137 - 4b $. Let’s define this condition more clearly:  
+$$ a = \frac{137 - 4b}{b - 3} $$  
+We need $ b - 3 $ to divide $ 137 - 4b $. Let’s define $ d = b - 3 $, so that $ b = d + 3 $. Substituting into the expression:  
+$$ a = \frac{137 - 4(d + 3)}{d} $$  
+$$ a = \frac{137 - 4d - 12}{d} $$  
+$$ a = \frac{125 - 4d}{d} $$  
+Thus, for $ a $ to be an integer, $ d $ must divide $ 125 - 4d $. Rearranging:  
+$$ 125 - 4d \equiv 0 \mod d $$  
+$$ 125 \equiv 4d \mod d $$  
+This implies $ d $ divides 125. So $ d $ must be a positive divisor of 125. The positive divisors of 125 are:  
+$$ d \in \{1, 5, 25, 125\} $$  
+Now, for each $ d $, we calculate $ b $ and $ a $:  
+$$ b = d + 3 $$  
+$$ a = \frac{125 - 4d}{d} $$  
+Let’s compute the pairs $ (a, b) $:  
+
+1. $ d = 1 $:  
+   $ b = 4 $, $ a = \frac{125 - 4}{1} = 121 $  
+
+2. $ d = 5 $:  
+   $ b = 8 $, $ a = \frac{125 - 20}{5} = \frac{105}{5} = 21 $  
+
+3. $ d = 25 $:  
+   $ b = 28 $, $ a = \frac{125 - 100}{25} = \frac{25}{25} = 1 $  
+
+4. $ d = 125 $:  
+   $ b = 128 $, $ a = \frac{125 - 500}{125} = \frac{-375}{125} = -3 $ (Not valid, since $ a $ must be positive)  
+
+Now, we have the valid pairs $ (a, b) $:  
+- $ (121, 4) $  
+- $ (21, 8) $  
+- $ (1, 28) $
+[/IMP]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Calculate $ |a - b| $ for each valid pair $ (a, b) $ and determine the minimal value.
+[/PLANNING]
+[IMP]
+We calculate $ |a - b| $ for each valid pair:
+
+1. For $ (a, b) = (121, 4) $:  
+   $ |a - b| = |121 - 4| = |117| = 117 $  
+
+2. For $ (a, b) = (21, 8) $:  
+   $ |a - b| = |21 - 8| = |13| = 13 $  
+
+3. For $ (a, b) = (1, 28) $:  
+   $ |a - b| = |1 - 28| = |-27| = 27 $  
+
+Thus, the minimal value of $ |a - b| $ among the valid pairs is $ 13 $.
+[/IMP]
+[PLANNING]
+Self-Verification (Verification)
+Scope of this verification: Check the correctness of the solution steps, particularly the derivation of the equation, the substitution process, the identification of valid integer solutions, and the calculation of |a - b|.
+[/PLANNING]
+[VERIFY]
+1. **Equation Rearrangement**:  
+   The original equation $ ab - 3a + 4b = 137 $ was correctly rearranged to $ a(b - 3) + 4b = 137 $. Further manipulation yielded $ a = \frac{137 - 4b}{b - 3} $, which is valid algebraically.  
+
+2. **Substitution with $ d = b - 3 $**:  
+   Substituting $ b = d + 3 $ into the equation gives:  
+   $$
+   a = \frac{137 - 4(d + 3)}{d} = \frac{125 - 4d}{d}
+   $$
+   This step is mathematically correct.  
+
+3. **Divisibility Condition**:  
+   For $ a $ to be an integer, $ d $ must divide $ 125 - 4d $. This implies $ 125 \equiv 0 \mod d $, since $ 4d \mod d = 0 $. Thus, $ d $ must be a divisor of 125. The positive divisors of 125 are indeed $ \{1, 5, 25, 125\} $.  
+
+4. **Calculation of Valid Pairs**:  
+   - $ d = 1 $: $ b = 4 $, $ a = 121 $  
+   - $ d = 5 $: $ b = 8 $, $ a = 21 $  
+   - $ d = 25 $: $ b = 28 $, $ a = 1 $  
+   - $ d = 125 $: $ b = 128 $, $ a = -3 $ (invalid)  
+   These calculations are correct, and the rejection of $ a = -3 $ is valid since $ a $ must be positive.  
+
+5. **Calculation of $ |a - b| $**:  
+   - $ |121 - 4| = 117 $  
+   - $ |21 - 8| = 13 $  
+   - $ |1 - 28| = 27 $  
+   The minimal value $ 13 $ is correctly identified.  
+
+All steps are logically consistent and mathematically valid. No errors detected.  
+\boxed{correct}
+[/VERIFY]
+[ANSWER]
+13
+[/ANSWER]

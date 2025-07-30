@@ -1,0 +1,96 @@
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Expand and analyze the given equations to find a relationship between $x+y+z$, $xy+xz+yz$, and $xyz$.
+2. Use the given equations to isolate and solve for $xyz$.
+[/PLANNING]
+
+[PLANNING]
+Track Goals (Review)
+Our goals are:  
+1. Expand and analyze the given equations to find a relationship between $x+y+z$, $xy+xz+yz$, and $xyz$ (to do).  
+2. Use the given equations to isolate and solve for $xyz$ (to do).
+[/PLANNING]
+[REVIEW]
+I am focusing on backward subgoaling to determine the most efficient way to analyze the given equations and isolate $xyz$.
+[/REVIEW]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Expand the first equation $(x+y+z)(xy+xz+yz)=25$ to derive an expression involving $x+y+z$, $xy+xz+yz$, and $xyz$.
+[/PLANNING]
+[IMP]
+We expand the left-hand side:  
+$$
+(x+y+z)(xy+xz+yz) = x(xy+xz+yz) + y(xy+xz+yz) + z(xy+xz+yz)
+$$  
+$$
+= x^2y + x^2z + xyz + xy^2 + xyz + y^2z + xz^2 + yz^2 + xyz
+$$  
+$$
+= x^2y + x^2z + xy^2 + y^2z + xz^2 + yz^2 + 3xyz
+$$  
+We now rewrite this as:  
+$$
+(x^2y + x^2z + xy^2 + y^2z + xz^2 + yz^2) + 3xyz
+$$  
+But the second given equation is:  
+$$
+x^2(y+z) + y^2(x+z) + z^2(x+y) = 7
+$$  
+Expanding this:  
+$$
+x^2y + x^2z + y^2x + y^2z + z^2x + z^2y = 7
+$$  
+This is the same as the expanded form of the first equation's left-hand side, except that it lacks the $3xyz$ term.  
+Thus, we can equate the two:  
+$$
+(x^2y + x^2z + xy^2 + y^2z + xz^2 + yz^2) + 3xyz = 25
+$$  
+$$
+(x^2y + x^2z + xy^2 + y^2z + xz^2 + yz^2) = 7
+$$  
+Subtracting the two equations:  
+$$
+25 - 7 = 3xyz \Rightarrow 18 = 3xyz
+$$  
+$$
+xyz = 6
+$$
+[/IMP]
+
+[PLANNING]
+Track Goals (Review)
+Our goals are:  
+1. Expand and analyze the given equations to find a relationship between $x+y+z$, $xy+xz+yz$, and $xyz$ (done).  
+2. Use the given equations to isolate and solve for $xyz$ (in progress).
+[/PLANNING]
+[REVIEW]
+I am focusing on verifying the correctness of the derived value $xyz = 6$ to ensure consistency with the given equations.
+[/REVIEW]
+[PLANNING]
+Self-Verification (Verification)
+Scope of this verification: Check the algebraic manipulations and logical consistency of the solution to ensure no errors were introduced during expansion or substitution.
+[/PLANNING]
+[VERIFY]
+1. **Verification of Expansion Step**:  
+   - The expansion of $(x+y+z)(xy+xz+yz)$ was performed term-by-term, resulting in $x^2y + x^2z + xy^2 + y^2z + xz^2 + yz^2 + 3xyz$. This matches standard algebraic identities for symmetric polynomials.  
+
+2. **Verification of Second Equation Alignment**:  
+   - The second equation $x^2(y+z) + y^2(x+z) + z^2(x+y) = 7$ expands to $x^2y + x^2z + y^2x + y^2z + z^2x + z^2y = 7$, which indeed corresponds to the non-constant terms of the first expanded equation. The difference between the two equations isolates $3xyz = 25 - 7 = 18$, leading to $xyz = 6$.  
+
+3. **Alternative Verification via Symmetric Identities**:  
+   - Using identities for symmetric sums:  
+     - Let $S = x + y + z$, $P = xy + xz + yz$, and $Q = xyz$.  
+     - The first equation gives $SP = 25$.  
+     - The second equation, rewritten using $x^2(S - x) + y^2(S - y) + z^2(S - z) = 7$, simplifies to $SP - 3Q = 7$.  
+     - Substituting $SP = 25$ into $SP - 3Q = 7$ yields $25 - 3Q = 7 \Rightarrow Q = 6$.  
+
+4. **Consistency Check**:  
+   - Both direct expansion and symmetric identity approaches independently confirm $xyz = 6$, ensuring no algebraic errors or logical inconsistencies.  
+
+**Conclusion**: All steps are logically consistent, and cross-verification via symmetric identities confirms the result.  
+\boxed{correct}
+[/VERIFY]
+[ANSWER]
+$\boxed{6}$
+[/ANSWER]
