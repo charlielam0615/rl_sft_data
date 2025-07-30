@@ -10,7 +10,7 @@ task_name="Logistics"
 api_key = 'sk-rMwveLlHvxcADL8vcekIG49bxKnzUZcAhdc7kkJfjpNDYw2L'
 base_url = 'https://yibuapi.com/v1'
 
-output_path = f"/data/rl_sft_data/{task_name}/output/"
+output_path = f"/data/rl_sft_data/{task_name}/"
 system_prompt =prompts.system_prompt
 
 question = prompts.Logistics

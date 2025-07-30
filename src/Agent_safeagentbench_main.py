@@ -6,14 +6,14 @@ import json
 import datetime
 import prompts as prompts
 
-task_name="ALFWorld"
+task_name="safe_agent_bench"
 api_key = 'sk-rMwveLlHvxcADL8vcekIG49bxKnzUZcAhdc7kkJfjpNDYw2L'
 base_url = 'https://yibuapi.com/v1'
 
 output_path = f"/data/rl_sft_data/{task_name}/"
 system_prompt =prompts.system_prompt
 
-questions=[prompts.ALFWORLD,prompts.ALFWORLD1,prompts.ALFWORLD2,prompts.ALFWORLD3,prompts.ALFWORLD4,prompts.ALFWORLD5,prompts.ALFWORLD6,prompts.ALFWORLD7,prompts.ALFWORLD8,prompts.ALFWORLD9,prompts.ALFWORLD10,prompts.ALFWORLD11,]
+questions=prompts.safe_agent_bench
 
 def get_openai_response(model_name, question, api_key, base_url):
     try:
