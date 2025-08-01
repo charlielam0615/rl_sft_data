@@ -752,10 +752,14 @@ def solve_problem(statement: str, prob_id: str) -> dict:
 
 
 def main():
-    data = tmath.result#list(map(lambda x: x['problem'], tmath.result))
+    #data = tmath.result#list(map(lambda x: x['problem'], tmath.result))
     #data = load_dataset(DATASET_NAME, split="train")
-    #selected_ids = [1]
-    for problem_id, row in enumerate(data):
+    os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
+    DATASET_NAME = "HuggingFaceH4/MATH-500"
+    data=load_dataset(DATASET_NAME)
+
+    selected_ids = [1]
+    for problem_id, row in enumerate(data['test']):
         # if problem_id not in selected_ids:
         #     continue
         print(f"Processing problem {problem_id}")
