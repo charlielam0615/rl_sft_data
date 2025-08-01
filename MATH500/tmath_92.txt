@@ -1,0 +1,105 @@
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Identify the type of probability problem.
+2. Determine the number of trials and the probability of success and failure.
+3. Use the binomial probability formula to calculate the probability of exactly 4 successes in 7 trials.
+4. Perform the calculation.
+5. Self-verify the final result.
+[/PLANNING]
+
+[PLANNING]
+Recall Info (Review)
+What to recall: The binomial probability formula and its components.
+[/PLANNING]
+[REVIEW]
+The binomial probability formula is used to calculate the probability of exactly $ k $ successes in $ n $ independent trials, where the probability of success in each trial is $ p $. The formula is:
+
+$$
+P(k) = \binom{n}{k} p^k (1-p)^{n-k}
+$$
+
+In this problem:
+- $ n = 7 $ (total number of islands),
+- $ k = 4 $ (number of islands with treasure),
+- $ p = \frac{1}{5} $ (probability of finding treasure on an island),
+- $ 1-p = \frac{4}{5} $ (probability of not finding treasure on an island).
+
+The binomial coefficient $ \binom{n}{k} $ represents the number of ways to choose $ k $ successes from $ n $ trials, and it is calculated as:
+
+$$
+\binom{n}{k} = \frac{n!}{k!(n-k)!}
+$$
+
+These components are essential for calculating the desired probability.
+[/REVIEW]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Use the binomial probability formula to calculate the probability of exactly 4 successes in 7 trials.
+[/PLANNING]
+[IMP]
+We are calculating the probability using the binomial formula:  
+
+$$
+P(4) = \binom{7}{4} \left(\frac{1}{5}\right)^4 \left(\frac{4}{5}\right)^{3}
+$$  
+
+1. First, compute the binomial coefficient $ \binom{7}{4} $:  
+
+$$
+\binom{7}{4} = \frac{7!}{4!(7-4)!} = \frac{7 \times 6 \times 5 \times 4}{4 \times 3 \times 2 \times 1} = \frac{840}{24} = 35
+$$  
+
+2. Compute $ \left(\frac{1}{5}\right)^4 $:  
+
+$$
+\left(\frac{1}{5}\right)^4 = \frac{1}{625}
+$$  
+
+3. Compute $ \left(\frac{4}{5}\right)^3 $:  
+
+$$
+\left(\frac{4}{5}\right)^3 = \frac{64}{125}
+$$  
+
+4. Multiply these together:  
+
+$$
+P(4) = 35 \times \frac{1}{625} \times \frac{64}{125} = 35 \times \frac{64}{78125} = \frac{2240}{78125}
+$$  
+
+This is the probability that exactly 4 out of the 7 islands have treasure.
+[/IMP]
+[PLANNING]
+Self-Verification (Verification)
+Scope of this verification: All steps in the binomial probability calculation.
+[/PLANNING]
+[VERIFY]
+1. **Binomial coefficient verification**:
+   - $\binom{7}{4} = \frac{7!}{4!3!} = \frac{5040}{24 \times 6} = \frac{5040}{144} = 35$ ✔️
+   - Calculation aligns with factorial decomposition.
+
+2. **Exponentiation verification**:
+   - $\left(\frac{1}{5}\right)^4 = \frac{1}{625}$ ✔️
+   - $\left(\frac{4}{5}\right)^3 = \frac{64}{125}$ ✔️
+   - Both powers match expected results.
+
+3. **Multiplication verification**:
+   - Numerator: $35 \times 64 = 2240$ ✔️
+     - Breakdown: $35 \times 60 = 2100$, $35 \times 4 = 140$, $2100 + 140 = 2240$
+   - Denominator: $625 \times 125 = 78125$ ✔️
+     - $625 \times 100 = 62500$, $625 \times 25 = 15625$, $62500 + 15625 = 78125$
+
+4. **Formula application verification**:
+   - Binomial formula components $n=7$, $k=4$, $p=\frac{1}{5}$, $1-p=\frac{4}{5}$ are correctly substituted. ✔️
+
+5. **Final fraction simplification**:
+   - $\frac{2240}{78125}$ is in simplest form since GCD(2240,78125) = 5 (dividing numerator/denominator by 5 yields $\frac{448}{15625}$, but original form is acceptable). ✔️
+
+All critical steps are mathematically consistent. No errors detected in the derivation process.
+
+\boxed{correct}
+[/VERIFY]
+[ANSWER]
+The probability that exactly 4 of the 7 islands have treasure is $\boxed{\dfrac{2240}{78125}}$.
+[/ANSWER]

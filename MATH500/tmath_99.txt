@@ -1,0 +1,149 @@
+[PLANNING]
+Subgoal Breakdown (Planning)
+1. Represent the vector $\mathbf{v}$ as $\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$ and use the dot product to create an equation.
+2. Use the cross product formula to create a system of equations from $\mathbf{a} \times \mathbf{v} = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$.
+3. Solve the system of equations to find $v_1, v_2,$ and $v_3$.
+4. Verify the solution by substituting back into the original equations.
+[/PLANNING]
+
+[PLANNING]
+Track Goals (Review)
+Our goals are:
+1. Represent the vector $\mathbf{v}$ as $\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$ and use the dot product to create an equation. (to do)
+2. Use the cross product formula to create a system of equations from $\mathbf{a} \times \mathbf{v} = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$. (to do)
+3. Solve the system of equations to find $v_1, v_2,$ and $v_3$. (to do)
+4. Verify the solution by substituting back into the original equations. (to do)
+[/PLANNING]
+[REVIEW]
+I am focusing on the overall goal of finding the vector $\mathbf{v}$ such that $\mathbf{a} \cdot \mathbf{v} = 2$ and $\mathbf{a} \times \mathbf{v} = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$.
+[/REVIEW]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Represent the vector $\mathbf{v}$ as $\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$ and use the dot product to create an equation.
+[/PLANNING]
+[IMP]
+Let $\mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$.  
+
+From the dot product condition, $\mathbf{a} \cdot \mathbf{v} = 2$, we have:  
+$$
+\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} = v_1 + v_2 + v_3 = 2.
+$$
+So, the first equation is:  
+$$
+v_1 + v_2 + v_3 = 2. \quad \text{(Equation 1)}
+$$
+[/IMP]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Use the cross product formula to create a system of equations from $\mathbf{a} \times \mathbf{v} = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$.
+[/PLANNING]
+[IMP]
+The cross product $\mathbf{a} \times \mathbf{v}$ is given by:  
+$$
+\mathbf{a} \times \mathbf{v} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \times \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} = \begin{pmatrix} 1(v_3 - v_2) - 1(v_3 - v_2) + 1(v_2 - v_1) \\ 1(v_1 - v_3) - 1(v_1 - v_2) + 1(v_3 - v_1) \\ 1(v_2 - v_1) - 1(v_2 - v_3) + 1(v_1 - v_2) \end{pmatrix}.
+$$  
+Simplifying each component:  
+- First component: $v_3 - v_2$,
+- Second component: $v_1 - v_3$,
+- Third component: $v_2 - v_1$.
+
+So, the cross product is:  
+$$
+\mathbf{a} \times \mathbf{v} = \begin{pmatrix} v_3 - v_2 \\ v_1 - v_3 \\ v_2 - v_1 \end{pmatrix}.
+$$  
+Setting this equal to $\begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$, we obtain the system of equations:  
+$$
+v_3 - v_2 = 1, \quad \text{(Equation 2)} \\
+v_1 - v_3 = -2, \quad \text{(Equation 3)} \\
+v_2 - v_1 = 1. \quad \text{(Equation 4)}
+$$
+[/IMP]
+
+[PLANNING]
+Reach Goal (Implementation)
+Goal of this step: Solve the system of equations to find $v_1, v_2,$ and $v_3$.
+[/PLANNING]
+[IMP]
+We now solve the system of equations:
+1. $v_1 + v_2 + v_3 = 2$ (Equation 1)
+2. $v_3 - v_2 = 1$ (Equation 2)
+3. $v_1 - v_3 = -2$ (Equation 3)
+4. $v_2 - v_1 = 1$ (Equation 4)
+
+We'll solve step-by-step.
+
+### Step 1: Solve Equation 2 for $v_3$
+From Equation 2: $v_3 - v_2 = 1$, we get:
+$$
+v_3 = v_2 + 1. \quad \text{(Equation 2a)}
+$$
+
+### Step 2: Substitute Equation 2a into Equation 3
+Equation 3: $v_1 - v_3 = -2$. Substitute $v_3 = v_2 + 1$ into this equation:
+$$
+v_1 - (v_2 + 1) = -2 \Rightarrow v_1 - v_2 - 1 = -2 \Rightarrow v_1 - v_2 = -1. \quad \text{(Equation 3a)}
+$$
+
+### Step 3: Use Equation 4
+Equation 4: $v_2 - v_1 = 1$. From Equation 3a, we have $v_1 = v_2 - 1$. Substitute this into Equation 4:
+$$
+v_2 - (v_2 - 1) = 1 \Rightarrow v_2 - v_2 + 1 = 1 \Rightarrow 1 = 1.
+$$
+This is a tautology, so no new information is obtained.
+
+### Step 4: Substitute $v_1 = v_2 - 1$ and $v_3 = v_2 + 1$ into Equation 1
+Equation 1: $v_1 + v_2 + v_3 = 2$. Substitute:
+$$
+(v_2 - 1) + v_2 + (v_2 + 1) = 2 \Rightarrow 3v_2 = 2 \Rightarrow v_2 = \frac{2}{3}.
+$$
+
+### Step 5: Solve for $v_1$ and $v_3$
+Using $v_1 = v_2 - 1$ and $v_3 = v_2 + 1$:
+$$
+v_1 = \frac{2}{3} - 1 = -\frac{1}{3}, \quad v_3 = \frac{2}{3} + 1 = \frac{5}{3}.
+$$
+
+### Final Solution
+$$
+\mathbf{v} = \begin{pmatrix} -\frac{1}{3} \\ \frac{2}{3} \\ \frac{5}{3} \end{pmatrix}.
+$$
+[/IMP]
+[PLANNING]
+Self-Verification (Verification)
+Scope of this verification: Check the correctness of the derived vector $\mathbf{v} = \begin{pmatrix} -\frac{1}{3} \\ \frac{2}{3} \\ \frac{5}{3} \end{pmatrix}$ against both the dot product and cross product conditions.
+[/PLANNING]
+[VERIFY]
+1. **Dot Product Verification**:  
+   Compute $\mathbf{a} \cdot \mathbf{v}$ using $\mathbf{a} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} -\frac{1}{3} \\ \frac{2}{3} \\ \frac{5}{3} \end{pmatrix}$:  
+   $$
+   1 \cdot \left(-\frac{1}{3}\right) + 1 \cdot \left(\frac{2}{3}\right) + 1 \cdot \left(\frac{5}{3}\right) = -\frac{1}{3} + \frac{2}{3} + \frac{5}{3} = \frac{6}{3} = 2.
+   $$  
+   The dot product condition is satisfied.
+
+2. **Cross Product Verification**:  
+   Compute $\mathbf{a} \times \mathbf{v}$:  
+   $$
+   \mathbf{a} \times \mathbf{v} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \times \begin{pmatrix} -\frac{1}{3} \\ \frac{2}{3} \\ \frac{5}{3} \end{pmatrix} = \begin{pmatrix} 1 \cdot \frac{5}{3} - 1 \cdot \frac{2}{3} \\ 1 \cdot \left(-\frac{1}{3}\right) - 1 \cdot \frac{5}{3} \\ 1 \cdot \frac{2}{3} - 1 \cdot \left(-\frac{1}{3}\right) \end{pmatrix} = \begin{pmatrix} \frac{3}{3} \\ -\frac{6}{3} \\ \frac{3}{3} \end{pmatrix} = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}.
+   $$  
+   The cross product condition is satisfied.
+
+3. **System Consistency Check**:  
+   Substitute $v_1 = -\frac{1}{3}, v_2 = \frac{2}{3}, v_3 = \frac{5}{3}$ into the original equations:  
+   - Equation 1: $v_1 + v_2 + v_3 = -\frac{1}{3} + \frac{2}{3} + \frac{5}{3} = 2$ ✔️  
+   - Equation 2: $v_3 - v_2 = \frac{5}{3} - \frac{2}{3} = 1$ ✔️  
+   - Equation 3: $v_1 - v_3 = -\frac{1}{3} - \frac{5}{3} = -2$ ✔️  
+   - Equation 4: $v_2 - v_1 = \frac{2}{3} - \left(-\frac{1}{3}\right) = 1$ ✔️  
+
+   All equations are satisfied.  
+
+**Conclusion**: The derived vector $\mathbf{v}$ satisfies both the dot product and cross product conditions, and all system equations are consistent. No errors detected in the solution.
+
+\boxed{correct}
+[/VERIFY]
+[ANSWER]
+$$
+\mathbf{v} = \begin{pmatrix} -\dfrac{1}{3} \\ \dfrac{2}{3} \\ \dfrac{5}{3} \end{pmatrix}
+$$
+[/ANSWER]
